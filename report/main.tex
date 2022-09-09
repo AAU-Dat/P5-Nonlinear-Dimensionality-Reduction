@@ -1,0 +1,39 @@
+\input{setup/preamble.tex}
+\input{setup/hyphenations.tex}
+\input{setup/macros.tex}
+
+%import glossaries
+\makeglossaries
+\loadglsentries{setup/acronyms.tex}
+
+\begin{document}
+%frontmatter
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{roman} %use roman page numbering in the frontmatter
+\input{specials/frontpage.tex}
+\input{specials/colophon.tex}
+\input{specials/titlepages.tex}
+\cleardoublepage
+
+\pdfbookmark[0]{Contents}{label:contents}
+\pagestyle{fancy} %enable headers and footers again
+\setcounter{tocdepth}{1} %determine depth of table of contents. 0 - 4
+\tableofcontents
+
+\input{specials/preface.tex}
+\cleardoublepage
+
+
+%mainmatter
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+
+\input{chapters/introduction.tex}
+
+%backmatter
+\printglossaries
+\printbibliography[heading=bibintoc]\label{bib:mybiblio}
+
+\appendix
+\input{chapters/examples.tex}
+
+\end{document}
