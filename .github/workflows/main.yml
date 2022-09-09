@@ -1,0 +1,18 @@
+name: Determine responsibilities for the week
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 11 * * 5"
+
+jobs:
+  post-to-Discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord post action step
+        id: discord
+        uses: AAU-Dat/automate-team-responsibilities@v2.0
+        with:
+          team: '["Gustav", "Lars", "Raymond", "Sebastian"]'
+          responsibilities: '[{"name": "Scrum Master", "random": false}, {"name": "Scrum Master", "random": true}]'
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
