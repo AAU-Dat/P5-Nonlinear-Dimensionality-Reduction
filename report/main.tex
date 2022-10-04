@@ -23,17 +23,20 @@
 \input{specials/preface.tex}
 \cleardoublepage
 
-
 %mainmatter
 \pagenumbering{arabic} %use arabic page numbering in the mainmatter
 
-\input{chapters/introduction.tex}
-\input{chapters/Problem_statement}
+\input{chapters/01-introduction/01-introduction.tex}
+\input{chapters/02-problem-analysis/02-problem-analysis.tex}
+\input{chapters/03-methodology/03-methodology.tex}
+\input{chapters/04-results/04-results.tex}
+\input{chapters/05-discussion/05-discussion.tex}
+\input{chapters/06-conclusion/06-conclusion.tex}
+
 %backmatter
 \printglossaries
 \printbibliography[heading=bibintoc]\label{bib:mybiblio}
 
 \appendix
-\input{chapters/examples.tex}
 
 \end{document}
