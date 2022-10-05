@@ -1,12 +1,18 @@
 intro
-In this project the differens dimmensionality reduction methods are evaluated based on how much it improves the metrics of our models. The following paragraphs will go through these chosen metrics
-. After that the reason for the choices will be explained.
-what we have chosen
-There are 4 metrics which will be used to evaluate the FE through the model. These metrics are acurracy, precision, recall, F1-score. And there is 1 metric used to evaluate FE directly.
-Here the speed/computations is used to evaluate the effeciency.
+In this project the differens dimmensionality reduction methods are evaluated based on how much it improves the metrics of our models.
+The following paragraphs will go through these chosen metrics.
+After that the reason for the choices will be explained.
+
+what we choose 
+
+There are 4 metrics which will be used to evaluate the FE through the model. These metrics are acurracy, precision, recall, F1-score. And there is 2 metric used to evaluate FE directly.
+Here the speed/computations is used to evaluate the effeciency. The other metric used is how well the dimmensionality reduction clusters the data, this will be calculated for each class
+as the average distance between class members divided by the average distance between all data points.
 
 why did we choose these
 
-The four model metrics simply because they are the standard metrics for evaluation of classification. This can be seen through multiple kaggle competitions and scientific papers.
-referenced(). The last metric was chosen to show the tradeoff most models will have in the more time it takes the better results. This makes it possible to show which metric will actually be most useful
-in most cases since accurracy is often important only to a certain point.
+The four model metrics were chosen because they the metric which generally describes how good the model does in infering the data. These are all essentially just variations on 
+how many does the model get correct devided by diffrent parts of the confusion matrix.
+The last 2 metrics was chosen to show the tradeoff most models will have in the more time it takes the better results. This makes it possible to show which metric will actually be most useful
+in most cases since accurracy is often important only to a certain point. The second FE metric also takes into acount how well the data is clustered after aplying the FE which gives
+insight into how well the FE works in a vacuum and how much performance a actual model whill achiewe from data which has more defined clusters.
