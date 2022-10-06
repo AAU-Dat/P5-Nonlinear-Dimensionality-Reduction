@@ -2,42 +2,45 @@
 On the MNIST webcite \cite{MNIST} there is a tabel of all the official methods used on the MNIST data set. As this project is based on the MNIST data set, the methods used in this project will be compared to the methods used on the MNIST data set. One thing to note, when looking in the table on the MNIST webcite, is there is a column that describes the preprocessing of the data. 
 This is not the same as the feature extraction, which is the process of extracting features from the data. The preprocessing is the process of cleaning the data, which is done before the feature extraction. In this project the data is already cleaned, so the preprocessing is not needed. Therefore it will only be compared to the models that dont have preprocessed data. 
 
+\begin{table}[h]
+  \centering
+  \resizebox{1\textwidth}{!}
+  {
+  \begin{tabular}{|c|c|c|}
+      \hline
+      Classifier & Preprocessing & Test error rate(\%)\\
+      \hline
+      \multicolumn{3}{|c|}{\textbf{Linear classifiers}} \\
+      \hline
+      linear classifier(1-layer NN) & none & 12.0 \\
+      linear classifier(1-layer NN) & deskewing & 8.4 \\
+      pairwise linear classifier & deskewing & 7.6 \\
+      \hline
+      ... & ... & ... \\ 
+      \hline
+      \multicolumn{3}{|c|}{\textbf{Non-linear classifiers}} \\
+      \hline
+      40 PCA + quadratic classifier & none & 3.3 \\
+      1000 RBF + linear classifier & none & 3.6 \\
+      \hline
+      ... & ... & ... \\ 
+      \hline
+      \multicolumn{3}{|c|}{\textbf{Convolutional nets}} \\
+      \hline
+      committee of 35 conv. net, 1-20-P-40-P-150-10 [elastic distortions] & width normalization & 0.23 \\
+      \hline
+  \end{tabular}
+  }
+  \caption{The methods previusly used on the MNIST data set}
+  \label{tab:method-MNIST}
+\end{table}
+
 In table \ref{tab:method-MNIST} there is the linear classifiers, specificly the one with none preprocessed data, that has an error rate of 12.0\% which is the one that will be compared to the models in this project. 
 
-in the table \ref{tab:method-MNIST} there is also the non-linear classifiers, both of them has not have any preprocessed data, so both can be compared to the result the projects model will get. The first one is the PCA + quadratic classifier with an error rate of 3.3\% and the second one is the RPF + linear classifier with an error rate of 3.6\%. The best result on the MNIST data set is the "committee of 35 conv. net, 1-20-P-40-P-150-10 [elastic distortions]" with preprocessed by width normalization and a error rate of 0.23\%.
+in the table \ref{tab:method-MNIST} there is also the non-linear classifiers, both of them has not have any preprocessed data, so both can be compared to the result the projects model will get. The first one is the PCA + quadratic classifier with an error rate of 3.3\% and the second one is the RPF + linear classifier with an error rate of 3.6\%. 
+On the MNIST webcite \cite{MNIST} the project with the lowest error procentage is the Committee of 35 conv. net, 1-20-P-40-P-150-10 [elastic distortions] by Dan Cireşan, Ueli Meier & Juergen Schmidhuberthe, this was done with preprocessed data by width normalization and a error rate of 0.23\%.
 
-\begin{table}[h]
-    \centering
-    \resizebox{1\textwidth}{!}
-    {
-    \begin{tabular}{|c|c|c|}
-        \hline
-        Classifier & Preprocessing & Test error rate(\%)\\
-        \hline
-        \multicolumn{3}{|c|}{\textbf{Linear classifiers}} \\
-        \hline
-        linear classifier(1-layer NN) & none & 12.0 \\
-        linear classifier(1-layer NN) & deskewing & 8.4 \\
-        pairwise linear classifier & deskewing & 7.6 \\
-        \hline
-        ... & ... & ... \\ 
-        \hline
-        \multicolumn{3}{|c|}{\textbf{Non-linear classifiers}} \\
-        \hline
-        40 PCA + quadratic classifier & none & 3.3 \\
-        1000 RBF + linear classifier & none & 3.6 \\
-        \hline
-        ... & ... & ... \\ 
-        \hline
-        \multicolumn{3}{|c|}{\textbf{Convolutional nets}} \\
-        \hline
-        committee of 35 conv. net, 1-20-P-40-P-150-10 [elastic distortions] & width normalization & 0.23 \\
-        \hline
-    \end{tabular}
-    }
-    \caption{The methods previusly used on the MNIST data set}
-    \label{tab:method-MNIST}
-\end{table}
+
 
 
 
