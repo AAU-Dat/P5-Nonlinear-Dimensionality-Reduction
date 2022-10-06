@@ -1,0 +1,21 @@
+\section*{Non-linear methods}
+In this section the non-linear methods Kernel PCA and Isomap will be presented.
+
+\todo{We need to make a table consisting of the notations that have been written in the report eventually(if we have that many notations)}
+
+
+\subsection*{Kernel PCA(KPCA)}
+KPCA is an extension of PCA, and it projects the data onto a higer dimensional plane, where PCA is perfrormed. PCA uses a kernel function $\phi (x)$ which is used to obtain to what would correspond as the covariance matrix in PCA in the kernel space $K$, from which eigenvalue decomposition can be computed, without computing the actual kernel function $\phi (x)$. Thus, KPCA applies a kernel function (some examples being Guassian or polynomial kernels) to the data set $ \{x_{i} \}$, constructs a kernel matrix. From the kernel matrix one can compute the Gram matrix, from which, similar to PCA, one can make use of eigen-decomposition to get the kernel $k$ components.[2]
+
+
+\subsection*{Isometric feature mapping(Isomap)}
+Isomap is another non-linear method that is a special case of classical Multi Dimensional Scaling(cMDS). The former method preserves the geodesic distance -- the distance between two points on the manifold -- that if computed in Euclidean distance would yield wrong inaccurate results, while the latter performs dimensionality reduction, which is why Isomap can be considered an extension of MDS. A manifold can be thought of as being a space that locally resembles Euclidean space. The geodesic distance is calculated by first constructing a neighborhood graph for every data point connected to its $k$ point, which is done with K-nearest neighbors algorithm. After constructing the neighborhood graph, the distance then can be calculated with a shortest path algorithm to determine the distances on the graph which correspond to the distances on the manifold. This results in a distance matrix, which is used as the input for classical MDS.[3]
+
+cMDS tries to preserve the similarity between the data points from the higher dimensional space that are to be embedded onto the lower dimensional space. This is achieved by performing eigen-decomposition on the matrix input. One can think of MDS as being a family of methods while PCA is just a method.[4]
+
+
+%refs
+%[1] https://en.wikipedia.org/wiki/Kernel_method#Mathematics:_the_kernel_trick
+%[2] https://arxiv.org/pdf/1207.3538.pdf
+%[3] https://arxiv.org/pdf/2009.08136.pdf
+%[4] https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional
