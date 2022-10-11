@@ -19,6 +19,7 @@ Feature extraction (in \ref{fig:ml-pipeline} FE) is the process of extracting fe
     \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
     \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
     \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
+
     \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
 
     \draw [arrow, ->] (d.north) -- ++(0,0.75) -| (b);
@@ -33,3 +34,4 @@ The box "parameters" in figure \ref{fig:ml-pipeline} describes the parameters th
 
 Model training is the process of training the model with the data. This is done by using a training set and a validation set. The training set is used to train the model to predict the output with highest possible accuracy. The validation set is used to evaluate the model. It is here where the chosen parameters determine the fit of the model.
 Model evaluation is the process for analysing the models performance. This is done by using a test set. The test set is used to evaluate the model. The test set is not used to train the model. The evaluation is done by comparing the predicted values with the actual values that was to be expected. After the model has been evaluated, new models or feature extraction can be used to try and improve the models performance \cite{ml-pipeline-javapoint}.
+
