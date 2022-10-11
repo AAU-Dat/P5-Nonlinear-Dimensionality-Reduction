@@ -30,31 +30,6 @@
             "args": [
                 "%DOCFILE%"
             ]
-        },
-        {
-            "workbench.iconTheme": "material-icon-theme",
-            "workbench.editorAssociations": {
-                "*.pdf": "latex-workshop-pdf-hook"
-            },
-            "editor.inlineSuggest.enabled": true,
-            "editor.formatOnSave": true,
-            "editor.codeActionsOnSave": {
-                "source.organizeImports": true
-            },
-            "editor.wordWrap": "wordWrapColumn",
-            "editor.wordWrapColumn": 130,
-            "html.format.wrapLineLength": 130,
-            "editor.rulers": [
-                130
-            ],
-            "[python]": {
-                "editor.defaultFormatter": "ms-python.python"
-            },
-            "python.formatting.provider": "autopep8",
-            "python.linting.lintOnSave": true,
-            "window.zoomLevel": 1
         }
     ]
-    
 }
-
