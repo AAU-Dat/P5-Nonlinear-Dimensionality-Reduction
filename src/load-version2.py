@@ -1,33 +1,27 @@
-"""
-from keras.datasets import mnist
-from matplotlib import pyplot
-import pylab
-
-(train_X, train_y), (test_X, test_y) = mnist.load_data()
-print('X_train: ' + str(train_X.shape))
-print('Y_train: ' + str(train_y.shape))
-print('X_test:  '  + str(test_X.shape))
-print('Y_test:  '  + str(test_y.shape))
- 
-
-for i in range(9):  
-    pyplot.subplot(330 + 1 + i)
-    pyplot.imshow(train_X[i], cmap=pyplot.get_cmap('gray'))
-
-print("yes")
-
-"""
+import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import fetch_openml
+from sklearn.linear_model import LogisticRegression
+mnist = fetch_openml('mnist_784')
 
-# Define Data
+# These are the images
+# There are 70,000 images (28 by 28 images for a dimensionality of 784)
+print(mnist.data.shape)
+# These are the labels
+print(mnist.target.shape)
 
-x = [1, 2, 3, 4, 5]
-y = [2, 4, 6, 8, 10]
+train_img, test_img, train_lbl, test_lbl = train_test_split(mnist.data, mnist.target, test_size=1/7.0, random_state=0)
 
-# Plot
+# all parameters not specified are set to their defaults
+# default solver is incredibly slow thats why we change it
+logisticRegr = LogisticRegression(solver = 'lbfgs', max_iter=1000)
 
-plt.plot(x, y)
-
-# Display
-
-plt.show()
+logisticRegr.fit(train_img, train_lbl)
+# Returns a NumPy Array
+# Predict for One Observation (image)
+logisticRegr.predict(test_img[0].reshape(1,-1))
+logisticRegr.predict(test_img[0:10])
+predictions = logisticRegr.predict(test_img)
+score = logisticRegr.score(test_img, test_lbl)
+print(score)
