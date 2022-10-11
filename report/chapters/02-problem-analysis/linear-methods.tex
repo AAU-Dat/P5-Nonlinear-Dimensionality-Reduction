@@ -1,4 +1,12 @@
-\section{Linear methods}\label{section:linear_methods}
+\newacronym{fa}{FA}{Factor Analysis}
+\newacronym{lda}{LDA}{Linear Discriminant Analysis}
+\newacronym{pca}{PCA}{Principal Component Analysis}
+\newacronym{nmf}{NMF}{Non-negative Matrix Factorization}
+\newacronym{ci}{CI}{Class-Independent}
+\newacronym{cd}{CD}{Class-Dependent}
+\newacronym{efa}{EFA}{Exploratory Factor Analysis}
+\newacronym{pfa}{PFA}{Principal Factor Analysis}
+\section{Linear methods}\label{sec:linear-methods}
 This section will present the chosen linear methods that will be used in the project. The reason why linear methods were chosen is because they are a relevant for the analysis of the high-dimensional nature of image data \cite{linear-dimensionality-reduction-insights}.
 
 It should be noted, that some of the linear and non-linear methods usually try to solve an optimization problem, in which the function has the form of 
@@ -6,7 +14,7 @@ It should be noted, that some of the linear and non-linear methods usually try t
   \phi(Y) = \frac{Y \top AY}{Y \top BY},
 \end{align}
 
-which can be optimized by using eigendecomposition \cite{dimensionality-reduction-comparative-review}. Some of these methods performing eigendecomposition rely on a full matrix which includes the covariances between datapoints. A covariance matrix $S_y$, which contains the variance between each pair of elements, can be aquired as follows: (The example is inspired from PCA, which will be presented in section \ref{subsection:PCA})
+which can be optimized by using eigendecomposition \cite{dimensionality-reduction-comparative-review}. Some of these methods performing eigendecomposition rely on a full matrix which includes the covariances between datapoints. A covariance matrix $S_y$, which contains the variance between each pair of elements, can be aquired as follows: (The example is inspired from \gls{pca}, which will be presented in Subsection \ref{subsec:principal-components-analysis})
 \begin{align}
   S_y = \frac{1}{N}\sum\limits_{i=1}^{N}(y_i - \mu)(y_i - \mu)\top, where 
 \end{align}
@@ -21,75 +29,75 @@ Hence, after calculating the covariance matrix for $\mathbf{X}$, it can form the
   cov(X)M = \lambda M, where
 \end{align}
 
-$\lambda$ represents eigenvalues with $d$ eigenvectors(also called principal components in PCA), which are chosen. Thus mapping the high-dimensional data onto lower dimensions can be written as $\mathbf{Y=XM}$, where $\mathbf{X}$ is the input matrix, $\mathbf{M}$ is the transformation matrix, and $\mathbf{Y}$ is the embedded output.
+$\lambda$ represents eigenvalues with $d$ eigenvectors(also called principal components in \gls{pca}), which are chosen. Thus mapping the high-dimensional data onto lower dimensions can be written as $\mathbf{Y=XM}$, where $\mathbf{X}$ is the input matrix, $\mathbf{M}$ is the transformation matrix, and $\mathbf{Y}$ is the embedded output.
 
 
-\begin{comment}
-@misc{linear-dimensionality-reduction-insights,
-      organization = {Journal of Machine Learning Research},
-      url          = {https://stat.columbia.edu/~cunningham/pdf/CunninghamJMLR2015.pdf},
-      title        = {Linear Dimensionality Reduction:Survey, Insights, and Generalizations},
-      author       = {John P. Cunningham, Zoubin Ghahramani},
-      urldate      = {2022-10-11}
-    }
-\end{comment}
 
-\subsection{Principal Components Analysis(PCA)}\label{subsection:PCA}
-PCA tries to map the high-dimensional data so that it maximizes the amount of variance in the embedded data. By maximizing the variance it can be expressed as maximizing the cost function C($\mathbf{Y}$) $tr(M\top cov(X)M)$, where cov($\mathbf{X}$) is the covariance matrix for $\mathbf{X}$ \cite{dimensionality-reduction-comparative-review}.
+% @misc{linear-dimensionality-reduction-insights,
+%       organization = {Journal of Machine Learning Research},
+%       url          = {https://stat.columbia.edu/~cunningham/pdf/CunninghamJMLR2015.pdf},
+%       title        = {Linear Dimensionality Reduction:Survey, Insights, and Generalizations},
+%       author       = {John P. Cunningham, Zoubin Ghahramani},
+%       urldate      = {2022-10-11}
+%     }
+
+\subsection{Principal Components Analysis}\label{subsec:principal-components-analysis}
+\gls{pca} tries to map the high-dimensional data so that it maximizes the amount of variance in the embedded data. By maximizing the variance it can be expressed as maximizing the cost function C($\mathbf{Y}$) $tr(M\top cov(X)M)$, where cov($\mathbf{X}$) is the covariance matrix for $\mathbf{X}$ \cite{dimensionality-reduction-comparative-review}.
 
 
-\begin{comment}
-@misc{dimensionality-reduction-comparative-review,
-organization = {Tilburg centre for Creative Computing},
-url          = {https://lvdmaaten.github.io/publications/papers/TR\_Dimensionality\_Reduction\_Review\_2009.pdf},
-title        = {Dimensionality Reduction: A Comparative Review},
-author       = {Laurens van der Maaten, Eric Postma, Jaap van Henrik},
-urldate      = {2009-10-26}
-    }
-\end{comment}
+
+% @misc{dimensionality-reduction-comparative-review,
+% organization = {Tilburg centre for Creative Computing},
+% url          = {https://lvdmaaten.github.io/publications/papers/TR\_Dimensionality\_Reduction\_Review\_2009.pdf},
+% title        = {Dimensionality Reduction: A Comparative Review},
+% author       = {Laurens van der Maaten, Eric Postma, Jaap van Henrik},
+% urldate      = {2009-10-26}
+%     }
     
 
-\subsection{Factor Analysis (FA)}\label{subsection:FA}
-FA tries to correlate the input variables into fewer latent factors, or variables, where each variable supplies parto fht weight of the factor. It can be noted that the relation between the FA family and PCA is that PCA is a type of FA, specifically Exploratory Factor Analysis (EFA). EFA contains a type, called Principal Factor Analysis (PFA).
+\subsection{Factor Analysis}\label{subsec:factor-analysis}
+\gls{fa} tries to correlate the input variables into fewer latent factors, or variables, where each variable supplies parto fht weight of the factor. It can be noted that the relation between the \gls{fa} family and \gls{pca} is that \gls{pca} is a type of \gls{fa}, specifically \gls{efa}  contains a type, called \gls{pfa}.
 
-The difference between the PFA and PCA is that PFA assume that there are unobserved data that need to be be extracted, while PCA extracts meaning from the data itself \cite{factor-analysis-introduction}. Another difference is that FPA distinguishes between common variance and unique variance -- common variance is applies to data that are highly correlated, and thus share a lot of variance, whereas unique variance is applies to data that are not common -- whereas PCA assumes that there is only common variance. 
+The difference between the \gls{pfa} and \gls{pca} is that \gls{pfa} assume that there are unobserved data that need to be be extracted, while \gls{pca} extracts meaning from the data itself \cite{factor-analysis-introduction}. Another difference is that FPA distinguishes between common variance and unique variance -- common variance is applies to data that are highly correlated, and thus share a lot of variance, whereas unique variance is applies to data that are not common -- whereas \gls{pca} assumes that there is only common variance. 
 
 
-\begin{comment}
-@misc{factor-analysis-introduction,
-      organization = {Advanced Research Computing Statistical Methods and Data Analytics},
-      url          = {https://stats.oarc.ucla.edu/spss/seminars/introduction-to-factor-analysis/a-practical-introduction-to-factor-analysis/},
-      title        = {A PRACTICAL INTRODUCTION TO FACTOR ANALYSIS: EXPLORATORY FACTOR ANALYSIS},
-      urldate      = {2022-10-11}
-    }
-\end{comment}
 
-\subsection{Non-negative matrix factorization (NMF)}\label{subsection:NMF}
-NMV tries to factorize the input matrix $X$ into two matrices $WH$ such that $WH ~ A$. This means that NMF tries to minimize the difference between the $X$ and $WH$ \cite{non-negative-matrix-factorization}. However, computing NMF can be considered computationally expensive.
+% @misc{factor-analysis-introduction,
+%       organization = {Advanced Research Computing Statistical Methods and Data Analytics},
+%       url          = {https://stats.oarc.ucla.edu/spss/seminars/introduction-to-factor-analysis/a-practical-introduction-to-factor-analysis/},
+%       title        = {A PRACTICAL INTRODUCTION TO FACTOR ANALYSIS: EXPLORATORY FACTOR ANALYSIS},
+%       urldate      = {2022-10-11}
+%     }
 
-\begin{comment}
-  @misc{non-negative-matrix-factorization,
-        organization = {Department of Mathematics and Operational Research Faculte Polytechnique, Universite de Mons},
-        url          = {https://arxiv.org/pdf/1401.5226.pdf},
-        author       = {Nicolas Gillis}
-        title        = {The Why and How of Nonnegative Matrix Factorization},
-        urldate      = {2022-10-11}
-      }
-  \end{comment}
+\subsection{Non-negative matrix factorization }\label{subsec:non-negative-matrix-factorization}
+\gls{nmf} tries to factorize the input matrix $X$ into two matrices $WH$ such that $WH ~ A$. This means that \gls{nmf} tries to minimize the difference between the $X$ and $WH$ \cite{non-negative-matrix-factorization}. However, computing \gls{nmf} can be considered computationally expensive.
+
+  % @misc{non-negative-matrix-factorization,
+  %       organization = {Department of Mathematics and Operational Research Faculte Polytechnique, Universite de Mons},
+  %       url          = {https://arxiv.org/pdf/1401.5226.pdf},
+  %       author       = {Nicolas Gillis}
+  %       title        = {The Why and How of Nonnegative Matrix Factorization},
+  %       urldate      = {2022-10-11}
+  %     }
   
 
 
-\subsection{Linear Discriminant Analysis (LDA)}\label{subsection:LDA}
-LDA is trying construct a lower dimensional space which maximizes the ratio between \textbf{between-class} variance and \textbf{within-class} variance, which maximizes class separability. By between-class it is meant the distance between means of different classes, and within-class as the distance between the mean and the observations of each class. In one equation, $LDA = \frac{Variance_{BetweenClass}}{Variance_{WithinClass}}$ LDA maximizes the separability between classes and minimizes the separability within classes so as to get the largest value possible.
+\subsection{Linear Discriminant Analysis}\label{subsec:linear-discriminant-analysis}
+\gls{lda} is trying construct a lower dimensional space which maximizes the ratio between \textbf{between-class} variance and \textbf{within-class} variance, which maximizes class separability. By between-class it is meant the distance between means of different classes, and within-class as the distance between the mean and the observations of each class. In one equation, 
+\begin{align}
+  LDA = \frac{Variance_{BetweenClass}}{Variance_{WithinClass}}
+\end{align}
 
-\begin{comment}
-@misc{linear-discriminant-analysis-tutorial,
-      organization = {University of Salford Manchester},
-      url          = {http://usir.salford.ac.uk/id/eprint/52074/1/AI\_Com\_LDA\_Tarek.pdf},
-      title        = {Linear discriminant analysis: a detailed tutorial},
-      urldate      = {2022-10-11}
-    }
-    \end{comment} 
+\gls{lda} maximizes the separability between classes and minimizes the separability within classes so as to get the largest value possible.
+
+
+% @misc{linear-discriminant-analysis-tutorial,
+%       organization = {University of Salford Manchester},
+%       url          = {http://usir.salford.ac.uk/id/eprint/52074/1/AI\_Com\_LDA\_Tarek.pdf},
+%       title        = {Linear discriminant analysis: a detailed tutorial},
+%       urldate      = {2022-10-11}
+%     }
     
-LDA can be divided into two types: class-independent (CI) and class-dependent (CD). CI computes one global transformation matrix for the data, where as CD takes a more local approach; it computes the transformation matrix for each class, along with the eigenvectors and eigenvalues \cite{linear-discriminant-analysis-tutorial}.
+\gls{lda} can be divided into two types: \gls{ci} and \gls{cd}. \gls{ci} computes one global transformation matrix for the data, where as \gls{cd} takes a more local approach; it computes the transformation matrix for each class, along with the eigenvectors and eigenvalues \cite{linear-discriminant-analysis-tutorial}.
+
 
