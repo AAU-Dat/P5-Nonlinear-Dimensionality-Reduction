@@ -79,7 +79,7 @@
   outer=41mm,% right margin on an odd page
   headheight=13.6pt,
   bottom=39mm
-  ]{geometry}
+]{geometry}
 % Modify how \chapter, \section, etc. look
 % The titlesec package is very configureable
 \usepackage{titlesec}
@@ -122,7 +122,7 @@
   maxbibnames=20,
   style=numeric-comp,
   sorting=none
-  ]{biblatex}
+]{biblatex}
 \addbibresource{bib/mybib.bib}
 \usepackage{microtype} %Prevent overfull issues in bibliography
 
@@ -137,11 +137,11 @@
 \usepackage{lastpage}
 % Add todo notes in the margin of the document
 \usepackage[
-%  disable, %turn off todonotes
+  %  disable, %turn off todonotes
   colorinlistoftodos, %enable a coloured square in the list of todos
   textwidth=\marginparwidth, %set the width of the todonotes
   textsize=scriptsize, %size of the text in the todonotes
-  ]{todonotes}
+]{todonotes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code listings and pseudocode
@@ -160,18 +160,61 @@
 % last packages
 \usepackage[hidelinks]{hyperref}
 \hypersetup{%
-	plainpages=false,%
-	pdfauthor={Author(s)},%
-	pdftitle={Title},%
-	pdfsubject={Subject},%
-	bookmarksnumbered=true,%
-	colorlinks=false,%
-	citecolor=black,%
-	filecolor=black,%
-	linkcolor=black,% you should probably change this to black before printing
-	urlcolor=black,%
-	pdfstartview=FitH%
+  plainpages=false,%
+  pdfauthor={Author(s)},%
+  pdftitle={Title},%
+  pdfsubject={Subject},%
+  bookmarksnumbered=true,%
+  colorlinks=false,%
+  citecolor=black,%
+  filecolor=black,%
+  linkcolor=black,% you should probably change this to black before printing
+  urlcolor=black,%
+  pdfstartview=FitH%
 }
 
 \usepackage[acronym]{glossaries} %Glossaries/acronyms
 \usepackage[autostyle, threshold=0]{csquotes} %better quotes
+
+
+% Sebastian and Tikz
+\usetikzlibrary{shapes,arrows,chains}
+\usetikzlibrary[calc]
+\usetikzlibrary{shapes.geometric, arrows, fit, calc, automata, positioning, shapes.multipart}
+\usepackage{comment}
+\renewenvironment{comment}{}{}
+%%% done
+% Events
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\tikzstyle{state} = [rectangle, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=white!30]
+
+\tikzstyle{cluster} = [line width=0.4pt, draw=black, inner sep=0.5em, rounded corners=0.1cm]
+
+\usetikzlibrary{shapes.geometric, arrows, fit, calc, automata, positioning}
+\tikzstyle{umlcolor}=[
+color=\umldrawcolor,
+fill=\umlfillcolor,
+text=\umltextcolor
+]
+\tikzstyle{umlcd style class}=[
+draw,
+rectangle,
+rectangle split,
+rectangle split parts=3,
+rounded corners,
+text centered,
+text height=1em,
+text width=2.2cm,
+text depth = 0.5em,
+fill=white
+]
+\tikzstyle{event_start} = [draw,circle,scale=.30,fill=black]
+\tikzset{
+  event_end/.style={
+      label={[draw,circle,scale=1.3,fill=white,line width=0.4mm]center:},
+      label={[draw,circle,scale=.75,fill=black]center:}
+    }
+}
+\tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
