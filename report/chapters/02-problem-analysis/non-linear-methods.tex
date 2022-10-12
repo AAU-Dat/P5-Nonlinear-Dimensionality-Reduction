@@ -1,12 +1,17 @@
-\section*{Non-linear methods}
-Sometimes the high-dimensional data may contain nonlinear relationships. Some linear methods may fail to find features in data that are nonlinear. In \cite{Tennenbaum} it is shown that PCA "sees" only the Euclidean structure of a manifold (Swiss roll data set), and thus fails to see the geodesic distances -- the distance between two points on the manifold -- that actually represent the structure of the manifold. A manifold can be thought of as being a space that locally resembles Euclidean space.
+\newacronym{isomap}{Isomap}{Isometric Feature Mapping}
+\newacronym{kpca}{KPCA}{Kernel Principal Component Analysis}
+\newacronym{isomap}{Isomap}{Isometric Feature Mapping}
+\newacronym{mds}{MDS}{Multi Dimensional Scaling}
+\newacronym{cmds}{cMDS}{Classical Multi Dimensional Scaling}
+\usepackage{comment}
+\section{Non-linear methods}\label{sec:non-linear-methods}
+Sometimes the high-dimensional data may contain nonlinear relationships. Some linear methods may fail to find features in data that are nonlinear. In \cite{Tennenbaum} it is shown that \gls{pca} "sees" only the Euclidean structure of a manifold (Swiss roll data set), and thus fails to see the geodesic distances -- the distance between two points on the manifold -- that actually represent the structure of the manifold. A manifold can be thought of as being a space that locally resembles Euclidean space.
 
-On the other hand, one can handle such data with kernel methods instead of considering the data a manifold. A kernel method can be used to project the data onto a higher dimension that could resemble a linear plane, or Euclidean space, which would make it easier to use a linear method. \cite{LVD}
+On the other hand, one can handle such data with kernel methods instead of considering the data a manifold. A kernel method can be used to project the data onto a higher dimension that could resemble a linear plane, or Euclidean space, which would make it easier to use a linear method \cite{LVD}.
 
 This section will provide some nonlinear methods that are able to reduce the dimensionality of nonlinear data.
 
 
-\usepackage{comment}
 
 \begin{comment}
     @misc{Tennenbaum,
@@ -16,40 +21,45 @@ This section will provide some nonlinear methods that are able to reduce the dim
       urldate      = {2022-10-11}
     }
 \end{comment}
-\subsection*{Kernel PCA(KPCA)}
-KPCA is an extension of PCA, and it projects the data onto a higer dimensional plane, where PCA is perfrormed. PCA uses a kernel function $\phi (x)$ which is used to obtain to what would correspond as the covariance matrix in PCA in the kernel space $K$, from which eigenvalue decomposition can be computed, without computing the actual kernel function $\phi (x)$, which otherwise would be computationally expensive. Thus, KPCA applies a kernel function (some examples being Guassian or polynomial kernels) to the data set $ \{x_{i} \}$, constructs a kernel matrix. From the kernel matrix one can compute the Gram matrix, from which, similar to PCA, one can make use of eigen-decomposition to get the kernel $k$ components. \cite{KPCA}
+\subsection{Kernel PCA}\label{subsec:kernel-pca}
+\gls{kpca} is an extension of \gls{pca}, and it projects the data onto a higer dimensional plane, where \gls{pca} is perfrormed. \gls{pca} uses a kernel function $\phi (x)$ which is used to obtain to what would correspond as the covariance matrix in \gls{pca}in the kernel space $K$, from which eigenvalue decomposition can be computed, without computing the actual kernel function $\phi (x)$, which otherwise would be computationally expensive. Thus, \gls{kpca} applies a kernel function (some examples being Guassian or polynomial kernels) to the data set $ \{x_{i} \}$, constructs a kernel matrix. From the kernel matrix one can compute the Gram matrix, from which, similar to \gls{pca}, one can make use of eigen-decomposition to get the kernel $k$ components \cite{kernel-pca}.
 
 \begin{comment}
-@misc{KPCA,
-  url          = {https://arxiv.org/pdf/1207.3538.pdf},
-  title        = {Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models},
-  author       = {Quan Wang},
-  urldate      = {2022-10-11}
+@misc{kernel-pca,
+  doi = {10.48550/ARXIV.1207.3538},
+  url = \url{https://arxiv.org/abs/1207.3538},
+  author = {Wang, Quan},
+  title = {Kernel Principal Component Analysis and its Applications in Face Recognition and Active Shape Models},
+  year = {2012},
 }
+
 \end{comment}
 
-\subsection*{Isometric feature mapping(Isomap)}
-Isomap is another non-linear method that is a special case of classical Multi Dimensional Scaling(cMDS). The former method preserves the geodesic distance, while the latter performs dimensionality reduction, which is why Isomap can be considered an extension of MDS. The geodesic distance is calculated by first constructing a neighborhood graph for every data point connected to its $k$ point, which is done with K-nearest neighbors algorithm. After constructing the neighborhood graph, the distance then can be calculated with a shortest path algorithm to determine the distances on the graph which correspond to the distances on the manifold. This results in a distance matrix, which is used as the input for classical MDS.\cite{MDS}
+\subsection{Isometric feature mapping}\label{subsec:isometric-feature-mapping}
+\gls{isomap} is another non-linear method that is a special case of \gls{cmds}. The former method preserves the geodesic distance, while the latter performs dimensionality reduction, which is why \gls{isomap} can be considered an extension of \gls{mds}. The geodesic distance is calculated by first constructing a neighborhood graph for every data point connected to its $k$ point, which is done with K-nearest neighbors algorithm. After constructing the neighborhood graph, the distance then can be calculated with a shortest path algorithm to determine the distances on the graph which correspond to the distances on the manifold. This results in a distance matrix, which is used as the input for \gls{cmds} multi-dimensional-scaling-and-isomap.
 
 
 \begin{comment}
-    @misc{MDS,
-      url          = {https://arxiv.org/pdf/2009.08136.pdf},
-      title        = {Multidimensional Scaling, Sammon Mapping, and Isomap:Tutorial and Survey},
-      author       = {Benyamin Ghojogh, Ali Ghodsi, Fakhri Karray, Mark Crowley},
-      urldate      = {2022-10-11}
-    }
+    @misc{multi-dimensional-scaling-and-isomap,
+  doi = {10.48550/ARXIV.2009.08136},
+  url = \url{https://arxiv.org/abs/2009.08136},
+  author = {Ghojogh, Benyamin and Ghodsi, Ali and Karray, Fakhri and Crowley, Mark},
+  title = {Multidimensional Scaling, Sammon Mapping, and Isomap: Tutorial and Survey},
+  publisher = {arXiv},
+  year = {2020},
+}
+
 \end{comment}
 
-cMDS tries to preserve the similarity between the data points from the higher dimensional space that are to be embedded onto the lower dimensional space. This is achieved by performing eigen-decomposition on the matrix input. cMDS resembles PCA -- one can think of MDS as being a family of methods while PCA is just a method.\cite{PCAMDS} \cite{MDS}
+\gls{cmds} tries to preserve the similarity between the data points from the higher dimensional space that are to be embedded onto the lower dimensional space. This is achieved by performing eigen-decomposition on the matrix input. \gls{cmds} resembles \gls{pca} -- one can think of \gls{mds} as being a family of methods while \gls{pca} is just a method \cite{difference-between-pca-and-mds} multi-dimensional-scaling-and-isomap.
 
 
 \begin{comment}
-    @misc{PCAMDS,
-      url          = {https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional},
+    @misc{difference-between-pca-and-mds,
+      url          = \url{https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional},
       title        = {What's the difference between principal component analysis and multidimensional scaling?},
       urldate      = {2022-10-11}
     }
 \end{comment}
 
-It is assumed that Isomap is suited to discover manifolds of arbirary dimensionality, and that it guarantees an approximation of the true structure of the manifold. \cite{Tennenbaum}
+It is assumed that \gls{isomap} is suited to discover manifolds of arbirary dimensionality, and that it guarantees an approximation of the true structure of the manifold \cite{Tennenbaum}.
