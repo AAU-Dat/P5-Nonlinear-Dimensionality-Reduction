@@ -1,22 +1,13 @@
 \tikzstyle{circle} = [ellipse, minimum width=1.5cm, minimum height=0.5cm, text centered, draw=black, fill=white!30]
 \section{Python pipeline}\label{sec:python-pipeline}
 The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-model}. The pipeline is divided into 5 tasks, which are described in the following sections. 
-\begin{description}
-    \setlength\itemsep{0em}
-    \item[dataset] mnist
-    \item[pre-preprocessing] normalization, data augmentation
-    \item[preprocessing] linear and non linear dimensionality reduction (PCA, LDA, Kernel PCA, and ISOMAP)
-    \item[models] logistic regression and CNN
-    \item[evaluation] accuracy, precision, recall, f1-score, speed/run time, and memory usage
-\end{description}
 
 \begin{figure}[htb!]
     \centering
     \begin{tikzpicture}[node distance=1.5cm, auto, every node/.style={scale=0.8}]
         %MNIST Original logo
         \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.1] {};
-        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST original}
-        node[below,scale=.7, xshift=60,yshift=-20]{PLACEHOLDER};
+        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST original};
         \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.1] {};
         
         %MNIST Argumented logo
@@ -51,12 +42,18 @@ The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-mod
     \draw [arrow, -] (c.east) -- ++(0,0) -| (q.east);
     \draw [arrow, ->] (f.south) -- (g.north);
 \end{tikzpicture}
-    \caption{PLACEHOLDER1}
-    \label{fig:PLACEHOLDER1}
+    \caption{Python pipeline}
+    \label{fig:Python-pipeline}
 \end{figure}
-if the data should be argumented or not. The second task is in dimensionality reduction where it is decided if the data should be reduced or not. The third task is in the machine learning model where the model is trained and tested. The data argumentation is done by the \texttt{ImageDataGenerator} function in Keras. The dimensionality reduction is done by the \texttt{PCA}, \texttt{LDA}, \texttt{Kernel PCA}, and \texttt{ISOMAP} functions in scikit-learn. The machine learning model is done by the \texttt{LogisticRegression} and \texttt{CNN} functions in Keras. The output is the accuracy, precision, recall, f1-score, speed/run time, and memory usage. The pipeline is divided into 5 tasks, which are described in the following sections.
 
-The second task is the machine learning model. This is where the model is trained and tested. The third task is the evaluation of the model. This is where the accuracy, precision, recall, f1-score, speed/run time, and memory usage is calculated.
+An overview of the pipeline can be seen in Figure~\ref{fig:Python-pipeline}. The pipeline is divided into 5 tasks, which are described in the following sections. 
+
+The first task is the dataset the dataset is the MNIST dataset. The dataset is divided into 3 subsets, which are the training set, the validation set, and the test set. The training set is used to train the model, the validation set is used to tune the hyperparameters of the model, and the test set is used to evaluate the model. There can be chosen two kinds of data-set, the original MNIST data-set or an argumented MNIST data-set, which will be discussed after this figure. 
+
+Thd second task is pre-processing the data. This is done by rescaling the image or making the image only black and white because the chosen data-set can be the argumented set, which already has some noice in the image. This task can be optional as to make it harder for the model to learn the data.
+
+The third task is in dimensionality reduction where it is decided if the data should be reduced or not and what type of dimensionality reduction should be made linear or non linear. The fourth task is in the machine learning model where the model is trained with the chosen reduced or original train data-set depending on previous choises. When the model is trained, it is tested on the test data. The results of the test is then evaluated and can compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage.
+
 \begin{figure}[htb!]
     \centering
     \begin{tikzpicture}
@@ -73,10 +70,12 @@ The second task is the machine learning model. This is where the model is traine
         \draw [arrow, ->] (db-slice5.east) -- (db-slice2.west);
         \draw [arrow, ->] (a.east) -- (db-slice5.west);
     \end{tikzpicture}
-    \caption{PLACEHOLDER2}
-    \label{fig:PLACEHOLDER2}
+    \caption{Data argumentation creation}
+    \label{fig:data-argumentation-create}
 \end{figure}
-In Figure~\ref{fig:PLACEHOLDER2} the data argumentation is visualized. The pipeline is divided into 3 tasks. The first task is in data argumentation where it is decided what type of argumentation is used. This can be blur, rotation, noise, or a combination of these. The second task is then to use the argumentation on the MNIST data-set. Where we get the argumented MNIST data-set, which will be the input to the machine learning model. A side note is the size of the argumented data-set can be bigger than the original MNIST data-set.
+
+In Figure~\ref{fig:data-argumentation-create} the data argumentation is visualized. The pipeline is divided into 3 tasks. The first task is in data argumentation where it is decided what type of argumentation is used. This can be blur, rotation, noise, or a combination of these. The second task is then to use the argumentation on the MNIST data-set. Where we get the argumented MNIST data-set, which will be the input to the machine learning model. A side note is the size of the argumented data-set can be bigger than the original MNIST data-set.
+
 \begin{figure}[htb!]
     \centering
     \begin{tikzpicture}
@@ -95,7 +94,8 @@ In Figure~\ref{fig:PLACEHOLDER2} the data argumentation is visualized. The pipel
         \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice11.west);
         \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice14.west);
     \end{tikzpicture}
-    \caption{PLACEHOLDER}
-    \label{fig:PLACEHOLDER}
+    \caption{Data-set separation}
+    \label{fig:data-set-sepa}
 \end{figure}
-In Figure~\ref{fig:PLACEHOLDER2} describes how the data-set from MNIST will be devided. It will be devided into two data-sets, one for training and one for testing. The training data-set will be used to train the machine learning model. The default size is 80\% for training and 20\% for testing.
+
+In Figure~\ref{fig:data-set-sepa} describes how the data-set from MNIST will be devided. It will be devided into two data-sets, one for training and one for testing. The training data-set will be used to train the machine learning model. The default size is 80\% for training and 20\% for testing.
