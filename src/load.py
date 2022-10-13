@@ -1,17 +1,17 @@
 
 #Assignment: Load data from MNIST
 #Most people use keras or tensorflow
+#We do it manually, sort of
 
-# I need a path for taking the data.
-# I need the data. It is stored in MNIST folder.
 
-# I need to load images
-# I need to load labels
+# We need a path for taking the data.
+# We need the data. It is stored in MNIST folder. It should be made modular so as to work with MNIST+
 
+# We need to load images. Images have a number and
+# We need to load labels
 
 import gzip
 import numpy as np
-#version one 
 
 def load_mnist_image(path):
 
@@ -19,48 +19,41 @@ def load_mnist_image(path):
         image_data = np.frombuffer(file.read(), np.uint8, offset=16)
     #now we have a long vector
 
-    #we reshape so as to get a 
     reshaped_image_data = image_data.reshape((-1, 784))
-
-    print(reshaped_image_data.shape)
     #we convert the data into a float
     return reshaped_image_data / np.float32(256)
     
-
-def load_mnist_label(path):
-
+#Add index for size of file ([start_index:end_index])
+def load_mnist_label(path,):
     with gzip.open(path, 'rb') as file:
         image_data = np.frombuffer(file.read(), np.uint8, offset=8)
-    #now we have a long vector
-    #data does not need to be reshaped
-    print(image_data)
-    #we convert the data into a float
+    #data does not need to be reshaped as it is already a vector
     return image_data
     
+#The functions np.asanyarray do not seem to have an effect on the data
+def load_mnist_all(path_of_img, path_of_lab, path_of_test_img, path_of_test_lab, validation_samples=10000):
+    training_images = load_mnist_image(path_of_img)
+    training_labels = load_mnist_label(path_of_lab)
 
+    testing_images = load_mnist_image(path_of_test_img)
+    testing_labels = load_mnist_label(path_of_test_lab)
 
-def load_mnist_all():
-    training_images = load_mnist_image("mnist-original-dataset/train-images-idx3-ubyte.gz")
-    training_labels = load_mnist_label("mnist-original-dataset/train-labels-idx1-ubyte.gz")
+    #validation gets x training samples
+    
+    training_images, validation_images = training_images[:-validation_samples], training_images[-validation_samples:]
+    training_labels, validation_labels = training_labels[:-validation_samples], training_labels[-validation_samples:]
+    
+    # training_images = np.asanyarray(training_images, dtype=np.float32)
+    # training_labels = np.asanyarray(training_labels, dtype=np.int32)
+    
+    training_data = (training_images, training_labels)
 
-    testing_images = load_mnist_image("mnist-original-dataset/t10k-images-idx3-ubyte.gz")
-    testing_labels = load_mnist_image("mnist-original-dataset/t10k-labels-idx1-ubyte.gz")
+    # validation_images = np.asanyarray(validation_images, dtype=np.float32)
+    # validation_labels= np.asanyarray(validation_labels, dtype=np.int32)
+    validation_data = (validation_images, validation_labels)
 
-    #validation gets 20000 training samples
-    training_images, validation_images = training_images[:-20000], training_images[-20000:]
-    training_labels, validation_labels = training_labels[:-20000], training_labels[-20000:]
+    # testing_images = np.asanyarray(testing_images, dtype=np.float32)
+    # testing_labels = np.asanyarray(testing_labels, dtype=np.int32)
+    testing_data = (testing_images, testing_labels)
+    return (training_data, validation_data, testing_data)
 
-    #prettify
-    training_images = np.asanyarray(training_images, dtype=np.float32)
-    training_labels = np.asanyarray(training_labels, dtype=np.int32)
-
-    validation_images = np.asanyarray(validation_images, dtype=np.float32)
-    validation_labels= np.asanyarray(validation_labels, dtype=np.int32)
-
-    testing_images = np.asanyarray(testing_images, dtype=np.float32)
-    testing_labels = np.asanyarray(testing_labels, dtype=np.int32)
-
-    #It is a method by which I can give back
-    return (training_images, training_labels), (validation_images, validation_labels), (testing_images, testing_labels)
-
-load_mnist_all()
