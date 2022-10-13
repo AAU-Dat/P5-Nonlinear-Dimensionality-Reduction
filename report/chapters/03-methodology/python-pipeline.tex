@@ -1,0 +1,101 @@
+\tikzstyle{circle} = [ellipse, minimum width=1.5cm, minimum height=0.5cm, text centered, draw=black, fill=white!30]
+\section{Python pipeline}\label{sec:python-pipeline}
+The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-model}. The pipeline is divided into 5 tasks, which are described in the following sections. 
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm, auto, every node/.style={scale=0.8}]
+        %MNIST Original logo
+        \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.1] {};
+        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST original};
+        \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.1] {};
+        
+        %MNIST Argumented logo
+        \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice1.south)+(0cm,-4.5cm)$)}] {};
+        \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=1cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.1] {MNIST argumented};
+        \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.4] {};
+        
+    \node (a) [cluster, shift={($(db-slice2.east)+(3cm,-2.5cm)$)}] {pre-processing};
+    \node (b) [cluster, shift={($(a.east)+(4cm,0cm)$)}] {No dimentionality reduction};
+    \node (c) [cluster, below of=b] {Dimentionality reduction};
+    \node (d) [circle, shift={($(c.south west)+(0.5cm,-2.5cm)$)}] {Linear};
+    \node (e) [circle, shift={($(c.south east)+(-0.5cm,-2.5cm)$)}] {Non linear};
+    \node (f) [cluster, shift={($(b.east)+(3.5cm,0cm)$)}] {Machine learning model};
+    \node (g) [cluster, below of=f] {output};
+    
+    \node (o) [shift={($(db-slice2.east)+(1cm,-2.5cm)$)}] {};
+    \node (p) [shift={($(a.east)+(0.5cm,0cm)$)}] {};
+    \node (q) [shift={($(b.east)+(0.5cm,0cm)$)}] {};
+    
+    \draw [arrow, -] (db-slice2.east) -- ++(0,0) -| (o.west);
+    \draw [arrow, -] (db-slice5.east) -- ++(0,0) -| (o.west);
+    \draw [arrow, ->] (o.west) -- (a.west);
+    
+    \draw [arrow, ->] (a.east) -- (b.west);
+    \draw [arrow, ->] (p.east) -- ++(0,-1) |- (c.west);
+    
+    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (e.north);
+    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (d.north);
+
+    \draw [arrow, ->] (b.east) -- (f.west);
+    \draw[arrow, ->] (f) to[loop above,looseness=9] node[above,scale=0.8, xshift=-10,yshift=7] {We train the model with the training data} (f);
+    \draw [arrow, -] (c.east) -- ++(0,0) -| (q.east);
+    \draw [arrow, ->] (f.south) -- (g.north);
+\end{tikzpicture}
+    \caption{Python pipeline}
+    \label{fig:Python-pipeline}
+\end{figure}
+
+An overview of the pipeline can be seen in Figure~\ref{fig:Python-pipeline}. The pipeline is divided into 5 tasks, which are described in the following sections. 
+
+The first task is the dataset the dataset is the MNIST dataset. The dataset is divided into 3 subsets, which are the training set, the validation set, and the test set. The training set is used to train the model, the validation set is used to tune the hyperparameters of the model, and the test set is used to evaluate the model. There can be chosen two kinds of data-set, the original MNIST data-set or an argumented MNIST data-set, which will be discussed after this figure. 
+
+Thd second task is pre-processing the data. This is done by rescaling the image or making the image only black and white because the chosen data-set can be the argumented set, which already has some noice in the image. This task can be optional as to make it harder for the model to learn the data.
+
+The third task is in dimensionality reduction where it is decided if the data should be reduced or not and what type of dimensionality reduction should be made linear or non linear. The fourth task is in the machine learning model where the model is trained with the chosen reduced or original train data-set depending on previous choises. When the model is trained, it is tested on the test data. The results of the test is then evaluated and can compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}
+        \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
+        \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.27] {MNIST};
+        \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.6] {};
+        
+        \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice4.east)+(3cm,-0.05cm)$)}] {};
+        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=1cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST argumented};
+        \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.4] {};
+        
+        \node (a) [cluster, shift={($(db-slice5.west)+(-3cm,0)$)}] {Data argumentation};
+            
+        \draw [arrow, ->] (db-slice5.east) -- (db-slice2.west);
+        \draw [arrow, ->] (a.east) -- (db-slice5.west);
+    \end{tikzpicture}
+    \caption{Data argumentation creation}
+    \label{fig:data-argumentation-create}
+\end{figure}
+
+In Figure~\ref{fig:data-argumentation-create} the data argumentation is visualized. The pipeline is divided into 3 tasks. The first task is in data argumentation where it is decided what type of argumentation is used. This can be blur, rotation, noise, or a combination of these. The second task is then to use the argumentation on the MNIST data-set. Where we get the argumented MNIST data-set, which will be the input to the machine learning model. A side note is the size of the argumented data-set can be bigger than the original MNIST data-set.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}
+        \node (db-slice7) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
+        \node (db-slice8) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice7.before top, anchor=after bottom,aspect=0.27] {MNIST};
+        \node (db-slice9) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice8.before top, anchor=after bottom, aspect=1.6] {};
+        
+        \node (db-slice10) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice8.south east)+(5cm,-3cm)$)}] {};
+        \node (db-slice11) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice10.before top, anchor=after bottom,aspect=0.48] {test};
+        \node (db-slice12) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice11.before top, anchor=after bottom, aspect=1.6] {};
+        
+        \node (db-slice13) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice10.north)+(0cm,5cm)$)}] {};
+        \node (db-slice14) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice13.before top, anchor=after bottom,aspect=0.4] {train};
+        \node (db-slice15) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice14.before top, anchor=after bottom, aspect=1.6] {};
+        
+        \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice11.west);
+        \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice14.west);
+    \end{tikzpicture}
+    \caption{Data-set separation}
+    \label{fig:data-set-sepa}
+\end{figure}
+
+In Figure~\ref{fig:data-set-sepa} describes how the data-set from MNIST will be devided. It will be devided into two data-sets, one for training and one for testing. The training data-set will be used to train the machine learning model. The default size is 80\% for training and 20\% for testing.
