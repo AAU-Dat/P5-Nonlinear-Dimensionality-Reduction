@@ -1,10 +1,15 @@
 import sys
 sys.path.append('../')
-import isomap
 import numpy as np
+from sklearn.manifold import Isomap
+import isomap
 
-def test_isomap():
-    matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    reduced_matrix = reduce_isomap(matrix=matrix, n_neighbors=5, n_components=2)
 
-    assert reduced_matrix.shape == (2, 2)
+#Test for isomap where I reduce a 3x3 matrix to a 2x2 matrix
+def test_isomap_function():
+    n_neighbors = 2
+    n_components = 2
+    data = [[1, 2,3], [5, 6,7], [7, 8,9]]
+    new_data = isomap.reduce_isomap(data=data, n_neighbors=n_neighbors, n_components=n_components)
+    assert new_data.shape == (3,2)
+    
