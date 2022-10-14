@@ -277,3 +277,6 @@ TSWLatexianTemp*
 
 #enviroment files
 .env
+#pycache
+__pycache__
+.pytest_cache
