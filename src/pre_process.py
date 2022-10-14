@@ -1,4 +1,4 @@
-import load
+import load 
 # Load all of the data from MNIST and return a tuple containing the training data, training labels, test data, and test labels
 
 
