@@ -1,14 +1,15 @@
 import numpy as np
 from scipy.ndimage import rotate
 
-def main():
+#def main():
     # open image butterfly.jpg
     # make 28x28 matrix
-    matrix = np.empty((28,28))
-    for i in range(0, 28):
-        for j in range(0, 28):
-            matrix[i][j] = j
-    rotate_image(matrix, 90)
+    #matrix = np.empty((10,10))
+    #for i in range(0, 10):
+    #    for j in range(0, 10):
+    #        matrix[i][j] = j
+    #print(matrix)
+    #print(rotate_image(matrix, 90))
     #print('hello1')
     #test_rotate_image()
     #print(np.rot90(matrix))
@@ -45,10 +46,10 @@ def rotate_image(matrix, degree):
 #      # make a function that rotates the matrix by 45 degrees
 #      rotated_matrix = rotate_image(matrix, 90)
 #      # make a matrix that is the expected result
-#      expected_matrix = np.rot90(matrix)
+#      expected_matrix = np.array([[7, 4, 1], [8, 5, 2], [9, 6, 3]])
 #      # compare the expected matrix with the rotated matrix
 #      for i in range(0, 3):
 #         for j in range(0, 3):
 #             assert rotated_matrix[i][j] == expected_matrix[i][j]
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
