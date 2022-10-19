@@ -1,10 +1,26 @@
 \section{Metrics}
-In this project the differens dimmensionality reduction methods are evaluated based on how much it improves the metrics of our models.
+This section will describe our choices in metric what they are and why they were chosen. In this project the differens dimmensionality reduction methods are evaluated based on how much it improves the metrics of our models.
 The following paragraphs will go through these chosen metrics. After that the reason for the choices will be explained.
 
+\subsection*{Model metrics}
+To be able to to make decisions and show understanding of the different kinds of feature engineering we must have some sort of system to evaluate effectiveness of the  feature engineering. In our project we have chosen some metrics to evaluate the future engineering through our model. There exists some very common metrics for general model evaluation we will in this project also look at some of these common metrics. These common metrics are for example accuracy precision recall F1 score. We also looked at some less common once like Mattheus correlation coefficient and Cohen's kappa. All of these metrics are essentially builds upon the confusion matrix. The confusion matrix is a 4 by 4 matrix which describes the possibilities of a binary classifier. Hearing each part of the confusion matrix exists true positives false positives true negatives false negatives. Hear things like accuracy are quite simple operations made on this computer matrix where for example accuracy is the amount of true positives devidedthe the amount of guesses. Where are things like Cohen's kappa are more advanced operations on this confusion matrix.
+\cite{Metrics-for-multi}
+
 \subsection{The chosen metric}
-There are 4 metrics which will be used to evaluate the FE through the model. These metrics are acurracy, precision, recall, F1-score. And there is 2 metric used to evaluate FE directly. Here the speed/computations is used to evaluate the effeciency. The other metric used is how well the dimmensionality reduction clusters the data, this will be calculated for each class as the average distance between class members divided by the average distance between all data points.
+There are 4 metrics which will be used to evaluate the FE through the model. These metrics are acurracy, precision, recall, F1-score. And there is 2 metrics used to evaluate FE directly. Here the speed/computations is used to evaluate the effeciency. The other metric used is how well the dimmensionality reduction clusters the data, this will be calculated for each class as the average distance between class members divided by the average distance between all data points.
 
 \subsection{Reason for choice of metrics}
 The four model metrics were chosen because they the metric which generally describes how good the model does in infering the data. These are all essentially just variations on 
 how many does the model get correct devided by diffrent parts of the confusion matrix. The last 2 metrics was chosen to show the tradeoff most models will have in the more time it takes the better results. This makes it possible to show which metric will actually be most useful in most cases since accurracy is often important only to a certain point. The second FE metric also takes into acount how well the data is clustered after aplying the FE which gives insight into how well the FE works in a vacuum and how much performance a actual model whill achiewe from data which has more defined clusters.
+
+
+@misc{Metrics-for-multi,
+  doi = {10.48550/ARXIV.2008.05756},
+  url = {https://arxiv.org/abs/2008.05756},
+  author = {Grandini, Margherita and Bagli, Enrico and Visani, Giorgio},
+  keywords = {Machine Learning (stat.ML), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Metrics for Multi-Class Classification: an Overview},
+  publisher = {arXiv},
+  year = {2020},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
