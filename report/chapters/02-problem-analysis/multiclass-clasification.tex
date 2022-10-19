@@ -1,0 +1,35 @@
+In this section of the report we will be talking about what classification is and and multi classification vs single class classification and also One vs all all and One vs one approach to multiclass classification. 
+
+
+Can generally be divided into 2 categories quantitative vs qualitative in our case Our Data is qualitative. This means that we are working with a classification problem.
+Classification generally just means that our model is trying to to take a input and provide a class as output. Essentially this means it is trying to categorise our input based on a function.
+
+The most simple form of classification is binary classification this means that any given input data point has two options either it's in one class it's in the other. This is not how it is structured since it essentially has 10 different classes. These classes are essentially the different numbers 0 through 9. Because of this h problem is not a binary classification problem it is a so-called multi-class classification problem.
+The interesting thing about multiclass classification is that most models only really do binary classification they can only handle is either this one or this one. There are two to general approaches to get around this. Either you go with the one vs all approach or with the one vs one approach. In the one vs all approach what happens is is for each possible class you train the model to either recognise if it is this class or is it anything else than the class. This this would in our case result in 10 different models which each is able to say is it this class or is it any of the other classes. What then happens is on any given input it is checked witch of these different models gives the highest probability and then you pick the class that one predicts. The one vs one approach functions differently. It doesn't create just one model for each class it creates one model for each possible combination of two classes. Every time I'm you have to classify a input you run all of these different models on the input and and the class which gets the most individual wins will be the class you pick. This for example could be if you get the input and class 5 wins 9 out of the 10 different binary models that include it then we would classify it as a 5 given 9 is the highest amount of wins out of all the classes.\cite{James2013}
+
+In our project we have chosen the one vs all approach. This is due to it being generally much more light on complications computations due to there only being o(n) models you have to run. This is in comparison to the the one vs one approach where there is o(2^n) models to run. And because the two models can generally be considered to give equally good results. \cite{rifkin2004defense}
+
+@article{rifkin2004defense,
+title={In defense of one-vs-all classification},
+author={Rifkin, Ryan and Klautau, Aldebaro},
+journal={The Journal of Machine Learning Research},
+volume={5},
+pages={101--141},
+year={2004},
+publisher={JMLR. org}
+}
+
+@book{James2013,
+  added-at = {2019-10-12T20:03:56.000+0200},
+  author = {James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert},
+  biburl = {https://www.bibsonomy.org/bibtex/2444186c86d18bddb4433c12fa126f6be/lopusz_kdd},
+  interhash = {b3febabdc45a8629023cee7323dfbd86},
+  intrahash = {444186c86d18bddb4433c12fa126f6be},
+  keywords = {general_machine_learning},
+  publisher = {Springer},
+  timestamp = {2019-10-12T23:45:37.000+0200},
+  title = {An Introduction to Statistical Learning: with Applications in R },
+  url = {https://faculty.marshall.usc.edu/gareth-james/ISL/},
+  year = 2013
+}
+
