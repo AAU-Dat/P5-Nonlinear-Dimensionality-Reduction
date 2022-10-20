@@ -12,4 +12,4 @@ def load_mnist(sample_size = 60000):
 
     load.create_folder(path)
     load.check_for_files(file_names, path)
-    return load.load_mnist_all(path, file_names, sample_size)
+    return load.reshape_data(load.load_mnist_all(path, file_names, sample_size))

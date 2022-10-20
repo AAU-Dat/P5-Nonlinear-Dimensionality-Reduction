@@ -73,3 +73,9 @@ def load_mnist_all(path, file_names, number_of_samples):
     testing_data = (testing_images, testing_labels)
 
     return (training_data, testing_data)
+
+def reshape_data(data):
+    train_data, test_data = data
+    reshaped_train_data = (train_data[0].reshape(-1, 784), train_data[1])
+    reshaped_test_data = (test_data[0].reshape(-1, 784), test_data[1])
+    return reshaped_train_data, reshaped_test_data
