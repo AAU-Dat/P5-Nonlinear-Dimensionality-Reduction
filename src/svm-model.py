@@ -1,5 +1,3 @@
-from sklearn import svm
-import load_mnist
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 
@@ -31,4 +29,3 @@ def hyperparam_tuning_svm(model):
 
     # fit the model
     return model_cv
-
