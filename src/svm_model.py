@@ -1,14 +1,14 @@
 from sklearn.model_selection import KFold
 from sklearn.model_selection import GridSearchCV
 
-
+#Trains the model and returns on object instance of it
 def train_model(training_data, model):
     train_image = training_data[0]
     train_label = training_data[1]
     model.fit(train_image, train_label)
     return model
 
-
+#finds the best parameters for the model
 def hyperparam_tuning_svm(model):
 
     # creating a KFold object with 5 splits
@@ -26,6 +26,6 @@ def hyperparam_tuning_svm(model):
                             cv=folds,
                             verbose=1,
                             return_train_score=True)
-
-    # fit the model
+    
+    #return the best parameters for the  model
     return model_cv
