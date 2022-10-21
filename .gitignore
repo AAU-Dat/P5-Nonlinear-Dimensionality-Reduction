@@ -277,6 +277,10 @@ TSWLatexianTemp*
 
 #enviroment files
 .env
+
 #pycache
 __pycache__
 .pytest_cache
+
+#mnist_data
+mnist_data
