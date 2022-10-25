@@ -1,4 +1,4 @@
-import load_helpers as load
+import src.load_helpers as load
 import git
 
 # Load the MNIST data and return a tuple containing the training data and the test data with the images and labels
