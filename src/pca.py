@@ -3,4 +3,4 @@ from sklearn import decomposition
 def pca(data, n_components = 2):
     pca = decomposition.PCA(n_components = n_components)
     fitted_data = pca.fit(data[0])
-    return (fitted_data.transform(data), data[1])   
+    return (fitted_data.transform(data), data[1])    
