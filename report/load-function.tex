@@ -1,0 +1,62 @@
+\section{Load Function}\label{sec:load-function}
+The first step in the pipeline is to download the MNIST data. That means that the data should be downloaded preferably in a folder, and also extracted, as the data provided is compressed. After the compression, the data needs to be put in a data structure which can be used throughout the pipeline. The data structure should be a tuple containting tuples, where each tuple contains the image and the label with respect to training/test data. In order to structure the data in such way, one needs to extract the meaningful information from the de-compressed files.
+
+\subsection{Donwloading the files and extracting them}\label{subsec:download-files}
+In order to work with the data there are two approaches: one can download the data locally, and then load the data into a data structure so as to pass it further in the pipeline. The other approach is to download from the internet every time the function is called. The group chose the second appproach because it is more convenient, as it does not require the user to download the data locally. Another reason is that the data is not big enough to slow down the pipeline in a way that is noticeable. The function is also written in a modular way, which means that that the links, from which the data can be downloaded, can be changed easily. The function is shown in listing \ref{lst:download-files}.
+
+\begin{listing}[!ht]
+\begin{minted}[xleftmargin=\parindent,linenos, breaklines=true]{Python}          
+def download_files(file_names, path):
+    curl_links = ['http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', ...]
+    gz_file_names = ['train_file_image.gz', ...]
+    for i in range(0,4):
+        res = requests.get(curl_links[i])
+\end{minted}
+\caption{Helper function for downloading the MNIST data.}
+\label{lst:download-files}
+\end{listing}
+
+
+The function takes two arguments: the files names that are chosen by the user, and the path where the files should be downloaded. The function further decompresses the downloaded files, and deletes the compressed files.
+
+\subsection{Loading the data into a data structure}\label{subsec:load-data}
+In order to use the data from the decompressed files, the data needs to be loaded into a data structure. As seen on the official webiste \cite{MNIST}, the data is stored in a binary format (ubyte). The difference in the image data and the label data is the offset, 16 bytes and 8 bytes respectively. The function is shown in listing \ref{lst:load-mnist-label}.
+
+\begin{listing}[!ht]
+\begin{minted}[xleftmargin=\parindent,linenos, breaklines=true]{Python}
+def load_mnist_label(path, file_name, number_of_labels):
+    label_offset = 8
+    path = path + "/" + file_name
+    with open(path, 'rb') as file:
+    image_data = np.frombuffer(file.read(number_of_labels + label_offset), np.uint8, offset=label_offset)
+    return image_data
+\end{minted}
+\caption{Helper function for loading the MNIST label data.}
+\label{lst:load-mnist-label}
+\end{listing}
+
+After the data is read, and placed returned in an array, the data needs to be reshaped. As an example, loading 60000 samples returns an array which contains 47.040.000 integers. The group decided that a delimitation was necessary to make the data easier to work on, thus representing a single image as a $1 \times 784$ vector. The number 784 is the number of pixels in a single image ($28 \times 28$).
+
+
+\subsection{Loading function in the pipeline}
+The group has written a function which wraps up the different functions described in this section, which can is shown in listing \ref{lst:load-mist}. The function takes as argument the amount of samples that should be loaded, which is 60000 by default. In the function one can specify the name of the directory in which the files are saved, as well as their names. In this example, the names given in directory and file\_names makes sense. The variables git and git\_root are used so as to make the function work on any computer, as the path is relative to the root of the git repository.
+
+\begin{listing}[!ht]
+\begin{minted}[xleftmargin=\parindent,linenos, breaklines=true]{Python}
+def load_mnist(sample_size = 60000):
+    directory = "mnist_data"
+    repo = git.Repo('.', search_parent_directories=True)
+    git_root = repo.git.rev_parse("--show-toplevel")
+    path = git_root + "/src/" + directory
+        
+    file_names = ['train_file_image', 'train_file_label', 'test_file_image', 'test_file_label']
+        
+    load.create_folder(path)
+    load.check_for_files(file_names, path)
+    return load.reshape_data(load.load_mnist_all(path, file_names, sample_size))
+\end{minted}
+\caption{Function for loading the MNIST data.}
+\label{lst:load-mist}
+\end{listing}
+
+Before returning the data, the function checks whether such folder with such files exists, and if not, it creates them. The function returns the data tuple consisting of a training and test tuples, where each tuple contains the image and the label with respect to training and test data. A consideration which the group made is that if the user wishes to load fewer than 10000 training samples, then the amount of test samples will coincide with the number of training samples.
