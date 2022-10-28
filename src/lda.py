@@ -1,10 +1,10 @@
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
-def lda(data):
+def lda(data, num_of_components=2):
     #data is a tuple of (training_data, test_data)
     (train_data, test_data) = data
     #creates the LDA model
-    lda = LinearDiscriminantAnalysis()
+    lda = LinearDiscriminantAnalysis(n_components=num_of_components)
     
     #Fits training data to the lda model
     fitted_train_data = lda.fit(train_data[0], train_data[1])
