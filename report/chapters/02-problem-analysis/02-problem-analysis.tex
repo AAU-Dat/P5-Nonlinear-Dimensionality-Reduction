@@ -1,11 +1,11 @@
-\chapter{Problem Analysis}\label{cha:problem-analysis}
-This chapter contains the theoretical background for the project leading to the problem statement.
+\chapter{Problem analysis}\label{cha:problem-analysis}
+A digital image consists of pixels. In a grayscale image, each pixel has a value between 0 and 255, where 0 is black and 255 is white. In a color image each pixel has three such values - one for each color red, green, and blue. The number of pixels in an image is the number of pixels in the image multiplied by the number of colors. For example, a 28x28 grayscale image has 784 pixels, while a 28x28 color image has 2352 pixels.
 
-\todo[inline]{Write about: linear methods, non linear methods, computer vision and machine learning and types of image data. Also, write about the different types of problems that can be solved with machine learning? For example, classification, regression, clustering, etc.?}
+In this way each pixel represents a feature (dimension) of the image. As the size of images increase this quickly becomes a large number of features, and for the purpose of \gls{ml} it is likely not necessary to use all of them. The process of choosing the most important features is called feature selection, and leads to dimensionality reduction, the topic of this report.
 
-\input{chapters/02-problem-analysis/ml-pipeline.tex}
-\input{chapters/02-problem-analysis/linear-methods.tex}
-\input{chapters/02-problem-analysis/machine-learning-models.tex}
-\input{chapters/02-problem-analysis/method-MNIST.tex}
-\input{chapters/02-problem-analysis/data-and-dataaugmentation.tex}
+
+\input{chapters/02-problem-analysis/dimensionality-reduction.tex}
+\input{chapters/02-problem-analysis/machine-learning.tex}
+
+
 \input{chapters/02-problem-analysis/problem-statement.tex}
