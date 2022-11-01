@@ -1,0 +1,33 @@
+\section{Problem Statement}\label{sec:problem-statement}
+\emph{This project explores the impact of data preproccesing on the performance of machine learning using a logistic regression model versus \gls{cnn} for the computer vision problem of image classification and recognition. The data preprocessing is done through dimensionality reduction on augmented data from the \gls{mnist} database, and the machine learning models are trained on the reduced data. The performance metrics used to evaluate the models are accuracy, precision, recall, and F1 score. and of course explainability and speed/size of the models.}
+
+\vspace{2mm}
+\textbf{Versus!}
+\vspace{2mm}
+
+\noindent
+\emph{This project explores the impact of data preprocessing on the performance of a logistic regression machine learning model, for the computer vision problem of image classification and recognition. By data preprocessing is meant dimensionality reduction on augmented data, comparing linear and non-linear dimensionality reduction techniques\question{methods?}. The machine learning model is trained on the dimensionality reduced data and the performance is evaluated using accuracy, precision, recall, and F1 score. The performance is further measured against a \gls{cnn} model, to compare speed, size, and explainability. The data used is the \gls{mnist} database.}
+
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item PCA + logistic regression vs
+    \item PCA + CNN vs
+    \item LDA + logistic regression vs
+    \item LDA + CNN vs
+    \item kernel PCA + logistic regression vs
+    \item kernel PCA + CNN
+\end{itemize}
+
+
+\subsection{Tools}\label{subsec:tools}
+Data preproccessing, data augmentation and feature engineering. Use Keras to build a \gls{ml} model. Explainability - \gls{nn} vs other \gls{ml} algorithms.
+
+\todo[inline]{remove this eventually}
+Notes to self: Humans vs computers in \gls{nn}. Why are humans good with little training, and computers only accceptable with much more training? Consider perhaps domains (recongnizing epsilon vs. recognizing a 3)
+
+As part of the pipeline, show the images that the models misguessed?
+
+As part of the pipeline, normalize the data in a way that's not dimensionality reduction, but that's still preprocessing? (e.g. subtract mean, divide by standard deviation).
+
+\supervisor{How do we determine recall and precision for logistic regression?}
