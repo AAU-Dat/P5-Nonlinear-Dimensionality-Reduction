@@ -71,13 +71,11 @@ Additionally, a \gls{cnn} is used to compare the results of the dimensionality r
 \subsubsection{Multi-class classification}\label{subsubsec:multi-class-classification}
 The \gls{mnist} dataset presents a multi-class classification problem, as the images can represent any of the 10 digits. The \gls{svm} model however is a binary classification model, and thus has to be adapted to the multi-class classification problem. There are two approaches to this problem: \gls{ovo} and \gls{ova}.
 
-\gls{ovo} is a method where the model is trained on all possible combinations of two classes. For example, if there are 10 classes, the model is trained on 45 different models, one for each combination of two classes. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class.
+\gls{ovo} is a method where the model is trained on all possible combinations of two classes. For example, if there are 5 classes, the model is trained on 10 different models, one for each combination of two classes, this makes it computationally expensive as it has to go througth every combination. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class.
 
-\gls{ova} however is a method where the model is trained on each class individually. For example, if there are 10 classes, the model is trained on 10 different variations of the model, one for each class. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class~\cite{james-statistical-learning}.
+\gls{ova} however is a method where the model is trained faster than in \gls{ovo}, as it only uses one class to distinguish if the data is similar or not. For example, if there are 5 classes, the model is trained on 5 different variations of the model, one for each class. This makes \gls{ova} good to distinguish between the current class that is being modeled from the other classes, however in \gls{ova} it is harder to distinguish between the other classes that is not being trained on. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class~\cite{james-statistical-learning}.
 
-\gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}.
-
-\gls{ovo} is more computationally expensive than \gls{ova}, but the two models can generally be considered to give equally good results~\cite{rifkin-defense-one-vs-all}. Because it is more computationally efficient, \gls{ova} is used with for the \gls{svm} model in this project.
+\gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}. The \gls{svm} model is chosen because it is a relatively simple model, and thus \gls{ova} is chosen as it is faster than \gls{ovo}.
 
 \subsection{Model training}\label{subsec:model-training}
 The theory deciding the cross validation methods is described in Chapter~\ref{cha:theory}.
