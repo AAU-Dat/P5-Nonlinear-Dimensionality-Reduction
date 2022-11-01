@@ -83,6 +83,6 @@ def reshape_data(data):
 
 def normalize_data(data):
     train_data, test_data = data
-    normalized_train_data = (round(train_data[0] / 255, 2), train_data[1])
-    normalized_test_data = (round(test_data[0] / 255, 2), test_data[1])
+    normalized_train_data = (np.round(train_data[0] / 255, 2), train_data[1])
+    normalized_test_data = (np.round(test_data[0] / 255, 2), test_data[1])
     return (normalized_train_data, normalized_test_data)
