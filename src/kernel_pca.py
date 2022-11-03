@@ -4,7 +4,7 @@ import numpy as np
 # function to perform pca, takes in the data and the number of components and returns the data after pca
 def kernel_pca(data, n_components=2):
     (train_data, test_data) = data
-    kpca = decomposition.KernelPCA(kernel="rbf",n_components=2 , gamma=1)
+    kpca = decomposition.KernelPCA(kernel="rbf",n_components=n_components , gamma=1)
 
     part_train_data = np.array_split(train_data[0], 4)
     part_train_labels = np.array_split(train_data[1], 4)
