@@ -1,23 +1,19 @@
 \section{Cross-validation}
-\todo[inline, color=gray]{The sources are commented out in the file}
-\todo{I do not know if I need an introduction}
 In order to not overfit a learning model, one can make use of cross-validation. Cross-validation implies that the training data should be split into three sets: training data, validation data(comprising of training data), and test data. By partitioning the training data into two sets, the model can learn on the training data, and evaluate on the validation data. The model can be tuned with the validation data, and, after the model is optimized, evaluated on the test data. Such approach is useful, because the model gets evaluated based on data it has never seen \cite{scikit-learn}.
 
 
-\todo[inline, color=red]{I do not know which one of the bibliographies to use for sklearn}
-%This is written as @inproceedings in the original bib
-% @article{sklearn\_api,
-%   author    = {Lars Buitinck and Gilles Louppe and Mathieu Blondel and
-%                Fabian Pedregosa and Andreas Mueller and Olivier Grisel and
-%                Vlad Niculae and Peter Prettenhofer and Alexandre Gramfort
-%                and Jaques Grobler and Robert Layton and Jake VanderPlas and
-%                Arnaud Joly and Brian Holt and Ga{\"{e}}l Varoquaux},
-%   title     = {{API} design for machine learning software: experiences from the scikit-learn
-%                project},
-%   booktitle = {ECML PKDD Workshop: Languages for Data Mining and Machine Learning},
-%   year      = {2013},
-%   pages = {108--122},
-% }    
+
+"The basic form of cross-validation is the basic form of k-fold cross-validation. (. . .) In k-fold cross-validation, the data is first partitioned into $k$ equally (or nearly equally) sized segments or folds. Subsequently $k$ iterations of training and validation are performed such that within each iteration a different fold of the data is held-out for validation while the remaining $k-1$ folds are used for learning." \cite{Refaeilzadeh2009}
+
+
+%Help the reader to why this is written cross-validation
+When a learning model is trained with cross-validation, each class in the respective fold needs to be roughly equally represented, which helps the model generalize better. Some ways in which one can achieve that is by stratifying the data.Stratifying \cite{Refaeilzadeh2009}, or shuffling, the data may be necessary so as each fold has a balanced distribution of classes. There is a risk where the folds contain imbalanced amounts of samples for each class, which may affect the overall model performance, because then the model would possibly be biased towards the majority class.
+
+There are also other forms of cross-validation, which are special cases of k-fold. As described before, shuffling the data might be important, and there is a version of k-fold called Stratified k-fold, where the data gets reshuffled for each round. Alternatively, instead of shuffling the data, one can use the leave-one-out cross-validation, where for each fold all of the data except one sample is used for training (and that one sample is used for validation) \cite{Refaeilzadeh2009}.
+
+%Take out the part about methodology
+In order to avoid overfitting, one can use k-fold cross-validation, or derivatives of it, but k-fold implies that a specific number must be chosen. The choice of $k$ could be made through trial and error. However, the train and data samples need to be large enough so as to be statistically representative of the the data set \cite{Refaeilzadeh2009}. 
+
 
 % @article{scikit-learn,
 %     title={Scikit-learn: Machine Learning in {P}ython},
@@ -32,7 +28,6 @@ In order to not overfit a learning model, one can make use of cross-validation. 
 %     }
 
 
-%It is written as @inBook in the original bib
 % @book{Refaeilzadeh2009,
 % author="Refaeilzadeh, Payam
 % and Tang, Lei
@@ -51,35 +46,3 @@ In order to not overfit a learning model, one can make use of cross-validation. 
 % }
 
 
-%How to handle classifications (Do we treat each class as a separate part of the dataset?)
-The basic form of cross-validation is the basic form of K-fold cross-validation \cite{Refaeilzadeh2009}. The method splits the data into $k$ equal segments/folds. For each fold, the learning model is then trained on $k-1$ folds and tested on the $k$'th fold. The final score is the average of the $k$'th scores. The metrics used to evaluate the model can be accuracy, precision, recall, and/or F1-score, as presented in the report. Another advantage of K-fold is that it can compute optimal hyperparameters for the model by trying the different configurations that are given, but the disadvantage is that the method can be computationally expensive \cite{scikit-learn}, especially for the MNSIT dataset. That is because training a model can take some time, and K-fold creates several models.
-
-
-It is worth noting that K-fold alone does not stratify the data. Stratifying, or shuffling, the data may be necessary so as each fold is a good representation of the dataset, more specifically, each fold should have roughly the same distribution of samples of each class. There is a risk where the folds contain imbalanced amounts of samples for each data, which may affect the overall model performance \cite{Refaeilzadeh2009}
-
-
-%Why
-K-fold Cross-validation can be effectively used to avoid overfitting the model/s, and compare the performance of more learning models, or of the different parameters of a single model. In the project we will mostly use cross-validation for tuning the SVM model. The choice of $k$ should be made through trial and error. However, the train and data samples need to be large enough so as to be statistically representative of the the data set. A paper suggests values for  $k$ that are 5 or 10 are considered common \cite{introduction-to-statistical-learning}. Another paper suggests that strattified 10-fold cross-validation also yields good results \cite{Refaeilzadeh2009} \cite{kohavi1995study}.
-
-
-%This has @inproceedings in the original
-% @book{kohavi1995study,
-%   title={A study of cross-validation and bootstrap for accuracy estimation and model selection},
-%   author={Kohavi, Ron and others},
-%   booktitle={Ijcai},
-%   volume={14},
-%   number={2},
-%   pages={1137--1145},
-%   year={1995},
-%   organization={Montreal, Canada}
-% }
-
-
-% @book{introduction-to-statistical-learning,
-%     title={An Introduction to Statistical Learning: with Applications in R},
-%     author={James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert},
-%     year={2013},
-%     publisher={Springer}
-%     isbn = {9871461471370}
-%     month = {08}
-% }
