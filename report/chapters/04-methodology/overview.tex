@@ -8,7 +8,7 @@ The data is normalized by dividing each pixel value by 255, so that the values a
 The data is then preprocessed by applying linear and non-linear dimensionality reduction techniques. The linear dimensionality reduction techniques are \gls{pca} and \gls{lda}. The non-linear dimensionality reduction techniques are \gls{kpca} and \gls{isomap}. The data is reduced to 2 dimensions, so that it can be visualized.
 
 \section{Model training}\label{sec:model-training}
-The \gls{lr} and \gls{cnn} models are then trained on both the original and the preprocessed data. The \gls{lr} model is trained using the \gls{sklearn} library, and the \gls{cnn} model is trained using the Keras library.
+The \gls{svm} and \gls{cnn} models are then trained on both the original and the preprocessed data. The \gls{svm} model is trained using the \gls{sklearn} library, and the \gls{cnn} model is trained using the Keras library.
 
 \subsection{Evaluation}\label{subsec:evaluation}
 The models are evaluated using k-fold cross validation, and the results are averaged. The evaluation metrics are accuracy, precision, recall, f1-score, speed/run time, and memory usage. The confusion matrix covers the first of these. The speed/run time is measured by timing the training of the models, and the memory usage is measured by using the psutil library.
@@ -25,7 +25,7 @@ An automation pipeline is created based on the model in Figure~\ref{fig:python-p
     \item[dataset] mnist
     \item[pre-preprocessing] normalization, data augmentation
     \item[preprocessing] linear and non linear dimensionality reduction (PCA, LDA, Kernel PCA, and ISOMAP)
-    \item[models] logistic regression and CNN
+    \item[models] SVM and CNN
     \item[evaluation] accuracy, precision, recall, f1-score, speed/run time, and memory usage
 \end{description}
 

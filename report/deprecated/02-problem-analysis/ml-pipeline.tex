@@ -1,4 +1,4 @@
-\section{ML Pipeline}label{sec:ml-pipeline}
+\section{ML Pipeline}\label{sec:ml-pipeline}
 \todo[inline]{Add gls.}
 When working with machine learning, pipelines helps to understand the different steps involved in the process. The following Figure \ref{fig:ml-pipeline} shows the different steps that are involved in the process of building a machine learning model.
 ML pipelines are usually divided into three main steps: data, feature extraction, model training and model evaluation. The following sections will describe each of these steps in more detail.
@@ -12,21 +12,20 @@ Feature extraction (in \ref{fig:ml-pipeline} FE) is the process of extracting fe
   \centering
   \begin{tikzpicture}
     \node (b) [state] {feature engineering};
-    \node (c) [state,shift={($(b.east)+(2cm,0)$)}] {model};
+    \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
     \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
-    \node (d) [state,shift={($(c.east)+(2cm,0)$)}] {evaluation};
+    \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
     \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
 
     \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
     \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
     \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
-
     \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
 
-    \draw [arrow, ->] (d.north) -- ++(0,0.75) -| (b);
-    \draw [arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
+    \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
+    \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
   \end{tikzpicture}
-  \caption{ML pipeline}
+  \caption{Simplified ML pipeline}
   \label{fig:ml-pipeline}
 \end{figure}
 
