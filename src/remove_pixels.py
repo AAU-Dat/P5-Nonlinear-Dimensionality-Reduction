@@ -52,8 +52,8 @@ import matplotlib.pyplot as plt
 #     return new_matrix
 
 # def change_tuple_firstvalue (data, new_data):
-#     new_training_data_tuble = (new_data, data[0][1])
-#     new_tuble = (new_training_data_tuble, data[1])
+#     list_training_data_img_tuble = (new_data, data[0][1])
+#     new_tuble = (list_training_data_img_tuble, data[1])
 #     return new_tuble
 
 def find_pixel_cluster (picture: ArrayLike):
