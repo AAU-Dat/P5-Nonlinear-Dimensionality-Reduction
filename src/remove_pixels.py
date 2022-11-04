@@ -3,7 +3,7 @@ from numpy.typing import ArrayLike
 import load_mnist as lm
 import matplotlib.pyplot as plt
 
-
+#this function is the wrapper function for the remove pixel augmentation. It creates new np arrays so ist possible to write data directly to the array.
 def remove_pixel_augmentation(data: ArrayLike, size) -> ArrayLike:
     training_pictures = data[0][0]
     test_pictures = data[1][0]
@@ -21,7 +21,7 @@ def remove_pixel_augmentation(data: ArrayLike, size) -> ArrayLike:
         new_test_pictures=new_test_pictures,
     )
 
-
+#this function essentially takes newly poccessed data combines it with the old data and returns a new tuple.
 def create_new_tuple_from_augment(
     data: ArrayLike, new_training_pictures: ArrayLike, new_test_pictures: ArrayLike
 ):
@@ -36,7 +36,7 @@ def create_new_tuple_from_augment(
 
     return (training_data_tuple, test_data_tuple)
 
-
+#this function iterates throuh a picture to find a valid cluster to remove. a valid cluster is a cluster of pixels where none are white.
 def find_pixel_cluster(picture: ArrayLike, size):
 
     # np.nonzero creates a tuple value so if we want the array we have to take the first element in the tuple.
@@ -59,7 +59,7 @@ def find_pixel_cluster(picture: ArrayLike, size):
 
     return picture
 
-
+#this function takes a pixel position and creates an array of all other relevant pixel for a cluster of the given size.
 def create_pixel_cluster_28x28(index, size):
     array = []
     for i in range(0, size):
@@ -68,7 +68,7 @@ def create_pixel_cluster_28x28(index, size):
 
     return array
 
-
+#takes a picture and removes pixel based on a array of indexes 
 def remove_pixel_cluster(picture: ArrayLike, cluster):
     for pixel in cluster:
         picture[pixel] = 0
