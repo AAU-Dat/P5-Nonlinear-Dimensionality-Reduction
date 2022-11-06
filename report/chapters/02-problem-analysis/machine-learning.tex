@@ -1,0 +1,24 @@
+\section{Machine learning}\label{sec:machine-learning}
+Figure~\ref{fig:python-pipeline-model} illustrates the general \gls{ml} pipeline. The pipeline consists of three main steps: \gls{fe}, \gls{ml} model training, and model evaluation. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data.
+
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}
+        \node (b) [state] {feature engineering};
+        \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
+        \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
+        \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
+        \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
+
+        \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
+        \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
+        \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
+        \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
+
+        \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
+        \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
+    \end{tikzpicture}
+    \caption{Simplified machine learning pipeline}
+    \label{fig:basic-machine-learning-pipeline}
+\end{figure}
