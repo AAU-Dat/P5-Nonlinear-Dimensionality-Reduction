@@ -1,11 +1,23 @@
 \chapter{Problem analysis}\label{cha:problem-analysis}
-A digital image consists of pixels. In a grayscale image, each pixel has a value between 0 and 255, where 0 is white and 255 is black. In a color image each pixel has three such values - one for each color red, green, and blue. The number of pixels in an image is the number of pixels in the image multiplied by the number of colors. For example, a 28x28 grayscale image has 784 pixels, while a 28x28 color image has 2352 pixels.
-
-In this way each pixel represents a feature (dimension) of the image. As the size of images increase this quickly becomes a large number of features, and for the purpose of \gls{ml} it is likely not necessary to use all of them. The process of choosing the most important features is called feature selection, and leads to dimensionality reduction, the topic of this report.
+This chapter describes the motivation for the project, culminating in a problem statement.
 
 
-\input{chapters/02-problem-analysis/dimensionality-reduction.tex}
-\input{chapters/02-problem-analysis/machine-learning.tex}
+
+\begin{itemize}
+    \item Why Machine learning: Generalized pipeline overview
+    \item Fhy Feature Engineering: Dimensionality reduction
+          \begin{itemize}
+              \item Extraction
+              \item Visualization
+              \item Learning/debugging
+          \end{itemize}
+    \item Linear versus nonlinear methods
+    \item Problem statement
+\end{itemize}
+
+
+
+
 
 
 \input{chapters/02-problem-analysis/problem-statement.tex}
