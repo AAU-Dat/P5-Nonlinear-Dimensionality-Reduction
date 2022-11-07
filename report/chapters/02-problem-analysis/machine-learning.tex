@@ -1,9 +1,7 @@
-\section{Machine Learning}\label{sec:machine-learning}
-To determine the relevant dimensionality reduction methods to compare for the project, it is necessary to understand the basics of machine learning. This section describes the basics of machine learning and the different types of machine learning problems.
+\section{Machine learning}\label{sec:machine-learning}
+Figure~\ref{fig:python-pipeline-model} illustrates a general \gls{ml} pipeline.
 
-
-\subsection{Machine learning pipeline}\label{subsec:machine-learning-pipeline}
-Figure~\ref{fig:basic-machine-learning-pipeline} shows the simplified and generalized steps in the pipeline of a machine learning model. The machine learning pipeline is divided into four main steps: data collection, feature engineering, model training and model evaluation.
+The pipeline consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data.
 
 
 \begin{figure}[htb!]
@@ -28,54 +26,4 @@ Figure~\ref{fig:basic-machine-learning-pipeline} shows the simplified and genera
 \end{figure}
 
 
-The box with the name data represents the input to the machine learning pipeline. The data can be in different formats, such as images, text, audio, video, etc. The data is usually stored in a database or in a file. This is also the step where the data is cleaned and preprocessed.
-
-Feature engineering represents the step where the data is transformed through dimensionality reduction. The reduced data is the input to the machine learning model.
-
-Model training is the process of training the model with the data. This is done by splitting the data into a training set and a validation set. The training set is used to train the model to predict the output with highest possible accuracy. The validation set is used to evaluate the model, and may use cross validation to get a more accurate evaluation that avoids overfitting. The model depends on the type of machine learning problem.
-
-Model evaluation represents the step where the model is evaluated. The evaluation is done by comparing the predictions of the model with the actual values. The evaluation is done on the validation set. The evaluation is done by using metrics such as accuracy, precision, recall, F1 score, etc. The evaluation is done to determine the performance of the model and to determine if the model is overfitting or underfitting.
-
-The box with the name "parameters" represents the hyperparameters of the machine learning model. These parameters are set before training the model. The hyperparameters are usually set by the user, but can also be set by the machine learning model itself. The hyperparameters are usually set by trial and error, but there are also methods to find the best hyperparameters.
-
-The arrows represent how machine learning models continously learn. The model is trained on the training set, and then evaluated on the validation set. The model is then updated with the new information, and the process is repeated. This is called the training loop. The training loop is repeated until the model converges, or until the model is no longer improving. The model is then evaluated on the test set, and the evaluation is used to determine the performance of the model.
-
-
-\subsection{Data}\label{subsec:data}
-Because the machine learning pipeline starts with the data, the choice of dataset for the project will impact all the following steps in the pipeline.
-
-Most importantly the data must allow for the evaluation of the dimensionality reduction methods. Therefore, the dataset should be large enough dimensionally to perform meaningful dimensionality reduction. Furthermore, a well researched dataset is preferred, as it is more likely to be well suited for the evaluation of dimensionality reduction methods.
-
-Based on the above requirements the \gls{mnist}~\cite{lecun-mnist-database} dataset is chosen. It is a dataset of images of 28x28 grayscale images of handwritten digits, making it well suited for the evaluation of dimensionality reduction methods, as the images are large enough to perform meaningful dimensionality reduction. Furthermore, the dataset is well researched, and has been used in many papers~\cite{lecun-mnist-database}.
-
-In fact \gls{mnist} is so well researched that it may be considered overused~\cite{fashion-mnist}. If time permits, two similar datasets may be used in the project. The first is the \gls{fashion-mnist}~\cite{fashion-mnist} dataset, which is a variant of \gls{mnist} with images of clothing instead of handwritten digits. The second is the \gls{cifar}~\cite{krizhevsky-cifar} dataset, which consists of 50,000 training images and 10,000 test images of 32x32 color images of 10 different classes of objects.
-
-
-\subsection{Feature engineering}\label{subsec:feature-engineering}
-The theory deciding the choice of dimensionality reduction methods is described in Chapter~\ref{cha:theory}.
-
-\todo[inline]{Some notes: normal distribution is relevant for LDA in particular apparently \url{https://www.rikvoorhaar.com/normal-data/}. FA is unlikely to be practical. PCA is the most common method}
-
-\subsection{Machine learning models}\label{subsec:machine-learning-models}
-Because \gls{mnist} is a set of labeled images, the machine learning problem is a multi-class classification supervised learning problem within the domain of computer vision, with the goal to train a model to predict the correct digit represented in an image.
-
-Several machine learning models are used for image classification in general, and \gls{mnist} in particular~\cite{lecun-mnist-database,IBM-computer-vision,convolutional-neural-networks-convnets,multi-column-neural-network-ciregan}.
-
-This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model. It is a relatively understandable model as it has similarities to the \gls{lda} method for dimensionality reduction, and has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}.
-% https://www.quora.com/What-is-the-difference-between-SVM-and-linear-discriminant-analysis
-
-
-Additionally, a \gls{cnn} is used to compare the results of the dimensionality reduction methods with a more complex model. It is also used to compare the performance of the dimensionality reduction methods with a model that is not based on linear algebra.
-
-
-\subsubsection{Multi-class classification}\label{subsubsec:multi-class-classification}
-The \gls{mnist} dataset presents a multi-class classification problem, as the images can represent any of the 10 digits. The \gls{svm} model however is a binary classification model, and thus has to be adapted to the multi-class classification problem. There are two approaches to this problem: \gls{ovo} and \gls{ova}.
-
-\gls{ovo} is a method where the model is trained on all possible combinations of two classes. For example, if there are 5 classes, the model is trained on 10 different models, one for each combination of two classes, this makes it computationally expensive as it has to go througth every combination. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class.
-
-\gls{ova} however is a method where the model is trained faster than in \gls{ovo}, as it only uses one class to distinguish if the data is similar or not. For example, if there are 5 classes, the model is trained on 5 different variations of the model, one for each class. This makes \gls{ova} good to distinguish between the current class that is being modeled from the other classes, however in \gls{ova} it is harder to distinguish between the other classes that is not being trained on. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class~\cite{james-statistical-learning}.
-
-\gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}. The \gls{svm} model is chosen because it is a relatively simple model, and thus \gls{ova} is chosen as it is faster than \gls{ovo}.
-
-\subsection{Model training}\label{subsec:model-training}
-The theory deciding the cross validation methods is described in Chapter~\ref{cha:theory}.
+However, the data used for a \gls{ml} models must be of high quality, and the models must be able to generalize well to new data. This is where \gls{fe} and dimensionality reduction comes into play. \gls{fe} is the process of transforming data into features that are more suitable for \gls{ml} models. Dimensionality reduction is the process of reducing the number of features in a dataset. This is done to reduce the complexity of the data, and to make it easier to visualize.
