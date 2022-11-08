@@ -1,0 +1,104 @@
+\section{Feature extraction}\label{sec:feature-extraction}
+% kort forklaring af FE, hvad er det 
+In machine learning \gls{fe} is used to transform the raw data into some type of data that is more suitable for the \gls{ml} model, this is why a feature is not a specific method, can no feature looks the same. A feature must derive from what type of data is given, and it is also tied to which model is being used. Some features are more appropriate for some types of models and vice versa. Feature engineering is the process of formulating the best fitted features given the task in hand, with the data and the chosen model~\cite{Feature-engineering-zheng}. 
+% hvilke sub kategorier indgår i FE
+There are many techniques for \gls{fe}, some examples on how to do \gls{fe} are: Imputation, handling outliers, scaling, dimensionality reduction. Imputation is the process of filling in missing values in the data, most imputation is done by finding it by matrixes, by looking at other values in the dataset, a popular approach is k-nearest neighbors to find the missing values~\cite{imputation-for-tables-Biessmann}. Outliers are values that are far away from the rest of the data, and they can be a problem for some models, for both accuracy and inaccurate classification. It it therefore a good idea to eliminate the outliers, this is also a standard practice in most machine learning problems. There are many ways to handle outliers, one way is to remove them, another way is to replace them with the median or the mean of the data~\cite{outlier-perez}. Scaling, also called feature normalization, is the process of transforming the data into a form that is more suitable for the \gls{ml} model. This is done by changing the range of the data, for example, if the data is in the range of 0-100, it can be scaled to be in the range of 0-1. This is done to make the data more suitable for the model, and to make it easier to compare the data. Scaling is also a standard practice in most machine learning problems. There are many ways to scale the data, one way is to use the min-max scaler, another way is to use variance scaling~\cite{Feature-engineering-zheng}. 
+
+Dimensionality reduction is the process of reducing the number of features in a dataset. This is done to reduce the complexity of the data, and to make it easier to visualize. Within a large dataset, there can be data that is not useful the output of the \gls{ml} model. Therefore when reducing features in a dataset it is important to find the features that are more relevant to the output of the model. There are many ways to reduce the dimensionality of a dataset~\cite{Feature-engineering-zheng}.The different types of dimensionality reduction will be further discussed in chapter~\ref{cha:theory}.
+
+% Hvorfor er det spændende, find kilder hvor de gør noget spændende 
+
+\cite{dimensionality-reduction-comparative-review} 
+\cite{dimensionality-reduction-reddy} 
+\cite{dimensionality-reduction-cheng} 
+\cite{dimensionality-reduction-svm-jain}
+
+% 	få en model til at gå hurtigere, kan finde sammenhæng i ulineær data
+
+
+% Forklar hvorfor vi har valgt at fokusere på dimensionalitets reduction 
+%Raymonds
+
+
+We have chosen to work with dimensionality reduction methods, because we believe that it can improve the performance of the machine learning models. 
+The goal of the dimensionality reduction methods is to reduce the curse of dimensionality. According to Lee~\cite{nonlinear-dim-red-chapter-one}, the curse of dimensionality refers to "the number of data samples requried to estimate a function of several variables to a given accuracy on a given domain grows exponentially with the number of dimensions"~\cite{nonlinear-dim-red-chapter-one}. This means that machine learning models' performance might get affected by the huge amount of data that needs to be given.
+
+That is not optimal if we know that we can reduce the amount of data without losing too much information. On the contrary, the performance can perhaps be improved, partly because the size of the data gets reduced, and partly because the essence of the data is preserved. 
+
+Dimensionality reduction methods seek to reduce the amount of dimensions in data, while still preserving the data's intrinsic structure~\cite{nonlinear-dim-red-chapter-one}. What is meant by intrinsic dimensionality is that one can express a high-dimensional dataset with a low-dimensional dataset that, with the minimum amount of dimensions, approximates the high-dimensional dataset~\cite{dimensionality-reduction-comparative-review, nonlinear-dim-red-chapter-three}. 
+
+We have chosen to work with dimensionality reduction because it is a very important part of \gls{ml} pipeline. It is important to reduce the dimensionality of the data, because it makes it easier to visualize the data, and it makes it easier to find patterns in the data. It is also important to reduce the dimensionality of the data, because it makes it easier to train the \gls{ml} model. 
+
+%Dimensionality reduction can be used to reduce the complexity of the data, and to make it easier to visualize. This can be useful when trying to find patterns in the data, and to find the features that are most relevant to the output of the model. Dimensionality reduction can also be used to make the model go faster, because it is easier to train a model with fewer features. Dimensionality reduction can also be used to find a relationship between the features, which can be useful when trying to find the features that are most relevant to the output of the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% @book{Feature-engineering-zheng,
+% author = {Zheng, Alice and Casari, Amanda},
+% title = {Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists},
+% year = {2018},
+% isbn = {1491953241},
+% }
+
+% @article{imputation-for-tables-Biessmann,
+%   author  = {Felix Biessmann and Tammo Rukat and Phillipp Schmidt and Prathik Naidu and Sebastian Schelter and Andrey Taptunov and Dustin Lange and David Salinas},
+%   title   = {DataWig: Missing Value Imputation for Tables},
+%   year    = {2019},
+%   url     = {http://jmlr.org/papers/v20/18-753.html}
+% }
+
+% @article{outlier-perez,
+% author = {Perez, Husein and Tah, Joseph H. M.},
+% title = {Improving the Accuracy of Convolutional Neural Networks by Identifying and Removing Outlier Images in Datasets Using t-SNE},
+% year = {2020},
+% url = {https://www.mdpi.com/2227-7390/8/5/662},
+% ISSN = {2227-7390},
+% DOI = {10.3390/math8050662}
+% }
+
+%@book{nonlinear-dim-red-chapter-one,
+% author={Lee, John A. and Verleysen, Michel},
+% title={High-Dimensional Data},
+% bookTitle={Nonlinear Dimensionality Reduction},
+% year={2007},
+% isbn={978-0-387-39351-3},
+% doi={10.1007/978-0-387-39351-3_1},
+% url={https://doi.org/10.1007/978-0-387-39351-3_1}
+% }
+
+% Projekter der har brugt dimensionalitets reduction nedenfor
+
+
+% @article{dimensionality-reduction-reddy,
+%   author={Reddy, G. Thippa and Reddy, M. Praveen Kumar and Lakshmanna, Kuruva and Kaluri, Rajesh and Rajput, Dharmendra Singh and Srivastava, Gautam and Baker, Thar},
+%   journal={IEEE Access}, 
+%   title={Analysis of Dimensionality Reduction Techniques on Big Data}, 
+%   year={2020},
+%   doi={10.1109/ACCESS.2020.2980942}}
+
+% @article{dimensionality-reduction-cheng,
+% author = {Cheng, Zhun and Lu, Zhixiong},
+% year = {2018},
+% title = {A Novel Efficient Feature Dimensionality Reduction Method and Its Application in Engineering},
+% journal = {Complexity},
+% doi = {10.1155/2018/2879640}
+% }
+
+% @article{dimensionality-reduction-svm-jain,
+% author = {Jain, Shruti and Salau, Ayodeji},
+% year = {2019},
+% title = {An image feature selection approach for dimensionality reduction based on kNN and SVM for AkT proteins},
+% journal = {Cogent Engineering},
+% doi = {10.1080/23311916.2019.1599537}
+% }
