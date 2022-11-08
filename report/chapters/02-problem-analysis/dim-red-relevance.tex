@@ -1,19 +1,23 @@
 \section{Linear versus nonlinear methods}\label{sec:linear-vs-nonlinear}
-%keep the text if you want to use it
-For this project the difference between dimensionality reduction techniques will solely be based on the aspect of linear and nonlinear models. According to Lee, there are several distinctions that can be made for dimensionality reduction methods, which will not be presented, but the distinction between linear and nonlinear methods is "the straightest way to classify them". The reason why the distinction is important lies in the methods' properties. Nonlinear methods are thought to be better than linear methods because the "connection between the latent variables and the observed ones may be much
-richer than a simple matrix multiplication". On the other hand, nonlinear methods are computationally more expensive, and therefore may require more data. \cite{nonlinear-dim-red-chapter-two}
+%This might be too general
+Linear and nonlinear dimensionality reduction methods seek to reduce the amount of dimensions in data, while still preserving the data's intrinsic structure \cite{nonlinear-dim-red-chapter-one}. What is meant by intrinsic dimensionality is that one can express a high-dimensional dataset with a low-dimensional dataset that, with the minimum amount of dimensions, describes the high-dimensional dataset \cite{dimensionality-reduction-comparative-review} \cite{nonlinear-dim-red-chapter-three}. The goal of the dimensionality reduction methods is to reduce the curse of dimensionality. According to Lee, the curse of dimensionality refers to "the number of data samples requried to estimate a function of several variables to a given accuracy on a given domain grows exponentially with the number of dimensions" \cite{nonlinear-dim-red-chapter-one}. This means that machine learning models' performance might get affected by the huge amount of data that needs to be given.
 
 
-There is this book "Nonlinear Dimensionality Reduction" - I have put those refs \ref{nonlinear-dim-red-chapter-one}, and \ref{nonlinear-dim-red-chapter-two}. The first chapter of this book speaks about why DR is important. The book also contains a good list of contents.
-%link to the book >> https://link.springer.com/content/pdf/10.1007/978-0-387-39351-3.pdf
-Chapter one is good for some motivation(visualization, curse of dimensionality, manifold hypothesis), and chapter two goes into more detail about the DR methods(though not that important). The book is great - and it also goes into great detail concerning NLDR.
+That is not optimal if we know that we can reduce the amount of data without losing too much information. On the contrary, the performance can perhaps be improved, partly because the size of the data gets reduced, and partly because the essence of the data is preserved. 
 
 
-Another source which already writes about something about linear vs nonlinear is Laurens van der Maaten, where he does a comparative analysis of many DR methods, and concludes that PCA is the best method.
+More specifically, in this project we wil distinguish between linear and nonlinear methods. According to Lee, there are several distinctions that can be made for dimensionality reduction methods, which will not be presented, but the distinction between linear and nonlinear methods is "the straightest way to classify them" \cite{nonlinear-dim-red-chapter-two}. The difference between linear and nonlinear methods is that linear methods express output as a linear combination of input data, and nonlinear methods do so in a nonlinear fashion. This means that nonlinear methods are much more complex than the linear ones, but are also more computationally expensive \cite{nonlinear-dim-red-chapter-two}. 
 
 
-There is a ref \ref{dim-red-visual} that is a phd thesis on the visualization with linear/nonlinear methods. Talks about dim red but also a lot about visualization. The first chapters might prove to be useful. Great source.
+The use of the linear and nonlinear dimensionality reduction methods can be seen in \cite{dimensionality-reduction-comparative-review} and \cite{tennenbaum}, where the methods have been tested on artificial and real-world datasets. As an example, it has been shown that artificial datasets such as the swiss-roll show that linear methods fail to find the intrinsic dimensionality of the data as opposed to nonlinear methods \cite{tennenbaum}. The research paper written by Jarkko shows that linear and nonlinear dimensionality reduction methods can be visualized on separate datasets \cite{dim-red-visual}, and with help of visualization one can see which methods are better than others at finding an accurate lower representation of the data. The research paper \cite{dimensionality-reduction-comparative-review} compares the performance of linear and nonlinear dimensionality reduction methods with some machine learning model.
 
+
+\subsection{Relevance of linear vs nonlinear methods}
+According to Laurens, there is a tendence that the real world data is nonlinear. This means that the linear methods are at disadvantage, because they are not able to capture the intrinsic dimensionality of the nonlinear data as good as nonlinear methods. However, he also states that nonlinear methods are not always able to outperform linear methods \cite{dimensionality-reduction-comparative-review}. The reason why we focus on linear and nonlinear dimensionality reduction methods is because we want to explore whether these methods have a significant influence on the performance of a machine learning model. As outlined before, dimensionality reduction methods can be used to remove redundancy from data, which can improve the performance of a machine learning model. We have presented that nonlinear methods may work better on nonlinear datasets, and that they are suitable for nonlinear datasets, but according to Laurens \cite{dimensionality-reduction-comparative-review}, there might not be a major difference between the linear and nonlinear methods. That is is why we want to explore whether linear or nonlinear methods \textit{actually} have an impact on our machine learning model, based on the metrics that have been presented in this chapter.
+
+%What are the use cases of those methods (linear/nonlinear) 
+
+%What we are using the use cases linear vs nonlinear
 
 % @misc{dim-red-visual,
 % title={{Dimensionality reduction for visual exploration of similarity structures}},
@@ -29,7 +33,6 @@ There is a ref \ref{dim-red-visual} that is a phd thesis on the visualization wi
 % issn={1459-7020},
 % url={}
 % }
-
 
 %@book{nonlinear-dim-red-chapter-one,
 % author="Lee, John A.
@@ -47,7 +50,6 @@ There is a ref \ref{dim-red-visual} that is a phd thesis on the visualization wi
 % url="https://doi.org/10.1007/978-0-387-39351-3_1"
 % }
 
-
 % @book{nonlinear-dim-red-chapter-two,
 % author="Lee, John A.
 % and Verleysen, Michel",
@@ -62,5 +64,21 @@ There is a ref \ref{dim-red-visual} that is a phd thesis on the visualization wi
 % isbn="978-0-387-39351-3",
 % doi="10.1007/978-0-387-39351-3_2",
 % url="https://doi.org/10.1007/978-0-387-39351-3_2"
+% }
+
+% @book{nonlinear-dim-red-chapter-three,
+% author="Lee, John A.
+% and Verleysen, Michel",
+% editor="Lee, John A.
+% and Verleysen, Michel",
+% title="Estimation of the Intrinsic Dimension",
+% bookTitle="Nonlinear Dimensionality Reduction",
+% year="2007",
+% publisher="Springer New York",
+% address="New York, NY",
+% pages="47--67",
+% isbn="978-0-387-39351-3",
+% doi="10.1007/978-0-387-39351-3_3",
+% url="https://doi.org/10.1007/978-0-387-39351-3_3"
 % }
 
