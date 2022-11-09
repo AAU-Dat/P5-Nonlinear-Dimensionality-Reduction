@@ -1,0 +1,48 @@
+\section{Cross-validation}\label{sec:cross-validation}
+When a model learns from data, the amount of data may not always be sufficient for the model to be trained on. As conseqeunce the model's performance might get diminished. The same may also apply if the model "memorizes" the data to the degree that it cannot generalize well over future data (overfitting). This section will introduce one technique that will reduce the chances of overfitting the model, which is cross-validation. Cross-validation implies that the training data should be split into three sets: training data, validation data(comprising of training data), and test data. By partitioning the training data into two sets, the model can learn on the training data, and evaluate on the validation data. The model can be tuned with the validation data, and, after the model is optimized, evaluated on the test data. Such approach is useful, because the model gets evaluated based on data it has never seen \cite{scikit-learn}.
+
+
+
+"The basic form of cross-validation is the basic form of k-fold cross-validation. (. . .) In k-fold cross-validation, the data is first partitioned into $k$ equally (or nearly equally) sized segments or folds. Subsequently $k$ iterations of training and validation are performed such that within each iteration a different fold of the data is held-out for validation while the remaining $k-1$ folds are used for learning." \cite{Refaeilzadeh2009}
+
+
+%Help the reader to why this is written cross-validation
+When a learning model is trained with cross-validation, each class in the respective fold needs to be roughly equally represented, which helps the model generalize better. Some ways in which one can achieve that is by stratifying the data.Stratifying \cite{Refaeilzadeh2009}, or shuffling, the data may be necessary so as each fold has a balanced distribution of classes. There is a risk where the folds contain imbalanced amounts of samples for each class, which may affect the overall model performance, because then the model would possibly be biased towards the majority class.
+
+There are also other forms of cross-validation, which are special cases of k-fold. As described before, shuffling the data might be important, and there is a version of k-fold called Stratified k-fold, where the data gets reshuffled for each round. Alternatively, instead of shuffling the data, one can use the leave-one-out cross-validation, where for each fold all of the data except one sample is used for training (and that one sample is used for validation) \cite{Refaeilzadeh2009}.
+
+%Take out the part about methodology
+In order to avoid overfitting, one can use k-fold cross-validation, or derivatives of it, but k-fold implies that a specific number must be chosen. The choice of $k$ could be made through trial and error. However, the train and data samples need to be large enough so as to be statistically representative of the the data set \cite{Refaeilzadeh2009}. 
+
+
+% @article{scikit-learn,
+%     title={Scikit-learn: Machine Learning in {P}ython},
+%     author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+%     and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+%     and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+%     Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+%     journal={Journal of Machine Learning Research},
+%     volume={12},
+%     pages={2825--2830},
+%     year={2011}
+%     }
+
+
+% @book{Refaeilzadeh2009,
+% author="Refaeilzadeh, Payam
+% and Tang, Lei
+% and Liu, Huan",
+% editor="LIU, LING
+% and {\"O}ZSU, M. TAMER",
+% title="Cross-Validation",
+% bookTitle="Encyclopedia of Database Systems",
+% year="2009",
+% publisher="Springer US",
+% address="Boston, MA",
+% pages="532--538",
+% isbn="978-0-387-39940-9",
+% doi="10.1007/978-0-387-39940-9_565",
+% url="https://doi.org/10.1007/978-0-387-39940-9_565"
+% }
+
+

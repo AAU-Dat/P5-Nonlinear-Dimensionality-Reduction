@@ -1,11 +1,26 @@
 \chapter{Problem analysis}\label{cha:problem-analysis}
-A digital image consists of pixels. In a grayscale image, each pixel has a value between 0 and 255, where 0 is white and 255 is black. In a color image each pixel has three such values - one for each color red, green, and blue. The number of pixels in an image is the number of pixels in the image multiplied by the number of colors. For example, a 28x28 grayscale image has 784 pixels, while a 28x28 color image has 2352 pixels.
+This chapter describes the motivation for the project, culminating in a problem statement.
 
-In this way each pixel represents a feature (dimension) of the image. As the size of images increase this quickly becomes a large number of features, and for the purpose of \gls{ml} it is likely not necessary to use all of them. The process of choosing the most important features is called feature selection, and leads to dimensionality reduction, the topic of this report.
+\begin{itemize}
+    \item Why Machine learning + Generalized pipeline overview?
+    \item Why Feature Engineering: Dimensionality reduction
+          \begin{itemize}
+              \item Extraction
+              \item Visualization
+              \item Learning/debugging
+          \end{itemize}
+    \item Linear versus nonlinear methods
+    \item Problem statement
+\end{itemize}
 
+\gls{ml} is a field of study within \gls{ai} concerned with learning from data. \gls{ml} is a complex and growing field used in many different areas. One of the reasons for the increasing interest in \gls{ml} is the increasing amount of available data. The amount of data collected in the world is increasing at an incredible rate, which is expected to continue in the future~\cite{data-never-sleeps}. Because \gls{ml} models are trained on data, the more data available, the better the models can be~\cite{Unreasonable-effectiveness-of-data-Norvig}.
 
-\input{chapters/02-problem-analysis/dimensionality-reduction.tex}
+However the complexity of \gls{ml} is also high. There are many different \gls{ml} models, each with different strengths and weaknesses. The choice of \gls{ml} model is therefore more often than not dependent on the data and the problem being solved. This means that choosing the right \gls{ml} model is a difficult task, which is further complicated by the fact that there is no single metric for evaluating the performance of a \gls{ml} model. The performance of a \gls{ml} model is often evaluated using multiple metrics, which makes it difficult to compare the performance of different models against each other.
+
+It may be necessary to try out different \gls{ml} models to find the best one for a certain problem, which is a time-consuming process.
+
 \input{chapters/02-problem-analysis/machine-learning.tex}
-
+\input{chapters/02-problem-analysis/feature-engineering.tex}
+\input{chapters/02-problem-analysis/dim-red-relevance.tex}
 
 \input{chapters/02-problem-analysis/problem-statement.tex}
