@@ -1,56 +1,35 @@
 \section{Hyperparameter optimization}\label{sec:hyperparam}
 
-In section \ref{sec:cross-validation} we presented one technique of model optimization, namely that it does not overfit by means of cross-valdation. Another important factor to consider when training a model is its hyperparameters, which also can reduce its performance by either underfitting, or overfitting.
+In Section~\ref{sec:cross-validation} we presented one technique of model optimization, namely that it does not overfit by means of cross-valdation. Another important factor to consider when training a model is its hyperparameters, which also can reduce its performance by either underfitting, or overfitting.
 
 
-Hyperparameters are the configurations of the model that can change its behavior. Their purpose is to maximize the performance of the model, and can have varying effects on the model and its performance \cite{hyperparam-search}. Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in chapter \ref{cha:problem-analysis}.
+Hyperparameters are the configurations of the model that can change its behavior. Their purpose is to maximize the performance of the model, and can have varying effects on the model and its performance~\cite{hyperparam-search}. Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in Chapter~\ref{cha:problem-analysis}.
 
 
-Hyperparameter optimization comprises of selecting the model's hyperparameters. Choosing the right hyperparameters might involve manually changing them, which is time-consuming. It also leaves the responsibility to the programmer to manually change those values. What can be done instead, is to automate the process, leaving it to the computer to find the most optimal hyperparameters \cite{automated-machine-learning}, given a set of configurations. The reason why hyperparameter optimization is difficult is because we do not know which hyperparameters will affect the model the most, which hyperparameters will interact with each other and how their interactions will change the model's performance. According to Marc Claesen \cite{hyperparam-search}, the number of hyperparameters that have a significant impact may be small, but that does not mean that the number of combinations that are meaningful may be small too. 
+Hyperparameter optimization comprises of selecting the model's hyperparameters. Choosing the right hyperparameters might involve manually changing them, which is time-consuming. It also leaves the responsibility to the programmer to manually change those values. What can be done instead, is to automate the process, leaving it to the computer to find the most optimal hyperparameters~\cite{automated-machine-learning}, given a set of configurations. The reason why hyperparameter optimization is difficult is because we do not know which hyperparameters will affect the model the most, which hyperparameters will interact with each other and how their interactions will change the model's performance. According to Marc Claesen~\cite{hyperparam-search}, the number of hyperparameters that have a significant impact may be small, but that does not mean that the number of combinations that are meaningful may be small too. 
 
-It is not the easiest thing to manually optimize hyperparameters. There are many different techniques that can be used to automatically optimize the hyperparameters \cite{automated-machine-learning}, but the one that will be used in this project is grid search. This technique allows the user to define "a set of finite values for each hyperparameter, and grid search evaluates the Cartesian product of these sets."\cite{automated-machine-learning} 
+It is not the easiest thing to manually optimize hyperparameters. There are many different techniques that can be used to automatically optimize the hyperparameters~\cite{automated-machine-learning}, but the one that will be used in this project is grid search. This technique allows the user to define \textcquote{automated-machine-learning}{a set of finite values for each hyperparameter, and grid search evaluates the Cartesian product of these sets}.
 
 
-In order to prevent that the model's performance becomes worse because of its hyperparameters grid search can be used. As writtein in section \ref{sec:cross-validation} cross-validation might also prove to be helpful when training a model with the specified configurations. As an example, if we have two hyperparameters, each with three different values, then the Cartesian product of these sets will be nine different combinations. If we choose to use k-fold cross-validation \textemdash assume we want to use five folds \textemdash, then the nine combinations with be multiplied with the number of folds specified in the cross-validation, in this case amounting to 45 different combinations. From this, we can see that the complexity of grid search increases drastically if we include cross-validation, which means that it can take a long time to find the optimal configuration.
+In order to prevent that the model's performance becomes worse because of its hyperparameters grid search can be used. As writtein in Section~\ref{sec:cross-validation} cross-validation might also prove to be helpful when training a model with the specified configurations. As an example, if we have two hyperparameters, each with three different values, then the Cartesian product of these sets will be nine different combinations. If we choose to use k-fold cross-validation, for example assume we want to use five folds, then the nine combinations with be multiplied with the number of folds specified in the cross-validation, in this case amounting to 45 different combinations. From this, we can see that the complexity of grid search increases drastically if we include cross-validation, which means that it can take a long time to find the optimal configuration.
 
 
 
 
 
 %@book{automated-machine-learning,
-% author="Feurer, Matthias
-% and Hutter, Frank",
-% editor="Hutter, Frank
-% and Kotthoff, Lars
-% and Vanschoren, Joaquin",
-% title="Hyperparameter Optimization",
-% bookTitle="Automated Machine Learning: Methods, Systems, Challenges",
-% year="2019",
-% publisher="Springer International Publishing",
-% address="Cham",
-% pages="3--33",
-% abstract="Recent interest in complex and computationally expensive machine learning models with many hyperparameters, such as automated machine learning (AutoML) frameworks and deep neural networks, has resulted in a resurgence of research on hyperparameter optimization (HPO). In this chapter, we give an overview of the most prominent approaches for HPO. We first discuss blackbox function optimization methods based on model-free methods and Bayesian optimization. Since the high computational demand of many modern machine learning applications renders pure blackbox optimization extremely costly, we next focus on modern multi-fidelity methods that use (much) cheaper variants of the blackbox function to approximately assess the quality of hyperparameter settings. Lastly, we point to open problems and future research directions.",
-% isbn="978-3-030-05318-5",
-% doi="10.1007/978-3-030-05318-5_1",
-% url="https://doi.org/10.1007/978-3-030-05318-5_1"
+% author={Feurer, Matthias
+% and Hutter, Frank},
+% title={Automated Machine Learning: Methods, Systems, Challenges},
+% year={2019},
+% isbn={978-3-030-05318-5},
+% url={https://doi.org/10.1007/978-3-030-05318-5_1}
 % }
-
-
-
-
-
 
 % @article{hyperparam-search,
 %   author    = {Marc Claesen and
 %                Bart De Moor},
 %   title     = {Hyperparameter Search in Machine Learning},
-%   journal   = {CoRR},
-%   volume    = {abs/1502.02127},
 %   year      = {2015},
 %   url       = {http://arxiv.org/abs/1502.02127},
-%   eprinttype = {arXiv},
-%   eprint    = {1502.02127},
-%   timestamp = {Mon, 13 Aug 2018 16:48:58 +0200},
-%   biburl    = {https://dblp.org/rec/journals/corr/ClaesenM15.bib},
-%   bibsource = {dblp computer science bibliography, https://dblp.org}
 % }
