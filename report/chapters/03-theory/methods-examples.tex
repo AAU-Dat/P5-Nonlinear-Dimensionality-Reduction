@@ -1,21 +1,44 @@
 \section{Examples of methods}
-In this section we will present how the linear and nonlinear methods behave on linear and nonlinear data.
-
-
+In this section we will present how the linear and nonlinear methods behave on linear and nonlinear data. It might be a good idea to put the images in the appendix.
 
 
 \subsection{Linear data}
 As linear data we will use the Iris dataset, which contains three different species of Iris flowers, with 50 examples each. The dataset has four dimensions, which are the length and width of the sepals, and petals ~\cite{iris-dataset}. The dataset is a simple and well-known dataset, which has been used in many machine learning papers ~\cite{iris-dataset}, and should give a fair comparison between the methods.[not sure about this]
 
 
-On figure \ref{I don't have a ref} the iris flowers are represented on a 3d plot. From the figure one can see that the species setosa is linearly separable from the other two species, as opposed to them.
+On figure \ref{I don't have a ref} the iris flowers are represented on a 2d plot. According to ~\cite{iris-dataset} only one class is separable, and that can further be solidified by the fact that the species setosa is the only class that is visibly linearly separable.
 
 
+On figure \ref{iris-pca} one can see that PCA has successfully separated the setosa species from the other classes in the dataset. However, on the coordiantes [1.20, 0.20] the other two species have not been clearly separated.
+
+On figure \ref{iris-lda} LDA has also successfully separated the setosa species from the other classes in the dataset. In contrast with PCA, LDA has managed to separate the other two species as well. An advantage, which LDA poses, is that LDA is a supervised method, which means that LDA knows the labels of the data, and therefore may be better suited for reducing the data.\todo{I am confused. This does not sound right}
+
+
+
+On figure \ref{iris-isomap} Isomap has tried to separate the setosa, and managed to map the data on the first two dimensions. Isomap, as opposed to the aforementioned linear methods, has not found too much diversity on the second projection, as the values range from approximative 0.0 to -0.25. Such range is short in comparison with the linear methods. Isomap clusters the data, but that may not be helpful if the data needs to be projected on two dimensions. If a point is in upper left corner, then it is not possible to tell if it is a setosa, or a versicolor. Isomap is nevertheless a nonlinear method, and it is expected that it does not reduce the data as efficiently as the linear methods do. The reason why Isomap clusters the data in the inner circle, is because there is not much difference between the points as there is in the outer circle.
+
+
+On figure \ref{iris-kernelpca} KernelPCA has tried to separate the setosa, but has not managed to do so as good as Isomap. On the figure it can be seen that kernelPCA has clustered the other two species on the first projection, but there cannot be seen any clear separation between the two species, especially on the second projection. KernelPCA has also mapped the data points for setosa with a high degree of variance, but it did not clearly separate the setosa from the other two species. Likewise Isomap, KernelPCA was not supposed to separate the data as good as the linear methods, but it is interesting that KernelPCA has not managed to fully separate the setosa species from the rest.
+
+\todo[inline, color=blue]{KernelPCA messed it up big time}
 
 
 
 \subsection{Nonlinear data}
+\todo[inline, color=red]{A worse section}
 As nonlinear data we will construct two different classes of cirlces, an inner- and outer circle.
+
+
+On figure ~\ref{circle-pca} it can be seen that PCA's transformation did not manage to map the nonlinear data at all. On figure \ref{circle-lda} LDA has reduced the data's dimensions to one dimension, but the two classes are clustered.
+
+
+On figure \ref{circle-isomap} Isomap has separated the data points from the circles. Based on the first projection Isomap is capable of separating the data, and on the second projection the method is capable of capturing the variance of the outer circle, thus approximating the the original data, as the outer circle has a higher variance than the inner circle.
+
+
+On figure \ref{circle-kernelpca} KernelPCA has also separated the data points from the circles. It should be noted that KernelPCA has another purpose than Isomap, so therefore their reduction is different. KernelPCA does a good job at maximizing the variance for the inner circle, and also separating the the data points from each other. As it can be seen KernelPCA needs at least two dimensions in order to differentiate between the two classes. 
+
+
+Until now we have presented some simple examples of the methods. More often than not, the number dimensions reduced will not be two, as there will be much more relevant information in the other dimensions too.
 
 % @misc{iris-dataset,
 % author = "Dua, Dheeru and Graff, Casey",
