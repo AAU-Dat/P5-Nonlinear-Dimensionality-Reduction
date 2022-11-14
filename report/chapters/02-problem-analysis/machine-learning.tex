@@ -1,7 +1,9 @@
 \section{Machine learning}\label{sec:machine-learning}
 Figure~\ref{fig:basic-machine-learning-pipeline} illustrates a general \gls{ml} pipeline.
 
-The pipeline consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
+To compare and contrast linear and nonlinear methods through the lens of a model Efficiently the use of a pipeline is needed. A brief Introduction to pipelines, there use and how to introduce dimensionality reduction to them the purpose of this section.
+
+A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First stem is the data step which essentially is the collection of data. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
 
 
 \begin{figure}[htb!]
@@ -25,5 +27,13 @@ The pipeline consists of four main steps: data, \gls{fe}, \gls{ml} model trainin
     \label{fig:basic-machine-learning-pipeline}
 \end{figure}
 
+The \gls{fe} step is where Dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model is then evaluated to see if they can be tuned for better results. This tuning is generraly refered to as hyperparameter tuning. What the best hyper parameter tuning is depends on the data. This leads to the last decision before the problem statement, The choice of data.
 
-However, the data used for a \gls{ml} models must be of high quality, and the models must be able to generalize well to new data. This is where \gls{fe} and dimensionality reduction comes into play. \gls{fe} is the process of transforming data into features that are more suitable for \gls{ml} models. Dimensionality reduction is the process of reducing the number of features in a dataset. This is done to reduce the complexity of the data, and to make it easier to visualize.
+\section*{Data}
+
+We have chosen to work with mnist which is descibed by its creators as
+"The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image."
+
+Its chosen because it has real worlds uses inside of text recognition. Another reason its chosen is because its tried and true, so we can compare our results to other similar projects for better discussion of results. Its relative simplicity is also an asset because the effects of Dimensionality is more visible. But his simplicity might also be too regular to show the contrast between linear and nonlinear so it will be aumented a controlled manner.These augments will be described in detail in the theori section.
+
+This combination of linear vs nonlinear, a pipeline and the mnist dataset leads to the problemstatement.
