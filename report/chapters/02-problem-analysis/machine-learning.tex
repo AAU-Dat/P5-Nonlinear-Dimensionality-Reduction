@@ -29,11 +29,25 @@ A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model
 
 The \gls{fe} step is where Dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model is then evaluated to see if they can be tuned for better results. This tuning is generraly refered to as hyperparameter tuning. What the best hyper parameter tuning is depends on the data. This leads to the last decision before the problem statement, The choice of data.
 
-\section*{Data}
+\section{Data}
+We have chosen to work with \gls{mnist}, which is descibed by its creators as
+``[t]he MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image" ~\cite{lecun-mnist-database}.
 
-We have chosen to work with mnist which is descibed by its creators as
-"The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image."
 
-Its chosen because it has real worlds uses inside of text recognition. Another reason its chosen is because its tried and true, so we can compare our results to other similar projects for better discussion of results. Its relative simplicity is also an asset because the effects of Dimensionality is more visible. But his simplicity might also be too regular to show the contrast between linear and nonlinear so it will be aumented a controlled manner.These augments will be described in detail in the theori section.
+The reason why \gls{mnist} was chosen is because it has real-world uses inside of image recognition, particularly the assignment of recognizing handwritten numbers. The real-world use comes from detecting patterns in which numbers are written, which can be attributed due to the style of the writer, and / or artificial errors.
 
-This combination of linear vs nonlinear, a pipeline and the mnist dataset leads to the problemstatement.
+
+Another reason is because there are many projects, which revolve around recognizing handwritten digits using machine learning. That means that we can compare our results to other similar projects for better discussion of results. On a similar vein, the digits in the datset are ``size-normalized and centered in a fixed-size image'' ~\cite{lecun-mnist-database}, which means that Lecun et al.\ have worked with the data. The project could also have gone another route: collecting data, cleaning data, etc.\ ,but choosing the \gls{mnist} dataset has simplified the overall work for us, and allowing to focus more on the machine learning / dimensionality reduction part of the project. 
+
+
+The group has also considered the Iris dataset --- another introductory dataset ---, however that dataset might have too few data samples ~\cite{mnist-vs-iris}, which is also why the group has chosen to work with \gls{mnist}. As outlined before, there have been done some sort of preprocessing regarding the \gls{mnist}, which further solidified the choice regarding \gls{mnist}.
+
+
+We have in this chapter presented the pipeline, and gave an overview of the different components of the pipeline. With this knowledege we can now move on to the problem statement.
+
+%@misc{mnist-vs-iris,
+% author       = {Matteo Kimura},
+% url          = {https://lamfo-unb.github.io/2019/05/17/Introductory-Datasets/},
+% title        = {Introductory Datasets},
+% urldate      = {2022-11-15}
+% }
