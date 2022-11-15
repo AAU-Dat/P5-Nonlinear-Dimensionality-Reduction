@@ -61,11 +61,34 @@ Because \gls{mnist} is a set of labeled images, the machine learning problem is 
 
 Several machine learning models are used for image classification in general, and \gls{mnist} in particular~\cite{lecun-mnist-database,IBM-computer-vision,convolutional-neural-networks-convnets,multi-column-neural-network-ciregan}.
 
-This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model. It is a relatively understandable model as it has similarities to the \gls{lda} method for dimensionality reduction, and has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}.
+This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model. It is a relatively understandable model as it has similarities to the \gls{lda} method for dimensionality reduction, and has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}. \textbf{HOW DO WE KNOW THIS}
+
+%why is there are the quora link. We need something better than a reddit comment
 % https://www.quora.com/What-is-the-difference-between-SVM-and-linear-discriminant-analysis
 
-
 Additionally, a \gls{cnn} is used to compare the results of the dimensionality reduction methods with a more complex model. It is also used to compare the performance of the dimensionality reduction methods with a model that is not based on linear algebra.
+
+%Provide theory regarding the models
+\subsubection{Support Vector Machine}\label{subsubsec:support-vector-machine}
+\gls{svm} is a model that 
+
+\subsubection{Convolutional Neural Networks}\label{subsubsec:convolutional-neural-networks}
+The \gls{cnn}s are machine learning models that use \gls{nn} to perform image classification. \gls{cnn}s themselves do not need preprocessing, as they themselves learn the features from the images ~\cite{convolutional-neural-networks-google}.
+
+We assume that the reader is familiar with \gls{nn}s, so we will not go into details with those. Instead we will focus more on the peculiarity of \gls{cnn}. According to \ref{someone} \gls{cnn}'s are best suited for image classification. The architecture of the \gls{cnn} can be shown in the figure \ref{fig:convolutional}. As it can be seen, the input and output layers are the same. What is different from a \gls{nn} is that \gls{cnn} have convolutions. The convolution layer isi responsible for determining the output of neurons that are connected to the local regions. Then those coloutions get passed  to the pooling layer, which willl downsample the image to reduce the amount of parameters, while preserving the essence of the local regions of the neurons. The neurons that are in the pooling layer are connected to the fully-connected layers, which behave like normal layers (except that their activation function is ReLu). Those layers are again connected with other layers, whose activation functions determine the probability of a number being one of the ten numbers.
+
+
+The difference between \gls{nn} and \gls{cnn} is that \gls{cnn} see the input as having depth, height and weight.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{convolutional.png}
+\caption{The architecture of a convolutional neural network.}
+\label{fig:convolutional}
+\end{figure}
+
+The \gls{cnn} is a special type of \gls{nn}
+
 
 
 \subsubsection{Multi-class classification}\label{subsubsec:multi-class-classification}
