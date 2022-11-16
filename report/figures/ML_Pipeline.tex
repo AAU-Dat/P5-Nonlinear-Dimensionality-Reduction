@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \node (b) [state] {feature engineering};
+    \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
+    \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
+    \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
+    \node (e) [state, shift={($(b.south)+(4.92cm,-1.5cm)$)}] {parameters};
+
+    \node (o) [shift={($(c.south)+(0cm,0.13cm)$)}] {};
+    \node (p) [shift={($(d.south)+(0cm,0.13cm)$)}] {};
+
+    \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
+    \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
+    \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
+    \draw[arrow, ->] (e) -| node[above,scale=.70,align=center,] {} (o);
+    \draw[arrow, <-] (e) -| node[above,scale=.70,align=center,] {} (p);
+
+    \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
+\end{tikzpicture}
