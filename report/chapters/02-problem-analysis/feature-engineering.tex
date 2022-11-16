@@ -9,74 +9,12 @@
 % One of the goals of the dimensionality reduction methods is to counter the curse of dimensionality.
 % According to Lee~\cite{nonlinear-dim-red-chapter-one}, the curse of dimensionality refers to "the number of data samples requried to estimate a function of several variables to a given accuracy on a given domain grows exponentially with the number of dimensions"~\cite{nonlinear-dim-red-chapter-one}. This means that machine learning models' performance might get affected by the huge amount of data that needs to be given.
 
-% That is not optimal if we know that we can reduce the amount of data without losing too much information. On the contrary, the performance can perhaps be improved, partly because the size of the data gets reduced, and partly because the essence of the data is preserved. Dimensionality reduction will be further discussed in chapter~\ref{cha:theory}.
+% That is not optimal if we know that we can reduce the amount of data without losing too much information. On the contrary, the performance can perhaps be improved, partly because the size of the data gets reduced, and partly because the essence of the data is preserved. Dimensionality reduction will be further discussed in "chapter"~\ref{cha:theory}.
+
 
 \section{Dimensionality reduction}\label{sec:dimensionality-reduction-problem}
+Dimensionality is achieved by reducing the number of features(a feature is some measurable data) in a dataset. This can help to visualize the data, or within a large dataset, describe which data weighs heavier on the expected output of the \gls{ml} model. Time complexity is also a large factor when discussing dimensionality reduction, as stated in \textcquote{Analysis-of-Dimensionality-Reduction-Techniques-on-Big-Data}{Dimensionality reduction techniques can tremendously reduce the time complexity of training phase of ML algorithms hence reducing the burden of the machine learning algorithms.}. This is a large factor when discussing the \gls{ml} model, as the time complexity of the model is a large factor in the overall time complexity of the system. Therefore, when reducing features in a dataset it is important to find the features that are more relevant to the output of the model~\cite{Feature-engineering-zheng}. There are many ways to reduce the dimensionality of a dataset, the different types of dimensionality reduction will be further discussed in Chapter~\ref{cha:theory}.
 
-Dimensionality is achieved by reducing the number of features(dimensions) in a dataset. This for example can help to visualize the data, or within a large dataset, describe which data weighs heavier on the expected output of the \gls{ml} model. Therefore, when reducing features in a dataset it is important to find the features that are more relevant to the output of the model~\cite{Feature-engineering-zheng}. There are many ways to reduce the dimensionality of a dataset, the different types of dimensionality reduction will be further discussed in Chapter~\ref{cha:theory}.
-
-There are many dimensionality reduction methods and is still being researched today~\cite{dimensionality-reduction-cheng}. For example, these methods can improve heuristic models for explaining the data from surveys better through better visualizations, which is a good metric for evaluating surveys, since it improves understanding~\cite{dimensionality-reduction-cheng}.
-
-When discussing which dimensionality reduction method is best it is important to consider what is most important for the method, in~\cite{dimensionality-reduction-maitra} they investigate which method is best for computational graph theory, using known methods in \gls{pca} and \gls{lda} for finding the best model.
-
-In~\cite{dimensionality-reduction-reddy} they compare \gls{pca} and \gls{lda} on which is best on the Cardiotocography dataset with different \gls{ml} methods, and find that \gls{pca} outperforms \gls{lda}. In~\cite{dimensionality-reduction-comparative-review} they compare \gls{pca} with different nonlinear dimensionality reduction methods with artificial and natural datasets. They find that nonlinear methods perform well on artificial datasets, but not on natural datasets, as \gls{pca} does.
-
-There are many methods and uses, so we will categorize dimensionality reduction into two general categories in the following section. Linear and nonlinear dimensionality reduction.
+There are many dimensionality reduction methods and more are still being researched today~\cite{dimensionality-reduction-cheng}. And there are many different uses for these methods. An example of this, could be to improve heuristic models for explaining the data from surveys better, through better visualizations as it helps to improve understanding~\cite{dimensionality-reduction-cheng}. Many more examples exist, but the main point is that dimensionality reduction is a very useful tool in many different fields, and it is a very important part of the \gls{ml} model. We will categorize dimensionality reduction into two general categories in the following section, and discuss them in further detail. Linear and nonlinear dimensionality reduction.
 
 % Forklar hvorfor vi har valgt at fokusere på dimensionalitets reduction 
-
-
-% @book{Feature-engineering-zheng,
-% author = {Zheng, Alice and Casari, Amanda},
-% title = {Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists},
-% year = {2018},
-% isbn = {1491953241},
-% }
-
-% @article{imputation-for-tables-Biessmann,
-%   author  = {Felix Biessmann and Tammo Rukat and Phillipp Schmidt and Prathik Naidu and Sebastian Schelter and Andrey Taptunov and Dustin Lange and David Salinas},
-%   title   = {DataWig: Missing Value Imputation for Tables},
-%   year    = {2019},
-%   url     = {http://jmlr.org/papers/v20/18-753.html}
-% }
-
-% @article{outlier-perez,
-% author = {Perez, Husein and Tah, Joseph H. M.},
-% title = {Improving the Accuracy of Convolutional Neural Networks by Identifying and Removing Outlier Images in Datasets Using t-SNE},
-% year = {2020},
-% url = {https://www.mdpi.com/2227-7390/8/5/662},
-% ISSN = {2227-7390},
-% DOI = {10.3390/math8050662}
-% }
-
-%@book{nonlinear-dim-red-chapter-one,
-% author={Lee, John A. and Verleysen, Michel},
-% title={High-Dimensional Data},
-% bookTitle={Nonlinear Dimensionality Reduction},
-% year={2007},
-% isbn={978-0-387-39351-3},
-% doi={10.1007/978-0-387-39351-3_1},
-% url={https://doi.org/10.1007/978-0-387-39351-3_1}
-% }
-
-
-% @article{dimensionality-reduction-reddy,
-%   author={Reddy, G. Thippa and Reddy, M. Praveen Kumar and Lakshmanna, Kuruva and Kaluri, Rajesh and Rajput, Dharmendra Singh and Srivastava, Gautam and Baker, Thar},
-%   journal={IEEE Access}, 
-%   title={Analysis of Dimensionality Reduction Techniques on Big Data}, 
-%   year={2020},
-%   doi={10.1109/ACCESS.2020.2980942}}
-
-% @article{dimensionality-reduction-cheng,
-% author = {Cheng, Zhun and Lu, Zhixiong},
-% year = {2018},
-% title = {A Novel Efficient Feature Dimensionality Reduction Method and Its Application in Engineering},
-% journal = {Complexity},
-% doi = {10.1155/2018/2879640}
-% }
-
-% @article{dimensionality-reduction-maitra,
-%   author={Maitra, Shithi and Hossain, Tonmoy and Hasib, Khan Md. and Shishir, Fairuz Shadmani},
-%   title={Graph Theory for Dimensionality Reduction: A Case Study to Prognosticate Parkinson's}, 
-%   year={2020},
-%   doi={10.1109/IEMCON51383.2020.9284926}}
