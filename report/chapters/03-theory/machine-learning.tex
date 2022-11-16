@@ -1,3 +1,4 @@
+\newcommand{relu}{ReLU}{Rectified Linear Unit}
 \section{Machine Learning}\label{sec:machine-learning}
 To determine the relevant dimensionality reduction methods to compare for the project, it is necessary to understand the basics of machine learning. This section describes the basics of machine learning and the different types of machine learning problems.
 
@@ -61,34 +62,12 @@ Because \gls{mnist} is a set of labeled images, the machine learning problem is 
 
 Several machine learning models are used for image classification in general, and \gls{mnist} in particular~\cite{lecun-mnist-database,IBM-computer-vision,convolutional-neural-networks-convnets,multi-column-neural-network-ciregan}.
 
-This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model. It is a relatively understandable model as it has similarities to the \gls{lda} method for dimensionality reduction, and has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}. \textbf{HOW DO WE KNOW THIS}
+This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model. It is a relatively understandable model as it has similarities to the \gls{lda} method for dimensionality reduction \todo{perhaps better not to write this}, and has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}.
 
-%why is there are the quora link. We need something better than a reddit comment
+%why is there are the quora link. We need something better than a mediocre comment - Ray 
 % https://www.quora.com/What-is-the-difference-between-SVM-and-linear-discriminant-analysis
 
-Additionally, a \gls{cnn} is used to compare the results of the dimensionality reduction methods with a more complex model. It is also used to compare the performance of the dimensionality reduction methods with a model that is not based on linear algebra.
-
-%Provide theory regarding the models
-\subsubection{Support Vector Machine}\label{subsubsec:support-vector-machine}
-\gls{svm} is a model that 
-
-\subsubection{Convolutional Neural Networks}\label{subsubsec:convolutional-neural-networks}
-The \gls{cnn}s are machine learning models that use \gls{nn} to perform image classification. \gls{cnn}s themselves do not need preprocessing, as they themselves learn the features from the images ~\cite{convolutional-neural-networks-google}.
-
-We assume that the reader is familiar with \gls{nn}s, so we will not go into details with those. Instead we will focus more on the peculiarity of \gls{cnn}. According to \ref{someone} \gls{cnn}'s are best suited for image classification. The architecture of the \gls{cnn} can be shown in the figure \ref{fig:convolutional}. As it can be seen, the input and output layers are the same. What is different from a \gls{nn} is that \gls{cnn} have convolutions. The convolution layer isi responsible for determining the output of neurons that are connected to the local regions. Then those coloutions get passed  to the pooling layer, which willl downsample the image to reduce the amount of parameters, while preserving the essence of the local regions of the neurons. The neurons that are in the pooling layer are connected to the fully-connected layers, which behave like normal layers (except that their activation function is ReLu). Those layers are again connected with other layers, whose activation functions determine the probability of a number being one of the ten numbers.
-
-
-The difference between \gls{nn} and \gls{cnn} is that \gls{cnn} see the input as having depth, height and weight.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{convolutional.png}
-\caption{The architecture of a convolutional neural network.}
-\label{fig:convolutional}
-\end{figure}
-
-The \gls{cnn} is a special type of \gls{nn}
-
+Additionally, a \gls{cnn} is used to compare the results of the dimensionality reduction methods with a more complex model. It is also used to compare the performance of the dimensionality reduction methods with a model that is not based on linear algebra. We will present what multi-class classification is, then explain how \gls{svm} and \gls{cnn} work.
 
 
 \subsubsection{Multi-class classification}\label{subsubsec:multi-class-classification}
@@ -100,5 +79,79 @@ The \gls{mnist} dataset presents a multi-class classification problem, as the im
 
 \gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}. The \gls{svm} model is chosen because it is a relatively simple model, and thus \gls{ova} is chosen as it is faster than \gls{ovo}.
 
+
+\subsubection{Support Vector Machine}\label{subsubsec:support-vector-machine}
+\gls{svm} is a supervised learning model that classifies data by finding a hyperplane that separates the data classes ~\cite{faster-svm}. \gls{svm} in particular tries to find that hyperplane by maximizing the distance between the hyperplane and the closest data poinst ~\cite{faster-svm}. An interesting property of \gsl{svm} is that it has as parameter a kernel function, which can be tuned whether the data the data is linearly separable or not ~\cite{faster-svm}. The kernel function that \gls{svm} shares resemblance to the wya \gls{kpca} works, as it is also uses a kernel function.
+
+
+\gls{svm} can be used for bianry- and multi-class classification, but as presented in section \ref{subsec:machine-learning-models} we will use SVM as a multi-class classification tool. We have presented that \gls{svm} can use kernels as paramaters. Choosing the right parameters for the \gls{svm} model might have a major impact on the results, and for models in general. More about hyperparameters can be found in section \ref{sec:hyperparam}.
+
+
+\subsubection{Convolutional Neural Networks}\label{subsubsec:convolutional-neural-networks}
+We assume that the reader is familiar with \gls{nn}s. The \gls{cnn}s are a specialized form of \gls{nn} that are mostly used for pattern recognition in images ~\cite{introduction-to-cnn}. The reason we chose to work with \gls{cnn} is because, while normal \gls{nn}s are able to solve the classification problem regarding \gls{mnist}, they might not be as powerful as \gls{cnn}. The robustness of the \gls{cnn} can be shown in the sources ~\cite{lecun-mnist-database}, and  ~\cite{mnist-classification-benchmark}, where \gls{cnn}s are depicted as being 'state-of-the-art' machine learning models. In our project it might not make a major difference, but using a \gls{cnn} can be better suited for image classifcation, as presented. Furthermore, according to Keiron et al.\ ~\cite{introduction-to-cnn}, \gls{nn}s are more prone to overfitting due to the layers being fully-connected, which increases the number of parameters, thereby increasing the complexity of the model. Another reason is the practicality / scalability of the model, as Keiron highlighted in his report. In our project we are using the \gls{mnist} dataset, which consists of $28 \times 28$ monochrome pixels, which is relatively simple, compared to the real-world images which can be bigger, and have more channels / colors.
+
+
+The difference between \gls{nn} and \gls{cnn} is the among others the architectural blueprint. In \gls{cnn} neurons also have another property: the neurons are arranged in three dimensions: \textcquote{introduction-to-cnn}{the spatial dimensionality of the input(\textbf{height} and the \textbf{width}), and the \textbf{depth}}. The spatial dimensionality is the pixels, and the depth is 1, since \gls{mnist} is monochrome.
+
+
+\gls{cnn}'s architecture constitutes three different types of layers: convolutional layers, pooling layers, and fully-connected layers. The convolutional layers \textcquote{introduction-to-cnn}{will determine the output of neurons of which are connected to local regions of the input}, which is also called a convolution. The pooling layers reduce the number of parameters in the previous layers. The fully-connected layers act as normal \gls{nn} layers ~\cite{introduction-to-cnn}. The fully-connected layer neurons are connected to all the neurons in the previous layer.
+
+
+A convolution, as described, acts as a filter which maps the input to an output matrix $conv$ of size $n \times n$. The mapping is done by the elementwise-multiplication of the input matrix with the $conv$ matrix. For each convolution operation \gls{relu} is applied to the operation, where \gls{relu} is a function which takes the maximum value between 0 and the input~\cite{google-cnn}.
+
+
+In the pooling layer acts like a convolution, but this time filters the $conv$ matrix with a $pool$ matrix of size $n \times n$. One method which has been presented in source is the use of max pooling; in $conv$ the elementwise multiplication is applied, whereas in max pooling the element with the highest number in the respective matrix is chosen ~\cite{google-cnn}. The pooling layer can be seen as a dimensionality reduction method, because it reduces the data while preserving the original features.
+
+
+The last layer is the fully-connected layer, which is connected to all the neurons from the pooling layer. According to Keiron ~\cite{introduction-to-cnn}, the activation function \gls{relu} might be suited to be used in this layer too.
+
 \subsection{Model training}\label{subsec:model-training}
 The theory deciding the cross validation methods is described in Chapter~\ref{cha:theory}.
+
+
+% @misc{faster-svm,
+%   doi = {10.48550/ARXIV.1808.06394},
+  
+%   url = {https://arxiv.org/abs/1808.06394},
+  
+%   author = {Schlag, Sebastian and Schmitt, Matthias and Schulz, Christian},
+  
+%   title = {Faster Support Vector Machines},
+  
+%   publisher = {arXiv},
+  
+%   year = {2018},
+  
+%   copyright = {arXiv.org perpetual, non-exclusive license}
+% }
+
+
+% @misc{introduction-to-cnn,
+%   doi = {10.48550/ARXIV.1511.08458},
+  
+%   url = {https://arxiv.org/abs/1511.08458},
+  
+%   author = {O'Shea, Keiron and Nash, Ryan},
+  
+%   title = {An Introduction to Convolutional Neural Networks},
+  
+%   publisher = {arXiv},
+  
+%   year = {2015},
+  
+%   copyright = {arXiv.org perpetual, non-exclusive license}
+% }
+
+
+% @misc{mnist-classification-benchmark,
+%     url = {https://paperswithcode.com/sota/image-classification-on-mnist},
+%     title = {Image Classifcation onf MNIST},
+%     year = {2022}
+% }
+
+% @misc{google-cnn,
+%     organization = {Google},
+%     url = {https://developers.google.com/machine-learning/practica/image-classification/convolutional-neural-networks},
+%     title = {ML Practicum: Image Classification},
+%     year = {2022}
+% }
