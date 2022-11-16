@@ -1,0 +1,8 @@
+\section{Normalization}\label{sec:normalization}
+Scaling, also called feature normalization, is the process of transforming the data into a form that is more suitable for the \gls{ml} model. This is done by changing the range of the data, for example, if the data is in the range of 0-100, it can be scaled to be in the range of 0-1. This is done to make the data more suitable for the model, and to make it easier to compare the data. Scaling is also a standard practice in most machine learning problems. There are many ways to scale the data, one way is to use the min-max scaler, another way is to use variance scaling~\cite{Feature-engineering-zheng}.
+\subsection{Min-max scaler}
+The min-max scaler is a simple way to scale the data. It scales the data to be in the range of 0-1. The formula for the min-max scaler is:
+\begin{equation}
+    x_{scaled} = \frac{x - x_{min}}{x_{max} - x_{min}}
+\end{equation}
+where $x$ is the original value, $x_{scaled}$ is the scaled value, $x_{min}$ is the minimum value in the data, and $x_{max}$ is the maximum value in the data. The min-max scaler is a simple way to scale the data, but it is not robust to outliers. If there are outliers in the data, the min-max scaler will scale the data to be in the range of 0-1, but the outliers will be scaled to be very close to 0 or 1. This can be a problem if the outliers are important to the model. The min-max scaler is also sensitive to the presence of zeros in the data. If there are zeros in the data, the min-max scaler will scale the data to be in the range of 0-1, but the zeros will be scaled to be 0. This can be a problem if the zeros are important to the model. 
