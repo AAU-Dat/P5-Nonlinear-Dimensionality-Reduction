@@ -1,39 +1,26 @@
 \section{Machine learning}\label{sec:machine-learning}
+
 Figure~\ref{fig:basic-machine-learning-pipeline} illustrates a general \gls{ml} pipeline.
 
-To compare and contrast linear and nonlinear methods through the lens of a model Efficiently the use of a pipeline is needed. A brief Introduction to pipelines, there use and how to introduce dimensionality reduction to them the purpose of this section.
+To compare and contrast linear and nonlinear methods through the lens of a model efficiently, the use of a pipeline is needed. In this section there will be a brief Introduction to pipelines, their use, and how to introduce dimensionality reduction to them.
 
-A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First stem is the data step which essentially is the collection of data. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
-
+A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First step is the data step, which essentially is the collection of data. The \gls{fe} step is used to transform the data, into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step, is used to train the \gls{ml} model on the data. The model evaluation step, is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
 
 \begin{figure}[htb!]
     \centering
-    \begin{tikzpicture}
-        \node (b) [state] {feature engineering};
-        \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
-        \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
-        \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
-        \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
-
-        \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
-        \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
-        \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
-        \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
-
-        \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
-        \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
-    \end{tikzpicture}
+        \input{figures/ML_Pipeline.tex}
     \caption{Simplified machine learning pipeline}
     \label{fig:basic-machine-learning-pipeline}
-\end{figure}
+ \end{figure}
 
-The \gls{fe} step is where Dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model is then evaluated to see if they can be tuned for better results. This tuning is generraly refered to as hyperparameter tuning. What the best hyper parameter tuning is depends on the data. This leads to the last decision before the problem statement, The choice of data.
+The \gls{fe} step is where dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model, is then evaluated to see if they can be tuned for better results. This tuning is generally refered to, as hyper parameter tuning. What the best hyper parameter tuning is, depends on the data. This leads to the last decision before the problem statement, the choice of data.
 
 \section*{Data}
 
-We have chosen to work with mnist which is descibed by its creators as
-"The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image."
+A decision has been made to work with the mnist dataset, which is descibed by its creators as:
 
-Its chosen because it has real worlds uses inside of text recognition. Another reason its chosen is because its tried and true, so we can compare our results to other similar projects for better discussion of results. Its relative simplicity is also an asset because the effects of Dimensionality is more visible. But his simplicity might also be too regular to show the contrast between linear and nonlinear so it will be aumented a controlled manner.These augments will be described in detail in the theori section.
+"The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image."\cite{lecun-mnist-database}
+
+The MNIST dataset, has been chosen because it has real world use, inside of text recognition. Another reason it is chosen is because it is tried and true, so results can be compared to other similar projects for better discussion of results. Its relative simplicity is also an asset, because the effects of dimensionality are more visible. But this simplicity might also be too regular to show the contrast between linear and nonlinear so it will be augmented a controlled manner. These augments will be described in detail in the theory section. \todo{Add text to describe why linear vs nonlinear would work in this dataset.}
 
 This combination of linear vs nonlinear, a pipeline and the mnist dataset leads to the problemstatement.
