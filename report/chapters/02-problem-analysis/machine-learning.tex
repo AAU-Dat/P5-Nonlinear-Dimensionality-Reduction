@@ -1,33 +1,19 @@
 \section{Machine learning}\label{sec:machine-learning}
+
 Figure~\ref{fig:basic-machine-learning-pipeline} illustrates a general \gls{ml} pipeline.
 
-To compare and contrast linear and nonlinear methods through the lens of a model Efficiently the use of a pipeline is needed. A brief Introduction to pipelines, there use and how to introduce dimensionality reduction to them the purpose of this section.
+To compare and contrast linear and nonlinear methods through the lens of a model efficiently, the use of a pipeline is needed. In this section there will be a brief Introduction to pipelines, their use, and how to introduce dimensionality reduction to them.
 
-A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First stem is the data step which essentially is the collection of data. The \gls{fe} step is used to transform the data into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step is used to train the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
-
+A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First step is the data step, which essentially is the collection of data. The \gls{fe} step is used to transform the data, into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step, is used to train the \gls{ml} model on the data. The model evaluation step, is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. \todo[inline]{Add text on the data step}
 
 \begin{figure}[htb!]
     \centering
-    \begin{tikzpicture}
-        \node (b) [state] {feature engineering};
-        \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
-        \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
-        \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
-        \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
-
-        \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
-        \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
-        \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
-        \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
-
-        \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
-        \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
-    \end{tikzpicture}
+        \input{figures/ML_Pipeline.tex}
     \caption{Simplified machine learning pipeline}
     \label{fig:basic-machine-learning-pipeline}
-\end{figure}
+ \end{figure}
 
-The \gls{fe} step is where Dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model is then evaluated to see if they can be tuned for better results. This tuning is generraly refered to as hyperparameter tuning. What the best hyper parameter tuning is depends on the data. This leads to the last decision before the problem statement, The choice of data.
+The \gls{fe} step is where dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model, is then evaluated to see if they can be tuned for better results. This tuning is generally refered to, as hyper parameter tuning. What the best hyper parameter tuning is, depends on the data. This leads to the last decision before the problem statement, the choice of data.
 
 \section{Data}\label{sec:data}
 We have chosen to work with \gls{mnist}, which is descibed by its creators as
@@ -43,11 +29,5 @@ Another reason is because there are many projects, which revolve around recogniz
 The group has also considered the Iris dataset, another introductory dataset, however that dataset might have too few data samples ~\cite{mnist-vs-iris}, which is also why the group has chosen to work with \gls{mnist}. As outlined before, there have been done some sort of preprocessing regarding the \gls{mnist}, which further solidified the choice regarding \gls{mnist}.
 
 
-We have in this chapter presented the pipeline, and gave an overview of the different components of the pipeline. With this knowledege we can now move on to the problem statement.
+We have in this chapter presented the pipeline, and gave an overview of the different components of the pipeline. With this knowledege we can now move on to the problem statement. \todo{Add text to describe why linear vs nonlinear would work in this dataset.}
 
-%@misc{mnist-vs-iris,
-% author       = {Matteo Kimura},
-% url          = {https://lamfo-unb.github.io/2019/05/17/Introductory-Datasets/},
-% title        = {Introductory Datasets},
-% urldate      = {2022-11-15}
-% }
