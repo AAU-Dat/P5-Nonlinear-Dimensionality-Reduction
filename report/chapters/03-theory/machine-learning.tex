@@ -1,4 +1,5 @@
-\newcommand{relu}{ReLU}{Rectified Linear Unit}
+\newacronym{relu}{ReLU}{Rectified Linear Unit}
+
 \section{Machine Learning}\label{sec:machine-learning}
 To determine the relevant dimensionality reduction methods to compare for the project, it is necessary to understand the basics of machine learning. This section describes the basics of machine learning and the different types of machine learning problems.
 
@@ -80,14 +81,14 @@ The \gls{mnist} dataset presents a multi-class classification problem, as the im
 \gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}. The \gls{svm} model is chosen because it is a relatively simple model, and thus \gls{ova} is chosen as it is faster than \gls{ovo}.
 
 
-\subsubection{Support Vector Machine}\label{subsubsec:support-vector-machine}
-\gls{svm} is a supervised learning model that classifies data by finding a hyperplane that separates the data classes ~\cite{faster-svm}. \gls{svm} in particular tries to find that hyperplane by maximizing the distance between the hyperplane and the closest data poinst ~\cite{faster-svm}. An interesting property of \gsl{svm} is that it has as parameter a kernel function, which can be tuned whether the data the data is linearly separable or not ~\cite{faster-svm}. The kernel function that \gls{svm} shares resemblance to the wya \gls{kpca} works, as it is also uses a kernel function.
+\subsubsection{Support Vector Machine}\label{subsubsec:support-vector-machine}
+\gls{svm} is a supervised learning model that classifies data by finding a hyperplane that separates the data classes~\cite{faster-svm}. \gls{svm} in particular tries to find that hyperplane by maximizing the distance between the hyperplane and the closest data poinst~\cite{faster-svm}. An interesting property of \gls{svm} is that it has as parameter a kernel function, which can be tuned whether the data the data is linearly separable or not~\cite{faster-svm}. The kernel function that \gls{svm} shares resemblance to the wya \gls{kpca} works, as it is also uses a kernel function.
 
 
-\gls{svm} can be used for bianry- and multi-class classification, but as presented in section \ref{subsec:machine-learning-models} we will use SVM as a multi-class classification tool. We have presented that \gls{svm} can use kernels as paramaters. Choosing the right parameters for the \gls{svm} model might have a major impact on the results, and for models in general. More about hyperparameters can be found in section \ref{sec:hyperparam}.
+\gls{svm} can be used for bianry- and multi-class classification, but as presented in section \ref{subsec:machine-learning-models} we will use SVM as a multi-class classification tool. We have presented that \gls{svm} can use kernels as paramaters. Choosing the right parameters for the \gls{svm} model might have a major impact on the results, and for models in general. More about hyperparameters can be found in Section \ref{sec:hyperparam}.
 
 
-\subsubection{Convolutional Neural Networks}\label{subsubsec:convolutional-neural-networks}
+\subsubsection{Convolutional Neural Networks}\label{subsubsec:convolutional-neural-networks}
 We assume that the reader is familiar with \gls{nn}s. The \gls{cnn}s are a specialized form of \gls{nn} that are mostly used for pattern recognition in images ~\cite{introduction-to-cnn}. The reason we chose to work with \gls{cnn} is because, while normal \gls{nn}s are able to solve the classification problem regarding \gls{mnist}, they might not be as powerful as \gls{cnn}. The robustness of the \gls{cnn} can be shown in the sources ~\cite{lecun-mnist-database}, and  ~\cite{mnist-classification-benchmark}, where \gls{cnn}s are depicted as being 'state-of-the-art' machine learning models. In our project it might not make a major difference, but using a \gls{cnn} can be better suited for image classifcation, as presented. Furthermore, according to Keiron et al.\ ~\cite{introduction-to-cnn}, \gls{nn}s are more prone to overfitting due to the layers being fully-connected, which increases the number of parameters, thereby increasing the complexity of the model. Another reason is the practicality / scalability of the model, as Keiron highlighted in his report. In our project we are using the \gls{mnist} dataset, which consists of $28 \times 28$ monochrome pixels, which is relatively simple, compared to the real-world images which can be bigger, and have more channels / colors.
 
 
@@ -103,7 +104,7 @@ A convolution, as described, acts as a filter which maps the input to an output 
 In the pooling layer acts like a convolution, but this time filters the $conv$ matrix with a $pool$ matrix of size $n \times n$. One method which has been presented in source is the use of max pooling; in $conv$ the elementwise multiplication is applied, whereas in max pooling the element with the highest number in the respective matrix is chosen ~\cite{google-cnn}. The pooling layer can be seen as a dimensionality reduction method, because it reduces the data while preserving the original features.
 
 
-The last layer is the fully-connected layer, which is connected to all the neurons from the pooling layer. According to Keiron ~\cite{introduction-to-cnn}, the activation function \gls{relu} might be suited to be used in this layer too.
+The last layer is the fully-connected layer, which is connected to all the neurons from the pooling layer. According to Keiron ~\cite{introduction-to-cnn}, the activation function \gls{relu} might be suited to be used in this layer too~\cite{lecun-mnist-database}.
 
 \subsection{Model training}\label{subsec:model-training}
 The theory deciding the cross validation methods is described in Chapter~\ref{cha:theory}.
