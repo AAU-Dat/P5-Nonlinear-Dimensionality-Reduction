@@ -2,11 +2,47 @@
 In this section, the theory of preprocessing and what effects it has on the \gls{ml} model is discussed. 
 
 %What is preproccessing?
+%What effects does it have on the model/data?
 %Why do we need it?
 %What are the steps?
 %What are the tools?
 %What are the results?
 
-\subsection{What is preproccessing?}
+\subsection{Definition of preproccessing}\label{subsec:preprocessing-definition}
+The proper definition of preproccessing or data preparation, varies depending on the source. The definition that will be used in this report, is given as:
+\textcquote{doi:10.1080/713827180}{Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.}
+From this, it can be gathered that preproccessing is a broad term, which can be divided into several subcategories, whith multiple steps, these subcategories will be further explained in the following sections, for now it is only relevant to know that they exist. 
+
+\subsection{Reasons for preproccessing}
+As stated in the definition, preproccessing used to yield quality data. The importance of this, stems from the fact that real world data, is not always clean or complete. Meaning that there will be a lot of noise, which is data that either contains errors or outliers. This noise can be removed by preproccessing, which creates a more accurate and smaller dataset. This then reduces the amount of data that the model is trained on, but the data it is trained on, should be more accurate, which then trains the model more accurately and efficiently \cite{doi:10.1080/713827180}. \todo{double check source to ensure that it is correct}
+
+\subsection{Steps of preproccessing}
+As mentiond in \ref{subsec:preprocessing-definition}, preproccessing can be divided into several subcategories. 
 
 %https://ieeexplore.ieee.org/abstract/document/8731532?casa_token=EW3PU5gvvxkAAAAA:CNNgh7iVpxbmi0esT4YnDvQB9kQaDTaEQvWb7-gtuRk2v0I02o-Bl7kUWeifw5Ijdvj85HnT
+
+
+%https://www.sciencedirect.com/science/article/abs/pii/S0950584915001275?casa_token=M3v4cwhOtKMAAAAA:Gic6YGmpyVXY1Nv0QlSHDmE4HDzVjJBC6UZTHnqafJ-nVkTFk5ieTiot-DkDrCXasYUxDhUcjQ
+    %Found that many studies use 0-1 normalization, but without any explanation of why they do it.
+
+
+% @article{doi:10.1080/713827180,
+%     author = { Shichao   Zhang  and  Chengqi   Zhang  and  Qiang   Yang },
+%     title = {Data preparation for data mining},
+%     journal = {Applied Artificial Intelligence},
+%     volume = {17},
+%     number = {5-6},
+%     pages = {375-381},
+%     year  = {2003},
+%     publisher = {Taylor & Francis},
+%     doi = {10.1080/713827180},
+%     URL = {https://doi.org/10.1080/713827180},
+%     eprint = {https://doi.org/10.1080/713827180}
+% }
+    %Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.
+    %We want data preprocessing, due to real world data being incomplete, noisy, and inconsistent.
+    %Generates a smaller dataset to work with, which makes it more efficient for datamining.
+
+
+%https://www.frontiersin.org/articles/10.3389/fbioe.2020.00260/full
+    %Data preprocessing subcategories: (1) Ground reaction force (GRF) filtering, (2) time derivative, (3) time normalization, (4) data reduction, (5) weight normalization, and (6) data scaling.
