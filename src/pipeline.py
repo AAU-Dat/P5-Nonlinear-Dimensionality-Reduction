@@ -6,7 +6,7 @@ from load_mnist import load_mnist
 
 def main():
     load_mnist()
-    hyperparameters = {
+    pca_hyperparameters = {
         "pca__n_components": [2, 50, 100, 0.95],
         "pca__whiten": [True, False],
         "classifier__estimator__C": [0.01, 0.1, 1, 10],
@@ -20,7 +20,7 @@ def main():
     y_test = idx2numpy.convert_from_file('src/mnist_data/test_file_label')
 
     # Only use 400 samples to speed up the process. Change to full size for final run
-    pca_results(X[:400], y[:400], X_test, y_test, hyperparameters)
+    pca_results(X[:400], y[:400], X_test, y_test, pca_hyperparameters)
 
 
 #     # load the data
