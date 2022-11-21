@@ -22,6 +22,7 @@ def pca_results(X, y, X_test, y_test, hyperparameters):
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
+                          verbose=2,
                           n_jobs=-1)
 
     search.fit(X, y)
