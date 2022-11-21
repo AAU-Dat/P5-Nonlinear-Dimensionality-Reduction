@@ -11,13 +11,37 @@ In this section, the theory of preprocessing and what effects it has on the \gls
 \subsection{Definition of preproccessing}\label{subsec:preprocessing-definition}
 The proper definition of preproccessing or data preparation, varies depending on the source. The definition that will be used in this report, is given as:
 \textcquote{doi:10.1080/713827180}{Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.}
-From this, it can be gathered that preproccessing is a broad term, which can be divided into several subcategories, whith multiple steps, these subcategories will be further explained in the following sections, for now it is only relevant to know that they exist. 
+From this, it can be gathered that preproccessing is a broad term, which can be divided into several subcategories, with multiple steps, these subcategories will be further explained in the following sections, for now it is only relevant to know that they exist. 
 
 \subsection{Reasons for preproccessing}
-As stated in the definition, preproccessing used to yield quality data. The importance of this, stems from the fact that real world data, is not always clean or complete. Meaning that there will be a lot of noise, which is data that either contains errors or outliers. This noise can be removed by preproccessing, which creates a more accurate and smaller dataset. This then reduces the amount of data that the model is trained on, but the data it is trained on, should be more accurate, which then trains the model more accurately and efficiently \cite{doi:10.1080/713827180}. \todo{double check source to ensure that it is correct}
+As stated in the definition, preproccessing is used to yield quality data. The importance of this, stems from the fact that real world data, is not always clean or complete. Meaning that there will be a lot of noise, which is data that either contains errors or outliers. This noise can be removed by preproccessing, which creates a more accurate, higher quality, and smaller dataset, to gather information from. This results in a reduced amount of data that the model is trained on, but the data it is trained on, should be more accurate, which should then train the model more accurately and efficiently \cite{doi:10.1080/713827180}.
 
 \subsection{Steps of preproccessing}
-As mentiond in \ref{subsec:preprocessing-definition}, preproccessing can be divided into several subcategories. 
+As mentiond in \ref{subsec:preprocessing-definition}, there can be several different approaches to preproccessing. 
+
+\subsection{Steps of preproccessing}
+The amount of preproccessing, depends on what is needed, and what is available. An example of how these steps could be used, can be seen in the report \cite{Data-preprocessing-for-flight-delays}. Where they start by cleaning data, then transform it, then reduce it, and finally balance it. For this section, the theory of the steps that are used in this report, will be explained.
+
+\subsubsection{Reshape}
+The data, when loaded in at first, is shaped as a long array of 47.040.000 integers, that represent the values of the pixels, and then another integer, that represents what number the image is. The images, are to be thought of as a 28x28 matrix, meaning that the first 784 integers, represent the first image, and the next 784 integers represent the second image. Working with the data in this format, proved difficult and confusing, as it was hard to keep track of what image was being worked on. Because of this, it was decided to reshape the data, to make it easier to understand.
+The data is reshaped to 
+%Explain why this is needed, for other reasons than just making it easier to understand.
+%Does scikit methods need it to be in this format?
+
+%Reshape
+%normalize/Scale - StandardScaler
+    %Look at others
+
+
+
+%focus on cleaning or dim reduction
+%Is augmentation a part of preproccessing?
+%What is the difference between cleaning and dim reduction?
+%Transforming data to fit our current needs
+%
+
+
+
 
 %https://ieeexplore.ieee.org/abstract/document/8731532?casa_token=EW3PU5gvvxkAAAAA:CNNgh7iVpxbmi0esT4YnDvQB9kQaDTaEQvWb7-gtuRk2v0I02o-Bl7kUWeifw5Ijdvj85HnT
 
@@ -39,10 +63,27 @@ As mentiond in \ref{subsec:preprocessing-definition}, preproccessing can be divi
 %     URL = {https://doi.org/10.1080/713827180},
 %     eprint = {https://doi.org/10.1080/713827180}
 % }
-    %Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.
+
+% @INPROCEEDINGS{Data-preprocessing-for-flight-delays,
+%     author={Moreira, Leonardo and Dantas, Christofer and Oliveira, Leonardo and Soares, Jorge and Ogasawara, Eduardo},  booktitle={2018 International Joint Conference on Neural Networks (IJCNN)},   title={On Evaluating Data Preprocessing Methods for Machine Learning Models for Flight Delays},
+%     year={2018},
+%     volume={},
+%     number={},
+%     pages={1-8},
+%     doi={10.1109/IJCNN.2018.8489294},
+%     URL={https://ieeexplore.ieee.org/abstract/document/8489294?casa_token=eXy2qeCl6XAAAAAA:vMR1nA7DhkX5TxrkFLt3_Clq95PCNK9HnVANug_W6mDKCk8s2WLz9HLfjKrE4Y6GRVqHbwHo}
+% }
+
+
+%Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.
     %We want data preprocessing, due to real world data being incomplete, noisy, and inconsistent.
     %Generates a smaller dataset to work with, which makes it more efficient for datamining.
 
 
 %https://www.frontiersin.org/articles/10.3389/fbioe.2020.00260/full
     %Data preprocessing subcategories: (1) Ground reaction force (GRF) filtering, (2) time derivative, (3) time normalization, (4) data reduction, (5) weight normalization, and (6) data scaling.
+
+%https://praveenkds.medium.com/data-preparation-for-machine-learning-data-cleaning-data-transformation-data-reduction-c4c86c4471a1
+    %Data cleaning: removing noise, outliers, and missing values.
+    %Data transformation: scaling, normalization, and discretization.
+    %Data reduction: feature selection and feature extraction.
