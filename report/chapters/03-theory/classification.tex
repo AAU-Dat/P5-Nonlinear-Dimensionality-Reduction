@@ -1,6 +1,18 @@
 \section{Classification}\label{sec:classification}
-%What is classification
-Classification is a \gls{ml} task where the goal is to predict a class label for a given input. The class label is a discrete value, such as a number or a string. The input can be a single value, such as a number or a string, or a vector of values, such as a list of numbers or a list of strings. The input can also be a matrix of values, such as a grayscale image or a color image. The input can also be a list of matrices, such as a list of grayscale images or a list of color images. The input can also be a list of lists of matrices, such as a list of lists of grayscale images or a list of lists of color images.
+%What is classification?
+In \gls{ml} classification is used when a quantitative answer is not required. Instead, the goal is to classify the input into one of a set of categories, set in the data-set.As long as the data-set support supervised-learning, classification can be applied to it.  
+
+This is done by training a model on a set of labeled data, and then using the model to predict the category of new, unlabeled data. 
+
+This means that the training data consists of input and class label pairs. The input can be a single value, such as a number or a string, or a vector of values, such as a list of numbers or a list of strings. The input can also be a matrix of values, such as a grayscale image or a color image. The class label is a discrete value, such as a number or a string. 
+
+The model is trained to minimize the error between the predicted class label and the actual class label. The error is calculated by comparing the predicted class label with the actual class label. 
+
+The model is trained by finding the best parameters for the model, such as the weights of a neural network or parameters in models, such as Support Vector Machines. These parameters are then used to predict the category of new data. The process of finding the best parameters is called Hyperparameter optimization, this will be discussed further in Section~\ref{sec:hyperparam}.
+
+In classification there is two types of classification, binary classification and multi-class classification. Binary classification is the classification of two classes, while multi-class classification is the classification of more than two classes. The \gls{mnist} dataset, which is used in this project, presents a multi-class classification problem, as the images can represent any of the 10 digits. The \gls{svm} model however is a binary classification model, and thus has to be adapted to the multi-class classification problem. There are two approaches to this problem: \gls{ovo} and \gls{ova}.
+
+
 %hvordan classificerer man
 
 %hvad er multi-class classification
@@ -22,4 +34,5 @@ Classification is a \gls{ml} task where the goal is to predict a class label for
 
 
 %not used yet
-%The \gls{mnist} dataset presents a multi-class classification problem, as the images can represent any of the 10 digits. The \gls{svm} model however is a binary classification model, and thus has to be adapted to the multi-class classification problem. There are two approaches to this problem: \gls{ovo} and \gls{ova}.
+
+%in {james-statistical-learning} use this as link instead https://hastie.su.domains/ISLR2/ISLRv2_website.pdf
