@@ -44,10 +44,10 @@ The \texttt{data} box in figure \ref{fig:machine-learning-pipeline}, represents 
 %The training set is used to train the model to predict the output with highest possible accuracy. The validation set is used to evaluate the model, and may use cross validation to get a more accurate evaluation that avoids overfitting. The model depends on the type of machine learning problem.
 
 \subsubsection{Evaluation}\label{subsubsec:machine-learning-pipeline-evaluation}
-\texttt{Evaluation} represents the step where the model is evaluated. The evaluation is done by comparing the predictions of the model with the actual values. The evaluation is done on the validation set. The evaluation is done by using metrics such as accuracy, precision, recall, F1 score, etc. The evaluation is done to determine the performance of the model and to determine if the model is overfitting or underfitting.
+\texttt{Evaluation} represents the step where the model is evaluated. The evaluation is done by comparing the predictions of the model with the actual values. The evaluation is done on the validation set, this step can be repeated multiple times~\cite{machine-learning-pipeline-architecture}. This is done by using metrics such as accuracy, precision, recall, and F1 score. This helps to provide information regarding the performance of the model~\cite{performance-evaluation}.
 
 \subsubsection{Parameters}\label{subsubsec:machine-learning-pipeline-parameters}
-\texttt{Parameters} represents the hyperparameters of the machine learning model. These parameters are set before training the model. The hyperparameters are usually set by the user, but can also be set by the machine learning model itself. The hyperparameters are usually set by trial and error, but there are also methods to find the best hyperparameters.
+\texttt{Parameters} represents the hyperparameters of the machine learning model. These parameters are set before training the model. The hyperparameters are usually set by the user, but can also be set by the machine learning model itself. The hyperparameters are usually set by humans, through trial and error, and finding good hyperparameters can prove difficult depending on the algorithms used, as some are more sensitive to parameters than others~\cite{lavesson2006quantifying}. \todo{Check source and perhaps rewrite parts of this}
 
 The arrows represent how machine learning models continously learn. The model is trained on the training set, and then evaluated on the validation set. The model is then updated with the new information, and the process is repeated. This is called the training loop. The training loop is repeated until the model converges, or until the model is no longer improving. The model is then evaluated on the test set, and the evaluation is used to determine the performance of the model.
 
@@ -176,4 +176,19 @@ The arrows represent how machine learning models continously learn. The model is
 % url          = {https://www.datarobot.com/blog/the-importance-of-machine-learning-data/},
 % title        = {The importance of machine learning data},
 % urldate      = {2022-11-23}
+% }
+
+% @INPROCEEDINGS{performance-evaluation,
+%   author={Behera, Bichitrananda and Kumaravelan, G. and Kumar B., Prem},
+%   booktitle={2019 11th International Conference on Advanced Computing (ICoAC)}, 
+%   title={Performance Evaluation of Deep Learning Algorithms in Biomedical Document Classification}, 
+%   year={2019},
+%   doi={10.1109/ICoAC48765.2019.246843}
+% }
+
+% @inproceedings{lavesson2006quantifying,
+%   title={Quantifying the impact of learning algorithm parameter tuning},
+%   author={Lavesson, Niklas and Davidsson, Paul},
+%   booktitle={AAAI},
+%   year={2006}
 % }
