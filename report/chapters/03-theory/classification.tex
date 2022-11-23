@@ -1,0 +1,39 @@
+\section{Classification}\label{sec:classification}
+%What is classification?
+When making a model it is not always possible to predict the value of a variable. For example, if we want to predict the price of a house, we can not predict the exact price, but we can predict if the price is high or low. This is called classification. In \gls{ml} classification is used when a quantitative answer is not required, instead, a qualitative answer is satisfying. The goal is to classify the input into one of a set of categories, set in the data set. As long as the data set supports supervised learning, classification can be applied to it. 
+This is done by training a model on a set of labeled data, and then using the model to predict the category of new, unlabeled data. 
+
+This means that the training data consists of input and class label pairs. The input can be a single value, such as a number or a string, or a vector of values, such as a list of numbers or a list of strings. The input can also be a matrix of values, such as a grayscale image or a color image. The class label is a discrete value, such as a number or a string. In this project the class label is a number, representing the digit in the image. 
+
+The model is trained to minimize the error between the predicted class label and the actual class label. The error is calculated by comparing the predicted class label with the actual class label~\cite{james-statistical-learning}. 
+
+The model is trained by finding the best parameters for the model, such as the weights of a neural network or parameters in models, such as \gls{svm}~\cite{james-statistical-learning}. These parameters are then used to predict the category of new data. The process of finding the best parameters is called hyperparameter optimization, this will be discussed further in Section~\ref{sec:hyperparam}.
+
+Several machine learning models are used for image classification in general, and \gls{mnist} in particular~\cite{lecun-mnist-database,IBM-computer-vision,convolutional-neural-networks-convnets,multi-column-neural-network-ciregan}. These models can be used to classify images into one of ten categories, representing the digits 0-9, as this is the focus of the project. With the exception of \gls{svm}, the models are based on neural networks. In this project however, only \gls{svm} is used, as it is the only model that can be used for classification of images.  
+
+\subsubsection{Support Vector Machine}\label{subsubsec:support-vector-machine}
+\gls{svm} is a supervised learning model that classifies data by finding a mapping (hyperplane) that separates the classes in data~\cite{faster-svm}. \gls{svm} is also known as a large-margin classifier, which means that it relies on finding \textcquote{faster-svm}{a maximum-margin hyperplane to separate classes}. \gls{svm}, as the name implies, uses support vectors, are the 'vectors' that are closest to the function defining the mapping, and alterations on those data points will influence the hyperplane. For our purposes \gls{svm} is a promising model, since it is capable of defining a decision boundry which separates the classes the most. Such approach may be similar to how \gls{lda} works. An interesting property of \gls{svm} is that it can have among other parameters a kernel function, which can be tuned whether the data is linearly separable or not~\cite{faster-svm}. The kernel function that \gls{svm} shares resemblance to the way \gls{kpca} works, as it also uses a kernel function.
+
+This project is not particularly concerned with the choice of machine learning model, but rather with the choice of dimensionality reduction methods. Therefore, \gls{svm} is chosen as the machine learning model as it has already been used with \gls{mnist} without dimensionality reduction~\cite{lecun-mnist-database}. 
+%end
+
+In classification there is two types of classification, binary classification and multi-class classification. Binary classification is the classification of two classes, while multi-class classification is the classification of more than two classes. The \gls{mnist} dataset, which is used in this project, presents a multi-class classification problem, as the images can represent any of the 10 digits. The \gls{svm} model however is a binary classification model, and thus has to be adapted to the multi-class classification problem. there will explained two approaches to this problem: \gls{ovo} and \gls{ova}~\cite{james-statistical-learning}.
+\subsubsection{One-vs-One}\label{subsubsec:one-vs-one}
+%hvad er ovo
+\gls{ovo} is a method where the model is trained on all possible combinations of two classes. For example, if there are 5 classes, the model is trained on 10 different models, one for each combination of two classes, this makes it computationally expensive as it has to go througth every combination. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class~\cite{james-statistical-learning}.
+\subsubsection{One-vs-All}\label{subsubsec:one-vs-all}
+%hvad er ova
+\gls{ova} however is a method where the model is trained faster than in \gls{ovo}, as it only uses one class to distinguish if the data is similar or not. For example, if there are 5 classes, the model is trained on 5 different variations of the model, one for each class. This makes \gls{ova} good to distinguish between the current class that is being modeled from the other classes, however in \gls{ova} it is harder to distinguish between the other classes that is not being trained on. The model is then evaluated on all the models, and the class with the highest score is chosen as the predicted class~\cite{james-statistical-learning}.
+\subsubsection{One-vs-One vs One-vs-All}\label{subsubsec:one-vs-one-vs-one-vs-all}
+%Our choice of ovo and ova
+\gls{ovo} is more computationally expensive than \gls{ova}, but is more accurate. The choice of \gls{ovo} or \gls{ova} is therefore a trade-off between accuracy and computational cost~\cite{james-statistical-learning}. The \gls{svm} model is chosen because it is a relatively simple model, and thus \gls{ova} is chosen as it is faster than \gls{ovo}.
+
+%in {james-statistical-learning} use this as link instead https://hastie.su.domains/ISLR2/ISLRv2_website.pdf
+
+% @misc{faster-svm,
+%   doi = {10.48550/ARXIV.1808.06394},
+%   url = {https://arxiv.org/abs/1808.06394},
+%   author = {Schlag, Sebastian and Schmitt, Matthias and Schulz, Christian},
+%   title = {Faster Support Vector Machines},
+%   year = {2018}
+% }
