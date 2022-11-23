@@ -1,42 +1,34 @@
+\subsubsection{Data augmentation}\label{subsec:data-augmentation}
 This section will describe what dataaugmentation is, why its relevant, which specific augmentation will be used.
 
 \textquote{ShortenConnor2019AsoI}{Data augmentation in data analysis are techniques used to increase the amount of data by adding slightly modified copies of already existing data or newly created synthetic data from existing data. It acts as a regularizer and helps reduce overfitting when training a machine learning model.}
 
 
-In general there are many reasons for dataaugmentation most typically to make a model more general and less overfitted. This gennerally happens because we only have so much data and in the real world its often from multiple sources. So augmentation is for the purpose of making a model less reliant on these less than ideal data sources\cite{MAHARANA202291}.
+In general there are many reasons for dataaugmentation most typically to make a model more general and less overfitted. This gennerally happens because we only have so much data and in the real world its often from multiple sources. So augmentation is for the purpose of making a model less reliant on these less than ideal data sources~\cite{MAHARANA202291}.
 
 In the case of this project the augmentation is chosen so its possible to show how the \gls{fe} and Model handle different shapes of data while still having a baseline. This helps us make more general inferences and ituition about \gls{fe} and ML it will in particular show which \gls{fe} Methods handle different data shapes the best. It will also help show how augmentation in general can effect performance models  and FE.
 We Chose one type of augmentation from the following list of augmentations. rotation, shift, removing pixels, scaling. These were chosen because they are all well suited for images since they create variations of Images. There exist others but they are not particularly suited for pictures. 
 
 In this project the rotation augmentation will be used. This particular rotation was chosen because its believed it will create the most intresting challenges for the model and \gls{fe}.
 
-@article{ShortenConnor2019AsoI,
-copyright = {The Author(s) 2019},
-issn = {2196-1115},
-journal = {Journal of big data},
-keywords = {Algorithms ; Artificial neural networks ; Augmentation ; Big Data ; Communications Engineering ; Computational Science and Engineering ; Computer Science ; Computer vision ; Curricula ; Data Augmentation ; Data management ; Data Mining and Knowledge Discovery ; Database Management ; Datasets ; Deep Learning ; Domains ; GANs ; Image analysis ; Image data ; Image filters ; Information Storage and Retrieval ; Machine learning ; Mathematical Applications in Computer Science ; Medical imaging ; Networks ; Performance enhancement ; Survey Paper ; Training},
-language = {eng},
-number = {1},
-pages = {1-48},
-publisher = {Springer International Publishing},
-title = {A survey on Image Data Augmentation for Deep Learning},
-volume = {6},
-year = {2019},
-author = {Shorten, Connor and Khoshgoftaar, Taghi M.},
-address = {Cham},
-}
+% @article{ShortenConnor2019AsoI,
+% copyright = {The Author(s) 2019},
+% issn = {2196-1115},
+% journal = {Journal of big data},
+% publisher = {Springer International Publishing},
+% title = {A survey on Image Data Augmentation for Deep Learning},
+% year = {2019},
+% author = {Shorten, Connor and Khoshgoftaar, Taghi M.},
+% address = {Cham},
+% }
 
-@article{MAHARANA202291,
-title = {A review: Data pre-processing and data augmentation techniques},
-journal = {Global Transitions Proceedings},
-volume = {3},
-number = {1},
-pages = {91-99},
-year = {2022},
-note = {International Conference on Intelligent Engineering Approach(ICIEA-2022)},
-issn = {2666-285X},
-doi = {https://doi.org/10.1016/j.gltp.2022.04.020},
-url = {https://www.sciencedirect.com/science/article/pii/S2666285X22000565},
-author = {Kiran Maharana and Surajit Mondal and Bhushankumar Nemade},
-keywords = {Data augmentation, Data cleaning, Data oversampling, Data pre-processing, Data wraping}
-}
+% @article{MAHARANA202291,
+% title = {A review: Data pre-processing and data augmentation techniques},
+% journal = {Global Transitions Proceedings},
+% year = {2022},
+% note = {International Conference on Intelligent Engineering Approach(ICIEA-2022)},
+% issn = {2666-285X},
+% doi = {https://doi.org/10.1016/j.gltp.2022.04.020},
+% url = {https://www.sciencedirect.com/science/article/pii/S2666285X22000565},
+% author = {Kiran Maharana and Surajit Mondal and Bhushankumar Nemade},
+% }
