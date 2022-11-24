@@ -1,9 +1,16 @@
 \section{Hyperparameter optimization}\label{sec:hyperparam}
+This section introduces the concept of hyperparameter optimization and the importance of this process in the context of machine learning. 
 
-In Section~\ref{sec:cross-validation} we presented one technique of model optimization, namely that it does not overfit by means of cross-valdation. Another important factor to consider when training a model is its hyperparameters, which also can reduce its performance by either underfitting, or overfitting.
+%In Section~\ref{sec:cross-validation} the technique of model optimization is presented, namely that it does not overfit by means of cross-valdation. Another important factor to consider when training a model is its hyperparameters, which also can reduce its performance by either underfitting, or overfitting.
+
+\subsection{What are hyperparameters?}\label{subsec:hyperparam-what}
+Hyperparameters are the parameters set, for algorithms, before training the model, which are not learned from the data. Hyperparameters are often set manually, and the values are often chosen by trial and error. The values of hyperparameters can have a significant impact on the performance of the model. The way of which, hyperparameters differ from model parameters, is that model parameters are learned from the data, during model training~\cite{probst2019tunability}.
 
 
-Hyperparameters are the configurations of the model that can change its behavior. Their purpose is to maximize the performance of the model, and can have varying effects on the model and its performance~\cite{hyperparam-search}. Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in Chapter~\ref{cha:problem-analysis}.
+\subsection{How to optimize hyperparameters?}\label{subsec:hyperparam-how}
+ Usually when select hyperparameters for a given algorithm, users can resort to default values base on the algorithm's documentation, read litterature for recommendations, or simply try different values and see which one works best. However, this approach is not efficient, as it is time-consuming and requires a lot of manual work~\cite{probst2019tunability}.
+
+Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in Chapter~\ref{cha:problem-analysis}.
 
 
 Hyperparameter optimization comprises of selecting the model's hyperparameters. Choosing the right hyperparameters might involve manually changing them, which is time-consuming. It also leaves the responsibility to the programmer to manually change those values. What can be done instead, is to automate the process, leaving it to the computer to find the most optimal hyperparameters~\cite{automated-machine-learning}, given a set of configurations. The reason why hyperparameter optimization is difficult is because we do not know which hyperparameters will affect the model the most, which hyperparameters will interact with each other and how their interactions will change the model's performance. According to Marc Claesen~\cite{hyperparam-search}, the number of hyperparameters that have a significant impact may be small, but that does not mean that the number of combinations that are meaningful may be small too. 
@@ -32,4 +39,12 @@ In order to prevent that the model's performance becomes worse because of its hy
 %   title     = {Hyperparameter Search in Machine Learning},
 %   year      = {2015},
 %   url       = {http://arxiv.org/abs/1502.02127},
+% }
+
+% @article{probst2019tunability,
+%   title={Tunability: Importance of hyperparameters of machine learning algorithms},
+%   author={Probst, Philipp and Boulesteix, Anne-Laure and Bischl, Bernd},
+%   journal={The Journal of Machine Learning Research},
+%   year={2019},
+%   publisher={JMLR. org}
 % }
