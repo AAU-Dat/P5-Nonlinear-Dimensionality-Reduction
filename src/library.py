@@ -10,8 +10,8 @@ from sklearn.metrics import (ConfusionMatrixDisplay, classification_report,
 from sklearn.model_selection import GridSearchCV
 from sklearn.multiclass import OneVsOneClassifier
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVC, LinearSVC
+from sklearn.preprocessing import Normalizer, StandardScaler
+from sklearn.svm import SVC
 
 # Add this for repeated stratified k-fold cross validation insteaf of standard stratified k-fold cross validation
 # from sklearn.model_selection import RepeatedStratifiedKFold
@@ -121,7 +121,8 @@ def kernel_pca_results(X, y, X_test, y_test, hyperparameters):
 
 def save_results(methodname, results, confusion_matrix, classification_report):
     pd.DataFrame(results).to_csv(
-        "src/results/cross_validation_" + methodname + ".csv")
+        "src/results/cross_validation_" + methodname + ".csv",
+        index=False)
     confusion_matrix.plot(cmap=plt.cm.Blues)
     plt.savefig("src/results/confusion_matrix_" +
                 methodname + ".png", bbox_inches="tight")
