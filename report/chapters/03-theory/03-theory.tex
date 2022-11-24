@@ -1,8 +1,16 @@
 \chapter{Theory}\label{cha:theory}
-Write about the theory, including some of the math behind the madness.
+This chapter will discuss the theory behind \gls{ml} and \gls{fe}. We will briefly introduce the steps in how the theory will be implemented on a sketch, then describe the theory behind \gls{ml} and \gls{fe}, and then go into more detail about the different methods used in this project on the thoughts behind why choosing them.
 
-A digital image consists of pixels. In a grayscale image, each pixel has a value between 0 and 255, where 0 is white and 255 is black. In a color image each pixel has three such values - one for each color red, green, and blue. The number of pixels in an image is the number of pixels in the image multiplied by the number of colors. For example, a 28x28 grayscale image has 784 pixels, while a 28x28 color image has 2352 pixels.
+\section{Images}\label{sec:images}
+As mentioned before, the project will use the \gls{mnist} dataset; the dataset comprises images; therefore, a digital image consists of pixels. In a grayscale image, each pixel has a value between 0 and 255, where 0 is white, and 255 is black. Each pixel has three values in a color image - one for each color: red, green, and blue. The number of pixels in an image is the number of pixels multiplied by the number of colors. For example, a 28x28x1 grayscale image has 784 pixels, while a 28x28x3 color image also has 784 pixels.
 
-In this way each pixel represents a feature (dimension) of the image. As the size of images increase this quickly becomes a large number of features, and for the purpose of \gls{ml} it is likely not necessary to use all of them. The process of choosing the most important features is called feature selection, and leads to dimensionality reduction, the topic of this report.
+In this way, each pixel represents the image's feature (dimension). As the size of images increases, this quickly becomes a large number of features, and for \gls{ml}, it is likely only necessary to use some of them. The process of choosing the most critical features is called feature selection and leads to dimensionality reduction, the topic of this report.
 
 \input{chapters/03-theory/dimensionality-reduction.tex}
+
+% @book{poynton2012digital,
+%   title={Digital Video and HD: Algorithms and Interfaces},
+%   author={Poynton, C.},
+%   isbn={9780123919328},
+%   year={2012},
+% }
