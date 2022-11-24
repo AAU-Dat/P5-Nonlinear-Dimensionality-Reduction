@@ -23,7 +23,8 @@ The goal of \gls{fa} is to find the factors that explain the most covariance in 
 
 
 \subsubsection{Linear Discriminant Analysis}\label{subsubsec:linear-discriminant-analysis}
-\gls{lda} is a three step process. First separability between different classes (between-class variance) is calculated as the distance between the means of each class. Secondly the distance between the mean and samples of each class (within-class variance) is calculated. Third step is creating a lower dimensional representation that maximizes the between-class variance and minimizes the within-class variance~\cite{linear-discriminant-analysis-tutorial}.
+
+\gls{lda} is quite similar to \gls{pca} since they both try to project data into a hyperplane but instead of picking the hyper plane to keep the most variance \gls{lda} tries to maximize something else. \gls{lda} finds the hyper plane which has the most separation between the classes and also keeping the data points with the same class as close together as possible. This is a three step process. First separability between different classes (between-class variance) is calculated as the distance between the means of each class. Secondly the distance between the mean and samples of each class (within-class variance) is calculated. Third step is creating a lower dimensional representation that maximizes the between-class variance and minimizes the within-class variance~\cite{linear-discriminant-analysis-tutorial}.
 
 
 \subsection{Non-linear methods}\label{subsec:non-linear-methods}
@@ -48,15 +49,15 @@ It is assumed that \gls{isomap} is suited to discover manifolds of arbirary dime
 
 
 \subsubsection{Multi Dimensional Scaling}\label{subsubsec:multi-dimensional-scaling}
-Multi Dimensional scaling is a non-linear method that is used to reduce the dimensionality of a dataset by projecting it onto a lower dimensional subspace, while preserving as much of the variance between the data as possible. The projection is found by calculating the best from the Multi Dimensional Scaling function which is a modified version of the STRESS function. Th STRESS function finds the least change in data when in the case of \gls{mds} is when reducing the dimensionality~\cite{multi-dimensional-scaling-leeuw}. 
+Multi Dimensional scaling is a non-linear method that is used to reduce the dimensionality of a dataset by projecting it onto a lower dimensional subspace, while preserving as much of the variance between the data as possible. The projection is found by calculating the best from the Multi Dimensional Scaling function which is a modified version of the STRESS function. Th STRESS function finds the least change in data when in the case of \gls{mds} is when reducing the dimensionality~\cite{multi-dimensional-scaling-leeuw}.
 
 
 
 @article{multi-dimensional-scaling-leeuw,
-author = {de Leeuw, Jan},
-year = {2000},
-month = {03},
-title = {Multidimensional Scaling}
+    author = {de Leeuw, Jan},
+    year = {2000},
+    month = {03},
+    title = {Multidimensional Scaling}
 }
 
 
