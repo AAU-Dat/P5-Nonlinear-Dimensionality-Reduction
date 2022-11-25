@@ -13,10 +13,10 @@ As linear data, we will use the Iris dataset, which contains three different spe
 \label{fig:linear-data}
 \end{figure}
 
-In Figure \ref{fig:linear-data}, the iris flowers are represented on a 2D plot. According to~\cite{iris-dataset}, only one class is separable, which can further be solidified by the fact that the species Setosa is the only visually linearly separable class.
+Figure \ref{fig:linear-data} represents the iris flowers on a 2D plot. According to to~\cite{iris-dataset}, only one class is separable, which can further be solidified by the fact that the species Setosa is the only visually linearly separable class.
 
 \subsubsection{Linear methods}\label{subsubsec:linear-methods-on-iris}
-On figure \ref{fig:iris-pca} one can see that \gls{pca} has successfully separated the setosa species from the other classes in the dataset. With respect to the other species, on the coordiantes [1.20, 0.20] they do not seem to be clearly separated.
+In figure \ref{fig:iris-pca}, one can see that \gls{pca} has successfully separated the Setosa species from Versicolor and Virginica in the dataset. The other species do not seem to be separated on the coordinates [1.20, -0.20]. This is not concerning, as the Iris dataset is made to separate Setosa from the other classes by linear separability. 
 
 \begin{figure}[htb!]
 \centering
@@ -33,10 +33,10 @@ On figure \ref{fig:iris-pca} one can see that \gls{pca} has successfully separat
     \label{fig:iris-lda}
     \end{figure}
     
-On figure \ref{fig:iris-lda} \gls{lda} has also successfully separated the setosa species from the other classes in the dataset. In contrast with \gls{pca}, \gls{lda} has managed to separate somewhat better as the distinction between those classes can be made easier. An advantage, which \gls{lda} poses, is that \gls{lda} is a supervised method, which means that LDA knows the labels of the data, and therefore may be better suited for classifying the data.
+Figure \ref{fig:iris-lda} \gls{lda} has also successfully separated the Setosa species from the other classes in the dataset. In contrast with \gls{pca}, \gls{lda} has managed to separate somewhat better as the distinction between those classes can be made more accessible. An advantage that \gls{lda} poses is that \gls{lda} is a supervised method, which means that  \gls{lda} know the labels of the data and may be better suited for classifying the data.
 
 \subsubsection{Nonlinear methods}\label{subsubsec:nonlinear-methods-on-iris}
-On figure \ref{fig:iris-isomap} \gls{isomap} has tried to separate the setosa, and managed to map the data on the first two dimensions. \gls{isomap}, as opposed to the aforementioned linear methods, has not found too much diversity on the second projection, as the values range from approximative 0.0 to -0.25. Such range is short in comparison with the linear methods. Isomap clusters the setosa species, but that may not be helpful if the data needs to be projected on two dimensions. If, for example, a point is in upper left corner, then it is not possible to tell if it is a setosa, or a versicolor. \gls{isomap} is nevertheless a nonlinear method, and it is expected that it does not reduce the data as efficiently as the linear methods do.
+Figure \ref{fig:iris-isomap} \gls{isomap} has tried to separate the Setosa and map the data on the first two dimensions. Gls {isomap}, as opposed to the aforementioned linear methods, has found little diversity on the second projection, as the values range from approximative 0.0 to -0.25. Such a range is short in comparison with the linear methods. Isomap clusters the Setosa species, but that may not be helpful if the data needs to be projected on two dimensions. If, for example, a point is in the upper left corner, it is impossible to tell if it is a Setosa or a Versicolor. \gls{isomap} is nevertheless a nonlinear method, and it is expected that it does not reduce the data as efficiently as the linear methods do.
 
 \begin{figure}[htb!]
     \centering
@@ -45,7 +45,7 @@ On figure \ref{fig:iris-isomap} \gls{isomap} has tried to separate the setosa, a
     \label{fig:iris-isomap}
     \end{figure}
 
-On figure \ref{fig:iris-kernelpca} \gls{kpca} has tried to separate the setosa. On the figure it can be seen that \gls{kpca} has clustered the other two species on the first projection, but there cannot be seen any clear separation between the two species, especially on the second projection. \gls{kpca} has also mapped the data points for setosa with a high degree of variance, but it did not clearly separate the setosa from the other two species. Likewise \gls{isomap}, \gls{kpca} was not supposed to separate the data as good as the linear methods, but it is interesting that KernelPCA has not managed to fully separate the setosa species from the rest of the data.
+On figure \ref{fig:iris-kernelpca} \gls{kpca} has tried to separate the Setosa. In the figure, it can be seen that \gls{kpca} has clustered the other two species on the first projection, but there cannot be seen any clear separation between the two species, especially on the second projection. \gls{kpca} has also mapped the data points for Setosa with a high degree of variance, but it did not separate the Setosa from the other two species. Likewise, \gls{isomap}, \gls{kpca} were not supposed to separate the data and the linear methods. However, it is interesting that KernelPCA has not entirely separated the Setosa species from the rest of the data.
 
 \begin{figure}[htb!]
     \centering
@@ -55,7 +55,7 @@ On figure \ref{fig:iris-kernelpca} \gls{kpca} has tried to separate the setosa. 
     \end{figure}
 
 \subsection{Nonlinear data example}\label{subsec:nonlinear-data-example}
-As nonlinear data we will construct two different classes of cirlces, an inner- and outer circle, which will look like in the figure ~\ref{fig:circles}.
+As nonlinear data, we will construct two classes of circles, an inner- and an outer circle, which will look like in the figure ~\ref{fig:circles}.
 
 \begin{figure}[htb!]
     \centering
@@ -72,7 +72,7 @@ As nonlinear data we will construct two different classes of cirlces, an inner- 
     \label{fig:circles-pca}
 \end{figure}
 
-On figure ~\ref{fig:circles-pca} it can be seen that \gls{pca}'s transformation did not manage to map the nonlinear data at all. On figure \ref{fig:circles-lda} \gls{lda} has reduced the data's dimensions to one dimension, but the two classes are clustered, which means that \gls{lda} could not separate the two classes.
+In figure ~\ref{fig:circles-pca}, it can be seen that \gls{pca}'s transformation did not manage to map the nonlinear data at all. In figure \ref{fig:circles-lda} \gls{lda} has reduced the data's dimensions to one dimension, but the two classes are clustered, which means that \gls{lda} could not separate the two classes.
 
 \begin{figure}[htb!]
     \centering
@@ -82,7 +82,7 @@ On figure ~\ref{fig:circles-pca} it can be seen that \gls{pca}'s transformation 
     \end{figure}
     
 \subsubsection{Nonlinear methods}\label{subsubsec:nonlinear-methods-on-circles}
-On figure \ref{fig:circles-isomap} \gls{isomap} has separated the data points from the circles. Based on the first projection Isomap is capable of separating the data, and on the second projection the method is capable of capturing more information about the outer circle, thus approximating the the original data, as the outer circle has a higher variance than the inner circle. On the second projection \gls{isomap} did not reveal that much information about the inner circle.
+Figure \ref{fig:circles-isomap} \gls{isomap} has separated the data points from the circles. Based on the first projection Isomap is capable of separating the data. On the second projection, the method can capture more information about the outer circle, thus approximating the original data. The outer circle has a higher variance than the inner circle. The second projection \gls{isomap} did not reveal that much information about the inner circle.
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/theory-example-figures/circles-isomap.png}
@@ -91,7 +91,7 @@ On figure \ref{fig:circles-isomap} \gls{isomap} has separated the data points fr
 \end{figure}
 
 
-On figure \ref{fig:circles-kernelpca} \gls{kpca} has also separated the data points from the circles. \gls{kpca} does a good job at maximizing the variance for the inner circle, and also separating the the data points from each other. As it can be seen \gls{kpca} needs at least two dimensions in order to better differentiate between the two classes, as opposed to \gls{isomap}, which only needs one dimension.
+Figure \ref{fig:circles-kernelpca} \gls{kpca} has also separated the data points from the circles. \gls{kpca} does an excellent job of maximizing the variance for the inner circle and separating the data points from each other. As it can be seen, \gls{kpca} needs at least two dimensions to better differentiate between the two classes, as opposed to \gls{isomap}, which only needs one dimension.
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/theory-example-figures/circles-kernelpca.png}
@@ -100,10 +100,4 @@ On figure \ref{fig:circles-kernelpca} \gls{kpca} has also separated the data poi
 \end{figure}
 
 
-Until now we have presented some simple examples of the methods. More often than not, the number dimensions reduced will not be two, as there will be much more relevant information in the other dimensions too.
-
-% @misc{iris-dataset,
-% author = {Dua, Dheeru and Graff, Casey},
-% year = {2017},
-% title = {{UCI} Machine Learning Repository},
-% url = {http://archive.ics.uci.edu/ml}}
+Until now, we have presented some simple examples of the methods. More often than not, the number of reduced dimensions will not be two, as there will be much more relevant information in the other dimensions.
