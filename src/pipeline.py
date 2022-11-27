@@ -2,8 +2,6 @@ import idx2numpy
 
 from library import pca_results
 from load_mnist import load_mnist
-from convonet import *
-from load_helpers import normalize_data
 from cnn_model_lib import *
 def main():
     load_mnist()
@@ -31,13 +29,6 @@ def main():
     # Only use 400 samples to speed up the process. Change to full size for final run
     #pca_results(X[:400], y[:400], X_test, y_test, pca_hyperparameters)
     #add hyperparameters for cross-validation for cnn dictionary
-
-    hyperparameters_for_cnn_for_pca = {
-        'pca__n_components': [16],
-        'classifier__input_shape': [(4, 4, 1)],
-        'classifier__batch_size': [128, 256],
-        'classifier__init_mode': ['he_uniform', 'lecun_uniform'],
-    }
 
     #PCA: CNN needs square matrices, which is from 2x2 to 28x28. The values in the range can be changed
     hyperparameters_pca_cnn = []
