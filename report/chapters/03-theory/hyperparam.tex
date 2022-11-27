@@ -1,23 +1,26 @@
 \section{Hyperparameter optimization}\label{sec:hyperparam}
-This section introduces the concept of hyperparameter optimization and the importance of this process in the context of machine learning. 
-
-%In Section~\ref{sec:cross-validation} the technique of model optimization is presented, namely that it does not overfit by means of cross-valdation. Another important factor to consider when training a model is its hyperparameters, which also can reduce its performance by either underfitting, or overfitting.
+This section introduces the concept of hyperparameter optimization and the importance of this process in machine learning. 
 
 \subsection{What are hyperparameters?}\label{subsec:hyperparam-what}
-Hyperparameters are the parameters set, for algorithms, before training the model, which are not learned from the data. The values of hyperparameters can have a significant impact on the performance of the model. The way of which, hyperparameters differ from model parameters, is that model parameters are learned from the data, during model training~\cite{probst2019tunability}.
+Hyperparameters are the parameters set, for algorithms, before training the model, which does not get learned from the data. The values of hyperparameters can have a significant impact on the performance of the model. How hyperparameters differ from model parameters is that those model parameters get learned from the data during model training~\cite{probst2019tunability}.
 
 
 \subsection{How to optimize hyperparameters?}\label{subsec:hyperparam-how}
- Usually when selecting hyperparameters for a given algorithm, users can resort to default values based on the algorithm's documentation, read litterature for recommendations, or simply try different values and see which one works best. However, this approach is not efficient, as it is time-consuming and requires a lot of manual work~\cite{probst2019tunability}.
+Usually, when selecting hyperparameters for a given algorithm, users can resort to default values based on the algorithm's documentation, read literature for recommendations, or try different values and see which one works best. However, this approach could be more efficient, as it is time-consuming and requires a lot of manual work~\cite{probst2019tunability}.
 
-It also leaves the responsibility to the programmer to manually change those values. Instead, the process of finding optimal hyperparameters, can be given to the computer~\cite{automated-machine-learning}, given a set of configurations. The reason why hyperparameter optimization is difficult is because it is not known which hyperparameters will have a large effect on the model, which hyperparameters will interact with each other, and how their interactions will change the model's performance. According to Marc Claesen~\cite{hyperparam-search}, the number of hyperparameters that have a significant impact may be small, but that does not mean that the number of combinations that are meaningful may be small too. 
+Instead, the process of finding optimal hyperparameters can be given to the computer~\cite{automated-machine-learning}, given a set of configurations. Hyperparameter optimization is complex because it is unknown which hyperparameters will significantly affect the model, which hyperparameters will interact with each other, and how their interactions will change the model's performance. According to Marc Claesen~\cite{hyperparam-search}, the number of hyperparameters that have a significant impact may be small, but that does not mean that the number of meaningful combinations may be small too. 
 
-There are many different techniques that can be used to automatically optimize the hyperparameters~\cite{automated-machine-learning}, an example of such a technique is grid search. This technique allows the user to define \textcquote{automated-machine-learning}{a set of finite values for each hyperparameter, and grid search evaluates the Cartesian product of these sets}.
- 
+Many different techniques can get used to optimize the hyperparameters automatically~\cite{automated-machine-learning}. An example of such a technique is grid search. This technique allows the user to define \textcquote{automated-machine-learning}{a set of finite values for each hyperparameter, and grid search evaluates the Cartesian product of these sets}. Another example of a method is random search, a technique similar to grid search. However, instead of evaluating all the combinations of hyperparameters, it randomly evaluates hyperparameters, given a limited amount of time. Both methods have limitations; grid search is inefficient when the number of hyperparameters is significant due to the curse of dimensionality, which means that for algorithms that require large amounts of hyperparameters, it is not feasible to use this technique~\cite{yang2020hyperparameter}. Random search can prove helpful, but there is no guarantee that it will find the optimal hyperparameters, given its limited time to evaluate them. Knowing the optimal time limit for random search is tricky, as it depends on the number of hyperparameters, the number of possible values for each hyperparameter, and the number of times the hyperparameters are evaluated~\cite{yang2020hyperparameter}.
+
+
+From this, it can be concluded that no single method is optimal for all cases. The optimal method depends on many variables, such as the number of hyperparameters and possible values for each hyperparameter. Therefore, it is essential to evaluate the different methods and find the one that works best for the given problem. Of course, many other techniques could be discussed. Nevertheless, these two methods should sufficiently demonstrate the strengths and weaknesses of different techniques.
+
+
+
 %As written in section~\ref{sec:cross-validation} cross-validation might also prove to be helpful when training a model with the specified configurations. As an example, if there are two hyperparameters, each with three different values, then the cartesian product of these sets will be nine different combinations. If we choose to use k-fold cross-validation, for example assume we want to use five folds, then the nine combinations with be multiplied with the number of folds specified in the cross-validation, in this case amounting to 45 different combinations. From this, we can see that the complexity of grid search increases drastically if we include cross-validation, which means that it can take a long time to find the optimal configuration.
  
  
- %Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in Chapter~\ref{cha:problem-analysis}.
+%Hyperparameters can, for example, be of real valued nature or categorical nature. Support Vector Machine, for example, has as hyperparameters the number of iterations it needs to run, as an integer, and the kernel used as a category, where one can choose from its different kernels, as shown in Chapter~\ref{cha:problem-analysis}.
 
 
 
@@ -44,4 +47,12 @@ There are many different techniques that can be used to automatically optimize t
 %   journal={The Journal of Machine Learning Research},
 %   year={2019},
 %   publisher={JMLR. org}
+% }
+
+% @article{yang2020hyperparameter,
+%   title={On hyperparameter optimization of machine learning algorithms: Theory and practice},
+%   author={Yang, Li and Shami, Abdallah},
+%   journal={Neurocomputing},
+%   year={2020},
+%   publisher={Elsevier}
 % }
