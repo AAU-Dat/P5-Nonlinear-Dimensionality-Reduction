@@ -31,7 +31,7 @@ The goal of \gls{fa} is to find the factors that explain the most covariance in 
 Sometimes high-dimensional data may contain non-linear relationships, which linear methods cannot capture. It has been shown that \gls{pca} fails to find meaningful components in the swiss-roll dataset~\cite{tennenbaum}. In such cases non-linear methods are used. The non-linear methods covered are: \gls{kpca}, \gls{mds}, and \gls{isomap}.
 
 
-
+\todo{write about tsne as 3 nonlinear}
 
 \todo[inline]{maybe whe should have a introduction to manifold learning as a precurser}
 
@@ -48,12 +48,12 @@ Sometimes high-dimensional data may contain non-linear relationships, which line
 It is assumed that \gls{isomap} is suited to discover manifolds of arbirary dimensionality, and that it guarantees an approximation of the true structure of the manifold~\cite{tennenbaum}.
 
 
-\subsubsection{Multi Dimensional Scaling}\label{subsubsec:multi-dimensional-scaling}
-Multi Dimensional scaling is a non-linear method that is used to reduce the dimensionality of a dataset by projecting it onto a lower dimensional subspace, while preserving as much of the variance between the data as possible. The projection is found by calculating the best from the Multi Dimensional Scaling function which is a modified version of the STRESS function. The STRESS function finds the least change in data when in the case of \gls{mds} is when reducing the dimensionality~\cite{multi-dimensional-scaling-leeuw}.
+% \subsubsection{Multi Dimensional Scaling}\label{subsubsec:multi-dimensional-scaling}
+% Multi Dimensional scaling is a non-linear method that is used to reduce the dimensionality of a dataset by projecting it onto a lower dimensional subspace, while preserving as much of the variance between the data as possible. The projection is found by calculating the best from the Multi Dimensional Scaling function which is a modified version of the STRESS function. The STRESS function finds the least change in data when in the case of \gls{mds} is when reducing the dimensionality~\cite{multi-dimensional-scaling-leeuw}.
 
 
-
-4 different dimensionality reduction methods have been chosen to be in the implementation. This is 2 linear and 2 nonlinear methods, in particular \gls{pca}, \gls{lda}, \gls{kpca} and \gls{isomap}. These 4 where chosen because they cover the spectrum of options well and are some of the most used. Only 4 where chosen to keep the focus of the project tight and the right amount of depth versus breath of the project.
+\subsection{Choice of dimensionality reduction}
+Four different dimensionality reduction methods have been chosen to be in the implementation. These are two linear and two nonlinear methods, in particular \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. These four were chosen because they cover the spectrum of options well and are some of the most used. Only four were chosen to keep the focus of the project tight and the right amount of depth versus breadth of the project.
 
 
 
