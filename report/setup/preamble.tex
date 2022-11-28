@@ -42,8 +42,8 @@
 \usepackage{subcaption}
 \usepackage{caption}
 \captionsetup{%
-    font=footnotesize,% set font size to footnotesize
-    labelfont=bf % bold label (e.g., Figure 3.2) font
+  font=footnotesize,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
 }
 % Make the standard latex tables look so much better
 \usepackage{array,booktabs,tabularx,multirow}
@@ -75,10 +75,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Change margins, papersize, etc of the document
 \usepackage[
-    inner=28mm,% left margin on an odd page
-    outer=41mm,% right margin on an odd page
-    headheight=13.6pt,
-    bottom=39mm
+  inner=28mm,% left margin on an odd page
+  outer=41mm,% right margin on an odd page
+  headheight=13.6pt,
+  bottom=39mm
 ]{geometry}
 % Modify how \chapter, \section, etc. look
 % The titlesec package is very configureable
@@ -93,8 +93,8 @@
 % Clear empty pages between chapters
 \let\origdoublepage\cleardoublepage
 \newcommand{\clearemptydoublepage}{%
-    \clearpage
-    {\pagestyle{empty}\origdoublepage}%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
 }
 \let\cleardoublepage\clearemptydoublepage
 
@@ -118,17 +118,12 @@
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[backend=biber,
-    bibencoding=utf8,
-    maxbibnames=20,
-    style=numeric-comp,
-    sorting=none
+  bibencoding=utf8,
+  maxbibnames=20,
+  style=numeric-comp,
+  sorting=none
 ]{biblatex}
 \addbibresource{bib/mybib.bib}
-\addbibresource{bib/daniel.bib}
-\addbibresource{bib/gustav.bib}
-\addbibresource{bib/lars.bib}
-\addbibresource{bib/raymond.bib}
-\addbibresource{bib/sebastian.bib}
 \setcounter{biburlnumpenalty}{9000}
 \setcounter{biburllcpenalty}{9000}
 \setcounter{biburlucpenalty}{9000}
@@ -146,10 +141,10 @@
 \usepackage{lastpage}
 % Add todo notes in the margin of the document
 \usepackage[
-    %  disable, %turn off todonotes
-    colorinlistoftodos, %enable a coloured square in the list of todos
-    textwidth=\marginparwidth, %set the width of the todonotes
-    textsize=scriptsize, %size of the text in the todonotes
+  %  disable, %turn off todonotes
+  colorinlistoftodos, %enable a coloured square in the list of todos
+  textwidth=\marginparwidth, %set the width of the todonotes
+  textsize=scriptsize, %size of the text in the todonotes
 ]{todonotes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,17 +164,17 @@
 % last packages
 \usepackage[hidelinks]{hyperref}
 \hypersetup{%
-    plainpages=false,%
-    pdfauthor={Author(s)},%
-    pdftitle={Title},%
-    pdfsubject={Subject},%
-    bookmarksnumbered=true,%
-    colorlinks=false,%
-    citecolor=black,%
-    filecolor=black,%
-    linkcolor=black,% you should probably change this to black before printing
-    urlcolor=black,%
-    pdfstartview=FitH%
+  plainpages=false,%
+  pdfauthor={Author(s)},%
+  pdftitle={Title},%
+  pdfsubject={Subject},%
+  bookmarksnumbered=true,%
+  colorlinks=false,%
+  citecolor=black,%
+  filecolor=black,%
+  linkcolor=black,% you should probably change this to black before printing
+  urlcolor=black,%
+  pdfstartview=FitH%
 }
 
 \usepackage[acronym]{glossaries} %Glossaries/acronyms
@@ -220,10 +215,10 @@ fill=white
 ]
 \tikzstyle{event_start} = [draw,circle,scale=.30,fill=black]
 \tikzset{
-    event_end/.style={
-            label={[draw,circle,scale=1.3,fill=white,line width=0.4mm]center:},
-            label={[draw,circle,scale=.75,fill=black]center:}
-        }
+  event_end/.style={
+      label={[draw,circle,scale=1.3,fill=white,line width=0.4mm]center:},
+      label={[draw,circle,scale=.75,fill=black]center:}
+    }
 }
 \tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']

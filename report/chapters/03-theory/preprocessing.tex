@@ -9,30 +9,59 @@ In this section, the theory of preprocessing and what effects it has on the \gls
 %What are the tools?
 %What are the results?
 
-\subsection{Definition of preprocessing}\label{subsec:preprocessing-definition}
-The proper definition of preprocessing or data preparation varies depending on the source. The explanation that will be used in this report is given as follows:
+\subsection{Definition of preproccessing}\label{subsec:preprocessing-definition}
+The proper definition of preproccessing or data preparation, varies depending on the source. The definition that will be used in this report, is given as:
 
 \textcquote{data-preparation-for-data-mining}{Data preparation comprises those techniques concerned with analyzing raw data so as to yield quality data, mainly including data collecting, data integration, data transformation, data cleaning, data reduction, and data discretization.}
 
-From this, it can be gathered that preprocessing is a broad term that can be divided into several subcategories. Not all subcategories will be relevant to this project; therefore, the following sections will only discuss appropriate subcategories of preprocessing.
+From this, it can be gathered that preproccessing is a broad term, which can be divided into several subcategories. Not all subcategories will be relevant for this project, therefore only relevant subcategories of preprocessing will be discussed in the following sections.
   
 
-\subsection{Reasons for preprocessing}\label{subsec:preprocessing-reasons}
-As stated in the definition, preprocessing is used, among other reasons, to yield quality data. The importance of this stems from the fact that real-world data is only sometimes clean or complete. Meaning that can be a lot of noise, which is data containing errors or outliers. This noise can be removed by preprocessing, which creates a more accurate, higher quality, and smaller dataset to gather information. This results in a reduced amount of data that the model is trained on, but the data it is trained on should be more accurate, which should then train the model more accurately and efficiently~\cite{data-preparation-for-data-mining}.
+\subsection{Reasons for preproccessing}\label{subsec:preprocessing-reasons}
+As stated in the definition, preproccessing is used, among other reasons, to yield quality data. The importance of this, stems from the fact that real world data, is not always clean or complete. Meaning that can be a lot of noise, which is data that either contains errors or outliers. This noise can be removed by preproccessing, which creates a more accurate, higher quality, and smaller dataset, to gather information from. This results in a reduced amount of data that the model is trained on, but the data it is trained on, should be more accurate, which should then train the model more accurately and efficiently~\cite{data-preparation-for-data-mining}.
 
 
-Data collected may be in a form or shape that is not compatible with the process that is needed to work with it. Therefore, to use the data, it may need to be transformed into a form that fits with the process. Transformation of data can be many things, as~\cite{Data-preprocessing-for-flight-delays} mentions normalization as a part of the transformation, to scale the data so that it fits into a new range, Subsection \ref{sec:normalization} will give a more detailed explanation of normalization.
+Data collected, may be in a form or shape that is not compatible with the process that is needed to work with it, therefore in order to use the data, it may need to be transformed into a form that is compatible with the process. Transformation of data, can be many things, as~\cite{Data-preprocessing-for-flight-delays} mentions normalization as a part of transformation, to scale the data so that it fits into a new range, a more detailed explanation of normalization will be given in \ref{sec:normalization}.
 
   
   
-\subsection{Steps of preprocessing}\label{subsec:preprocessing-steps}
-The amount of preprocessing depends on what is needed and what is available. In the report~\cite{Data-preprocessing-for-flight-delays}, these steps are shown. 
+\subsection{Steps of preproccessing}\label{subsec:preprocessing-steps}
+The amount of preproccessing, depends on what is needed, and what is available. An example of how these steps could be used, can be seen in the report~\cite{Data-preprocessing-for-flight-delays}. Where they start by cleaning data, then transform it, then reduce it, and finally balance it. For this section, the theory of the steps that are used in this report, will be explained.
 
-They start by cleaning data, transforming it, reducing it, and balancing it. This section will explain the theory of the steps used in this report.
+  
+
+\subsubsection{Reshape}\label{subsec:preprocessing-reshape}
+The data, when loaded in at first, is shaped as a long array of 47.040.000 integers, that represent the values of the pixels, and then another array of 60.000 integers, that represents what number, a given image is. The images, are to be thought of as a 28x28 matrix, meaning that the first 784 integers, represent the first image, and the next 784 integers represent the second image. Working with the data in this format, proved difficult and confusing, as it was hard to keep track of what image was being worked on. Because of this, it was decided to reshape the data, to make it easier to understand. The data was reshaped to a 2 dimensional array, where the first dimension represented the array of images, and the second dimension represented the array of pixels and their values. From this, there was a clear distinction between each image.
+
+  
+An example, to further explain the decision for reshaping the data, can be seen in~\cite{scikit-learn-PCA}, where it is stated that the function \texttt{fit} expects: \textcquote{scikit-learn-PCA}{X : array-like of shape (n\_samples, n\_features)}. Meaning that data is expected to be sectioned into an array of samples(images), and an array of features. When the data was not reshaped, it was not possible to use the \texttt{fit} function, as the data was not in the correct format. The data would have a n\_samples, that was of the size 47.040.000, which is not the actual number of samples (images), but rather the number of pixels that exist in all 60.000 images.
+
 
 \input{chapters/03-theory/normalization.tex}
+
 \input{chapters/03-theory/data-augmentations.tex}
 
+% @misc{scikit-learn-PCA,
+%   year  = {2022},
+%   month = {Nov 22},
+%   title = {sklearn.decomposition.PCA},
+%   url   = {https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA.fit}
+% }
+
+% @article{data-preparation-for-data-mining,
+%     author = { Shichao   Zhang  and  Chengqi   Zhang  and  Qiang   Yang },
+%     title = {Data preparation for data mining},
+%     year  = {2003},
+%     publisher = {Taylor & Francis},
+%     doi = {10.1080/713827180},
+%     URL = {https://doi.org/10.1080/713827180},
+% }
+
+% @INPROCEEDINGS{Data-preprocessing-for-flight-delays,
+%     author={Moreira, Leonardo and Dantas, Christofer and Oliveira, Leonardo and Soares, Jorge and Ogasawara, Eduardo},  booktitle={2018 International Joint Conference on Neural Networks (IJCNN)},   title={On Evaluating Data Preprocessing Methods for Machine Learning Models for Flight Delays},
+%     year={2018},
+%     doi={10.1109/IJCNN.2018.8489294},
+% }
 
 %Explain why this is needed, for other reasons than just making it easier to understand.
 %Does scikit methods need it to be in this format?
