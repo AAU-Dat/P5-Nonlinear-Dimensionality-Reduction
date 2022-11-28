@@ -1,34 +1,15 @@
 \subsubsection{Data augmentation}\label{subsec:data-augmentation}
-This section will describe what dataaugmentation is, why its relevant, which specific augmentation will be used.
+This section will describe data augmentation, its relevance, and which specific augmentation will be used.
 
-\textquote{ShortenConnor2019AsoI}{Data augmentation in data analysis are techniques used to increase the amount of data by adding slightly modified copies of already existing data or newly created synthetic data from existing data. It acts as a regularizer and helps reduce overfitting when training a machine learning model.}
+\textcquote{ShortenConnor2019AsoI}{Data augmentation in data analysis are techniques used to increase the amount of data by adding slightly modified copies of already existing data or newly created synthetic data from existing data. It acts as a regularizer and helps reduce overfitting when training a machine learning model.}
+
+Data augmentation has many reasons, typically to make a model more general and less overfitted. This happens because we only have so much data, often from multiple sources in the real world. So augmentation is to make a model less reliant on these less-than-ideal data sources~\cite {MAHARANA202291}.
+In the case of this project, augmentation is chosen, so it's possible to show how the \gls{fe} and the model handle different data shapes while still having a baseline. This helps us make more general inferences and intuition about \gls{fe} and \gls{ml}. It will, in particular, show which \gls{fe} methods best handle different data shapes. It will also help show how general augmentation can affect performance \gls{ml} models and \gls{fe}.
+We chose one type of augmentation from the following list of augmentations. Rotation, removing pixels, scaling. These were selected because they are all well-suited for images since they create variations of images~\cite{gonzalez2008digital}. There exist others, but they were not considered for this project. 
+
+Rotation and scaling augmentation was chosen in this project because it believed they would create the most exciting challenges for the model and \gls{fe}. 
+
+All the chosen preprocesses for the project are now described. The following section concerns the next point in \gls{fe} dimensionality reduction. 
 
 
-In general there are many reasons for dataaugmentation most typically to make a model more general and less overfitted. This gennerally happens because we only have so much data and in the real world its often from multiple sources. So augmentation is for the purpose of making a model less reliant on these less than ideal data sources~\cite{MAHARANA202291}.
 
-In the case of this project the augmentation is chosen so its possible to show how the \gls{fe} and Model handle different shapes of data while still having a baseline. This helps us make more general inferences and ituition about \gls{fe} and ML it will in particular show which \gls{fe} Methods handle different data shapes the best. It will also help show how augmentation in general can effect performance models  and FE.
-We Chose one type of augmentation from the following list of augmentations. rotation, shift, removing pixels, scaling. These were chosen because they are all well suited for images since they create variations of Images. There exist others but they are not particularly suited for pictures. 
-
-In this project the rotation augmentation will be used. This particular rotation was chosen because its believed it will create the most intresting challenges for the model and \gls{fe}.
-
-% @article{ShortenConnor2019AsoI,
-% copyright = {The Author(s) 2019},
-% issn = {2196-1115},
-% journal = {Journal of big data},
-% publisher = {Springer International Publishing},
-% title = {A survey on Image Data Augmentation for Deep Learning},
-% year = {2019},
-% author = {Shorten, Connor and Khoshgoftaar, Taghi M.},
-% address = {Cham},
-% }
-
-% @article{MAHARANA202291,
-% title = {A review: Data pre-processing and data augmentation techniques},
-% journal = {Global Transitions Proceedings},
-% year = {2022},
-% note = {International Conference on Intelligent Engineering Approach(ICIEA-2022)},
-% issn = {2666-285X},
-% doi = {https://doi.org/10.1016/j.gltp.2022.04.020},
-% url = {https://www.sciencedirect.com/science/article/pii/S2666285X22000565},
-% author = {Kiran Maharana and Surajit Mondal and Bhushankumar Nemade},
-% }
