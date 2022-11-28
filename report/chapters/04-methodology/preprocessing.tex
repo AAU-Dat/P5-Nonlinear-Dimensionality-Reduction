@@ -1,0 +1,17 @@
+\section{Preprocessing}\label{sec:method-preprocessing}
+This section will cover the preprocessing of the data, and how it was done.
+
+\subsection{Normalization}\label{subsec:method-preprocessing-normalization}
+The data is normalized by dividing each pixel value by 255, so that the values are between 0 and 1. This is done by the following code snippet:
+
+\todo{Include the code snippet}
+
+At first the data is split into its two tuple values, the train data and the test data. A new variable for each is then made, with the prefix ``normalized''. The data is then normalized by dividing each pixel value by 255. The np.round function is used to round the values to 2 decimals, as this precision was deemed sufficient. Finally the data is returned as a tuple.
+
+\subsection{Reshape}\label{subsec:method-preprocessing-reshape}
+
+%\subsection{Data pre-preprocessing}\label{subsec:data-pre-preprocessing}
+%The data is normalized by dividing each pixel value by 255, so that the values are between 0 and 1. The data is then augmented by rotating the images by 90, 180 and 270 degrees, and flipping the images horizontally and vertically. This results in 10 times as much data as the original \gls{mnist} dataset.\todo{Include all the augmentations we actually use.}
+
+%\subsection{Data preprocessing}\label{subsec:data-preprocessing}
+%The data is then preprocessed by applying linear and non-linear dimensionality reduction techniques. The linear dimensionality reduction techniques are \gls{pca} and \gls{lda}. The non-linear dimensionality reduction techniques are \gls{kpca} and \gls{isomap}. The data is reduced to 2 dimensions, so that it can be visualized.
