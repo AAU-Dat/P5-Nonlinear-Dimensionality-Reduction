@@ -1,10 +1,10 @@
-\section{Machine learning}\label{sec:machine-learning}\todo[inline]{needs a source, ask Lars for one}
+\section{Machine learning}\label{sec:machine-learning}
 
-Figure~\ref{fig:basic-machine-learning-pipeline} illustrates a general \gls{ml} pipeline.
+Figure \ref{fig:basic-machine-learning-pipeline} illustrates a general \gls{ml} pipeline.
 
-To compare and contrast linear and nonlinear methods through the lens of a model efficiently, the use of a pipeline is needed. In this section there will be a brief Introduction to pipelines, their use, and how to introduce dimensionality reduction to them.
+A pipeline is good for comparing and contrasting linear and nonlinear methods through the lens of a model efficiently. In this section, there will be a brief Introduction to pipelines, their use, and how to introduce dimensionality reduction to them.
 
-A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. First step is the data step, which essentially is the collection of data. The \gls{fe} step is used to transform the data, into a form that is more suitable for the \gls{ml} model. The \gls{ml} model training step, is used to train the \gls{ml} model on the data. The model evaluation step, is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data. 
+A pipeline consists of four main steps: data, \gls{fe}, \gls{ml} model training, and model evaluation. The first step is the data step, which is the data collection. The \gls{fe} step transforms the data into a more suitable form for the \gls{ml} model. The \gls{ml} model training step trains the \gls{ml} model on the data. The model evaluation step is used to evaluate the performance of the \gls{ml} model. The \gls{ml} model can then be used to make predictions on new data~\cite{machine-learning-pipeline-architecture}.
 
 \begin{figure}[htb!]
     \centering
@@ -13,4 +13,4 @@ A pipeline generally consists of four main steps: data, \gls{fe}, \gls{ml} model
     \label{fig:basic-machine-learning-pipeline}
 \end{figure}
 
-The \gls{fe} step is where dimmensionality reduction will be relevant. This is where the dimmensions are reduced to increase perfomance of the model. This and the model, is then evaluated to see if they can be tuned for better results. This tuning is generally refered to, as hyper parameter tuning. What the best hyper parameter tuning is, depends on the data. This leads to the last decision before the problem statement, the choice of data.
+The \gls{fe} step is where dimensionality reduction will be relevant. This step reduces the dimensions to increase the model's performance. 
