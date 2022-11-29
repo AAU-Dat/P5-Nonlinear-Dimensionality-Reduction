@@ -13,15 +13,14 @@ Where $x$ is the original value, $x_{scaled}$ is the scaled value, $x_{min}$ is 
 
 The min-max scaler is a simple way to scale the data, but it is not robust to outliers. If there are outliers in the data, the min-max scaler will scale the data to be in the range of 0-1, but the outliers will be scaled very close to 0 or 1. While other data will be clustered together, this can be a problem if the outliers are essential to the model. The min-max scaler is also sensitive to the presence of zeros in the data. If there are zeros in the data, the zeros will remain zero, and this can be a problem if the zeros are essential to the model, however for this project, this will not be a concern, as this does not affect the model~\cite{Feature-engineering-zheng}.
 
-% \subparagraph{Variance scaling}\label{sec:variance-scaling}
+\subparagraph{Variance scaling}\label{sec:variance-scaling}
+Variance scaling is a more robust way to scale the data, but it is more complex. The variance scaling is a method that transforms the data to have a mean of 0 and a variance of 1, by subtracting the mean and dividing by the standard deviation. One thing to note, if the data that is being scaled is in Gaussian form, this scaling holds the form after scaling where as Min-max scaler does not withhold the Gaussian form\todo{What is Gaussian form?}. The formula for the variance scaling is:
 
-% Variance scaling is a more robust way to scale the data, but it is more complex. The variance scaling is a method that transforms the data to have a mean of 0 and a variance of 1, by subtracting the mean and dividing by the standard deviation. One thing to note, if the data that is being scaled is in Gaussian form, this scaling holds the form after scaling where as Min-max scaler does not withhold the Gaussian form. The formula for the variance scaling is:
+\begin{equation}
+    x_{scaled} = \frac{x - mean(x)}{\sqrt{var(x)}}
+\end{equation}
 
-% \begin{equation}
-%x_{scaled} = \frac{x - mean(x)}{\sqrt{var(x)}}
-% \end{equation}
-
-% Where $x$ is the original value, $x_{scaled}$ is the scaled value, $mean(x)$ is the mean of the data, and $var(x)$ is the variance of the data~\cite{Feature-engineering-zheng}.
+Where $x$ is the original value, $x_{scaled}$ is the scaled value, $mean(x)$ is the mean of the data, and $var(x)$ is the variance of the data~\cite{Feature-engineering-zheng}.
 
 
-The \gls{mnist} dataset has pixels with values in the range of 0-255~\cite{lecun-mnist-database}; the min-max scaler will be used to scale the data to be in the field of 0-1. The min-max scaler is a simple way to scale the data, and though it is sensitive in the presence of zeros, this does not affect the data, as a zero has to remain zero in our project. As the values in the \gls{mnist}, the dataset is set to the max of 255; outliers will not be a problem in this project.
+The \gls{mnist} dataset has pixels with values in the range of 0-255~\cite{lecun-mnist-database}; the min-max scaler will be used to scale the data to be in the field of 0-1. The min-max scaler is a simple way to scale the data, and though it is sensitive in the presence of zeros, this does not affect the data, as a zero has to remain zero in our project. As the values in the \gls{mnist}, the dataset is set to the max of 255; outliers will not be a problem in this project\todo{We do not use min-max scalar}.

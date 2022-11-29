@@ -1,1 +1,26 @@
 \section{Choice of Preprocessing}
+Following the theory of preprocessing from \ref{sec:preprocessing}, this section will cover the decisions made for preprocessing of the data, and how it was done.
+
+As stated in section \ref{subsec:preprocessing-steps} the amount of preproccessing needed varies depending on what is needed for the model. For this project, it was deemed sufficient to reshape the data, normalize the data, and finally augment the data. A detailed description of the steps can be found in the following sections.
+
+\subsection{Reshape}
+The following describes the methodology of reshaping the data, that was loaded from the \gls{mnist} dataset. This subsection describes the steps taken for the training data, but similar steps were taken for the test data.
+
+The data, when loaded in at first, is shaped as a long array of 47.040.000 integers, ranging from 0-255, representing the values of the pixels in all 60.000 images, and then another array of 60.000 integers representing what number a given image is, between 0-9. The images are in a 28x28 matrix, meaning that the first 784 integers represent the first image, and the successive 784 integers represent the second image. This proved difficult to work with, as it was not clear what image was what.
+
+Additionally, the function used from \gls{sklearn}, did not accept the data in this format, because the function \texttt{fit} expects: \textcquote{scikit-learn-PCA}{X: array-like of shape (n\_samples, n\_features)}, which means that the function expects the data to be in array of samples(images), and an array of features(pixels). Because of the input \texttt{fit} expects, is was neccecary to reshape the data into a 60.000x784 matrix, where each row represents one image, and each column represents a pixel\todo{Ensure this is correct}. The implementation used the \texttt{reshape} function from the \texttt{numpy} library. From this, there was a clear distinction between each image, and the data could easily be used in the functions given by \gls{sklearn}.
+
+\subsection{Normalization} \todo{In the code, the data is not normalized.}
+The following section describes the methodology of normalizing the data, that was loaded from the \gls{mnist} dataset.
+
+In section \ref{sec:normalization}, two methods of normalizing data were described, min-max scaler and variance scaler. From these two methods, variance scaler was chosen.
+
+\subsection{Data augmentation}
+The following section describes the methodology of augmenting the data.
+
+
+
+%What
+%How
+%Why
+%Explain it so that it's clear why we did it, and what we did. So that it can be replicated.
