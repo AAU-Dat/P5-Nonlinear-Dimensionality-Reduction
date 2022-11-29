@@ -1,6 +1,25 @@
 \chapter{Problem analysis}\label{cha:problem-analysis}
 This chapter describes the motivation for the project, culminating in a problem statement.
 
+\gls{ml}  is a field of study within \gls{ai} concerned with learning from data, where learning means that data is analyzed and something is gathered from it.   \gls{ml}  could be methods to solve a puzzle or patterns to recognize a number from an image. \gls{ml}  is a complex and growing field used in many areas. One of the reasons for the increasing interest in \gls{ml} is the increasing amount of available data. The data collected worldwide is increasing at an incredible rate, which seems to continue in the future~\cite{data-never-sleeps}. Because \gls{ml} models train on data, the more data available, the better the models can be~\cite{Unreasonable-effectiveness-of-data-Norvig}.
+
+\gls{ml} can be described as the discipline of teaching computers how to complete tasks where no perfect algorithm is possible. This also covers when there are many possible good ways to achieve something; for this, all the acceptable methods are labeled as acceptable ways to succeed. These answers help to "train" the computer to improve on some basic algorithm\cite{alpaydin2020introduction}.
+
+Inside a field as complex as \gls{ml}, many challenges exist; one such challenge is working with high-dimensional data. This is due to the inherent properties of many dimensions, making it challenging to interpret and computationally expensive. Higher dimensions are also associated with the so-called "curse of dimensionality". Richard E. Bellman coined this term in a paper about dynamic programming~\cite{bellmanrand}. According to John A. Lee, the curse of dimensionality is \textcquote{nonlinear-dim-red-chapter-two}{the curse of dimensionality also refers to the fact that in the absence of simplifying assumptions, the number of data samples required to estimate a function
+of several variables to a given accuracy ... on a given domain grows exponentially with the number of dimensions}.
+
+These difficulties associated with data in many dimensions make the study of dimensionality reduction highly relevant. The goal of dimensionality reduction is to reduce the number of dimensions in a dataset while retaining as much information as possible. Dimsionality reduction can improve interpretability on data and, if used in a \gls{ml} pipeline, make the pipeline faster. Dimensionality reduction is made by extracting features from the data, which trains a model. The extracted features help to predict new results on new data. This section is a general overview of the dimensionality reduction process and will be discussed in more detail in the next chapter.
+It will be explained what it is and some of its uses in the following paragraphs.
+
+\input{chapters/02-problem-analysis/machine-learning.tex}
+\input{chapters/02-problem-analysis/feature-engineering.tex}
+\input{chapters/02-problem-analysis/dim-red-relevance.tex}
+This chapter presented the pipeline and gave an overview of the different components of the pipeline. With this knowledge, we can now move on to the problem statement.
+
+\input{chapters/02-problem-analysis/problem-statement.tex}
+
+
+
 % \begin{itemize}
 %     \item Why Machine learning + Generalized pipeline overview?
 %     \item Why Feature Engineering: Dimensionality reduction
@@ -12,17 +31,6 @@ This chapter describes the motivation for the project, culminating in a problem 
 %     \item Linear versus nonlinear methods
 %     \item Problem statement
 % \end{itemize}
-
-\gls{ml}  is a field of study within \gls{ai} concerned with learning from data, where learning means that data is analyzed and something is gathered from it.   \gls{ml}  could be methods to solve a puzzle or patterns to recognize a number from an image. \gls{ml}  is a complex and growing field used in many areas. One of the reasons for the increasing interest in \gls{ml} is the increasing amount of available data. The data collected worldwide is increasing at an incredible rate, which seems to continue in the future~\cite{data-never-sleeps}. Because \gls{ml} models train on data, the more data available, the better the models can be~\cite{Unreasonable-effectiveness-of-data-Norvig}.
-
-\gls{ml} can be described as the discipline of teaching computers how to complete tasks where no perfect algorithm is possible. This also covers when there are many possible good ways to achieve something; for this, all the acceptable methods are labeled as acceptable ways to succeed. These answers help to "train" the computer to improve on some basic algorithm\cite{alpaydin2020introduction}.
-
-Inside a field as complex as \gls{ml}, many challenges exist; one such challenge is working with high-dimensional data. This is due to the inherent properties of many dimensions, making it challenging to interpret and computationally expensive. Higher dimensions are also associated with the so-called "curse of dimensionality". Richard E. Bellman coined this term in a paper about dynamic programming~\cite{bellmanrand}. According to John A. Lee, the curse of dimensionality is \textcquote{nonlinear-dim-red-chapter-two}{the curse of dimensionality also refers to the fact that in the absence of simplifying assumptions, the number of data samples required to estimate a function
-of several variables to a given accuracy ... on a given domain grows exponentially with the number of dimensions}.
-
-These difficulties associated with data in many dimensions make the study of dimensionality reduction highly relevant. The goal of dimensionality reduction is to reduce the number of dimensions in a dataset while retaining as much information as possible. Dimensionality reduction is made by extracting features from the data, which train a model\todo[inline]{No mention of computational costs?
-Interpretability?}. The extracted features help to predict new results on new data. This section is a general overview of the dimensionality reduction process and will be discussed in more detail in the next chapter.
-It will be explained what it is and some of its uses in the following paragraphs.
 
 % The most usual methods of dimensionality reduction are linear methods. These
 % methods might assume that the features in the original data are independent and
@@ -37,10 +45,3 @@ It will be explained what it is and some of its uses in the following paragraphs
 
 % It may be necessary to try out different \gls{ml} models to find the best one for a certain problem, which is a time-consuming process.
 
-\input{chapters/02-problem-analysis/machine-learning.tex}
-\input{chapters/02-problem-analysis/feature-engineering.tex}
-\input{chapters/02-problem-analysis/dim-red-relevance.tex}
-
-\input{chapters/02-problem-analysis/problem-statement.tex}
-
-We have in this chapter presented the pipeline and given an overview of the different components of the pipeline. With this knowledge, we can now move on to the problem statement. \todo[inline]{Add text to describe why linear vs nonlinear would work in this dataset.}
