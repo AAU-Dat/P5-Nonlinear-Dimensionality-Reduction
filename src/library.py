@@ -10,20 +10,58 @@ from sklearn.metrics import (ConfusionMatrixDisplay, classification_report,
 from sklearn.model_selection import GridSearchCV
 from sklearn.multiclass import OneVsOneClassifier
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import Normalizer, StandardScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
+
+# The results functions are similar for each dimensionality reduction method. The only difference is the pipeline and the hyperparameters:
+# 1. Build the pipeline
+# 2. Build the grid search
+# 3. Perform grid search
+# 4. Fit the final pipeline
+# 5. Predict the results from the test set
+# 6. Save the results
+# Currently:
+# The pipeline uses an ovo classifier with a SVC model. This seems to be better than LinearSVC, but it is hard to find information on LinearSVC in general.
+# GridSearchCV scores are based on the f1_macro score
+# GridSearchCV cross validation is stratisfied 5-fold.
 
 # Add this for repeated stratified k-fold cross validation insteaf of standard stratified k-fold cross validation
 # from sklearn.model_selection import RepeatedStratifiedKFold
 # cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=42)
 # search = GridSearchCV(pipeline, hyperparameters, cv=cv, scoring="f1_macro", verbose=3, n_jobs=-1)
 
+# This function gets the results of the svm model without dimensionality reduction.
 
-def pca_results(X, y, X_test, y_test, hyperparameters):
+
+def baseline_results(X, y, X_test, y_test, hyperparameters):
+    baseline_model_pipeline = Pipeline(steps=[
+        ("scaler", StandardScaler()),
+        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+    )
+
+    search = GridSearchCV(baseline_model_pipeline,
+                          hyperparameters,
+                          cv=5,
+                          scoring="f1_macro",
+                          verbose=3,
+                          n_jobs=-1)
+
+    search.fit(X, y)
+    y_pred = search.best_estimator_.predict(X_test)
+
+    save_results("baseline",
+                 search.cv_results_,
+                 ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
+                 classification_report(y_test, y_pred, output_dict=True)
+                 )
+
+
+def pca_svm_results(X, y, X_test, y_test, hyperparameters):
+    # Build the pipeline. StandardScaler removes the mean and scales each feature/variable to unit variance (REQUIRED for PCA)
     pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
-        ("pca", PCA(svd_solver="full")),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]  # OneVsOne might be superfluous. LinearSVC might be better
+        ("pca", PCA(svd_solver="full", random_state=42)),
+        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
     )
 
     search = GridSearchCV(pca_model_pipeline,
@@ -34,8 +72,7 @@ def pca_results(X, y, X_test, y_test, hyperparameters):
                           n_jobs=-1)
 
     search.fit(X, y)
-    final_pipeline = search.best_estimator_.fit(X, y)
-    y_pred = final_pipeline.predict(X_test)
+    y_pred = search.best_estimator_.predict(X_test)
 
     save_results("pca",
                  search.cv_results_,
@@ -44,7 +81,7 @@ def pca_results(X, y, X_test, y_test, hyperparameters):
                  )
 
 
-def lda_results(X, y, X_test, y_test, hyperparameters):
+def lda_svm_results(X, y, X_test, y_test, hyperparameters):
     lda_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("lda", LinearDiscriminantAnalysis(solver="svd")),
@@ -59,8 +96,7 @@ def lda_results(X, y, X_test, y_test, hyperparameters):
                           n_jobs=-1)
 
     search.fit(X, y)
-    final_pipeline = search.best_estimator_.fit(X, y)
-    y_pred = final_pipeline.predict(X_test)
+    y_pred = search.best_estimator_.predict(X_test)
 
     save_results("lda",
                  search.cv_results_,
@@ -69,7 +105,8 @@ def lda_results(X, y, X_test, y_test, hyperparameters):
                  )
 
 
-def isomap_results(X, y, X_test, y_test, hyperparameters):
+def isomap_svm_results(X, y, X_test, y_test, hyperparameters):
+    # StandardScaler is not required for isomap, but HUGELY affects speed. Perhaps try running the pipeline with data of type float32 or float16.
     isomap_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("isomap", Isomap()),
@@ -84,8 +121,7 @@ def isomap_results(X, y, X_test, y_test, hyperparameters):
                           n_jobs=-1)
 
     search.fit(X, y)
-    final_pipeline = search.best_estimator_.fit(X, y)
-    y_pred = final_pipeline.predict(X_test)
+    y_pred = search.best_estimator_.predict(X_test)
 
     save_results("isomap",
                  search.cv_results_,
@@ -94,7 +130,7 @@ def isomap_results(X, y, X_test, y_test, hyperparameters):
                  )
 
 
-def kernel_pca_results(X, y, X_test, y_test, hyperparameters):
+def kernel_pca_svm_results(X, y, X_test, y_test, hyperparameters):
     kernel_pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("kernel_pca", KernelPCA()),
@@ -109,8 +145,7 @@ def kernel_pca_results(X, y, X_test, y_test, hyperparameters):
                           n_jobs=-1)
 
     search.fit(X, y)
-    final_pipeline = search.best_estimator_.fit(X, y)
-    y_pred = final_pipeline.predict(X_test)
+    y_pred = search.best_estimator_.predict(X_test)
 
     save_results("kernel_pca",
                  search.cv_results_,

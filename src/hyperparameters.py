@@ -32,19 +32,24 @@ svm_hyperparameters = [
 ]
 
 pca_hyperparameters = {
-    "pca__n_components": [10, 25, 50, 100, 0.95]
+    "pca__n_components": [10, 25, 50, 100, 0.95],
+    "pca__whiten": [True, False],
 }
 
 lda_hyperparameters = {
-    "lda__n_components": [7, 8, 9], "lda__store_covariance": [True, False]
+    "lda__n_components": [7, 8, 9],
+    "lda__store_covariance": [True, False]
 }
 
 isomap_hyperparameters = {
-    "isomap__n_components": [10, 25, 50, 100, 0.95], "isomap__n_neighbors": [50, 75, 100]
+    "isomap__n_components": [2, 3, 5, 10, 25, 50, 100],
+    "isomap__n_neighbors": [None],
+    "isomap__n_radius": [7.5, 8, 8.5, 9, 9.5, 10]
 }
 
 kernel_pca_hyperparameters = {
-    "kernel_pca__gamma": np.linspace(0.03, 0.05, 10), "kernel_pca__kernel": ["rbf", "sigmoid", "poly"]
+    "kernel_pca__gamma": np.linspace(0.03, 0.05, 10),
+    "kernel_pca__kernel": ["rbf", "sigmoid", "poly"]
 }
 
 pca_svm_hyperparameters = []
