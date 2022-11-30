@@ -36,17 +36,16 @@ pca_hyperparameters = {
 }
 
 lda_hyperparameters = {
-    "lda__n_components": [7, 8, 9],
+    "lda__n_components": [5, 6, 7, 8, 9],
 }
 
 isomap_hyperparameters = {
-    "isomap__n_components": [9, 16, 25, 36, 49],
-    "isomap__n_neighbors": [None],
-    "isomap__n_radius": [7.5, 8, 8.5, 9, 9.5, 10]
+    "isomap__n_components": [36, 49],
+    "isomap__n_neighbors": [5, 6, 7],
 }
 
 kernel_pca_hyperparameters = {
-    "kernel_pca__n_components": [9, 16, 25, 36, 49],
+    "kernel_pca__n_components": [36, 49],
     "kernel_pca__gamma": gamma_logspace,
     "kernel_pca__kernel": ["rbf", "sigmoid", "poly"]
 }
