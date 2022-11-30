@@ -1,0 +1,14 @@
+\subsubsection{Data augmentation}\label{subsec:data-augmentation}
+This section will describe data augmentation, its relevance, and which specific augmentation will be used.
+
+\textcquote{ShortenConnor2019AsoI}{Data augmentation in data analysis are techniques used to increase the amount of data by adding slightly modified copies of already existing data or newly created synthetic from existing data. It acts as a regularizer and helps reduce overfitting when training a machine learning model.}
+
+Data augmentation has many reasons, typically to make a model more general and less overfitted. Overfitting happens because there is only a limited amount of data, often from multiple sources in the real world. So augmentation is used to make a model less reliant on these less-than-ideal data sources~\cite{MAHARANA202291}.
+In the case of this project, augmentation is chosen, so it is possible to show how the \gls{fe} and the model handle different data shapes while still having a baseline. Augmentation helps make more general inferences and intuition about \gls{fe} and \gls{ml}. It will, in particular, show which \gls{fe} methods best handle different data shapes. It will also help show how general augmentation can affect performance \gls{ml} models and \gls{fe}.
+There was chosen augmentations from the following list: Rotation, removing pixels, scaling. These were selected because they are all well-suited for images since they create variations of images~\cite{gonzalez2008digital}. There exist others, but they were not considered for this project. 
+ 
+
+All the chosen preprocesses for the project are now described. The following section concerns the next point in \gls{fe} dimensionality reduction. 
+
+
+

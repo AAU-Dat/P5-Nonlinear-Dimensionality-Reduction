@@ -1,0 +1,28 @@
+\section{Choice of Preprocessing}
+Following the theory of preprocessing from \ref{sec:preprocessing}, this section will cover the decisions made for preprocessing the data and how there were taken.
+
+As stated in section \ref{subsec:preprocessing-steps}, the amount of preprocessing needed varies depending on what is needed for the model. For this project, it was deemed sufficient to reshape the data, normalize it, and augment it. A detailed description of each decision can be found in the following sections.
+
+\subsection{Reshape}
+This subsection describes the decisions made regarding reshaping the data loaded from the \gls{mnist} dataset. This subsection only describes the decisions for the training data as an example, but similar decisions were also made for the test data.
+
+The data, when loaded in at first, is shaped as a long array of 47.040.000 integers, ranging from 0-255, representing the values of the pixels in all 60.000 images, and then another array of 60.000 integers representing what number a given image is, between 0-9. The images are in a 28x28 matrix, meaning that the first 784 integers represent the first image, and the successive 784 integers represent the second image. These numbers proved challenging, as it was unclear what image was what.
+
+Additionally, the function used from \gls{sklearn} did not accept the data in this format because the function \texttt{fit} expects: \textcquote{scikit-learn-PCA}{X: array-like of shape (n\_samples, n\_features)}, which means that the function expects the data to be in array of samples(images), and an array of features(pixels). Because of the input \texttt{fit} expects, it was necessary to reshape the data into a 60.000x784 matrix. From this, there was a clear distinction between each image, and the data could easily be used in the functions given by \gls{sklearn}.
+
+\subsection{Normalization}
+The following section describes the decisions of normalizing the data loaded from the \gls{mnist} dataset.
+
+In section \ref{sec:normalization}, two methods of normalizing data are described: min-max scaler and variance scaler. From these two methods, variance scaler was chosen. As variance scaler, also called StandardScaler, is a commonly used method of normalizing data, it was deemed a good choice. Variance scaler also ensures that it is comparable to prevent bias in the model~\cite{StandardScaler-towardsAi}. Both methods would have been good choices for normalization, variance scaler was chosen, but either would be acceptable for this project.
+
+\subsection{Data augmentation}
+The following section describes the decisions made regarding augmenting the data loaded from the \gls{mnist} dataset.
+
+As mentioned in section \ref{subsec:data-augmentation}, data augmentation increases the amount of data and makes the model more general. Augmentation creates new data from the existing data by applying different augmentations to the original data and using the new data to train the model. For this project, rotation and pixel removal augmentations were chosen. They were also deemed to represent real-world errors in data. A number could become slightly rotated due to an angle of writing, or a faulty printer could cause missing text parts. These are some of the cases thought of when deciding on the augmentations.
+
+
+
+%What
+%How
+%Why
+%Explain it so that it's clear why we did it, and what we did. So that it can be replicated.
