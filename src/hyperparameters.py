@@ -16,8 +16,8 @@ import numpy as np
 
 # concatenate two lists
 
-c_logspace = np.logspace(0, 4, 5)
-gamma_logspace = np.logspace(-4, 0, 5)
+c_logspace = np.logspace(0, 3, 4)
+gamma_logspace = np.logspace(-3, 0, 4)
 
 svm_hyperparameters = [
     {
@@ -32,35 +32,67 @@ svm_hyperparameters = [
 ]
 
 pca_hyperparameters = {
-    "pca__n_components": [10, 25, 50, 100, 0.95],
-    "pca__whiten": [True, False],
+    "pca__n_components": [9, 16, 25, 36, 49],
 }
 
 lda_hyperparameters = {
     "lda__n_components": [7, 8, 9],
-    "lda__store_covariance": [True, False]
 }
 
 isomap_hyperparameters = {
-    "isomap__n_components": [2, 3, 5, 10, 25, 50, 100],
+    "isomap__n_components": [9, 16, 25, 36, 49],
     "isomap__n_neighbors": [None],
     "isomap__n_radius": [7.5, 8, 8.5, 9, 9.5, 10]
 }
 
 kernel_pca_hyperparameters = {
-    "kernel_pca__gamma": np.linspace(0.03, 0.05, 10),
+    "kernel_pca__n_components": [9, 16, 25, 36, 49],
+    "kernel_pca__gamma": gamma_logspace,
     "kernel_pca__kernel": ["rbf", "sigmoid", "poly"]
 }
 
-pca_svm_hyperparameters = []
-lda_svm_hyperparameters = []
-isomap_svm_hyperparameters = []
-kernel_pca_svm_hyperparameters = []
 
-for hyperparameter in svm_hyperparameters:
-    pca_svm_hyperparameters.append({**pca_hyperparameters, **hyperparameter})
-    lda_svm_hyperparameters.append({**lda_hyperparameters, **hyperparameter})
-    isomap_svm_hyperparameters.append(
-        {**isomap_hyperparameters, **hyperparameter})
-    kernel_pca_svm_hyperparameters.append(
-        {**kernel_pca_hyperparameters, **hyperparameter})
+def pca_svm_hyperparameters_function(pca_part=pca_hyperparameters, svm_part=svm_hyperparameters):
+    pca_svm_hyperparameters = []
+
+    for hyperparameter in svm_part:
+        pca_svm_hyperparameters.append(
+            {**pca_part, **hyperparameter})
+
+    return pca_svm_hyperparameters
+
+
+def lda_svm_hyperparameters_function(lda_part=lda_hyperparameters, svm_part=svm_hyperparameters):
+    lda_svm_hyperparameters = []
+
+    for hyperparameter in svm_part:
+        lda_svm_hyperparameters.append(
+            {**lda_part, **hyperparameter})
+
+    return lda_svm_hyperparameters
+
+
+def isomap_svm_hyperparameters_function(isomap_part=isomap_hyperparameters, svm_part=svm_hyperparameters):
+    isomap_svm_hyperparameters = []
+
+    for hyperparameter in svm_part:
+        isomap_svm_hyperparameters.append(
+            {**isomap_part, **hyperparameter})
+
+    return isomap_svm_hyperparameters
+
+
+def kernel_pca_svm_hyperparameters_function(kernel_pca_part=kernel_pca_hyperparameters, svm_part=svm_hyperparameters):
+    kernel_pca_svm_hyperparameters = []
+
+    for hyperparameter in svm_part:
+        kernel_pca_svm_hyperparameters.append(
+            {**kernel_pca_part, **hyperparameter})
+
+    return kernel_pca_svm_hyperparameters
+
+
+pca_svm_hyperparameters = pca_svm_hyperparameters_function()
+lda_svm_hyperparameters = lda_svm_hyperparameters_function()
+isomap_svm_hyperparameters = isomap_svm_hyperparameters_function()
+kernel_pca_svm_hyperparameters = kernel_pca_svm_hyperparameters_function()

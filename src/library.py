@@ -33,7 +33,7 @@ from sklearn.svm import SVC
 # This function gets the results of the svm model without dimensionality reduction.
 
 
-def baseline_results(X, y, X_test, y_test, hyperparameters):
+def baseline_results(X, y, X_test, y_test, hyperparameters, methodname="baseline"):
     baseline_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
@@ -49,14 +49,14 @@ def baseline_results(X, y, X_test, y_test, hyperparameters):
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
 
-    save_results("baseline",
+    save_results(methodname,
                  search.cv_results_,
                  ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
                  classification_report(y_test, y_pred, output_dict=True)
                  )
 
 
-def pca_svm_results(X, y, X_test, y_test, hyperparameters):
+def pca_svm_results(X, y, X_test, y_test, hyperparameters, methodname="pca_svm"):
     # Build the pipeline. StandardScaler removes the mean and scales each feature/variable to unit variance (REQUIRED for PCA)
     pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
@@ -74,14 +74,14 @@ def pca_svm_results(X, y, X_test, y_test, hyperparameters):
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
 
-    save_results("pca",
+    save_results(methodname,
                  search.cv_results_,
                  ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
                  classification_report(y_test, y_pred, output_dict=True)
                  )
 
 
-def lda_svm_results(X, y, X_test, y_test, hyperparameters):
+def lda_svm_results(X, y, X_test, y_test, hyperparameters, methodname="lda_svm"):
     lda_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("lda", LinearDiscriminantAnalysis(solver="svd")),
@@ -98,14 +98,14 @@ def lda_svm_results(X, y, X_test, y_test, hyperparameters):
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
 
-    save_results("lda",
+    save_results(methodname,
                  search.cv_results_,
                  ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
                  classification_report(y_test, y_pred, output_dict=True)
                  )
 
 
-def isomap_svm_results(X, y, X_test, y_test, hyperparameters):
+def isomap_svm_results(X, y, X_test, y_test, hyperparameters, methodname="isomap_svm"):
     # StandardScaler is not required for isomap, but HUGELY affects speed. Perhaps try running the pipeline with data of type float32 or float16.
     isomap_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
@@ -123,14 +123,14 @@ def isomap_svm_results(X, y, X_test, y_test, hyperparameters):
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
 
-    save_results("isomap",
+    save_results(methodname,
                  search.cv_results_,
                  ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
                  classification_report(y_test, y_pred, output_dict=True)
                  )
 
 
-def kernel_pca_svm_results(X, y, X_test, y_test, hyperparameters):
+def kernel_pca_svm_results(X, y, X_test, y_test, hyperparameters, methodname="kernel_pca_svm"):
     kernel_pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("kernel_pca", KernelPCA()),
@@ -147,7 +147,7 @@ def kernel_pca_svm_results(X, y, X_test, y_test, hyperparameters):
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
 
-    save_results("kernel_pca",
+    save_results(methodname,
                  search.cv_results_,
                  ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)),
                  classification_report(y_test, y_pred, output_dict=True)
