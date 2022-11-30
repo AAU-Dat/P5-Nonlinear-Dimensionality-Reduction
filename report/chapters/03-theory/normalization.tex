@@ -21,6 +21,3 @@ Variance scaling is a more robust way to scale the data, but it is more complex.
 \end{equation}
 
 Where $x$ is the original value, $x_{scaled}$ is the scaled value, $mean(x)$ is the mean of the data, and $var(x)$ is the variance of the data~\cite{Feature-engineering-zheng}.
-
-
-The \gls{mnist} dataset has pixels with values in the range of 0-255~\cite{lecun-mnist-database}; the min-max scaler will be used to scale the data to be in the field of 0-1. The min-max scaler is a simple way to scale the data, and though it is sensitive in the presence of zeros, this does not affect the data, as a zero has to remain zero in our project. As the values in the \gls{mnist}, the dataset is set to the max of 255; outliers will not be a problem in this project\todo{We do not use min-max scalar}.
