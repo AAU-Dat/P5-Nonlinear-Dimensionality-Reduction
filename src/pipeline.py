@@ -1,42 +1,39 @@
-import time
+import idx2numpy
 
-from sklearn import svm
-
-import confusion_matrix
-import load_mnist
-import pca
-import svm_model
+from hyperparameters import (isomap_svm_hyperparameters,
+                             kernel_pca_svm_hyperparameters,
+                             lda_svm_hyperparameters, pca_svm_hyperparameters)
+from library import (isomap_svm_results, kernel_pca_svm_results,
+                     lda_svm_results, pca_svm_results)
+from load_mnist import load_mnist
 
 
 def main():
-    # load the data
-    loading_time_start = time.time()
-    (training_data, test_data) = load_mnist.load_mnist()
-    # remove pixels from the data
-    loading_time_end = time.time()
-    print("Loading time: " + str(loading_time_end - loading_time_start))
+    load_mnist()
 
-    pca_time_start = time.time()
-    (training_data2, test_data2) = pca.pca((training_data, test_data), 1)
-    pca_time_end = time.time()
+    X = idx2numpy.convert_from_file(
+        'src/mnist_data/train_file_image').reshape(60000, 784)
+    y = idx2numpy.convert_from_file('src/mnist_data/train_file_label')
+    X_test = idx2numpy.convert_from_file(
+        'src/mnist_data/test_file_image').reshape(10000, 784)
+    y_test = idx2numpy.convert_from_file('src/mnist_data/test_file_label')
 
-    print("PCA time: " + str(pca_time_end - pca_time_start))
-    (training_data, _) = load_mnist.load_mnist()
-    # create the model
+    pca_svm_results(
+        X, y, X_test, y_test,
+        pca_svm_hyperparameters, "pca_svm")
 
-    training_time_start = time.time()
-    model = svm_model.train_model(training_data, svm.SVC())
-    training_time_end_first = time.time()
-    model2 = svm_model.train_model(training_data2, svm.SVC())
-    training_time_end_second = time.time()
+    lda_svm_results(
+        X, y, X_test, y_test,
+        lda_svm_hyperparameters, "lda_svm")
 
-    print("Training time first: " +
-          str(training_time_end_first - training_time_start))
-    print("Training time second: " +
-          str(training_time_end_second - training_time_end_first))
-    # create the confusion matrix
-    print(confusion_matrix.create_confusion_matrix(model, test_data))
-    print(confusion_matrix.create_confusion_matrix(model2, test_data2))
+    isomap_svm_results(
+        X, y, X_test, y_test,
+        isomap_svm_hyperparameters, "isomap_svm")
+
+    kernel_pca_svm_results(
+        X, y, X_test, y_test,
+        kernel_pca_svm_hyperparameters, "kernel_pca_svm")
 
 
-main()
+if __name__ == "__main__":
+    main()
