@@ -1,4 +1,3 @@
-import idx2numpy
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -8,7 +7,6 @@ from sklearn.manifold import Isomap
 from sklearn.metrics import (ConfusionMatrixDisplay, classification_report,
                              confusion_matrix)
 from sklearn.model_selection import GridSearchCV
-from sklearn.multiclass import OneVsOneClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
@@ -28,22 +26,22 @@ from sklearn.svm import SVC
 # Add this for repeated stratified k-fold cross validation insteaf of standard stratified k-fold cross validation
 # from sklearn.model_selection import RepeatedStratifiedKFold
 # cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=42)
-# search = GridSearchCV(pipeline, hyperparameters, cv=cv, scoring="f1_macro", verbose=3, n_jobs=-1)
+# search = GridSearchCV(pipeline, hyperparameters, cv=cv, scoring="f1_macro", verbose=10, n_jobs=-1)
 
 # This function gets the results of the svm model without dimensionality reduction.
 
 
-def baseline_results(X, y, X_test, y_test, hyperparameters, methodname="baseline"):
+def baseline_svm_results(X, y, X_test, y_test, hyperparameters, methodname="baseline_svm"):
     baseline_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+        ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))]
     )
 
     search = GridSearchCV(baseline_model_pipeline,
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
-                          verbose=3,
+                          verbose=10,
                           n_jobs=-1)
 
     search.fit(X, y)
@@ -61,14 +59,14 @@ def pca_svm_results(X, y, X_test, y_test, hyperparameters, methodname="pca_svm")
     pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("pca", PCA(svd_solver="full", random_state=42)),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+        ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))]
     )
 
     search = GridSearchCV(pca_model_pipeline,
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
-                          verbose=3,
+                          verbose=10,
                           n_jobs=-1)
 
     search.fit(X, y)
@@ -85,14 +83,14 @@ def lda_svm_results(X, y, X_test, y_test, hyperparameters, methodname="lda_svm")
     lda_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("lda", LinearDiscriminantAnalysis(solver="svd")),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+        ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))]
     )
 
     search = GridSearchCV(lda_model_pipeline,
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
-                          verbose=3,
+                          verbose=10,
                           n_jobs=-1)
 
     search.fit(X, y)
@@ -110,15 +108,15 @@ def isomap_svm_results(X, y, X_test, y_test, hyperparameters, methodname="isomap
     isomap_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("isomap", Isomap()),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+        ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))]
     )
 
     search = GridSearchCV(isomap_model_pipeline,
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
-                          verbose=3,
-                          n_jobs=-1)
+                          verbose=10,
+                          n_jobs=1)
 
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
@@ -134,15 +132,15 @@ def kernel_pca_svm_results(X, y, X_test, y_test, hyperparameters, methodname="ke
     kernel_pca_model_pipeline = Pipeline(steps=[
         ("scaler", StandardScaler()),
         ("kernel_pca", KernelPCA()),
-        ("classifier", OneVsOneClassifier(SVC(random_state=42)))]
+        ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))]
     )
 
     search = GridSearchCV(kernel_pca_model_pipeline,
                           hyperparameters,
                           cv=5,
                           scoring="f1_macro",
-                          verbose=3,
-                          n_jobs=-1)
+                          verbose=10,
+                          n_jobs=1)
 
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)
