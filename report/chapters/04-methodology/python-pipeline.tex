@@ -4,44 +4,7 @@ The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-mod
 
 \begin{figure}[htb!]
     \centering
-    \begin{tikzpicture}[node distance=1.5cm, auto, every node/.style={scale=0.8}]
-        %MNIST Original logo
-        \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.1] {};
-        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST original};
-        \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.1] {};
-        
-        %MNIST Argumented logo
-        \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice1.south)+(0cm,-4.5cm)$)}] {};
-        \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=1cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.1] {MNIST argumented};
-        \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.4] {};
-        
-    \node (a) [cluster, shift={($(db-slice2.east)+(3cm,-2.5cm)$)}] {pre-processing};
-    \node (b) [cluster, shift={($(a.east)+(4cm,0cm)$)}] {No dimentionality reduction};
-    \node (c) [cluster, below of=b] {Dimentionality reduction};
-    \node (d) [circle, shift={($(c.south west)+(0.5cm,-2.5cm)$)}] {Linear};
-    \node (e) [circle, shift={($(c.south east)+(-0.5cm,-2.5cm)$)}] {Non linear};
-    \node (f) [cluster, shift={($(b.east)+(3.5cm,0cm)$)}] {Machine learning model};
-    \node (g) [cluster, below of=f] {output};
-    
-    \node (o) [shift={($(db-slice2.east)+(1cm,-2.5cm)$)}] {};
-    \node (p) [shift={($(a.east)+(0.5cm,0cm)$)}] {};
-    \node (q) [shift={($(b.east)+(0.5cm,0cm)$)}] {};
-    
-    \draw [arrow, -] (db-slice2.east) -- ++(0,0) -| (o.west);
-    \draw [arrow, -] (db-slice5.east) -- ++(0,0) -| (o.west);
-    \draw [arrow, ->] (o.west) -- (a.west);
-    
-    \draw [arrow, ->] (a.east) -- (b.west);
-    \draw [arrow, ->] (p.east) -- ++(0,-1) |- (c.west);
-    
-    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (e.north);
-    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (d.north);
-
-    \draw [arrow, ->] (b.east) -- (f.west);
-    \draw[arrow, ->] (f) to[loop above,looseness=9] node[above,scale=0.8, xshift=-10,yshift=7] {We train the model with the training data} (f);
-    \draw [arrow, -] (c.east) -- ++(0,0) -| (q.east);
-    \draw [arrow, ->] (f.south) -- (g.north);
-\end{tikzpicture}
+    \input{figures/python-pipeline.tex}
     \caption{Python pipeline}
     \label{fig:Python-pipeline}
 \end{figure}
@@ -56,20 +19,7 @@ The third task is in dimensionality reduction where it is decided if the data sh
 
 \begin{figure}[htb!]
     \centering
-    \begin{tikzpicture}
-        \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
-        \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.27] {MNIST};
-        \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.6] {};
-        
-        \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice4.east)+(3cm,-0.05cm)$)}] {};
-        \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=1cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST argumented};
-        \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.4] {};
-        
-        \node (a) [cluster, shift={($(db-slice5.west)+(-3cm,0)$)}] {Data argumentation};
-            
-        \draw [arrow, ->] (db-slice5.east) -- (db-slice2.west);
-        \draw [arrow, ->] (a.east) -- (db-slice5.west);
-    \end{tikzpicture}
+    \input{figures/data-argumentation.tex}
     \caption{Data argumentation creation}
     \label{fig:data-argumentation-create}
 \end{figure}
@@ -78,22 +28,7 @@ In Figure~\ref{fig:data-argumentation-create} the data argumentation is visualiz
 
 \begin{figure}[htb!]
     \centering
-    \begin{tikzpicture}
-        \node (db-slice7) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
-        \node (db-slice8) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice7.before top, anchor=after bottom,aspect=0.27] {MNIST};
-        \node (db-slice9) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice8.before top, anchor=after bottom, aspect=1.6] {};
-        
-        \node (db-slice10) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice8.south east)+(5cm,-3cm)$)}] {};
-        \node (db-slice11) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice10.before top, anchor=after bottom,aspect=0.48] {test};
-        \node (db-slice12) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice11.before top, anchor=after bottom, aspect=1.6] {};
-        
-        \node (db-slice13) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice10.north)+(0cm,5cm)$)}] {};
-        \node (db-slice14) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice13.before top, anchor=after bottom,aspect=0.4] {train};
-        \node (db-slice15) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice14.before top, anchor=after bottom, aspect=1.6] {};
-        
-        \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice11.west);
-        \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice14.west);
-    \end{tikzpicture}
+    \input{figures/data-separation.tex}
     \caption{Data-set separation}
     \label{fig:data-set-sepa}
 \end{figure}

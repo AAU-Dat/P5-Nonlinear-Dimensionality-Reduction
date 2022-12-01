@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+    \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
+    \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.27] {MNIST};
+    \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.6] {};
+    
+    \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice4.east)+(3cm,-0.05cm)$)}] {};
+    \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=1cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST argumented};
+    \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.4] {};
+    
+    \node (a) [cluster, shift={($(db-slice5.west)+(-3cm,0)$)}] {Data argumentation};
+        
+    \draw [arrow, ->] (db-slice5.east) -- (db-slice2.west);
+    \draw [arrow, ->] (a.east) -- (db-slice5.west);
+\end{tikzpicture}

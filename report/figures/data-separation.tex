@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \node (db-slice7) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.6] {};
+    \node (db-slice8) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice7.before top, anchor=after bottom,aspect=0.27] {MNIST};
+    \node (db-slice9) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice8.before top, anchor=after bottom, aspect=1.6] {};
+    
+    \node (db-slice10) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice8.south east)+(5cm,-3cm)$)}] {};
+    \node (db-slice11) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice10.before top, anchor=after bottom,aspect=0.48] {test};
+    \node (db-slice12) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice11.before top, anchor=after bottom, aspect=1.6] {};
+    
+    \node (db-slice13) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, aspect=1.6, shift={($(db-slice10.north)+(0cm,5cm)$)}] {};
+    \node (db-slice14) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, text centered, above=0pt of db-slice13.before top, anchor=after bottom,aspect=0.4] {train};
+    \node (db-slice15) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=2.32cm, above=0pt of db-slice14.before top, anchor=after bottom, aspect=1.6] {};
+    
+    \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice11.west);
+    \draw [arrow, ->] (db-slice8.east) -- ++(1,0) |- (db-slice14.west);
+\end{tikzpicture}
