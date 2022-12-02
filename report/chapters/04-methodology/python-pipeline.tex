@@ -1,6 +1,6 @@
 \tikzstyle{circle} = [ellipse, minimum width=1.5cm, minimum height=0.5cm, text centered, draw=black, fill=white!30]
 \section{Python pipeline}\label{sec:python-pipeline}
-The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-model}. The pipeline is divided into 5 tasks, which are described in the following sections. 
+The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-model}. The pipeline is divided into five tasks, which are described in the following sections. 
 
 \begin{figure}[htb!]
     \centering
@@ -9,36 +9,32 @@ The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-mod
     \label{fig:Python-pipeline}
 \end{figure}
 
-An overview of the pipeline can be seen in Figure~\ref{fig:Python-pipeline}. The pipeline is divided into 5 tasks, which are described in the following sections. 
+An overview of the pipeline can be seen in Figure~\ref{fig:Python-pipeline}. The pipeline is divided into five tasks, which are described in the following sections. 
 
-The first task is loading the \gls{mnist} data set. The data set is divided into three subsets: the training, validation, and test sets. The reason why there are two image files depicted is because the other data set can be made in the pre-processing task.
+The first task is loading the \gls{mnist} data set. The data set is divided into three subsets: the training, validation, and test sets. There are two image files depicted because the other data set can be made in the pre-processing task.
 
 
-The second task is pre-processing the data. This is done by rescaling the image or making the image only black and white because the chosen data set can be the augmented set, which already has some noise in the image. This task can be optional to make it harder for the model to learn the data.
+The second task is pre-processing the data. This task is done by rescaling the image or making the image only black and white because the chosen data set can be the augmented set, which already has some noise in the image. This task can be optional, making it harder for the model to learn the data.
 
 
 The third task is dimensionality reduction, where the data's dimensions can be reduced. The motive for not reducing the data is the need to have the model's base metrics without any dimensionality reduction; in that way, a comparison between the base model and model with the different dimensionality reduction methods regarding their results can be presented.
 
 The fourth task is the machine learning model, which trains the model with the chosen reduced or original train data set depending on previous choices. The fifth task is to produce to get the classification report for the model.
 
-In order to not overfit the machine learning model, cross-validation will be implemented, which will require some hyperparameters to be chosen.
+To avoid overfitting the machine learning model, cross-validation will be implemented, which will require some hyperparameters to be chosen.
 
 
 Cross-validation comprises of the tasks two to four, which are repeated for an amount of chosen folds, as it can be seen on Figure \textbf{I do not have a ref}. The essence of cross-validation is to try all of the possible combinations of hyperparameters in order to tune the machine learning model with the best hyperparameters of the dimensionality reduction method.
 
 
-The model trains with the training set and validation set, and the test results are then evaluated and compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage, which will presented in a format that can be used for comparison.
+The model trains with the training set and validation set and the test results are then evaluated and compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage, which will be presented in a format that can be used for comparison.
 
  
-Cross-validation gives the possibility to tune the hyperparameters of the methods and models. In the project, the implementation of cross-validation is done by using GridSearchCV, which further can output the scores of all the invididual models trained with the different hyperparameters. Section \textbf{I do not have a ref} will go into more detail about the implementation of cross-validation.
+Cross-validation gives the possibility to tune the hyperparameters of the methods and models. In the project, the implementation of cross-validation is done by using GridSearchCV, which further can output the scores of all the individual models trained with the different hyperparameters. Section \textbf{I do not have a ref} will go into more detail about the implementation of cross-validation.
 
-Depending on how many folds there are chosen, for each fold a number $n$ of subtasks will be performed, as can be seen on Figure \textbf{I do not have a ref}. The number of subtasks corresponds to the Cartesian product of the hyperparameters. A subtask is defined as a fit of the pipeline object that contains the steps of the pipeline; pre-processing, dimensionality reduction, model training and evaluation(on the validation set). Each subtask has the hyperparameters set to a specific value, which belongs to the Cartesian product of the hyperparameters.
-
-
+Depending on how many folds there are chosen, for each fold, a number $n$ of subtasks will be performed, as can be seen in Figure \textbf{I do not have a ref}. The number of subtasks corresponds to the Cartesian product of the hyperparameters. A subtask is defined as a fit of the pipeline object that contains the steps of the pipeline; pre-processing, dimensionality reduction, model training, and evaluation(on the validation set). Each subtask has the hyperparameters set to a specific value, which belongs to the Cartesian product of the hyperparameters.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%This is what has been done before.
 \begin{figure}[htb!]
     \centering
     \input{figures/data-argumentation.tex}
@@ -46,7 +42,7 @@ Depending on how many folds there are chosen, for each fold a number $n$ of subt
     \label{fig:data-argumentation-create}
 \end{figure}
 
-In Figure~\ref{fig:data-argumentation-create} the data argumentation is visualized. The pipeline is divided into 3 tasks. The first task is in data argumentation where it is decided what type of argumentation is used. This can be blur, rotation, noise, or a combination of these. The second task is then to use the argumentation on the MNIST data-set. Where we get the argumented MNIST data-set, which will be the input to the machine learning model. A side note is the size of the argumented data-set can be bigger than the original MNIST data-set.
+In Figure~\ref{fig:data-argumentation-create} data argumentation is visualized. The pipeline is divided into three tasks. The first task is data augmentation, where it is decided what type of augmentation is used. This can be a blur, rotation, noise, or a combination of these. The second task is then to use the augmentation on the MNIST data set, where the output is the augmented MNIST data set. The new set will be the input to the machine learning model. It should be noted that the size of the augmented data set can be bigger than the original MNIST data set.
 
 \begin{figure}[htb!]
     \centering
