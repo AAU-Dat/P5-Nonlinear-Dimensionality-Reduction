@@ -12,24 +12,28 @@ The python pipeline is based on the model in Figure~\ref{fig:python-pipeline-mod
 An overview of the pipeline can be seen in Figure~\ref{fig:Python-pipeline}. The pipeline is divided into 5 tasks, which are described in the following sections. 
 
  
-The first task is loading the \gls{mnist} data set. The data set is divided into three subsets: the training, validation, and test sets. 
-The model trains with the training set, tunes the hyperparameters with the validation set and evaluates the test set. Two kinds of data sets can be chosen: the original \gls{mnist} data set or an augment \gls{mnist} data set, which will be presented after this figure. 
+The first task is loading the \gls{mnist} data set. The data set is divided into three subsets: the training, validation, and test sets. \todo{the data is not divided right now. I will be need to be divided.}
+
+
+The reason why there are two image files depicted is because the other data set can be made in the pre-processing task. \todo{unclear whether we will have augmentation}
+
 
 The second task is pre-processing the data. This is done by rescaling the image or making the image only black and white because the chosen data set can be the augmented set, which already has some noise in the image. This task can be optional to make it harder for the model to learn the data.
 
-The third task is dimensionality reduction, where the data's dimensions can be reduced. The motive for not reducing the data is the need to have the model's base metrics without any dimensionality reduction; in that way, a comparison between the base model and model with the different dimensionality reduction methods can be presented regarding their results.
+#The model trains with the training set, tunes the hyperparameters with the validation set and evaluates the test set.
+The third task is dimensionality reduction, where the data's dimensions can be reduced. The motive for not reducing the data is the need to have the model's base metrics without any dimensionality reduction; in that way, a comparison between the base model and model with the different dimensionality reduction methods regarding their results can be presented.
 
-The fourth task is the machine learning model, which trains the model with the chosen reduced or original train data set depending on previous choices. 
-To not overfit the machine learning model, cross-validation is implemented.
+The fourth task is the machine learning model, which trains the model with the chosen reduced or original train data set depending on previous choices. In order to not overfit the machine learning model, cross-validation will be implemented. Cross-validation can be seen as an abstraction of he tasks two to four. In essence, the data gets passed to cross-validation, which leads to the machine learning model with the best hyperparameters. The model is evaluated on the test set, and the results are presented in the fifth task.
+
+
+
 The model trains with the training set and validation set, and the test results are then evaluated and compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The first task is the dataset the dataset is the \gls{mnist} data set. The data set is divided into 3 subsets, which are the training set, the validation set, and the test set. The training set is used to train the model, the validation set is used to tune the hyperparameters of the model, and the test set is used to evaluate the model. There can be chosen two kinds of data sets, the original \gls{mnist} data set or an argumented \gls{mnist} data-set, which will be presented after this figure. 
+Cross-validation gives the possibility to tune the hyperparameters of the methods and models. In the project, the implementation of cross-validation is done by using GridSearchCV, which further can output the scores of all the invididual models trained with the different hyperparameters.
 
-Thd second task is pre-processing the data. This is done by rescaling the image or making the image only black and white because the chosen data set can be the argumented set, which already has some noice in the image. This task can be optional as to make it harder for the model to learn the data.
 
-The third task is in dimensionality reduction where it is decided if the data should be reduced or not and what type of dimensionality reduction should be made linear or non linear. The fourth task is in the machine learning model where the model is trained with the chosen reduced or original train data-set depending on previous choises. When the model is trained, it is tested on the test data. The results of the test is then evaluated and can compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage.
+Depending on how many folds there are made, for each fold a number $n$ of subtasks will be performed. The number of subtasks corresponds to the Cartesian product of the hyperparameters. More on that in Section \textbf{I do no have ref}. A subtask is defined as a fit of the pipeline object that contains the steps of the pipeline; pre-processing, dimensionality reduction, model training and evaluation(on the validation set). Each subtask has the hyperparameters set to a specific value, which belongs to the Cartesian product of the hyperparameters.
 
 \begin{figure}[htb!]
     \centering
