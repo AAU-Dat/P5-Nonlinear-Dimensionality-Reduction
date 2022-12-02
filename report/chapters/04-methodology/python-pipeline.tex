@@ -26,14 +26,14 @@ The third task is dimensionality reduction, where the data's dimensions can be r
 The fourth task is the machine learning model, which trains the model with the chosen reduced or original train data set depending on previous choices. In order to not overfit the machine learning model, cross-validation will be implemented. Cross-validation can be seen as an abstraction of he tasks two to four. In essence, the data gets passed to cross-validation, which leads to the machine learning model with the best hyperparameters. The model is evaluated on the test set, and the results are presented in the fifth task.
 
 
-
-The model trains with the training set and validation set, and the test results are then evaluated and compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage.
+The model trains with the training set and validation set, and the test results are then evaluated and compared to the results of the other models. The evaluation is done by explainability, accuracy, precision, recall, f1-score, speed/run time, and memory usage, which will presented in a format that can be used for comparison.
 
 
 Cross-validation gives the possibility to tune the hyperparameters of the methods and models. In the project, the implementation of cross-validation is done by using GridSearchCV, which further can output the scores of all the invididual models trained with the different hyperparameters.
 
 
 Depending on how many folds there are made, for each fold a number $n$ of subtasks will be performed. The number of subtasks corresponds to the Cartesian product of the hyperparameters. More on that in Section \textbf{I do no have ref}. A subtask is defined as a fit of the pipeline object that contains the steps of the pipeline; pre-processing, dimensionality reduction, model training and evaluation(on the validation set). Each subtask has the hyperparameters set to a specific value, which belongs to the Cartesian product of the hyperparameters.
+
 
 \begin{figure}[htb!]
     \centering
