@@ -1,0 +1,4 @@
+\section{choice of hyper parameters}
+This section will describe why hyperparameter tuning is part of the pipeline. 
+
+Choosing parameters is necessary when working with models and with \gls{fe}. In this pipeline, in particular, there are many parameters to tune because it has both model and \gls{fe}. Tuning the parameters would take very long due to not only having to pick different model parameters and try each of these configurations with different \gls{fe}, which increases the time exponentially. The pipeline implements hyperparameter tuning, specifically using grid search To solve this. This hyperparameter tuning using grid search makes the tuning process more effective and avoids missing exemplary configurations due to human error.
