@@ -16,18 +16,12 @@ import numpy as np
 
 # concatenate two lists
 
-c_logspace = np.logspace(0, 3, 4)
+c_logspace = np.logspace(-3, 0, 4)
 gamma_logspace = np.logspace(-3, 0, 4)
 
 svm_hyperparameters = [
     {
-        "classifier__estimator__kernel": ["linear"],
-        "classifier__estimator__C": c_logspace
-    },
-    {
-        "classifier__estimator__kernel": ["rbf"],
-        "classifier__estimator__C": c_logspace,
-        "classifier__estimator__gamma": gamma_logspace
+        "classifier__C": c_logspace
     }
 ]
 
@@ -40,14 +34,14 @@ lda_hyperparameters = {
 }
 
 isomap_hyperparameters = {
-    "isomap__n_components": [36, 49],
-    "isomap__n_neighbors": [5, 6, 7],
+    "isomap__n_components": [4, 9, 36, 49],
+    "isomap__n_neighbors": [4, 5],
 }
 
 kernel_pca_hyperparameters = {
     "kernel_pca__n_components": [36, 49],
     "kernel_pca__gamma": gamma_logspace,
-    "kernel_pca__kernel": ["rbf", "sigmoid", "poly"]
+    "kernel_pca__kernel": ["rbf", "sigmoid"]
 }
 
 
