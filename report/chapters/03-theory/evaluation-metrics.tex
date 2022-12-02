@@ -1,8 +1,7 @@
 \section{Evaluation and metrics}\label{sec:evalueation}
-
 A pipeline is generally evaluated based on quantitative metrics in machine learning and data science. These metrics are in classification general based on the confusion matrix. An example of a confusion matrix can be seen in \todo{need to make pictue}. It represents all the guesses a \gls{ml} model has made, where the x-axis, in this case, is the actual class of a given data point, and the y-axis is the class the model has guessed the data point to have. The numbers are how many times the model has guessed the different combinations~\cite{james-statistical-learning}. 
 
-\subsection{Metrics}
+\subsection{Metrics}\label{subsec:metrics}
 There are many different metrics, but there are generally four basic ones. These are accuracy, precision, recall, and F1. Outside these, there are more esoteric metrics such as the Mattheus correlation coefficient, Cohen's kappa, and more~\cite{metrics-for-multi}. The following section will describe each of the four basic metrics. 
 
 \paragraph{Accuracy} The most straightforward and simple of the metrics is accuracy, as it simply describes the percentage of correct guesses out of all guesses. Accuracy works well in cases where the sizes of the different classes are similar but struggles in cases where one class is much larger than another. In a case where one class is much larger than others, it is possible to achieve very high accuracy by only guessing the larger class, as the larger classes will have a higher weight when compared to the smaller classes~\cite{metrics-for-multi}. The formula for accuracy can be seen in \ref{eq:accuracy}.
