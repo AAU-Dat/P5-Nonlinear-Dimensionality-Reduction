@@ -3,7 +3,7 @@ This section introduces the concept of hyperparameter optimization and the impor
 
 
 \subsection{Hyperparameters}\label{subsec:hyperparam-what}
-Hyperparameters are the parameters set, for algorithms, before training the model, which does not get learned from the data. The values of hyperparameters can have a significant impact on the performance of the model. How hyperparameters differ from model parameters is that those model parameters get learned from the data during model training~\cite{probst2019tunability}.
+Hyperparameters are the parameters set, for algorithms, before training the model, which does not get learned from the data. The values of hyperparameters can have a significant impact on the performance of the model. How hyperparameters differ from model parameters is that those model parameters get learned from the data during model training~\cite{probst2019tunability}. Hyperparameters exist for both \gls{fe} and for \gls{ml} models, examples of these could be \gls{svm} and \gls{pca}. Here \gls{pca} should at least have the hyperparameter which corresponds to the amount of dimensions it should reduce down to. \gls{Svm} would have hyperparameters like which kind of kernel it should use.
 
 \subsection{Methods of optimization for hyperparameters}\label{subsec:hyperparam-how}
 Usually, when selecting hyperparameters for a given algorithm, users can resort to default values based on the algorithm's documentation, read literature for recommendations, or try different values and see which one works best. However, this approach could be more efficient, as it is time-consuming and requires a lot of manual work~\cite{probst2019tunability}.
