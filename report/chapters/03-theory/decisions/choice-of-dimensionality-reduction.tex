@@ -1,5 +1,6 @@
 \section{Choice of dimensionality reduction}\label{sec:choice-of-dimensionality-reduction}
-Some dimensionality reduction methods were presented in the Section \ref{sec:dimensionality-reduction}. Due to the project's limited scope, not all of the dimensionality reduction methods will be chosen in the implementation. The methods are the following: \gls{pca}, \gls{lda}, \gls{isomap}, \gls{kpca}. The implementation of the methods will be based on scikit-learn's implementation of the methods.
+Some dimensionality reduction methods were presented in the Section \ref{sec:dimensionality-reduction}. Due to the project's limited scope, not all of the dimensionality reduction methods will be chosen in the implementation. The implementation of the methods will be based on scikit-learn's implementation of the methods. The hyperparameters of the respective methods will also be presented.
+
 
 
 \subsection{Linear methods}
@@ -12,8 +13,8 @@ The reason for choosing \gls{pca} is, among others, because it is a popular dime
 \subsection{Nonlinear methods}
 \gls{kpca} was chosen because of its ability to project the nonlinear data onto a hyperplane where PCA can be used. That fact leads to the possibility of using \gls{kpca} with the hyperparameters of \gls{pca}, and kernels. Additionally, some kernels will have a kernel coefficient, which can be thought of sensitivity of the kernel. Another reason for choosing \gls{kpca} is that it uses \gls{pca}, so the differences between linear \gls{pca} and nonlinear \gls{pca} could be compared.
 
-\gls{isomap} is another nonlinear dimensionality reduction method that takes another approach to reduce the dimensions of nonlinear data. Instead of using a kernel, \gls{isomap} constructs a graph of the data and then applies \gls{cmds} to the data. \gls{isomap} also tries to preserve the distances between the data points as much as possible~\cite{dimensionality-reduction-comparative-review}. Therefore, the hyperparameters used for \gls{isomap} are the number of components and the number of neighbors used to construct the graph.
+\gls{isomap} is another nonlinear dimensionality reduction method that takes another approach to reduce the dimensions of nonlinear data. Instead of using a kernel, \gls{isomap} constructs a graph of the data and then applies \gls{cmds} to the data. \gls{isomap} also tries to preserve the distances between the data points as much as possible~\cite{dimensionality-reduction-comparative-review}. Therefore, the hyperparameters used for \gls{isomap} are the number of components and the number of neighbors used to construct the graph. The group has also worked with other nonlinear methods, such as T-SNE. However, it was ultimately not chosen because it is a method that is mostly used for data visualization~\cite{tsne-visualization}.
 
 
-The group has worked with other nonlinear methods, such as T-SNE. However, it was ultimately not chosen because it is a method that is mostly used for data visualization~\cite{tsne-visualization}.
+This section has presented the dimensionality reduction methods that will be used in the implementation. The methods are the following: \gls{pca}, \gls{lda}, \gls{isomap}, \gls{kpca}, where the number of components is the hyperparameters for the methods. Additionally, \gls{pca} has the hyperparameter of whether the components will be whitened or not, \gls{isomap} has the number of neighbors, and \gls{kpca} has the kernel and the kernel coefficient.
 
