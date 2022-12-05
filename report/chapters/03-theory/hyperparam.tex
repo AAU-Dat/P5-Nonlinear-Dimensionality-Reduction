@@ -14,6 +14,8 @@ Many different techniques can get used to optimize the hyperparameters automatic
 
 From this, it can be concluded that no single method is optimal for all cases. The optimal method depends on many variables, such as the number of hyperparameters and possible values for each hyperparameter. Therefore, it is essential to evaluate the different methods and find the one that works best for the given problem. Of course, many other techniques could be discussed. Nevertheless, these two methods should sufficiently demonstrate the strengths and weaknesses of different techniques.
 
+\input{chapters/03-theory/decisions/choice-of-hyperparameter.tex}
+
 %As written in section~\ref{sec:cross-validation} cross-validation might also prove to be helpful when training a model with the specified configurations. As an example, if there are two hyperparameters, each with three different values, then the cartesian product of these sets will be nine different combinations. If we choose to use k-fold cross-validation, for example assume we want to use five folds, then the nine combinations with be multiplied with the number of folds specified in the cross-validation, in this case amounting to 45 different combinations. From this, we can see that the complexity of grid search increases drastically if we include cross-validation, which means that it can take a long time to find the optimal configuration.
 
 
