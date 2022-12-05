@@ -4,12 +4,12 @@ A pipeline is generally evaluated based on quantitative metrics in machine learn
 \begin{figure}[htb!]
     \centering
     \includegraphics[scale=0.3]{figures/Confusion_Matrix.jpg}
-    \caption{Confusion matrix}
+    \caption{Confusion matrix~\cite{confusion-matrix}}
     \label{fig:confusion_matrix}
 \end{figure}
 
 \autoref{fig:confusion_matrix} has the values: \texttt{TN}, \texttt{FP}, \texttt{FN}, and \texttt{TP}, which stand for True Negative, False Positive, False Negative, and True Positive, respectively.
-A confusion matrix represents all an \gls{ml} model's guesses, with the number of guesses placed at the corresponding label where the correctly predicted elements are on the diagonalm, in this case \texttt{TN} and \texttt{TP}~\cite{james-statistical-learning}.
+A confusion matrix represents all an \gls{ml} model's guesses, with the number of guesses placed at the corresponding label where the correctly predicted elements are on the diagonal, in this case \texttt{TN} and \texttt{TP}~\cite{james-statistical-learning}.
 
 \subsection{Metrics}\label{subsec:metrics}
 There are many different metrics, but there are generally four basic ones. These are accuracy, precision, recall, and F1. Outside these, there are more esoteric metrics such as the Mattheus correlation coefficient, Cohen's kappa, and more~\cite{metrics-for-multi}. The following section will describe each of the four basic metrics.
@@ -40,8 +40,4 @@ There are many different metrics, but there are generally four basic ones. These
 
 These metrics generally get used in a pipeline for hyperparameter tuning and general evaluation of the model's performance. For this project, hyperparameter tuning will generally only use a single metric to focus on to maximize it. In evaluation, the metrics generally explain what the model does well and does not do well~\cite{james-statistical-learning}.
 
-
-
-
-
-
+\input{chapters/03-theory/decisions/choice-of-evaluation.tex}

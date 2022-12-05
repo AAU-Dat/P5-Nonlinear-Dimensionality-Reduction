@@ -3,11 +3,6 @@ In general, dimensionality reduction transforms data with many features (dimensi
 
 Dimensionality reduction can be divided into two categories: linear and nonlinear methods, described in Section \ref{sec:linear-vs-nonlinear}. This section presents some of the standard methods from both categories.
 
-\todo[inline]{Linear methods are based on the assumption that the data is linear. 
-A linear dataset is one in which all possible prediction outcomes can be obtained by combinations of the original features without any additional interactions. 
-You can show an example of linear data for regression and classification. 
-Note that this difference is not so strict as some methods could be thought of as both}
-
 
 \subsection{Linear methods}\label{subsec:linear-methods}
 The linear methods covered are: \gls{pca}, \gls{fa}, \gls{nmf}, and \gls{lda}.
@@ -51,9 +46,9 @@ In the second step, \gls{isomap} finds the Geodesic distance between each point~
 The final step in \gls{isomap} is finding the data's \gls{mds} projection. The \gls{mds} projection is found by minimizing the stress function. The stress function is the sum of the squared differences between the distances in the original data and the distances in the projected data~\cite{multi-dimensional-scaling-leeuw}, so the stress function finds the slightest change in the data. The minimum of this stress function will be the best reproduction of the data in lower dimensional space according to the \gls{isomap} algorithm. 
 
 
-
-\subsection{Choice of dimensionality reduction}
-Four different dimensionality reduction methods have been chosen to be in the implementation. These are linear and nonlinear methods, particularly \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The group chose these four because they cover the spectrum of options well and are some of the most used. Only four were selected to keep the project's focus tight and the right amount of depth versus breadth of the project.
+\input{chapters/03-theory/decisions/choice-of-dimensionality-reduction.tex}
+%\subsection{Choice of dimensionality reduction}
+%Four different dimensionality reduction methods have been chosen to be in the implementation. These are linear and nonlinear methods, particularly \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The group chose these four because they cover the spectrum of options well and are some of the most used. Only four were selected to keep the project's focus tight and the right amount of depth versus breadth of the project.
 
 %ISOMAP 
 
