@@ -1,16 +1,16 @@
-\section{Choice of dimensionality reduction}\label{sec:choice-of-dimensionality-reduction}
+\subsection{Choice of dimensionality reduction}\label{sec:choice-of-dimensionality-reduction}
 Some dimensionality reduction methods were presented in the Section \ref{sec:dimensionality-reduction}. Due to the project's limited scope, not all of the dimensionality reduction methods will be chosen in the implementation. The implementation of the methods will be based on scikit-learn's implementation of the methods. The hyperparameters of the respective methods will also be presented.
 
 
 
-\subsection{Linear methods}
+\subsubsection{Linear methods}
 The reason for choosing \gls{pca} is, among others, because it is a popular dimensionality reduction method~\cite{dimensionality-reduction-comparative-review} and because it tries to find a linear embedding that retains as much information as possible from the original data, which is done by choosing a $k$ components. A difference between \gls{pca} and \gls{fa} is that \gls{fa}, as described in \ref{subsubsec:factor-analysis}, further assumes that the linear combinations have some noise. The hyperparameters for the PCA method are the number of components and whether the components will be whitened or not. According scikit-learn, whitening \textcquote{sklearn-api}{can sometime improve the predictive accuracy of the downstream estimators}.
 
 
 \gls{lda} was also chosen because of its ability to project the data by maximizing the separation between classes. Furthermore, the number of dimensions that would be reduced on \gls{mnist} would correspond to the number of $dimensions-1$\~cite{scikit-learn, sklearn-api}. Such a property proves helpful because it simplifies the classification task and may also improve the performance of the machine learning model. The fact that the number of dimensions reduced for \gls{mnist} will be maximally about the same as the number of classes might provide a good starting point for \gls{pca} and \gls{lda} to be compared. The comparison can be based on how much information they can retain by reducing the data to nine dimensions. The number of components is the hyperparameters of the \gls{lda} method.
 
 
-\subsection{Nonlinear methods}
+\subsubsection{Nonlinear methods}
 \gls{kpca} was chosen because of its ability to project the nonlinear data onto a hyperplane where PCA can be used. That fact leads to the possibility of using \gls{kpca} with the hyperparameters of \gls{pca}, and kernels. Additionally, some kernels will have a kernel coefficient, which can be thought of sensitivity of the kernel. Another reason for choosing \gls{kpca} is that it uses \gls{pca}, so the differences between linear \gls{pca} and nonlinear \gls{pca} could be compared.
 
 \gls{isomap} is another nonlinear dimensionality reduction method that takes another approach to reduce the dimensions of nonlinear data. Instead of using a kernel, \gls{isomap} constructs a graph of the data and then applies \gls{cmds} to the data. \gls{isomap} also tries to preserve the distances between the data points as much as possible~\cite{dimensionality-reduction-comparative-review}. Therefore, the hyperparameters used for \gls{isomap} are the number of components and the number of neighbors used to construct the graph. The group has also worked with other nonlinear methods, such as T-SNE. However, it was ultimately not chosen because it is a method that is mostly used for data visualization~\cite{tsne-visualization}.

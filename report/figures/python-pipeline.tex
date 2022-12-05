@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    \node (a) [state] {Augmentation};
+    \node (b) [state, shift={($(a.east)+(2cm,0cm)$)}] {Pre-processing};
+    \node (c) [state, shift={($(b.east)+(2cm,0cm)$)}] {Data};
+    \node (d) [state, shift={($(c.east)+(2cm,0cm)$)}] {Cross-Validation};
+    \node (e) [state, shift={($(a.south)+(2cm,-2.5cm)$)}] {Optimized estimator};
+    \node (f) [state, shift={($(e.east)+(2cm,0cm)$)}] {Evaluate};
+    \node (g) [state, shift={($(f.east)+(2cm,0cm)$)}] {Result};
+    \node (h) [state, shift={($(d.north)+(0cm,1.3cm)$)}] {Hyperparameter};
+    
+    \draw[arrow, ->] (a) -- node[above,scale=.70,align=center] {} (b);
+    \draw[arrow, ->] (b) -- node[above,scale=.70,align=center] {} (c);
+    \draw[arrow, ->] (c) -- node[above,scale=.70,align=center] {} (d);
+    \draw[arrow, ->] (d.south) -- node[above,scale=.70,align=center] {} (e.north);
+    \draw[arrow, ->] (e) -- node[above,scale=.70,align=center] {} (f);
+    \draw[arrow, ->] (f) -- node[above,scale=.70,align=center] {} (g);
+    \draw[arrow, ->] (h) -- node[above,scale=.70,align=center] {} (d);
+    
+    \draw[arrow, ->] ($(d.north)+(1cm,0cm)$) to[loop above,looseness=4.5] node[below,scale=0.8] {} ($(d.east)+(0cm,0.1cm)$);
+\end{tikzpicture}
