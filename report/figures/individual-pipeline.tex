@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \node (a) [state] {Data};
+    \node (b) [state, shift={($(a.east)+(2cm,0cm)$)}] {Pre-processing};
+    \node (c) [state, shift={($(b.east)+(2cm,0cm)$)}] {Dim. Red};
+    \node (d) [state, shift={($(c.east)+(2cm,0cm)$)}] {Model};
+    \node (e) [state, shift={($(d.east)+(2cm,0cm)$)}] {Evaluate};
+    \node (f) [state, shift={($(c)+(1.5cm,1.5cm)$)}] {Hyperparameter};
+    
+    \draw[arrow, ->] (a) -- node[above,scale=.70,align=center] {} (b);
+    \draw[arrow, ->] (b) -- node[above,scale=.70,align=center] {} (c);
+    \draw[arrow, ->] (c) -- node[above,scale=.70,align=center] {} (d);
+    \draw[arrow, ->] (d) -- node[above,scale=.70,align=center] {} (e);
+    
+    \draw[arrow, ->] (f.south) -- node[above,scale=.70,align=center] {} (c.north);
+    \draw[arrow, ->] (f.south) -- node[above,scale=.70,align=center] {} (d.north);
+\end{tikzpicture}
