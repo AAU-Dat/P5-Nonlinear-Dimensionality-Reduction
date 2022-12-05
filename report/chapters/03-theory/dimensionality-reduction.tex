@@ -48,7 +48,7 @@ The first step in \gls{isomap} is to map the data points in a graph. The graph i
 
 In the second step, \gls{isomap} finds the Geodesic distance between each point~\cite{Multidimensional-Scaling-Sammon-Mapping-and-Isomap}. The Geodesic distance is the shortest distance between two points on the surface of a sphere. The Geodesic distance is calculated by finding the shortest path between two points on a graph. The graph is constructed by connecting each point to its nearest neighbors. The shortest path can be found by using the Dijkstra algorithm~\cite{multi-dimensional-scaling-leeuw}.
 
-The final step in \gls{isomap} is finding the data's \gls{mds} projection. The \gls{mds} projection is found by minimizing the stress function. The stress function is the sum of the squared differences between the distances in the original data and the distances in the projected data~\cite{multi-dimensional-scaling-leeuw}, so the stress function finds the slightest change in the data. When in the case of \gls{isomap} is when reducing the dimensions. 
+The final step in \gls{isomap} is finding the data's \gls{mds} projection. The \gls{mds} projection is found by minimizing the stress function. The stress function is the sum of the squared differences between the distances in the original data and the distances in the projected data~\cite{multi-dimensional-scaling-leeuw}, so the stress function finds the slightest change in the data. The minimum of this stress function will be the best reproduction of the data in lower dimensional space according to the \gls{isomap} algorithm. 
 
 
 
