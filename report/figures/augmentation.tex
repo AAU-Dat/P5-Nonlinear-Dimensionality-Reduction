@@ -1,0 +1,8 @@
+\begin{tikzpicture} 
+    \node (a) [state] {Augmentation};
+    \node (b) [state, shift={($(a.east)+(2cm,0cm)$)}] {Data};
+    \node (c) [state, shift={($(b.east)+(2cm,0cm)$)}] {Augmented Data};
+    
+    \draw[arrow, ->] (a) -- node[above,scale=.70,align=center] {} (b);
+    \draw[arrow, ->] (b) -- node[above,scale=.70,align=center] {} (c);
+\end{tikzpicture}

@@ -1,0 +1,10 @@
+\begin{tikzpicture} 
+    \node (a) [state] {Cross-validation};
+    \node (b) [state, shift={($(a.east)+(3cm,1.2cm)$)}] {Fold};
+    \node (c) [state, shift={($(a.east)+(3cm,-1.2cm)$)}] {Fold};
+    \node (d) [state, shift={($(a.east)+(3cm,0cm)$)}] {Fold};   
+    
+    \draw[arrow, ->] (a.east) -- node[above,scale=.70,align=center] {} (b.west);
+    \draw[arrow, ->] (a.east) -- node[above,scale=.70,align=center] {} (c.west);
+    \draw[arrow, ->] (a.east) -- node[above,scale=.70,align=center] {} (d.west);
+\end{tikzpicture}

@@ -1,0 +1,8 @@
+\begin{tikzpicture} 
+    \node (a) [state] {Hyperparameter};
+    \node (b) [state, shift={($(a.east)+(3cm,1cm)$)}] {Model hyperparameters};
+    \node (c) [state, shift={($(a.east)+(3.3cm,-1cm)$)}] {Dim. Red. hyperparameters};
+    
+    \draw[arrow, ->] (a.east) -- node[above,scale=.70,align=center] {} (b.west);
+    \draw[arrow, ->] (a.east) -- node[above,scale=.70,align=center] {} (c.west);
+\end{tikzpicture}
