@@ -1,0 +1,42 @@
+test on 15000 samples with best configuration for all the methods
+
+%mean_fit_time
+
+\section{Experiment 1}\label{sec:experiment-1}
+%intro
+%presentation af de experimenter vi har valgt og hvorfor vi har valgt dem?
+Experiment 1 tested the best configuration for the methods. The best configuration was found by testing all the possible configurations on 15000 samples. The experiment also ran with 60000 samples, but only for SVM and the two linear methods PCA and LDA. The two nonlinear methods, KPCA and ISOMAP, were not tested with 60000 samples, as the computers used did not have enough power to do all 60000 samples. When used alone, SVM was tested with and without preprocessing to see how big of a difference it made; the preprocess step used was data standardization. The preprocessing step was always used in the tests where dimensionality reduction methods were used. The results shown are only for the best configurations for each method on the number of samples used in the experiment. Table \ref{tab:best-configuration} shows the best configuration for each method.
+
+Every method was tested with the same number of samples, as this was the only way to compare the methods, besides LDA and SVM as, LDA can only use up to 9 components and SVM does not need any components, as it is used as the model.
+%why this experiment was chosen
+This experiment was chosen because finding the best configuration for each method on the same number of samples was essential. This was done to make it possible to compare the methods on the same number of samples. 
+
+
+experiment 1 exemple
+    detaljeret gennemgang af regler og evaluering
+    fremvisning af resultater
+    opsumering af resultater
+    diskussion af resultater og hvad der ellers var spændende evaluering af hvorfor det blev sådan.
+
+
+
+
+\begin{table}[htb!]   
+\centering
+\caption{Best configuration for each method}
+\label{tab:best-configuration}
+\begin{tabular}{rrrr}
+    \toprule
+    method & n-components & parameter & time in seconds \\
+    \midrule
+    PCA-15 & 49 & C=1.0 & 14883663350587700 \\
+    PCA-15 & 49 & C=1.0 & 14883663350587700  \\
+    LDA-15 & 9 & C=1.0 & 13088673381228700 \\
+    LDA-60 & 9 & C=10.0 & 12544716331626700 \\
+    SVM-15 & 0 & C=0.01 & 58566863210111900 \\
+    SVM-60 & 0 & C=0.01 & 5949283553876860 \\
+    KPCA-15 & 49 & C=1.0 G= 1 Sigmoid & 39909571772251000 \\
+    ISO-15 & 49 & 0.001 N=5 & 11071098676412400 \\
+    \bottomrule
+\end{tabular}
+\end{table}
