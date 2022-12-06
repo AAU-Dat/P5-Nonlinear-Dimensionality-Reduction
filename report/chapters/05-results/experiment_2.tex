@@ -1,0 +1,31 @@
+\section{Experiment 2}\label{sec:experiment_2}
+This section will describe the second experiment of the project. The second experiment covers how many dimensions are necessary to still have a good accuracy of arround 95\%. The experiment will only be done on 15.000 samples, instead of the entire data set of 60.000 samples, due to issues regarding memory usage. The experimant will focus on when different dimensionality reduction methods, show a noticable drop in accuracy due to too few dimensions. 
+
+
+\subsection{Rules and evaluation of the experiment}\label{subsec:experiment_2_rules}
+This section will cover the rules of the second experiment, and also how the results of the experiment will be evaluated.
+
+The second experiment is done on a subset of the entire data set. With 15.000 samples in the training set, and the usual 10.000 samples in the test set. Instead of the standard 60.000 samples in the training set and 10.000 in the test set.\todo{Remember to discuss why only a limited amount of the data set and give detailed reasons and difficulties}
+
+There will be done hyperparamater tuning, using gridsearch, on each of the dimensionality reduction methods. This is to ensure that good hyperparamaters are found for each number of components, so that the results are not sqewed by hyperparamaters that are not optimal for the number of components. If it was chosen to use fixed value for the hyperparamaters, the results could be skewed for some certain number of components.\todo{Does part of this belong in the discussion?}
+
+The dimensionality reduction methods that will be used are \gls{pca}, \gls{lda}, \gls{isomap} and \gls{kpca}. The number of components will be varied from 2 to 50.\todo{Remember to discuss why this range} \gls{lda} is an exception, as the maximum number of components is the number of classes, which is 10 for the \gls{mnist} dataset.\todo{Ensure it is 10 and not 9} Meaning that the range of components for \gls{lda} will be from 2-10.
+
+The values that will be used to evaluate this experiment, are the \texttt{mean\_fit\_time} to evaluate the time it takes to fit the model, the \texttt{mean\_test\_score} based on \texttt{param\_pca\_\_n\_components} to evaluate the accuracy of the modele with the number of components used.
+
+With the results from running the experiment, a plot will be made to show the accuracy of the models with the number of components used. The plot is used to visually represent when the accuracy starts to drop. 
+
+
+\subsection{Results}\label{subsec:experiment_2_results}
+
+\subsection{Discussion}\label{subsec:experiment_2_discussion}
+
+
+
+% intro
+% presentation af de experimenter vi har valgt og hvorfor vi har valgt dem?
+% experiment 1 exemple
+%     detaljeret gennemgang af regler og evaluering
+%     fremvisning af resultater
+%     opsumering af resultater
+%     diskussion af resultater og hvad der ellers var spændende evaluering af hvorfor det blev sådan.
