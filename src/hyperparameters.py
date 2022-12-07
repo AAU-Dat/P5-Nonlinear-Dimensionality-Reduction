@@ -15,7 +15,7 @@ import numpy as np
 #                        "classifier__estimator__kernel": ["linear"]}
 
 # concatenate two lists
-
+components_linspace = np.arange(5, 51)
 c_logspace = np.logspace(-3, 0, 4)
 gamma_logspace = np.logspace(-3, 0, 4)
 
@@ -26,22 +26,19 @@ svm_hyperparameters = [
 ]
 
 pca_hyperparameters = {
-    "pca__n_components": [9, 16, 25, 36, 49],
+    "pca__n_components": components_linspace,
 }
 
 lda_hyperparameters = {
-    "lda__n_components": [5, 6, 7, 8, 9],
+    "lda__n_components": components_linspace,
 }
 
 isomap_hyperparameters = {
-    "isomap__n_components": [4, 9, 36, 49],
-    "isomap__n_neighbors": [4, 5],
+    "isomap__n_components": components_linspace,
 }
 
 kernel_pca_hyperparameters = {
-    "kernel_pca__n_components": [36, 49],
-    "kernel_pca__gamma": gamma_logspace,
-    "kernel_pca__kernel": ["rbf", "sigmoid"]
+    "kernel_pca__n_components": components_linspace,
 }
 
 

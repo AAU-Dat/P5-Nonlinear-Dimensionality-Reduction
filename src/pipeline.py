@@ -1,5 +1,4 @@
 import sys
-
 import idx2numpy
 
 from hyperparameters import (isomap_svm_hyperparameters,
@@ -27,19 +26,19 @@ def main(datasize=60000, nldr_datasize=15000):
 
     # pca_svm_results(
     #     X[:datasize], y[:datasize], X_test, y_test,
-    #     pca_svm_hyperparameters, "pca_svm_" + str(datasize))
+    #     pca_svm_hyperparameters, "pca_svm_lars_" + str(datasize))
 
     # lda_svm_results(
     #     X[:datasize], y[:datasize], X_test, y_test,
     #     lda_svm_hyperparameters, "lda_svm_" + str(datasize))
 
-    # isomap_svm_results(
-    #     X[:nldr_datasize], y[:nldr_datasize], X_test, y_test,
-    #     isomap_svm_hyperparameters, "isomap_svm_" + str(nldr_datasize))
-
-    kernel_pca_svm_results(
+    isomap_svm_results(
         X[:nldr_datasize], y[:nldr_datasize], X_test, y_test,
-        kernel_pca_svm_hyperparameters, "kernel_pca_svm_" + str(nldr_datasize))
+        isomap_svm_hyperparameters, "isomap_svm_lars" + str(nldr_datasize))
+
+    # kernel_pca_svm_results(
+    #     X[:nldr_datasize], y[:nldr_datasize], X_test, y_test,
+    #     kernel_pca_svm_hyperparameters, "kernel_pca_svm_lars" + str(nldr_datasize))
 
 
 if __name__ == "__main__":
