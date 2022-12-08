@@ -1,42 +1,55 @@
-test on 15000 samples with best configuration for all the methods
+\section{Experiment 1}\label{sec:experiment-1}chosen
+Experiment 1 tested the best configuration for the methods. The pipeline found the best configuration by testing all the possible configurations on 15000 samples. The experiment also ran with 60000 samples, but only for \gls{svm} and the two linear methods \gls{pca} and \gls{lda}. The two nonlinear methods, \gls{kpca} and \gls{isomap}, were not tested with 60000 samples, as the computers used did not have enough power to do all 60000 samples. When used alone, \gls{svm} handled the raw data without any dimensionality reduction. The results shown are only for the best configurations for each method on the number of samples used in the experiment. Table \ref{tab:best-configuration} shows the best parameters for each method.
 
-%mean_fit_time
+\input{figures/1-experiment/best-configuration.tex}
 
-\section{Experiment 1}\label{sec:experiment-1}
+Every method was tested with the same number of samples, as this was the only way to compare the methods. Besides \gls{lda} and \gls{svm}, \gls{lda} can only use up to 9 components, and \gls{svm} does not need any hyperparameters.
+
+The group chose this experiment because finding the best configuration for each method on the same number of samples was essential. The group did this to make it possible to compare the methods on the same number of samples. 
+
+Below is shown the results for the methods. The results are in the form of classification reports, which show the precision, recall, f1-score, support for each class, and the total accuracy for each method. The methods will be compared in accuracy, f1-score, and time fitting the data. 
+\input{figures/1-experiment/classification_report_baseline_svm_15000.tex} %37
+
+Table \ref{tab:classification-report-baseline_svm_15000} shows the accuracy for \gls{svm} without any dimensionality reduction with 15000 samples. The accuracy is 93.54\%, and it takes 37 seconds to train the model. The \gls{svm} is best at recognizing zeros and one's in pictures, as the model has the f1-score in these classes, with the scores 96.5\% and 97.7\%. The model has trouble recognizing fives, eights, and threes, as these are the lowest scores in the f1-score for all the classes. With an average f1-score of 93.43\%, the baseline \gls{svm} with 15000 samples is a good model. 
+
+\input{figures/1-experiment/classification_report_baseline_svm_60000.tex} %378
+
+Table \ref{tab:classification-report-baseline_svm_60000} shows the accuracy for \gls{svm} without any dimensionality reduction with 60000 samples. The accuracy is 94.56\% for 60000 samples, and it takes 378 seconds to train the model, which is 6 minutes and 16 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 97.3\% and 98.1\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 91.2\%, eight being 92.3\%, and three being 93.1\%. With an average f1-score of 94.47\%, the baseline \gls{svm} with 15000 samples is a good model that uses a significant amount of time.
+
+
+\input{figures/1-experiment/classification_report_lda_svm_15000.tex} %7
+
+Table \ref{tab:classification-report-lda_svm_15000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 15000 samples. The accuracy is 88.76\% for 15000 samples, and it takes 7 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.9\% and 95.3\%. The model has some trouble recognizing fives, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with five being 83.1\%, eight being 82.0\%, and three being 85.9\%. With an average f1-score of 88.59\%, the baseline \gls{svm}with 15000 samples is a worse model but is much faster than simply using SVM.
+
+
+\input{figures/1-experiment/classification_report_lda_svm_60000.tex} %58
+
+Table \ref{tab:classification-report-lda_svm_60000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 60000 samples. The accuracy is 89.33\% for 60000 samples, and it takes 58 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.8\% and 95.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 83.9\%, eight being 83.3\%, and three being 86.4\%. With an average f1-score of 89.16\%, the baseline \gls{svm} with 15000 samples is a fast model, but on the cost of accuracy.
+
+\input{figures/1-experiment/classification_report_pca_svm_15000.tex} %10
+
+Table \ref{tab:classification-report-pca_svm_15000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 15000 samples. The accuracy is 92.37\% for 15000 samples, and it takes 10 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.1\% and 97.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 88.1\%, eight being 89.2\%, and three being 89.9\%. With an average f1-score of 92.25\%, the baseline \gls{svm} with 15000 samples is a fast model with reasonable accuracy.
+\input{figures/1-experiment/classification_report_pca_svm_60000.tex} %97
+
+Table \ref{tab:classification-report-pca_svm_60000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 60000 samples. The accuracy is 93.25\% for 60000 samples, and it takes 97 seconds to train the model, which is 1 minute and 37 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.1\%, eight being 90.6\%, and three being 90.5\%. With an average f1-score of 93.14\%, the baseline \gls{svm} with 15000 samples is a fast model with reasonable accuracy.
+
+\input{figures/1-experiment/classification_report_kernel_pca_svm_15000.tex} %92
+
+Table \ref{tab:classification-report-kernel_pca_svm_15000} shows the accuracy for \gls{svm} with \gls{kpca} as dimensionality reduction with 15000 samples. The accuracy is 92.36\% for 15000 samples, and it takes 92 seconds to train the model, which is 1 minute and 32 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.2\% and 97.8\%. The model has trouble recognizing fives, nines, and threes, as these are the lowest scores in the f1-score for all the classes, with five being 87.1\%, nine being 90.0\%, and three being 89.4\%. With an average f1-score of 92.22\%, the baseline \gls{svm} with 15000 samples is a fast model with reasonable accuracy.
+
+\input{figures/1-experiment/classification_report_isomap_svm_15000.tex} %165
+
+Table \ref{tab:classification-report-isomap_svm_15000} shows the accuracy for \gls{svm} with \gls{isomap} as dimensionality reduction with 15000 samples. The accuracy is 90.61\% for 15000 samples, and it takes 165 seconds to train the model, which is 2 minutes and 45 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 95.1\% and 96.6\%. The model has trouble recognizing sevens, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with seven being 87.8\%, eight being 87.4\%, and three being 85.1\%. With an average f1-score of 90.50\%, the baseline \gls{svm} with 15000 samples is a fast model with reasonable accuracy.
+
+\section{Discussion experiment 1}\label{sec:discussion-experiment-1}
+The accuracy increases by 1\% when using 45000 more samples, which is a slight difference. One thing to note is it takes 37 seconds to train the model on 15000 samples and 378 seconds to train the model on 60000 samples. This means that the time it takes to train the model grows 921,62\% by using 45000 more examples of data. This is a big difference but a slight difference in accuracy. 
+
 %intro
 %presentation af de experimenter vi har valgt og hvorfor vi har valgt dem?
-Experiment 1 tested the best configuration for the methods. The best configuration was found by testing all the possible configurations on 15000 samples. The experiment also ran with 60000 samples, but only for SVM and the two linear methods PCA and LDA. The two nonlinear methods, KPCA and ISOMAP, were not tested with 60000 samples, as the computers used did not have enough power to do all 60000 samples. When used alone, SVM was tested with and without preprocessing to see how big of a difference it made; the preprocess step used was data standardization. The preprocessing step was always used in the tests where dimensionality reduction methods were used. The results shown are only for the best configurations for each method on the number of samples used in the experiment. Table \ref{tab:best-configuration} shows the best configuration for each method.
-
-Every method was tested with the same number of samples, as this was the only way to compare the methods, besides LDA and SVM as, LDA can only use up to 9 components and SVM does not need any components, as it is used as the model.
+% experiment 1 exemple
+%     detaljeret gennemgang af regler og evaluering
+%     fremvisning af resultater
+%     opsumering af resultater
+%     diskussion af resultater og hvad der ellers var spændende evaluering af hvorfor det blev sådan.
 %why this experiment was chosen
-This experiment was chosen because finding the best configuration for each method on the same number of samples was essential. This was done to make it possible to compare the methods on the same number of samples. 
-
-
-experiment 1 exemple
-    detaljeret gennemgang af regler og evaluering
-    fremvisning af resultater
-    opsumering af resultater
-    diskussion af resultater og hvad der ellers var spændende evaluering af hvorfor det blev sådan.
-
-
-
-
-\begin{table}[htb!]   
-\centering
-\caption{Best configuration for each method}
-\label{tab:best-configuration}
-\begin{tabular}{rrrr}
-    \toprule
-    method & n-components & parameter & time in seconds \\
-    \midrule
-    PCA-15 & 49 & C=1.0 & 14883663350587700 \\
-    PCA-15 & 49 & C=1.0 & 14883663350587700  \\
-    LDA-15 & 9 & C=1.0 & 13088673381228700 \\
-    LDA-60 & 9 & C=10.0 & 12544716331626700 \\
-    SVM-15 & 0 & C=0.01 & 58566863210111900 \\
-    SVM-60 & 0 & C=0.01 & 5949283553876860 \\
-    KPCA-15 & 49 & C=1.0 G= 1 Sigmoid & 39909571772251000 \\
-    ISO-15 & 49 & 0.001 N=5 & 11071098676412400 \\
-    \bottomrule
-\end{tabular}
-\end{table}
+%look at f1-score and accuracy and time fitting the data
