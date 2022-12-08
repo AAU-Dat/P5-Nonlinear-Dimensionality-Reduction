@@ -1,0 +1,19 @@
+\begin{table}[htb!]   
+    \centering
+    \begin{tabular}{lrlr}
+        \toprule
+        method & n-components & C-classifier & parameter \\
+        \midrule
+        SVM-15 &  & C = 0.01 &  \\
+        SVM-60 &  & C = 0.01 &  \\
+        LDA-15 & 9 & C = 0.1 &  \\
+        LDA-60 & 9 & C = 1.0 &  \\
+        PCA-15 & 49 & C = 0.01 &  \\
+        PCA-60 & 49 & C = 0.1 &   \\
+        KPCA & 49 & C = 1.0 & G = 0.01, Sigmoid \\
+        ISOMAP & 49 & C = 0.001 & N = 5 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Best configuration for each method}
+    \label{tab:best-configuration}
+\end{table}
