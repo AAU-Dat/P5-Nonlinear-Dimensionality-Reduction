@@ -1,6 +1,5 @@
 \section{Examples of methods}\label{sec:examples-methods}
-This section will present examples of how the linear and nonlinear methods behave on linear and nonlinear data. It should be noted again that the methods have different purposes. As a quick reminder, \gls{pca} tries to maximize the variance in the embedded data (and so does \gls{kpca}). In contrast, \gls{lda} tries to maximize the separability of classes in the data, and \gls{isomap} tries to preserve the distances from the high-dimensional data when projecting it onto a lower space. Therefore their results will not be a one-to-one comparison.
-\urgent[inline]{Fix this section to have images side by side to reduce space wasting.}
+This section will present examples of how the linear and nonlinear methods behave on linear and nonlinear data. It should be noted again that the methods have different purposes. As a quick reminder, \gls{pca} tries to maximize the variance in the embedded data (and so does \gls{kpca}). In contrast, \gls{lda} tries to maximize the separability of classes in the data, and \gls{isomap} tries to preserve the distances from the high-dimensional data when projecting it onto a lower space. Therefore their results will not be a one-to-one comparison. All of the methods used in this section are implemented from Scikit-learn~\cite{scikit-learn}.
 
 \subsection{Linear data example}\label{subsec:linear-data-example}
 As linear data, we will use the Iris dataset, which contains three different species of Iris flowers, with 50 examples each. Each class has four dimensions: the length and width of the sepals and petals~\cite{iris-dataset}. The dataset is a simple and well-known dataset, which has been used in many machine learning papers~\cite{iris-dataset} and should give intuition as to how the methods behave on the dataset.
@@ -12,7 +11,7 @@ As linear data, we will use the Iris dataset, which contains three different spe
     \label{fig:linear-data}
 \end{figure}
 
-Figure \ref{fig:linear-data} represents the iris flowers on a 2D plot. According to~\cite{iris-dataset}, only one class is separable, which can further be solidified by the fact that the species Setosa is the only visually linearly separable class.
+Figure \ref{fig:linear-data} represents the iris flowers on a 2D plot. According to~\cite{iris-dataset}, only one class is separable, which can further be solidified by the fact that the species Setosa is the only visually linearly separable class. 
 
 \subsubsection{Linear methods}\label{subsubsec:linear-methods-on-iris}
 In figure \ref{fig:iris-pca}, one can see that \gls{pca} has successfully separated the Setosa species from Versicolor and Virginica in the dataset. The other species are not separated on the coordinates [1.20, -0.20]. Having only Setosa separated from Versicolor and Virginica in the dataset is not concerning, as the test on the Iris dataset is to separate Setosa from the other classes by linear separability.
