@@ -1,4 +1,4 @@
-\section{Experiment two}\label{sec:experiment_2}
+\section{Experiment 2}\label{sec:experiment_2}
 This section will describe the second experiment of the project. The second experiment covers the necessary dimensions before reaching a threshold of 1\%, 5\%, and 10\% loss of accuracy. The experiment will only be done on 15.000 samples, instead of the entire data set of 60.000 samples, due to issues regarding memory usage. The experiment will focus on when different dimensionality reduction methods drop in accuracy due to too few dimensions and compare them to each other.
 
 
@@ -10,7 +10,7 @@ The second experiment will be done on a subset of the entire data set. With 15.0
 The values from the mnist dataset will be normalized using standard scalar for each dimensionality reduction method. Ensuring the values are on the same scale so that different scales do not skew the results.
 
 Hyperparameter tuning will be done using grid-search on each dimensionality reduction method. This is to ensure good hyperparameters are found for each number of components so that the results do not become skewed by hyperparameters that are not optimal for some parts of the model. If it was chosen to use a fixed value for the hyperparameters, the results could get skewed for a certain number of components.
-The dimensionality reduction methods used are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The number of components will vary from around 2/5 to 50, and this range was chosen as it was believed to have a sufficient amount of components to show a general trend. For the non-linear methods, five components, instead of 2, were chosen as the lowest amount, as reducing the data to further takes much time, and the gain in insight was believed not to be worth the increased time cost. \gls{lda} is an exception, as the maximum number of components is the number of classes $-1$, which is 9 for the \gls{mnist}dataset, which means that the range of components for \gls{lda} will be from 2-9.
+The dimensionality reduction methods used are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The number of components will vary from around 2/5 to 50, and this range was chosen as it was believed to have a sufficient amount of components to show a general trend. For the non-linear methods, five components, instead of 2, were chosen as the lowest amount, as reducing the data to further takes much time, and the gain in insight was believed not to be worth the increased time cost. \gls{lda} is an exception, as the maximum number of components is the number of classes $-1$, which is 9 for the \gls{mnist} dataset, which means that the range of components for \gls{lda} will be from 2-9.
 
 The values used to evaluate this experiment are \texttt{mean\_test\_score} based on \texttt{param\_pca\_\_n\_components} to evaluate the model's accuracy with the number of components used. Also, the \texttt{mean\_fit\_time} will be discussed as the time it takes to fit the model can determine how many components to use.
 
@@ -20,15 +20,12 @@ For each experiment, the data will be analyzed to see how many components can be
 
 
 \subsection{Results}\label{subsec:experiment_2_results}
-This section will cover the results gathered from running the second experiment. Each of the dimensionality reduction methods will be presented using scatter plots. The scatter plots will show the number of components used along the x-axis and the model's accuracy along the y-axis. Each component has multiple dots, so the accuracy varies slightly depending on the hyperparameters used, but the general trend is the same. The results will then be compared and evaluated based on the experiment's rules. The main focus of the evaluation will be on when the accuracy starts to drop noticeably and how many components are needed to have good accuracy still. The scatter plots are used to represent the results visually, and the specific values of the accuracy will also be discussed. These values are taken from the csv\todo{add CSV to gls} files generated from running the second experiment.
+This section will cover the results gathered from running the second experiment. Each of the dimensionality reduction methods will be presented using scatter plots. The scatter plots will show the number of components used along the x-axis and the model's accuracy along the y-axis. Each component has multiple dots, so the accuracy varies slightly depending on the hyperparameters used, but the general trend is the same. The results will then be compared and evaluated based on the experiment's rules. The main focus of the evaluation will be on when the accuracy starts to drop noticeably and how many components are needed to have good accuracy still. The scatter plots are used to represent the results visually, and the specific values of the accuracy will also be discussed. These values are taken from the csv files generated from running the second experiment.
 
-\autoref{fig:experiment_2_pca_svm}.
-
-
-\gls{pca} is a linear dimensionality reduction method; the scatter plot representing this method can be seen in \subsubsection{\gls{pca}}\label{subsubsec:experiment_2_pca}1.
+\subsubsection{\gls{pca}}\label{subsubsec:experiment_2_pca}
+\gls{pca} is a linear dimensionality reduction method; the scatter plot representing this method can be seen in \autoref{fig:experiment_2_pca_svm}.
 
 As one would expect, the model's accuracy increases as the number of components increases. However, around 20 components, the accuracy starts to drop, the accuracy especially has a noticeable drop between 10 and 20 components, and the accuracy has a drastic drop for each component removed below ten components. This is expected as the lower the number of components the model has to work with; the more information is lost. With all 50 components, the model's accuracy is ~91.9\%, and first really drops below 91\% around 43 components.
-
 
 \begin{figure}[htb!]
     \centering
@@ -64,7 +61,7 @@ The final threshold of 78.1\% accuracy is found at 70.7\% with only three compon
 \subsubsection{\gls{kpca}}\label{subsubsec:experiment_2_kpca}
 \gls{kpca} is a non-linear dimensionality reduction method, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_kpca_svm}.
 
-\begin{figure}{htb!}
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/experiment_two/kpca_svm_15000.png}
     \caption{Accuracy of the SVM model with \gls{kpca} as dimensionality reduction method, with the number of components used.}
@@ -95,7 +92,7 @@ isomap has a top accuracy score of 89.4\%, meaning that the thresholds for \gls{
 The first threshold of 88.4\% accuracy is found at 88.3\% with 20 components, the next threshold of 84.4\% accuracy is found at 83.5\% with seven components, and the final threshold of 79.4\% accuracy is not found in the data, as the lowest accuracy score is 80\% with five components. To still be able to compare the results of \gls{isomap}  with the other methods, the lowest accuracy score will be used as the threshold, but it should be made clear that the actual threshold is not found in the data.
 
 
-\subsection{Discussion of experiment two}\label{subsec:experiment_2_discussion}
+\subsection{Discussion of experiment 2}\label{subsec:experiment_2_discussion}
 This section will discuss the results of the second experiment and compare the results of the different methods, first by discussing the results of the linear methods, then the non-linear methods, and finally, comparing the results of all methods.
 
 For each section, a table will display the different percentages of components remaining before the accuracy drops below a threshold. The table will also show the number of remaining components to show the difference between the methods.

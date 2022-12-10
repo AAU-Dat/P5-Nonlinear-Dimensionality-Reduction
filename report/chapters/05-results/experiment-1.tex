@@ -15,50 +15,50 @@ The group chose this experiment because finding the best configuration for each 
 \subsection{Results}\label{subsec:experiment-1-results}
 Below is shown the results for the methods. The results are in the form of classification reports, which show the precision, recall, f1-score, support for each class, and the total accuracy for each method. The methods will be compared in accuracy, f1-score, and time fitting the data. 
 
-\subsubsection{SVM with 15000 samples}\label{subsubsec:experiment-1-results-svm-15000}
+\subsubsection{\gls{svm} with 15000 samples}\label{subsubsec:experiment-1-results-svm-15000}
 \input{figures/1-experiment/classification_report_baseline_svm_15000.tex} %37
 
 Table \ref{tab:classification-report-baseline_svm_15000} shows the accuracy for \gls{svm} without any dimensionality reduction with 15000 samples. The accuracy is 93.54\%, and it takes 37 seconds to train the model. The \gls{svm} is best at recognizing zeros and one's in pictures, as the model has the f1-score in these classes, with the scores 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.6\%, eight being 91.5\%, and three being 91.4\%. With an average f1-score of 93.43\%, the baseline \gls{svm} with 15000 samples is a good model. 
 
-\subsubsection{SVM with 60000 samples}\label{subsubsec:experiment-1-results-svm-60000}
+\subsubsection{\gls{svm} with 60000 samples}\label{subsubsec:experiment-1-results-svm-60000}
 \input{figures/1-experiment/classification_report_baseline_svm_60000.tex} %378
 
 Table \ref{tab:classification-report-baseline_svm_60000} shows the accuracy for \gls{svm} without any dimensionality reduction with 60000 samples. The accuracy is 94.56\% for 60000 samples, and it takes 378 seconds to train the model, which is 6 minutes and 16 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 97.3\% and 98.1\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 91.2\%, eight being 92.3\%, and three being 93.1\%. With an average f1-score of 94.47\%, the baseline \gls{svm} with 15000 samples is a good model that uses a significant amount of time.
 
-\subsubsection{LDA with 15000 samples}\label{subsubsec:experiment-1-results-lda-15000}
+\subsubsection{\gls{lda} with 15000 samples}\label{subsubsec:experiment-1-results-lda-15000}
 \input{figures/1-experiment/classification_report_lda_svm_15000.tex} %7
 
 Table \ref{tab:classification-report-lda_svm_15000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 15000 samples. The accuracy is 88.76\% for 15000 samples, and it takes 7 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.9\% and 95.3\%. The model has some trouble recognizing fives, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with five being 83.1\%, eight being 82.0\%, and three being 85.9\%. With an average f1-score of 88.59\%, the baseline \gls{svm}with 15000 samples is a worse model but is much faster than simply using \gls{svm}.
 
-\subsubsection{LDA with 60000 samples}\label{subsubsec:experiment-1-results-lda-60000}
+\subsubsection{\gls{lda} with 60000 samples}\label{subsubsec:experiment-1-results-lda-60000}
 \input{figures/1-experiment/classification_report_lda_svm_60000.tex} %58
 
 Table \ref{tab:classification-report-lda_svm_60000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 60000 samples. The accuracy is 89.33\% for 60000 samples, and it takes 58 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.8\% and 95.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 83.9\%, eight being 83.3\%, and three being 86.4\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 89.16\%.
 
-\subsubsection{PCA with 15000 samples}\label{subsubsec:experiment-1-results-pca-15000}
+\subsubsection{\gls{pca} with 15000 samples}\label{subsubsec:experiment-1-results-pca-15000}
 \input{figures/1-experiment/classification_report_pca_svm_15000.tex} %10
 
 Table \ref{tab:classification-report-pca_svm_15000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 15000 samples. The accuracy is 92.37\% for 15000 samples, and it takes 10 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.1\% and 97.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 88.1\%, eight being 89.2\%, and three being 89.9\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 92.25\%.
 
-\subsubsection{PCA with 60000 samples}\label{subsubsec:experiment-1-results-pca-60000}
+\subsubsection{\gls{pca} with 60000 samples}\label{subsubsec:experiment-1-results-pca-60000}
 \input{figures/1-experiment/classification_report_pca_svm_60000.tex} %97
 
 Table \ref{tab:classification-report-pca_svm_60000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 60000 samples. The accuracy is 93.25\% for 60000 samples, and it takes 97 seconds to train the model, which is 1 minute and 37 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.1\%, eight being 90.6\%, and three being 90.5\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 93.14\%.
 
-\subsubsection{Kernel PCA with 15000 samples}\label{subsubsec:experiment-1-results-kernel_pca-15000}
+\subsubsection{\gls{kpca} with 15000 samples}\label{subsubsec:experiment-1-results-kernel_pca-15000}
 \input{figures/1-experiment/classification_report_kernel_pca_svm_15000.tex} %92
 
 Table \ref{tab:classification-report-kernel_pca_svm_15000} shows the accuracy for \gls{svm} with \gls{kpca} as dimensionality reduction with 15000 samples. The accuracy is 92.36\% for 15000 samples, and it takes 92 seconds to train the model, which is 1 minute and 32 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.2\% and 97.8\%. The model has trouble recognizing fives, nines, and threes, as these are the lowest scores in the f1-score for all the classes, with five being 87.1\%, nine being 90.0\%, and three being 89.4\%. \gls{svm} using \gls{kpca} as the dimensionality reduction method has an average f1-score of 92.22\%.
 
-\subsubsection{Isomap with 15000 samples}\label{subsubsec:experiment-1-results-isomap-15000}
+\subsubsection{\gls{isomap} with 15000 samples}\label{subsubsec:experiment-1-results-isomap-15000}
 \input{figures/1-experiment/classification_report_isomap_svm_15000.tex} %165
 
 Table \ref{tab:classification-report-isomap_svm_15000} shows the accuracy for \gls{svm} with \gls{isomap} as dimensionality reduction with 15000 samples. The accuracy is 90.61\% for 15000 samples, and it takes 165 seconds to train the model, which is 2 minutes and 45 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 95.1\% and 96.6\%. The model has trouble recognizing sevens, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with seven being 87.8\%, eight being 87.4\%, and three being 85.1\%. \gls{svm} using \gls{isomap} as the dimensionality reduction method has an average f1-score of 90.50\%.
 
-\section{Discussion experiment 1}\label{sec:discussion-experiment-1}
+\subsection{Discussion experiment 1}\label{sec:discussion-experiment-1}
 Comparing the results from experiment 1 is done in two comparisons; the first comparison is between the accuracy and time for the different dimensionality reduction methods. The second comparison is between the f1-scores for the different dimensionality reduction methods and what numbers the models are worst at recognizing. 
 
-\subsection{Accuracy and time}\label{subsec:discussion-experiment-1-accuracy}
+\subsubsection{Accuracy and time}\label{subsec:discussion-experiment-1-accuracy}
 All experiments done is displayed in Table \ref{tab:discussion-experiment-1-accuracy}, it shows the accuracy for all the different models and the time taken.
 
 \input{figures/1-experiment/accuracy.tex}
@@ -78,7 +78,7 @@ When using \gls{isomap} on 15000 samples, the accuracy is 90.61\%, and it takes 
 
 To conclude from this experiment, the baseline \gls{svm} is the best model to use if one wants a fast model with high accuracy. If one wants a faster model with lower accuracy, \gls{lda} is the best model to use. If one wants a model with high accuracy but slower than the baseline \gls{svm}, \gls{kpca} is the best model. If one wants a model with high accuracy but slower than the baseline \gls{svm}, \gls{isomap} is the best model. \gls{pca} is the best model if one wants a model with high accuracy and faster than the baseline SVM.
 
-\subsection{F1-scores}\label{subsec:discussion-experiment-1-f1-score}
+\subsubsection{F1-scores}\label{subsec:discussion-experiment-1-f1-score}
 One thing to note is that the f1-score is the harmonic mean of precision and recall, which means that the f1-score is the average of the precision and recall. The f1-score is an excellent metric to use when the classes need to be balanced, as it is the average of precision and recall.
 \input{figures/1-experiment/f1-score.tex}
 All experiments are displayed in Table \ref{tab:discussion-experiment-1-f1-score}, which shows the f1-score for the different models and the three worst classes for f1-scores.
