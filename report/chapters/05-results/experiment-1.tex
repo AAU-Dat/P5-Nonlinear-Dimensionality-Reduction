@@ -1,0 +1,101 @@
+\section{Experiment 1}\label{sec:experiment-1}
+%Needs an intro
+
+
+\subsection{Rules and overview of experiment}\label{subsec:experiment-1-rules}
+The first experiment was to find the best configuration for each method. The methods were \gls{svm}, \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The methods were tested with 15000 samples, and the best configuration was found. The best configuration was then tested with 60000 samples. The results are shown in the following sections. The group chose this experiment because finding the best configuration for each method on the same number of samples was essential. The group did this to make it possible to compare the methods on the same number of samples.
+
+Experiment 1 tested the best configuration for the methods. The pipeline found the best configuration by testing all the possible configurations on 15000 samples. The experiment also ran with 60000 samples, but only for \gls{svm} and the two linear methods \gls{pca} and \gls{lda}. The two nonlinear methods, \gls{kpca} and \gls{isomap}, were not tested with 60000 samples, as the computers used did not have enough power to do all 60000 samples. When used alone, \gls{svm} handled the raw data without any dimensionality reduction. The results shown are only for the best configurations for each method on the number of samples used in the experiment. Table \ref{tab:best-configuration} shows the best parameters for each method.
+
+\input{figures/1-experiment/best-configuration.tex}
+
+Every method was tested with the same number of samples, as this was the only way to compare the methods. Besides \gls{lda} and \gls{svm}, \gls{lda} can only use up to 9 components, and \gls{svm} does not need any hyperparameters.
+
+The group chose this experiment because finding the best configuration for each method on the same number of samples was essential. The group did this to make it possible to compare the methods on the same number of samples. 
+\subsection{Results}\label{subsec:experiment-1-results}
+Below is shown the results for the methods. The results are in the form of classification reports, which show the precision, recall, f1-score, support for each class, and the total accuracy for each method. The methods will be compared in accuracy, f1-score, and time fitting the data. 
+
+\subsubsection{SVM with 15000 samples}\label{subsubsec:experiment-1-results-svm-15000}
+\input{figures/1-experiment/classification_report_baseline_svm_15000.tex} %37
+
+Table \ref{tab:classification-report-baseline_svm_15000} shows the accuracy for \gls{svm} without any dimensionality reduction with 15000 samples. The accuracy is 93.54\%, and it takes 37 seconds to train the model. The \gls{svm} is best at recognizing zeros and one's in pictures, as the model has the f1-score in these classes, with the scores 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.6\%, eight being 91.5\%, and three being 91.4\%. With an average f1-score of 93.43\%, the baseline \gls{svm} with 15000 samples is a good model. 
+
+\subsubsection{SVM with 60000 samples}\label{subsubsec:experiment-1-results-svm-60000}
+\input{figures/1-experiment/classification_report_baseline_svm_60000.tex} %378
+
+Table \ref{tab:classification-report-baseline_svm_60000} shows the accuracy for \gls{svm} without any dimensionality reduction with 60000 samples. The accuracy is 94.56\% for 60000 samples, and it takes 378 seconds to train the model, which is 6 minutes and 16 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 97.3\% and 98.1\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 91.2\%, eight being 92.3\%, and three being 93.1\%. With an average f1-score of 94.47\%, the baseline \gls{svm} with 15000 samples is a good model that uses a significant amount of time.
+
+\subsubsection{LDA with 15000 samples}\label{subsubsec:experiment-1-results-lda-15000}
+\input{figures/1-experiment/classification_report_lda_svm_15000.tex} %7
+
+Table \ref{tab:classification-report-lda_svm_15000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 15000 samples. The accuracy is 88.76\% for 15000 samples, and it takes 7 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.9\% and 95.3\%. The model has some trouble recognizing fives, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with five being 83.1\%, eight being 82.0\%, and three being 85.9\%. With an average f1-score of 88.59\%, the baseline \gls{svm}with 15000 samples is a worse model but is much faster than simply using \gls{svm}.
+
+\subsubsection{LDA with 60000 samples}\label{subsubsec:experiment-1-results-lda-60000}
+\input{figures/1-experiment/classification_report_lda_svm_60000.tex} %58
+
+Table \ref{tab:classification-report-lda_svm_60000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 60000 samples. The accuracy is 89.33\% for 60000 samples, and it takes 58 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.8\% and 95.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 83.9\%, eight being 83.3\%, and three being 86.4\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 89.16\%.
+
+\subsubsection{PCA with 15000 samples}\label{subsubsec:experiment-1-results-pca-15000}
+\input{figures/1-experiment/classification_report_pca_svm_15000.tex} %10
+
+Table \ref{tab:classification-report-pca_svm_15000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 15000 samples. The accuracy is 92.37\% for 15000 samples, and it takes 10 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.1\% and 97.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 88.1\%, eight being 89.2\%, and three being 89.9\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 92.25\%.
+
+\subsubsection{PCA with 60000 samples}\label{subsubsec:experiment-1-results-pca-60000}
+\input{figures/1-experiment/classification_report_pca_svm_60000.tex} %97
+
+Table \ref{tab:classification-report-pca_svm_60000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 60000 samples. The accuracy is 93.25\% for 60000 samples, and it takes 97 seconds to train the model, which is 1 minute and 37 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.1\%, eight being 90.6\%, and three being 90.5\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 93.14\%.
+
+\subsubsection{Kernel PCA with 15000 samples}\label{subsubsec:experiment-1-results-kernel_pca-15000}
+\input{figures/1-experiment/classification_report_kernel_pca_svm_15000.tex} %92
+
+Table \ref{tab:classification-report-kernel_pca_svm_15000} shows the accuracy for \gls{svm} with \gls{kpca} as dimensionality reduction with 15000 samples. The accuracy is 92.36\% for 15000 samples, and it takes 92 seconds to train the model, which is 1 minute and 32 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.2\% and 97.8\%. The model has trouble recognizing fives, nines, and threes, as these are the lowest scores in the f1-score for all the classes, with five being 87.1\%, nine being 90.0\%, and three being 89.4\%. \gls{svm} using \gls{kpca} as the dimensionality reduction method has an average f1-score of 92.22\%.
+
+\subsubsection{Isomap with 15000 samples}\label{subsubsec:experiment-1-results-isomap-15000}
+\input{figures/1-experiment/classification_report_isomap_svm_15000.tex} %165
+
+Table \ref{tab:classification-report-isomap_svm_15000} shows the accuracy for \gls{svm} with \gls{isomap} as dimensionality reduction with 15000 samples. The accuracy is 90.61\% for 15000 samples, and it takes 165 seconds to train the model, which is 2 minutes and 45 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 95.1\% and 96.6\%. The model has trouble recognizing sevens, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with seven being 87.8\%, eight being 87.4\%, and three being 85.1\%. \gls{svm} using \gls{isomap} as the dimensionality reduction method has an average f1-score of 90.50\%.
+
+\section{Discussion experiment 1}\label{sec:discussion-experiment-1}
+Comparing the results from experiment 1 is done in two comparisons; the first comparison is between the accuracy and time for the different dimensionality reduction methods. The second comparison is between the f1-scores for the different dimensionality reduction methods and what numbers the models are worst at recognizing. 
+
+\subsection{Accuracy and time}\label{subsec:discussion-experiment-1-accuracy}
+All experiments done is displayed in Table \ref{tab:discussion-experiment-1-accuracy}, it shows the accuracy for all the different models and the time taken.
+
+\input{figures/1-experiment/accuracy.tex}
+The baseline \gls{svm}, on 15000 samples, has an accuracy of 93.54\%, and it takes 37 seconds to train the model. The baseline \gls{svm} can also be suitable to compare the other models, as it is an excellent model to hold as the baseline.
+
+The accuracy increases by 1\% when using 45000 more samples, which is a slight difference. One thing to note is that it takes 37 seconds to train the model on 15000 samples and 378 seconds to train the model on 60000 samples. This means that the time it takes to train the model grows 921,62\% by using 45000 more examples of data. This is a big difference in time but a slight difference in accuracy.
+
+When using \gls{lda} on 15000 samples, the accuracy falls to 88.76\%, but it only takes 7 seconds to train the model. \gls{lda} has a swift training time but low accuracy, but one thing to note, is that the maximum number of dimensions \gls{lda} can reduce to is 9 in this context. Therefore, the scores for \gls{lda} are worse than any dimensionality reduction method used. As the other methods use 49 dimensions to reduce the data, which is much higher than 9, it makes sense that the accuracy is higher than \gls{lda}. \gls{lda} only takes 7 seconds to train the model, so it is an excellent method to use if one wants a fast model with lower accuracy by comparing the other methods with more dimensions. 
+
+When using 60000 samples, the accuracy is 89.33\%, and it takes 58 seconds to train the model. This means that the time it takes to train the model grows 728,57\% by using 45000 more examples of data. This is a big difference in time but a slight difference in accuracy; however, \gls{lda} is the fastest method, with lower accuracy than other methods. By using \gls{lda}, the model is faster but comes with the cost of lower accuracy.
+
+When using \gls{pca} on 15000 samples, the accuracy is 92.37\%, and it takes 10 seconds to train the model, which is faster than the baseline \gls{svm} alone but still slower than \gls{lda} with the same amount of samples. When using 60000 samples, the accuracy is 93.25\%, and it takes 97 seconds to train the model. This means that the time it takes to train the model grows by 870\% by using 45000 more data samples. \gls{pca} has a lower accuracy than the baseline \gls{svm}. It is still faster than \gls{svm} alone but slower than \gls{lda}, making the model a good choice if one wants a faster model with slightly lower accuracy than the baseline \gls{svm}.
+
+When using \gls{kpca} on 15000 samples, the accuracy is 92.36\%, and it takes 92 seconds to train the model. \gls{kpca} is slower than the baseline \gls{svm} and linear methods; this makes sense since nonlinear dimensionality methods can be heavier to compute. Nevertheless, \gls{kpca} scores the highest accuracy of all the dimensionality reduction methods used when using 15000 samples. If the computational cost is not an issue, \gls{kpca} is the best dimensionality reduction.
+
+When using \gls{isomap} on 15000 samples, the accuracy is 90.61\%, and it takes 165 seconds to train the model. \gls{isomap} is slower than all the other dimensionality reduction methods and the baseline \gls{svm}. This makes sense since nonlinear dimensionality methods can be heavier to compute. However, \gls{isomap} scores the second lowest accuracy of all the dimensionality reduction methods used when using 15000 samples. So there are better dimensionality reduction methods than \gls{isomap} if one wants a fast model with high accuracy.
+
+To conclude from this experiment, the baseline \gls{svm} is the best model to use if one wants a fast model with high accuracy. If one wants a faster model with lower accuracy, \gls{lda} is the best model to use. If one wants a model with high accuracy but slower than the baseline \gls{svm}, \gls{kpca} is the best model. If one wants a model with high accuracy but slower than the baseline \gls{svm}, \gls{isomap} is the best model. \gls{pca} is the best model if one wants a model with high accuracy and faster than the baseline SVM.
+
+\subsection{F1-scores}\label{subsec:discussion-experiment-1-f1-score}
+One thing to note is that the f1-score is the harmonic mean of precision and recall, which means that the f1-score is the average of the precision and recall. The f1-score is an excellent metric to use when the classes need to be balanced, as it is the average of precision and recall.
+\input{figures/1-experiment/f1-score.tex}
+All experiments are displayed in Table \ref{tab:discussion-experiment-1-f1-score}, which shows the f1-score for the different models and the three worst classes for f1-scores.
+In all experiments done, all of the models have a high f1-score, which means that the models are good at recognizing the numbers in the pictures. all models are best at recognizing zeros and ones in pictures. and good at recognizing four and sixes. When it comes to what the different models are bad at distinguishing, it is different for all. The most common number that the models are bad at recognizing is threes, fives, and eights, in a different order depending on the dimensionality reduction method used as these are the worst in \gls{svm} with both 15000 and 60000 samples, \gls{lda} with 60000 samples, \gls{pca} with 15000 samples and 60000 samples. \gls{isomap} is the only model that could be better at recognizing threes or fives, as it is terrible at sevens, eights, and nines. This can impact if one wants to use the model to find threes or fives; \gls{isomap} can be considered, as it is good at recognizing these numbers.
+
+\gls{lda} with 15000 samples is interesting, as it needs to improve recognizing fives, eights, and nines. This is interesting as \gls{lda} with 60000 samples needs to improve recognizing threes, fives, and eights. This means \gls{lda} gets better at recognizing nines. This can be because more nines come into the dataset using 60000 samples, which makes \gls{lda} better at recognizing nines. 
+
+In the occasions where there is more than one experiment done to the same method, the worst f1-scores for a class change, as seen in \gls{pca}, where at 15000 samples, the eights have the second worst f1-score, but at 60000 samples, the eights have the third worst f1-score. So the worst f1-scores for a class can change depending on the number of samples used.
+
+To conclude this experiment, the models are good at recognizing the numbers in the pictures, but they are not perfect. The models are best at recognizing zeros and ones in pictures and recognizing four and sixes. When it comes to what the different models are bad at distinguishing, it is different for all. The most common number that the models are bad at recognizing is threes, fives, and eights, in a different order depending on the dimensionality reduction method used as these are the worst in \gls{svm} with both 15000 and 60000 samples, \gls{lda} with 60000 samples, \gls{pca} with 15000 samples and 60000 samples. \gls{isomap} is the only model that is not bad at recognizing threes or fives, as it is terrible at sevens, eights, and nines. This can have an impact if one wants to use the model to find threes or fives, \gls{isomap}P can be considered, as it is not bad at recognizing these numbers, but if one wants to use the model to find eights, then \gls{isomap} is not a good choice.
+
+%intro
+%presentation af de experimenter vi har valgt og hvorfor vi har valgt dem?
+% experiment 1 exemple
+%     detaljeret gennemgang af regler og evaluering
+%     fremvisning af resultater
+%     opsumering af resultater
+%     diskussion af resultater og hvad der ellers var spændende evaluering af hvorfor det blev sådan.
+%why this experiment was chosen
+%look at f1-score and accuracy and time fitting the data

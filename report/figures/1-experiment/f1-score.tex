@@ -1,0 +1,19 @@
+\begin{table}
+    \centering
+    \begin{tabular}{llrrr}
+        \hline
+        Reduction method & f1-score & worst score & 2. worst score & 3. worst score \\
+        \hline
+        \gls{svm}-15 & 93.43\% & 5 & 3 & 8 \\
+        \gls{svm}-60 & 94.47\% & 5 & 8 & 3 \\
+        \gls{lda}-15 & 88.59\% & 8 & 5 & 9 \\
+        \gls{lda}-60 & 89.16\% & 8 & 5 & 3 \\
+        \gls{pca}-15 & 92.25\% & 5 & 8 & 3 \\
+        \gls{pca}-60 & 93.14\% & 5 & 3 & 8 \\
+        \gls{kpca}-15 & 92.22\% & 5 & 3 & 9 \\
+        \gls{isomap}-15 & 90.50\% & 9 & 8 & 7 \\
+        \hline
+    \end{tabular}
+    \caption{F1-scores for the different dimensionality reduction methods.}
+    \label{tab:discussion-experiment-1-f1-score}
+    \end{table}
