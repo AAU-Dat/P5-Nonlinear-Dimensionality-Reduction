@@ -155,7 +155,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code listings and pseudocode
 \usepackage[newfloat, outputdir=out]{minted}
-\setminted[python]{frame=topline, framesep=6pt, style=colorful, fontsize=\footnotesize, linenos, breaklines, autogobble} %Change language later
+% Other potential options for setminted: frame=topline, framesep=6pt, style=colorful, fontsize=\footnotesize, 
+\setminted[python]{linenos, breaklines, autogobble} %Change language later
 \setminted[text]{frame=topline, framesep=6pt, fontsize=\footnotesize, linenos, breaklines, autogobble}
 \usepackage{clrscode3e}
 \DeclareFloatingEnvironment[name=Algorithm, placement=htp!]{algorithm} %Create Algorithm float
@@ -227,3 +228,4 @@ fill=white
 }
 \tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
+\tikzstyle{circle} = [ellipse, minimum width=1.5cm, minimum height=0.5cm, text centered, draw=black, fill=white!30]
