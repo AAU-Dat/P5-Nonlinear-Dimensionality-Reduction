@@ -1,12 +1,12 @@
 \section{experiment 4}\label{sec:experiment-4}
 
-In this experiment, a machine learning pipeline is used to explore the effects of different sizes of samples on the performance of linear and non-linear dimensionality reduction methods. The \gls{mnist} dataset is used as the source of data, and a range of sample sizes are selected, starting with 200 and ending with 5000. The pipeline uses \gls{svm} as the model and applies four different dimensionality reduction techniques: \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}.
+In this experiment, a machine learning pipeline is used to explore the effects of different sizes of samples on the performance of linear and non-linear dimensionality reduction methods. The \gls{mnist} data set is used as the source of data, and a range of sample sizes are selected, starting with 200 and ending with 5000. The pipeline uses \gls{svm} as the model and applies four different dimensionality reduction techniques: \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}.
 
 The performance of the pipeline is evaluated using three metrics: accuracy, f1-score, and time. The results of the experiment are analyzed to compare the performance of the different dimensionality reduction methods under varying sample sizes and to explore the differences between linear and non-linear approaches.
 
 Overall, the results of this experiment provide insight into the factors that can influence the effectiveness of dimensionality reduction in machine learning and can inform the choice of dimensionality reduction method in real-world scenarios. Furthermore, the findings can contribute to the broader understanding of the role of sample size in the performance of machine learning models and dimensionality reduction.
 
-\subsection*{parameters and evaluation}
+\subsection{parameters and evaluation}
 In this experiment the same general hyper parameter tuning as in experiment 1 will be used on datasamples from \gls{mnist} of the size 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000. It will be evaluated based on f1, accuracy and how much time it uses.
 
 
@@ -21,9 +21,9 @@ In this section, we present the results of the fourth experiment, which compare 
 \input{figures/experiment-4/classification_report_baseline_svm_1000.tex}
 \input{figures/experiment-4/classification_report_baseline_svm_5000.tex}
 
-The first part of the experiment involved running a machine learning pipeline without applying any dimensionality reduction. The pipeline used a \gls{svm} model and was trained on the \gls{mnist} dataset. The sample size for this part of the experiment was 100.
+The first part of the experiment involved running a machine learning pipeline without applying any dimensionality reduction. The pipeline used a \gls{svm} model and was trained on the \gls{mnist} data set. The sample size for this part of the experiment was 100.
 
-The results of this experiment are shown in \ref{tab:classification-report-baseline_svm_200}. The table shows the precision, recall, and f1-score for each of the ten classes in the dataset, as well as the overall accuracy of the model. The table also shows the macro average and weighted average scores.
+The results of this experiment are shown in \ref{tab:classification-report-baseline_svm_200}. The table shows the precision, recall, and f1-score for each of the ten classes in the data set, as well as the overall accuracy of the model. The table also shows the macro average and weighted average scores.
 
 Overall, the results show that the \gls{svm} model achieved an accuracy of approximately 67\%. This indicates that the model performed relatively well but still had some errors in its predictions. The precision and recall scores for each class varied, with some classes having higher scores than others. For example, the model had a precision of approximately 87\% for class 0 but only a precision of approximately 45\% for class 9.
 
@@ -31,10 +31,10 @@ These results provide a baseline for comparison with the results of the other pa
 
 The second part of the base case involved using a sample size of 1000; it can be seen in \ref{tab:classification-report-baseline_svm_1000}. Compared to the results of the first part of the experiment, the accuracy of the \gls{svm} model improved significantly, achieving an accuracy of approximately 87\%. This indicates that using a larger sample size improved the performance of the model. The precision and recall scores for each class also improved, with most classes having higher scores than in the first part of the experiment.
 
-The next sample of size 5000 can be seen in \ref{tab:classification-report-baseline_svm_5000}?.
-Comparing \ref{tab:classification-report-baseline_svm_5000} and \ref{tab:classification-report-baseline_svm_5000}, it is clear that the \gls{svm} model achieved higher accuracy and precision when trained on a larger sample size. For example, the accuracy of the model increased from 87\% for the 1000-sample dataset to 92\% for the 5000-sample dataset. Similarly, the precision of the model increased for most of the classes, with the largest increase being seen for class 5, where the precision increased from 78\% to 90\%.
+The next sample of size 5000 can be seen in \ref{tab:classification-report-baseline_svm_5000}.
+Comparing \ref{tab:classification-report-baseline_svm_5000} and \ref{tab:classification-report-baseline_svm_5000}, it is clear that the \gls{svm} model achieved higher accuracy and precision when trained on a larger sample size. For example, the accuracy of the model increased from 87\% for the 1000-sample data set to 92\% for the 5000-sample data set. Similarly, the precision of the model increased for most of the classes, with the largest increase being seen for class 5, where the precision increased from 78\% to 90\%.
 
-Additionally, the f1-score, which is a measure of the balance between precision and recall, also improved for most classes when using a larger sample size. This suggests that the model was able to make more accurate predictions and avoid false positives and false negatives more effectively when trained on a larger dataset.
+Additionally, the f1-score, which is a measure of the balance between precision and recall, also improved for most classes when using a larger sample size. This suggests that the model was able to make more accurate predictions and avoid false positives and false negatives more effectively when trained on a larger data set.
 
 
 \subsubsection{\gls{pca}}\label{subsubsec:experiment_4_pca}
@@ -100,7 +100,7 @@ In \ref{tab:classification-report-pca_svm_1000} we can see that overall, the sec
 
 One interesting difference between the two reports is the performance on class 3. In the first report, class 3 has a recall of 0.829703, with an f1-score of 0.784644. In the second report, class 3 a lower recall of 0.790099, resulting in a f1-score of 0.831250. This indicates that the second model (pca\_svm\_1000) is less accurate at correctly identifying instances of class 3 than the first model the f1 score is still higher due to the precision being suitably higher to compensate(pca\_svm\_200).
 
-The last model is seen in \ref*{tab:classification-report-pca_svm_5000} and is overall, the pca\_svm\_5000 model appears to have better performance across most of the metrics, with higher values for precision, recall, and f1-score for most of the classes. This indicates that the pca\_svm\_5000 model is more accurate at predicting the correct class for a given input.
+The last model is seen in \ref{tab:classification-report-pca_svm_5000} and is overall, the pca\_svm\_5000 model appears to have better performance across most of the metrics, with higher values for precision, recall, and f1-score for most of the classes. This indicates that the pca\_svm\_5000 model is more accurate at predicting the correct class for a given input.
 
 \begin{table}[htb!]
     \centering
@@ -159,7 +159,7 @@ The results show that the model performed better with larger sample sizes, as ev
 \label{tab:classification-report-lda_svm_200}
     \end{table}
 
-This classification report seen in \ref{tab:classification-report-lda_svm_200} shows the performance of a \gls{svm} model that has been trained using \gls{lda} on classifying handwritten digits from the \gls{mnist} dataset. For example, class 1 has a precision of 0.604938 and a recall of 0.949780, while class 5 has a precision of 0.481481 and a recall of 0.204036. This indicates that the model is more accurate at correctly identifying instances of class 1 than it is at correctly identifying instances of class 5. The f1-score for class 1 is 0.739116, while the f1-score for class 5 is 0.286614, further highlighting the difference in performance between the two classes. Overall, it appears that class 1 and class 5 have the largest differences in performance on this classification report.
+This classification report seen in \ref{tab:classification-report-lda_svm_200} shows the performance of a \gls{svm} model that has been trained using \gls{lda} on classifying handwritten digits from the \gls{mnist} data set. For example, class 1 has a precision of 0.604938 and a recall of 0.949780, while class 5 has a precision of 0.481481 and a recall of 0.204036. This indicates that the model is more accurate at correctly identifying instances of class 1 than it is at correctly identifying instances of class 5. The f1-score for class 1 is 0.739116, while the f1-score for class 5 is 0.286614, further highlighting the difference in performance between the two classes. Overall, it appears that class 1 and class 5 have the largest differences in performance on this classification report.
 
 \begin{table}[htb!]
     \centering
@@ -186,7 +186,7 @@ This classification report seen in \ref{tab:classification-report-lda_svm_200} s
     \label{tab:classification-report-lda_svm_1000}
 \end{table}
 
-The classification report for lda\_svm\_1000 seen in \ref*{tab:classification-report-lda_svm_1000} shows generally better performance than the classification report for lda\_svm\_200. For example, class 1 has a precision of 0.745657 and a recall of 0.945374 in the lda\_svm\_1000 report, compared to a precision of 0.604938 and a recall of 0.949780 in the lda\_svm\_200 report. Additionally, the f1-score for class 1 is 0.833722 in the lda\_svm\_1000 report, compared to 0.739116 in the lda\_svm\_200 report. This indicates that the model trained on a larger sample size of 1000 has improved performance in correctly identifying instances of class 1. Overall, it appears that several classes, including 1, 3, 5, and 9, have seen improvements in precision, recall, and f1-score when trained on a larger sample size.
+The classification report for lda\_svm\_1000 seen in \ref{tab:classification-report-lda_svm_1000} shows generally better performance than the classification report for lda\_svm\_200. For example, class 1 has a precision of 0.745657 and a recall of 0.945374 in the lda\_svm\_1000 report, compared to a precision of 0.604938 and a recall of 0.949780 in the lda\_svm\_200 report. Additionally, the f1-score for class 1 is 0.833722 in the lda\_svm\_1000 report, compared to 0.739116 in the lda\_svm\_200 report. This indicates that the model trained on a larger sample size of 1000 has improved performance in correctly identifying instances of class 1. Overall, it appears that several classes, including 1, 3, 5, and 9, have seen improvements in precision, recall, and f1-score when trained on a larger sample size.
 
 
 \begin{table}[htb!]
@@ -215,12 +215,12 @@ The classification report for lda\_svm\_1000 seen in \ref*{tab:classification-re
 \end{table}
 
 
-The classification report for lda\_svm\_5000 has higher precision, recall, and f1-score values for each class compared to the lda\_svm\_1000 report. For example, the precision for class 0 is 0.920039 in the lda\_svm\_5000 report, while it is 0.699825 in the lda\_svm\_1000 report. Similarly, the recall for class 0 is 0.951020 in the lda\_svm\_5000 report, while it is 0.818367 in the lda\_svm\_1000 report. The f1-score for class 0 is also higher in the lda\_svm\_5000 report (0.935273) compared to the lda\_svm\_1000 report (0.754468). Overall, it appears that the model trained on a larger sample size is more effective at correctly classifying instances in the \gls{mnist} dataset.
+The classification report for lda\_svm\_5000 has higher precision, recall, and f1-score values for each class compared to the lda\_svm\_1000 report. For example, the precision for class 0 is 0.920039 in the lda\_svm\_5000 report, while it is 0.699825 in the lda\_svm\_1000 report. Similarly, the recall for class 0 is 0.951020 in the lda\_svm\_5000 report, while it is 0.818367 in the lda\_svm\_1000 report. The f1-score for class 0 is also higher in the lda\_svm\_5000 report (0.935273) compared to the lda\_svm\_1000 report (0.754468). Overall, it appears that the model trained on a larger sample size is more effective at correctly classifying instances in the \gls{mnist} data set.
 
 Based on these classification report, the model with \gls{lda} is best at recognizing instances of class 1. This is because it has the highest precision and recall among all classes, as well as the highest f1-score. This indicates that the model is able to accurately identify instances of class 1 with a high degree of precision and recall. Furthermore, the difference in performance between class 1 and other classes is the largest, further highlighting the model's superior performance on this class. It also appears that the model is worst at recognizing classes 8, 9, 2 and 5.
 
 \subsubsection{\gls{kpca}}\label{subsubsec:experiment_4_kernel_pca}
-In this part of the experiment we expect The performance of a \gls{svm} model using  \gls{kpca} for dimensionality reduction is likely to differ from that of an \gls{svm} model without KPCA. KPCA can reduce the dimensionality of a dataset by projecting it onto a lower-dimensional space, which can improve the \gls{svm} model's decision boundary and performance. In contrast, an \gls{svm} model without KPCA may be more sensitive to the curse of dimensionality and overfitting, especially on high-dimensional datasets. 
+In this part of the experiment we expect The performance of a \gls{svm} model using  \gls{kpca} for dimensionality reduction is likely to differ from that of an \gls{svm} model without KPCA. KPCA can reduce the dimensionality of a data set by projecting it onto a lower-dimensional space, which can improve the \gls{svm} model's decision boundary and performance. In contrast, an \gls{svm} model without KPCA may be more sensitive to the curse of dimensionality and overfitting, especially on high-dimensional data sets. 
 
 \begin{table}[htb!]
     \centering
@@ -275,7 +275,7 @@ The values in \ref{tab:classification-report-kernel_pca_svm_200} indicate that t
 \label{tab:classification-report-kernel_pca_svm_1000}
     \end{table}
 
-The classification report for kernel\_pca\_svm\_200 and kernel\_pca\_svm\_1000 show differences in the performance of the model on the two datasets. In general, the model trained on the larger dataset (kernel\_pca\_svm\_1000) which can be seen in \ref{tab:classification-report-kernel_pca_svm_1000} appears to have higher precision, recall, and f1-scores for most classes. 
+The classification report for kernel\_pca\_svm\_200 and kernel\_pca\_svm\_1000 show differences in the performance of the model on the two data sets. In general, the model trained on the larger data set (kernel\_pca\_svm\_1000) which can be seen in \ref{tab:classification-report-kernel_pca_svm_1000} appears to have higher precision, recall, and f1-scores for most classes. 
 
 \begin{table}[htb!]
     \centering
@@ -302,7 +302,7 @@ The classification report for kernel\_pca\_svm\_200 and kernel\_pca\_svm\_1000 s
     \label{tab:classification-report-kernel_pca_svm_5000}
 \end{table}
 
-In general, the model trained on the larger dataset (kernel\_pca\_svm\_5000) which can be seen in \ref{tab:classification-report-kernel_pca_svm_5000} appears to have higher precision, recall, and f1-scores for most classes. This suggests that, in this case, increasing the size of the dataset has led to a more accurate model.
+In general, the model trained on the larger data set (kernel\_pca\_svm\_5000) which can be seen in \ref{tab:classification-report-kernel_pca_svm_5000} appears to have higher precision, recall, and f1-scores for most classes. This suggests that, in this case, increasing the size of the data set has led to a more accurate model.
 
 Looking at the individual classes, some of the largest differences in performance can be seen in classes 1, 4, and 6. For class 1, the model trained on kernel\_pca\_svm\_5000 has a precision of 0.950385, a recall of 0.978855, and an f1-score of 0.964410, while the model trained on kernel\_pca\_svm\_1000 has a precision of 0.926236, a recall of 0.973568, and an f1-score of 0.949313. This indicates that the larger model is more effective at correctly identifying and classifying examples from class 1.
 
@@ -389,7 +389,7 @@ This section presents the results of an experiment that was conducted to investi
     
     The figures above show that in general, it appears that increasing the number of components in the Isomap technique leads to an improvement in the model's performance. In the classification report for isomap\_svm\_5000, the model has the highest average f1-score of 0.879502, compared to 0.770581 in isomap\_svm\_1000 and 0.724705 in isomap\_svm\_200. This trend is also seen in other evaluation metrics, such as precision and recall.
     
-Additionally, we can see that the model's performance varies across the different classes in the dataset. For example, in isomap\_svm\_5000, the model has a high f1-score for classes 1, 6, and 7, but a relatively low f1-score for class 2.
+Additionally, we can see that the model's performance varies across the different classes in the data set. For example, in isomap\_svm\_5000, the model has a high f1-score for classes 1, 6, and 7, but a relatively low f1-score for class 2.
 
 
 \subsection{Comparison and discussion}
@@ -410,11 +410,11 @@ Additionally, we can see that the model's performance varies across the differen
 \end{figure}
 
 
-In terms of performance, \ref*{fig:experiment_4_performance_size} shows that both baseline \gls{pca} and \gls{kpca} perform similarly well across all sample sizes, with consistently high F1 scores. In contrast, \gls{lda} performs worse overall, while \gls{isomap} has slightly lower F1 scores in smaller sample sizes but performs better in larger samples.
+In terms of performance, \ref{fig:experiment_4_performance_size} shows that both baseline \gls{pca} and \gls{kpca} perform similarly well across all sample sizes, with consistently high F1 scores. In contrast, \gls{lda} performs worse overall, while \gls{isomap} has slightly lower F1 scores in smaller sample sizes but performs better in larger samples.
 
 In terms of speed, \ref{fig:experiment_4_speed_size} shows that both \gls{pca} and \gls{lda} are the fastest when the sample size is larger than 2000, although they are slightly slower in smaller samples. Baseline \gls{pca} is the third slowest, while \gls{kpca} is the second slowest at a sample size of 5000. \gls{isomap} is the slowest overall, with longer runtimes for sample sizes of 2000 and above.
 
-Overall, it appears that both \gls{pca} and \gls{kpca} are good choices for improving the performance of a  \gls{svm} model on the \gls{mnist} dataset, as they offer both high performance and fast runtime. \gls{lda} may be a less optimal choice due to its lower performance, while \gls{isomap} may be a bad option for larger sample sizes but may be suitable for smaller samples due to its slower runtime.
+Overall, it appears that both \gls{pca} and \gls{kpca} are good choices for improving the performance of a \gls{svm} model on the \gls{mnist} data set, as they offer both high performance and fast runtime. \gls{lda} may be a less optimal choice due to its lower performance, while \gls{isomap} may be a bad option for larger sample sizes but may be suitable for smaller samples due to its slower runtime.
 
 
-% The use of kernel principal component analysis  for dimensionality reduction may not have a significant impact on the performance of a support vector machine  model when applied to the \gls(mnist) dataset. This is because the \gls(mnist) dataset is already a low-dimensional dataset, with only 784 features. In this case, using KPCA for dimensionality reduction may not provide much additional benefit, as the original dataset is already well-suited for an SVM model. However, using KPCA may still have some advantages, such as the ability to remove noise and irrelevant information from the dataset, and to visualize the data in a lower-dimensional space. Overall, while the use of KPCA with the \gls(mnist) dataset may not have a major impact on the performance of the SVM model, it can still provide some benefits.
+% The use of kernel principal component analysis  for dimensionality reduction may not have a significant impact on the performance of a support vector machine  model when applied to the \gls(mnist) data set. This is because the \gls(mnist) data set is already a low-dimensional data set, with only 784 features. In this case, using KPCA for dimensionality reduction may not provide much additional benefit, as the original data set is already well-suited for an SVM model. However, using KPCA may still have some advantages, such as the ability to remove noise and irrelevant information from the data set, and to visualize the data in a lower-dimensional space. Overall, while the use of KPCA with the \gls(mnist) data set may not have a major impact on the performance of the SVM model, it can still provide some benefits.
