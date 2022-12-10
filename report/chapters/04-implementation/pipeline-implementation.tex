@@ -2,7 +2,7 @@
 This section presents the project's implementation details per the descriptions from \autoref{sec:pipeline-overview}.
 
 \subsection{Data and pre-processing}\label{subsec:data-and-pre-processing}
-The MNIST dataset is downloaded from \url{http://yann.lecun.com/exdb/mnist/} and loaded into the program using the idx2numpy library. It was later discovered that the \gls{sklearn} library has a built-in function for downloading the MNIST dataset, but this was not discovered until after the dataset was downloaded manually.
+The \gls{mnist} dataset is downloaded from \url{http://yann.lecun.com/exdb/mnist/}\cite{lecun-mnist-database} and loaded into the program using the idx2numpy library. It was later discovered that the \gls{sklearn} library has a built-in function for downloading the MNIST dataset, but this was not discovered until after the dataset was downloaded manually.
 
 The data is comprised of four parts. The training images (\texttt{X}), training labels (\texttt{y}), test images (\texttt{X\_test}), and test labels (\texttt{y\_test}).
 
@@ -18,14 +18,15 @@ The data is comprised of four parts. The training images (\texttt{X}), training 
         'src/mnist_data/test_file_image').reshape(10000, 784)
         y_test = idx2numpy.convert_from_file('src/mnist_data/test_file_label')
     \end{minted}
-    \caption{}
-    \label{lst:}
+    \caption{Data segment of pipeline details.}
+    \label{lst:data-segment}
 \end{listing}
+
 
 Each image is reshaped from a 28x28 matrix to a 784x1 vector, which is the input that \gls{sklearn} expects. If the pipeline was followed strictly, this reshaping should be done in the pre-processing segment, but it was done here for convenience.
 
 \subsection{Tuning loop}\label{subsec:tuning-loop}
-The last part of the pre-processing segment and the remaining segments of the pipeline are implemented together, where each dimensionality reduction method has its own function as per \autoref{sec:pipeline-overview}. There are five functions in total, one for each dimensionality reduction method and one for no dimensionality reduction. The baseline SVM function is shown in \autoref{lst:baseline-svm-results} with comments in the code highlighting the differences between the functions.
+The last part of the pre-processing segment and the remaining segments of the pipeline are implemented together, where each dimensionality reduction method has its own function as per \autoref{sec:pipeline-overview}. There are five functions in total, one for each dimensionality reduction method and one for no dimensionality reduction. The baseline \gls{svm} function is shown in \autoref{lst:baseline-svm-results} with comments in the code highlighting the differences between the functions.
 
 
 \begin{listing}[htb!]
@@ -54,7 +55,7 @@ The last part of the pre-processing segment and the remaining segments of the pi
 \end{listing}
 
 
-The functions use the \gls{sklearn} library's \texttt{Pipeline} class to create a pipeline of the pre-processing, dimensionality reduction, and classifier steps. As per \autoref{sec:pipeline-overview}, the pre-processing step is a standard scaler. The dimensionality step depends on the function and is either PCA, LDA, ISOMAP, or KernelPCA. The classifier step is a support vector machine with a linear kernel and one-versus-one decision function shape and a random state of 42. The random state is used to ensure that the results are reproducible.
+The functions use the \gls{sklearn} library's \texttt{Pipeline} class to create a pipeline of the pre-processing, dimensionality reduction, and classifier steps. As per \autoref{sec:pipeline-overview}, the pre-processing step is a standard scaler. The dimensionality step depends on the function and is either \gls{pca}, \gls{lda}, \gls{isomap}, or \gls{kpca}. The classifier step is a support vector machine with a linear kernel and one-versus-one decision function shape and a random state of 42. The random state is used to ensure that the results are reproducible.
 
 The classifier could be built using different \gls{sklearn} functions as well, which could have improved performance. Using the \texttt{LinearSVC()} and \texttt{OneVsOneClassifier()} functions might have been more correct that the current implementation, however the way it is implemented now would allow us to use a different kernel for the \gls{svm} defined through the hyperparameter dictionary.
 
@@ -86,19 +87,9 @@ The following hyperparameters are used for the tuning loop:
             "kernel_pca__gamma": gamma_logspace,
             "kernel_pca__kernel": ["rbf", "sigmoid"]}
     \end{minted}
-    \caption{}
+    \caption{Hyperparameters used in the tuning loops.}
     \label{lst:hyperparameters-dictionaries}
 \end{listing}
 
 
-The dictionaries are combined into single dictionaries for use in the results functions. For example, the svm hyperparameters are combined with pca hyperparameters to create a full hyperparameter dictionary for that method.
-
-% Listing template
-% \begin{listing}[htb!]
-%     \centering
-%     \begin{minted}{python}
-%         print("hello World")
-%     \end{minted}
-%     \caption{}
-%     \label{lst:}
-% \end{listing}
+The dictionaries are combined into single dictionaries for use in the results functions. For example, the \gls{svm} hyperparameters are combined with \gls{pca} hyperparameters to create a full hyperparameter dictionary for that method.
