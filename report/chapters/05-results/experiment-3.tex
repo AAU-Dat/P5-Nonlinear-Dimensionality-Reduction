@@ -2,7 +2,7 @@
 \newacronym{rbf}{RBF}{Radial Basis Function}
 \newacronym{kpca-s}{KPCA-S}{Kernel PCA with Sigmoid kernel}
 \newacronym{kpca-r}{KPCA-R}{Kernel PCA with RBF kernel}
-\section{Experiment three}
+\section{Experiment 3}
 This experiment is targetted towards \gls{pca} and \gls{kpca}. The goal is to compare the performance of \gls{pca} and \gls{kpca}, because these methods are similar, with the exception that \gls{kpca} implements a kernel. Beause of the similarity of the methods, comparison will be more focused on the impact the different kernels can have on the model, namely what numbers does the machine learning model confuse given the different kernels.
 
 
@@ -17,7 +17,11 @@ This experiment will not use gridsearch. The input of the data samples will be 1
 
 
 \subsection{Results}
-Figure\~ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}.
+Figure \ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}.
+Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with sigmoid kernel.
+Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with rbf kernel.
+
+
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/confusion_matrix_pca_svm.png}
@@ -26,24 +30,25 @@ Figure\~ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}.
 \end{figure}
 
 
-Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with rbf kernel.
-\begin{figure}[htb!]
+
+
+
+\begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/kernel_pca_rbf_kernel_49.png}
-    \caption{Confusion matrix for PCA}
-    \label{fig:confusion-matrix-kernel-pca-svm-rbf}
+    \subfloat[\centering Confusion matrix for kPCA Sigmoid]{\label{fig:confusion-matrix-kernel-pca-svm-sigmoid}{\includegraphics[width=0.45\textwidth]{../src/results/experiment_three/confusion_matrix_kernel_pca_svm_sigmoid.png} }}
+    \qquad
+    \subfloat[\centering Confusion matrix for kPCA RBF]{\label{fig:confusion-matrix-kernel-pca-svm-rbf}{\includegraphics[width=0.45\textwidth]{../src/results/experiment_three/kernel_pca_rbf_kernel_49.png} }}%
+    \caption{both kPCA kernels confusion matrices}
+    \label{fig:kpca-kernels}
 \end{figure}
 
-Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with sigmoid kernel.
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/confusion_matrix_kernel_pca_svm_sigmoid.png}
-    \caption{Confusion matrix for PCA}
-    \label{fig:confusion-matrix-kernel-pca-svm-sigmoid}
-\end{figure}
+
+
+
+
 
 \subsection{Results}
-A slight improvement over the number 0 has been seen in \gls{kpca-s} in that it mapped 11 numbers better than PCA, and the same can be said for the number 2.
+A slight improvement over the number 0 has been seen in \gls{kpca-s} in that it mapped 11 numbers better than \gls{pca}, and the same can be said for the number 2.
 
 Both methods acquired the same amount of correct predictions for the numbers 3 and 4.
 
@@ -103,5 +108,5 @@ From the overview provided regarding the difference in numbers, a percentage wou
 Another finding which could be explored is the difference in the number of errors made by the methods for each number. Table \ref{tab:error-percentage-pca-kpca-s-kpca-r} shows the difference in the number of errors made by the methods for each number.
 
 Yet another finding that could be explored is to research why \gls{kpca-r} is the only method that confuses many numbers with the number 7.
-\subsection{Discussion of results}
+%\subsection{Discussion of results}
 
