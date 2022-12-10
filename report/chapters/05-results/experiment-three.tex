@@ -17,23 +17,29 @@ This experiment will not use gridsearch. The input of the data samples will be 1
 
 
 \subsection{Results}
-The results are for PCA are shown in experiment one.
+Figure\~ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}.
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/confusion_matrix_pca_svm.png.png}
+    \caption{Confusion matrix for PCA}
+    \label{fig:confusion-matrix-pca-svm}
+\end{figure}
 
 
 Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with rbf kernel.
 \begin{figure}[htb!]
-\centering
-\includegraphics[width=0.5\textwidth]{../src/results/experiment_three/kernel_pca_rbf_kernel_49.png}
-\caption{Confusion matrix for PCA}
-\label{fig:confusion-matrix-kernel-pca-svm-rbf}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/kernel_pca_rbf_kernel_49.png}
+    \caption{Confusion matrix for PCA}
+    \label{fig:confusion-matrix-kernel-pca-svm-rbf}
 \end{figure}
 
 Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with sigmoid kernel.
 \begin{figure}[htb!]
-\centering
-\includegraphics[width=0.5\textwidth]{../src/results/experiment_three/confusion_matrix_kernel_pca_svm_sigmoid.png}
-\caption{Confusion matrix for PCA}
-\label{fig:confusion-matrix-kernel-pca-svm-sigmoid}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../src/results/experiment_three/confusion_matrix_kernel_pca_svm_sigmoid.png}
+    \caption{Confusion matrix for PCA}
+    \label{fig:confusion-matrix-kernel-pca-svm-sigmoid}
 \end{figure}
 
 \subsection{Results}
@@ -78,29 +84,29 @@ At number 8 the methods have confused 0 (with the exception of \gls{kpca-r}),2,3
 From the overview provided regarding the difference in numbers, a percentage would be more preferable, more specifically, a percentage of the errors made in the numbers 0-9. Table \ref{tab:error-percentage-pca-kpca-s-kpca-r} shows the difference in percentages of errors made by the methods for each number.
 
 \begin{table}[htb!]
-  \centering
-  \caption{Error percentage for each number for the methods}
-  \label{tab:error-percentage-pca-kpca-s-kpca-r}
-  \begin{tabular}{lrrrr}
-  \toprule
-   & pca & kpca-s & kpca-r \\
-  \midrule
-  0 & 2.959 & 1.836 & 3.163 \\
-  1 & 1.585 & 1.321 & 1.585  \\
-  2 & 8.817 & 7.751 & 11.337  \\
-  3 & 10.594 & 10.594 & 12.079  \\
-  4 & 5.702 & 5.804 & 7.637  \\
-  5 & 12.556 & 14.013 & 17.264  \\
-  6 & 6.054 & 5.532 & 12.108  \\
-  7 & 7.101 & 7.879 & 7.684  \\
-  8 & 13.552 & 11.293 & 13.860  \\
-  9 & 11.992 & 11.694 & 14.370  \\
-  \bottomrule
-  \end{tabular}
-  \end{table}
+    \centering
+    \begin{tabular}{lrrrr}
+        \toprule
+          & pca    & kpca-s & kpca-r \\
+        \midrule
+        0 & 2.959  & 1.836  & 3.163  \\
+        1 & 1.585  & 1.321  & 1.585  \\
+        2 & 8.817  & 7.751  & 11.337 \\
+        3 & 10.594 & 10.594 & 12.079 \\
+        4 & 5.702  & 5.804  & 7.637  \\
+        5 & 12.556 & 14.013 & 17.264 \\
+        6 & 6.054  & 5.532  & 12.108 \\
+        7 & 7.101  & 7.879  & 7.684  \\
+        8 & 13.552 & 11.293 & 13.860 \\
+        9 & 11.992 & 11.694 & 14.370 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Error percentage for each number for the methods}
+    \label{tab:error-percentage-pca-kpca-s-kpca-r}
+\end{table}
 
 Another finding which could be explored is the difference in the number of errors made by the methods for each number. Table \ref{tab:error-percentage-pca-kpca-s-kpca-r} shows the difference in the number of errors made by the methods for each number.
 
-Yet another finding that could be explored is to research why \gls{kpca-r} is the only method that confuses many numbers with the number 7. 
+Yet another finding that could be explored is to research why \gls{kpca-r} is the only method that confuses many numbers with the number 7.
 \subsection{Discussion of results}
 
