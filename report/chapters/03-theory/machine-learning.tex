@@ -5,45 +5,45 @@ Understanding the basics of machine learning is important to determine the appro
 
 
 \subsection{Machine learning pipeline}\label{subsec:machine-learning-pipeline}
-Figure~\ref{fig:machine-learning-pipeline} shows the simplified and generalized steps in the pipeline of a machine-learning model. The arrows represent how machine learning models continuously learn. The model is trained on the training set and then evaluated on the validation set. The model then updates with the new information, and the process repeats. This loop is called the training loop. The training loop repeats until the model converges or until the model is no longer improving. The model gets evaluated on the test set, and the evaluation gets used to determine the model's performance. The reason for having a pipeline for a machine learning model states as follows:
+\autoref{fig:basic-machine-learning-pipeline} shows the simplified and generalized steps in the pipeline of a machine-learning model. The arrows represent how machine learning models continuously learn. The model is trained on the training set and then evaluated on the validation set. The model then updates with the new information, and the process repeats. This loop is called the training loop. The training loop repeats until the model converges or until the model is no longer improving. The model gets evaluated on the test set, and the evaluation gets used to determine the model's performance. The reason for having a pipeline for a machine learning model states as follows:
 
-\textcquote{machine-learning-pipeline-architecture}{A machine learning pipeline (or system) is a technical infrastructure used to manage and automate ML processes in the organization. The pipeline logic and the number of tools it consists of vary depending on the ML needs. But, in any case, the pipeline would provide data engineers with means of managing data for training, orchestrating models, and managing them on production.}
+\blockcquote{machine-learning-pipeline-architecture}{A machine learning pipeline (or system) is a technical infrastructure used to manage and automate ML processes in the organization. The pipeline logic and the number of tools it consists of vary depending on the ML needs. But, in any case, the pipeline would provide data engineers with means of managing data for training, orchestrating models, and managing them on production.}
 
 For this simplified example, the machine learning pipeline shown in this report has four main steps: data collection, feature engineering, model training, and model Evaluation. This model is not entirely identical to the model shown in~\cite{machine-learning-pipeline-architecture}, as this is a simplified model with slight modifications to fit this project's scope. The four steps will get described in the following subsections.
 
 
-\begin{figure}[htb!]
-    \centering
-    \begin{tikzpicture}
-        \node (b) [state] {feature engineering};
-        \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
-        \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
-        \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
-        \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
+% \begin{figure}[htb!]
+%     \centering
+%     \begin{tikzpicture}
+%         \node (b) [state] {feature engineering};
+%         \node (c) [state, shift={($(b.east)+(2cm,0)$)}] {model};
+%         \node (a) [state, shift={($(b.west)+(-2cm,0)$)}] {data};
+%         \node (d) [state, shift={($(c.east)+(2cm,0)$)}] {evaluation};
+%         \node (e) [state, shift={($(b.south)+(0,-2cm)$)}] {parameters};
 
-        \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
-        \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
-        \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
-        \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
+%         \draw[arrow, ->] (a) -- node[above,scale=.70,align=center,] {} (b);
+%         \draw[arrow, ->] (b) -- node[above,scale=.70,align=center,] {} (c);
+%         \draw[arrow, ->] (c) -- node[above,scale=.70,align=center,] {} (d);
+%         \draw[arrow, ->] (e) -- node[above,scale=.70,align=center,] {} (c);
 
-        \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
-        \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
-    \end{tikzpicture}
-    \caption{Simplified machine learning pipeline}
-    \label{fig:machine-learning-pipeline}
-\end{figure}
+%         \draw[arrow, ->] (d.north) -- ++(0,0.75) -| (b);
+%         \draw[arrow, ->] (d.south) -- ++(0,-0.75) -| (c);
+%     \end{tikzpicture}
+%     \caption{Simplified machine learning pipeline}
+%     \label{fig:machine-learning-pipeline}
+% \end{figure}
 
 \subsubsection{Data collection}\label{subsubsec:machine-learning-pipeline-data-collection}
-The \texttt{data} box in figure \ref{fig:machine-learning-pipeline} represents the collection of data to be used in training the machine learning model~\cite{machine-learning-pipeline-architecture}. There are many different types of data, but some of the most commonly used, as stated by \cite{the-importance-of-machine-learning-data}, are \texttt{Numerical Data}, \texttt{Categorical Data}, \texttt{Time Series Data}, and \texttt{Text Data}. Often the data is in some type or format which is not directly usable by the machine learning model. For this, the \texttt{feature engineering} step is used, which will get described in the following subsection. 
+The \texttt{data} box in \autoref{fig:basic-machine-learning-pipeline} represents the collection of data to be used in training the machine learning model~\cite{machine-learning-pipeline-architecture}. There are many different types of data, but some of the most commonly used, as stated by \cite{the-importance-of-machine-learning-data}, are Numerical Data, Categorical Data, Time Series Data, and Text Data. Often the data is in some type or format which is not directly usable by the machine learning model. For this, the \texttt{feature engineering} step is used.
 
-\subsubsection{Fearture engineering}\label{subsubsec:machine-learning-pipeline-feature-engineering}
+\subsubsection{Feature engineering}\label{subsubsec:machine-learning-pipeline-feature-engineering}
 \texttt{Feature engineering} represents the step where the data gets transformed through dimensionality reduction. In~\cite{machine-learning-pipeline-architecture}, \texttt{Data preparation} and \texttt{feature engineering} are both in a step called \texttt{prepare data}, for this model, \texttt{feature engineering} covers those steps. \texttt{feature engineering} is also the step where data is preprocessed~\cite{machine-learning-pipeline-architecture}. Preprocessing is done to ensure quality data~\cite{data-preparation-for-data-mining}, and feature engineering is done, among other reasons, to improve the quality of the results, and to improve the performance of the machine learning model, by reducing the burden on the machine learning algorithms~\cite{dimensionality-reduction-reddy}.
 
 \subsubsection{Model}\label{subsubsec:machine-learning-pipeline-model-training}
-\texttt{model} is where the process of training the model with the data takes place. Model training splits the data into a training set and a validation set. An example of model training gets seen in further detail in the model shown in~\cite{machine-learning-pipeline-architecture}, at the \texttt{Split data} step. As stated in~\ref{sec:cross-validation}, it is important to split the data in this manner, as it helps to reduce the risk of overfitting. 
+\texttt{model} is where the process of training the model with the data takes place. Model training splits the data into a training set and a validation set. An example of model training gets seen in further detail in the model shown in~\cite{machine-learning-pipeline-architecture}, at the \texttt{Split data} step. As stated in~\ref{sec:cross-validation}, it is important to split the data in this manner, as it helps to reduce the risk of overfitting.
 
 \subsubsection{Evaluation}\label{subsubsec:machine-learning-pipeline-evaluation}
-\texttt{evaluation} represents the step where the model gets evaluated. The evaluation compares the model's predictions with the actual values. The model's predictions get evaluated on the validation set, and this step can repeat multiple times~\cite{machine-learning-pipeline-architecture}. Using accuracy, precision, recall, and F1 score metrics helps provide information regarding the performance of the model~\cite{performance-evaluation}.
+\texttt{evaluation} represents the step where the model trained on the training set, gets evaluated on the validation set. The evaluation compares the model's predictions with the actual values. The model's predictions get evaluated on the validation set, and this step can repeat multiple times~\cite{machine-learning-pipeline-architecture}. Using accuracy, precision, recall, and F1 score metrics helps provide information regarding the performance of the model~\cite{performance-evaluation}.
 
 \subsubsection{Parameters}\label{subsubsec:machine-learning-pipeline-parameters}
 \texttt{Parameters} represents the step where hyperparameters of the machine learning model get set and tuned. The algorithm sets some parameters through training, then there are hyperparameters, which are parameters given to the algorithms to train the model~\cite{what-is-hyperparameter-tuning}. This step is purely for hyperparameters. As mentioned in the previous section \ref{sec:hyperparam}, there are multiple ways to tune hyperparameters. The main reason this tuning is important is that it helps improve the model's performance and reduce the risk of overfitting~\cite{hyperparameter-tuning}.
