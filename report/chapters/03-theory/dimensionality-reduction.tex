@@ -1,5 +1,5 @@
 \section{Dimensionality reduction}\label{sec:dimensionality-reduction}
-In general, dimensionality reduction transforms data with many features (dimensions) into a new representation of the data with fewer features while preserving as much relevant information as possible. Dimensionality reduction is made by finding a transformation of the data that maps the data to some lower dimensional space while keeping the mean distances between the data points~\cite{dimensionality-reduction-comparative-review}.
+In general, dimensionality reduction transforms data with many features (dimensions) into a new representation of the data with fewer features while preserving as much relevant information as possible. Dimensionality reduction is finds a transformation of the data that maps the data to some lower dimensional space, while keeping the mean distances between the data points~\cite{dimensionality-reduction-comparative-review}.
 
 Dimensionality reduction can be divided into two categories: linear and nonlinear methods, described in Section \ref{sec:linear-vs-nonlinear}. This section presents some of the standard methods from both categories.
 
@@ -32,9 +32,12 @@ Sometimes high-dimensional data may contain non-linear relationships, which line
 
 
 \subsubsection{Kernel Principal Component Analysis}\label{subsubsec:kernel-principal-component-analysis}
-\gls{kpca} is an extension of \gls{pca}, and it projects the data onto a higher dimensional plane, where \gls{pca} is performed. 
-The first step is to construct the kernel matrix from the data. The kernel matrix is a matrix of the dot products of the data points, the kernel matrix is used like the covariance matrix in \gls{pca}~\cite{kernel-pca}. In the kernel matrix the data is in a higher dimensional space, where the data is linear separable. By using the kernel function, \gls{kpca} exposes the kernel trick, which is instead of calculating the dat into a higher dimensional space, it calculates the inner product between the datapoints, which is computationally cheap to calculate instead of calculating every datapoint into a higher dimensional space.
-The kernel matrix is then centered by subtracting the mean of each row and column. This matrix is also called the Gram matrix. The Gram matrix is then used to find eigenvectors and eigenvalues. By using the kernel trick, \gls{kpca} can compute eigenvalue decomposition, as in \gls{pca}.The eigenvectors are then used to project the data onto a higher dimensional space, where \gls{pca} is performed. The eigenvectors with the highest eigenvalues are the principal components, and the projection is the data projected onto the principal components~\cite{kernel-pca}. 
+\gls{kpca} is an extension of \gls{pca}, and it projects the data onto a higher dimensional plane, where \gls{pca} is performed.
+The first step is to construct the kernel matrix from the data. The kernel matrix is a matrix of the dot products of the data points, the kernel matrix is used like the covariance matrix in \gls{pca}~\cite{kernel-pca}.
+
+In the kernel matrix the data is in a higher dimensional space, where the data is linear separable. By using the kernel function, \gls{kpca} exposes the kernel trick, which is instead of calculating the dat into a higher dimensional space, it calculates the inner product between the datapoints, which is computationally cheap to calculate instead of calculating every datapoint into a higher dimensional space.
+
+The kernel matrix is then centered by subtracting the mean of each row and column. This matrix is also called the Gram matrix. The Gram matrix is then used to find eigenvectors and eigenvalues. By using the kernel trick, \gls{kpca} can compute eigenvalue decomposition, as in \gls{pca}.The eigenvectors are then used to project the data onto a higher dimensional space, where \gls{pca} is performed. The eigenvectors with the highest eigenvalues are the principal components, and the projection is the data projected onto the principal components~\cite{kernel-pca}.
 
 \subsubsection{Isometric Feature Mapping}\label{subsubsec:isometric-feature-mapping}
 \gls{isomap} is another non-linear method that is a special case of \gls{cmds}. It is assumed that \gls{isomap} is suited to discover manifolds of arbitrary dimensionality and that it guarantees an approximation of the true structure of the manifold~\cite{tennenbaum}.
@@ -43,7 +46,7 @@ The first step in \gls{isomap} is to map the data points in a graph. The graph i
 
 In the second step, \gls{isomap} finds the Geodesic distance between each point~\cite{Multidimensional-Scaling-Sammon-Mapping-and-Isomap}. The Geodesic distance is the shortest distance between two points on the surface of a sphere. The Geodesic distance is calculated by finding the shortest path between two points on a graph. The graph is constructed by connecting each point to its nearest neighbors. The shortest path can be found by using the Dijkstra algorithm~\cite{multi-dimensional-scaling-leeuw}.
 
-The final step in \gls{isomap} is finding the data's \gls{mds} projection. The \gls{mds} projection is found by minimizing the stress function. The stress function is the sum of the squared differences between the distances in the original data and the distances in the projected data~\cite{multi-dimensional-scaling-leeuw}, so the stress function finds the slightest change in the data. The minimum of this stress function will be the best reproduction of the data in lower dimensional space according to the \gls{isomap} algorithm. 
+The final step in \gls{isomap} is finding the data's \gls{mds} projection. The \gls{mds} projection is found by minimizing the stress function. The stress function is the sum of the squared differences between the distances in the original data and the distances in the projected data~\cite{multi-dimensional-scaling-leeuw}, so the stress function finds the slightest change in the data. The minimum of this stress function will be the best reproduction of the data in lower dimensional space according to the \gls{isomap} algorithm.
 
 
 \input{chapters/03-theory/decisions/choice-of-dimensionality-reduction.tex}
