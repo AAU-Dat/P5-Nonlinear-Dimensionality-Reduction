@@ -81,13 +81,18 @@ Similar to linear methods, the data is sorted by its accuracy score to find the 
 \subsubsection{\gls{isomap}}\label{subsubsec:experiment_2_isomap}
 \gls{isomap} is the final method of the second experiment, which is non-linear, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_isomap_svm}.
 
-\begin{figure}{htb!}
+\begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.8\textwidth]{example-image-a}
+    \includegraphics[width=0.8\textwidth]{figures/experiment_two/isomap_svm_15000.png}
     \caption{Accuracy of the SVM model with \gls{isomap} as dimensionality reduction method, with the number of components used.}
     \label{fig:experiment_2_isomap_svm}
 \end{figure}
 
+\autoref{fig:experiment_2_isomap_svm} is similar to \gls{kpca} as the accuracy drops drastically as the number of components decreases, but even the lowest accuracy is still relatively high. The span from best to worst accuracy is much smaller than in linear methods. The highest accuracy score for \gls{isomap}  is 89.4\% with 48 components, and the lowest accuracy score is 80\% with five components. The best and worst accuracy scores are closer together than the other methods, with only a ~9\% difference.
+
+isomap has a top accuracy score of 89.4\%, meaning that the thresholds for \gls{isomap}  are: 89.4\% - 1\% = 88.4\%, 89.4\% - 5\% = 84.4\%, and 89.4\% - 10\% = 79.4\%. 
+
+The first threshold of 88.4\% accuracy is found at 88.3\% with 20 components, the next threshold of 84.4\% accuracy is found at 83.5\% with seven components, and the final threshold of 79.4\% accuracy is not found in the data, as the lowest accuracy score is 80\% with five components. To still be able to compare the results of \gls{isomap}  with the other methods, the lowest accuracy score will be used as the threshold, but it should be made clear that the actual threshold is not found in the data.
 
 
 \subsection{Discussion of experiment two}\label{subsec:experiment_2_discussion}
@@ -101,29 +106,71 @@ By comparing the two linear methods used for the second experiment, it is essent
 
 \begin{table}[htb!]
     \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        \textbf{Thresholds} & \textbf{PCA \% of 50 Components} & \textbf{LDA \% of 9 Components} \\ \hline
-        \textbf{1\%} & \textbf{62\% (31)} & \textbf{100\% (9)} \\ \hline
-        \textbf{5\%} & \textbf{32\% (16)} & \textbf{66\% (6)} \\ \hline
+    \begin{tabular}{cp{0.15\textwidth}p{0.15\textwidth}}
+        \toprule
+        \textbf{Thresholds} & \textbf{PCA \% 50} & \textbf{LDA \% 9} \\
+        \midrule
+        \textbf{1\%} & \textbf{62\% (31)} & \textbf{100\% (9)} \\
+        \textbf{5\%} & \textbf{32\% (16)} & \textbf{66\% (6)} \\
         \textbf{10\%} & \textbf{20\% (10)} & \textbf{33\% (3)} \\
-        \hline
+        \bottomrule
     \end{tabular}
     \caption{Percentage of the components remaining after the threshold is reached, with the corresponding number of components in paratheses.}
     \label{tab:experiment_2_linear_methods_comparison}
 \end{table}
 
-\autoref{tab:experiment_2_linear_methods_comparison} shows, for each linear method, the amount of components left after each of the thresholds is reached. So for \gls{pca}, 62\% of the total number of components remaining before reaching the first threshold of 1\%, whereas, for \gls{lda}, there is 100\%.
+\autoref{tab:experiment_2_linear_methods_comparison} shows, for each linear method, the amount of components left after each of the thresholds is reached. So for \gls{pca}, 62\% of the total number of components remain before reaching the first threshold of 1\%, whereas, for \gls{lda}, there is 100\%.
 
-From \autoref{tab:experiment_2_linear_methods_comparison}, it can be seen that before reaching the first threshold of losing 1\% accuracy, \gls{pca} can cut off 38\% of its components, before reaching the threshold, while \gls{lda} can not afford to lose any components. It shows that for \gls{lda}, the number of components and the hyperparameters have a significant impact and that it is not as easy to cut off components as it is for \gls{pca} without losing accuracy.
+From \autoref{tab:experiment_2_linear_methods_comparison}, it can be seen that before reaching the first threshold of losing 1\% accuracy, \gls{pca} can cut off 38\% of its components, while \gls{lda} can not afford to lose any components. It shows that for \gls{lda}, the number of components and the hyperparameters have a significant impact and that it is not as easy to cut off components as it is for \gls{pca} without losing accuracy.
 
 By comparing the two linear methods, it can be concluded that \gls{lda} is more prone to losing accuracy when removing components than \gls{pca}. The accuracy loss is likely because \gls{lda} has so few components to work in the first place. It could be argued that the results are not entirely fair since \gls{pca} has so many more components, but scaling the values with percentage should show a general trend.
 
 
 \subsubsection{Non-linear methods}
+Unlike the linear methods, the non-linear methods have a similar number of components, which should give a more fair comparison. A table showing when the respective thresholds were reached for each of the non-linear methods can be seen in \autoref{tab:experiment_2_non_linear_methods_comparison}.
+
+\begin{table}[htb!]
+    \centering
+    \begin{tabular}{cp{0.20\textwidth}p{0.20\textwidth}}
+        \toprule
+        \textbf{Thresholds} & \textbf{KPCA \% 50} & \textbf{ISOMAP \% 50} \\
+        \midrule
+        \textbf{1\%} & \textbf{62\% (31)} & \textbf{40\% (20)} \\
+        \textbf{5\%} & \textbf{32\% (16)} & \textbf{14\% (7)} \\ 
+        \textbf{10\%} & \textbf{20\% (10)} & \textbf{1\% (5)*} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Percentage of the components remaining after the threshold is reached, with the corresponding number of components in paratheses.}
+    \label{tab:experiment_2_non_linear_methods_comparison}
+\end{table}
+
+Figure 1 shows that \gls{kpca} and \gls{isomap}  can afford to cut off a significant amount of components before reaching the first threshold of 1\%. \gls{kpca} can cut off 38\% of its components, while \gls{isomap}  can cut off 60\% of its components. Another interesting note is that \gls{isomap}  never reaches the 10\% accuracy loss threshold, and the closest accuracy score is used instead. Although it is not entirely accurate, the percentage from the actual threshold is <1\%, so for the sake of the comparison, it will be assumed that the threshold was reached.
+
+Generally, it can be concluded that both \gls{kpca} and \gls{isomap}  can afford to cut off a significant amount of components before losing accuracy. It is interesting to note that \gls{isomap}  can cut off more components than \gls{kpca} before losing accuracy. However, \gls{kpca} reaches a higher accuracy score than \gls{isomap}  but also reaches a lower accuracy score than \gls{isomap} , which means that \gls{isomap}  could be considered consistent than kpca, as the span of accuracy score for \gls{isomap}  is smaller.
+
+\todo{Consider adding a table with the best and worst accuracy score for each method.}
 
 \subsubsection{Comparison of methods}
+Now that the linear and non-linear methods have been compared, it is time to compare the methods to each other. The results can be seen in \autoref{tab:experiment_2_methods_comparison}.
 
+
+\begin{table}[htb!]
+    \centering
+    \begin{tabular}{cp{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.20\textwidth}}
+        \toprule
+        \textbf{Thresholds} & \textbf{PCA \% 50} & \textbf{LDA \% 9} & \textbf{KPCA \% 50} & \textbf{ISOMAP \% 50} \\ \midrule
+        \textbf{1\%} & \textbf{62\% (31)} & \textbf{100\% (9)} & \textbf{62\% (31)} & \textbf{40\% (20)} \\
+        \textbf{5\%} & \textbf{32\% (16)} & \textbf{66\% (6)} & \textbf{32\% (16)} & \textbf{14\% (7)} \\
+        \textbf{10\%} & \textbf{20\% (10)} & \textbf{33\% (3)} & \textbf{20\% (10)} & \textbf{1\% (5)*} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Percentage of the components remaining after the threshold is reached, with the corresponding number of components in paratheses.}
+    \label{tab:experiment_2_methods_comparison}
+\end{table}
+
+The first noticeable thing is that \gls{pca} and \gls{kpca} are similar in the number of components they can cut off before losing accuracy enough to reach the thresholds. The highest accuracy score is the same between the two methods, but the lowest accuracy score is lower for PCA, this lower accuracy score is likely due to the range of components \gls{pca} has.  The lower the percentage in \autoref{tab:experiment_2_methods_comparison}, the more components can be cut off without losing accuracy. So from this, it can be concluded that \gls{lda}  is the method that has the most drastic accuracy loss when cutting off components. This is likely because \gls{lda}  has so few components to work in the first place, and therefore it is more sensitive to the removal of components. \gls{isomap}  is the method that has the most negligible drastic accuracy loss when cutting off components. Additionally, \gls{isomap} 's worst accuracy score is better than any other method, but its best accuracy score is also the lowest. 
+
+From the second experiment, it can be concluded that \gls{isomap}  is the method that can cut off most components before losing accuracy. However, each method has its strengths and weaknesses, and it is essential to consider the context of the problem when choosing a method.
 
 
 % intro
