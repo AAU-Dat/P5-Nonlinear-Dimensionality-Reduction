@@ -1,0 +1,104 @@
+\section{Pipeline implementation}\label{sec:pipeline-implementation}
+This section presents the project's implementation details per the descriptions from \autoref{sec:pipeline-overview}.
+
+\subsection{Data and pre-processing}\label{subsec:data-and-pre-processing}
+The MNIST dataset is downloaded from \url{http://yann.lecun.com/exdb/mnist/} and loaded into the program using the idx2numpy library. It was later discovered that the \gls{sklearn} library has a built-in function for downloading the MNIST dataset, but this was not discovered until after the dataset was downloaded manually.
+
+The data is comprised of four parts. The training images (\texttt{X}), training labels (\texttt{y}), test images (\texttt{X\_test}), and test labels (\texttt{y\_test}).
+
+
+\begin{listing}[htb!]
+    \centering
+    \begin{minted}{python}
+        load_mnist() # helper function for downloading the MNIST dataset
+        X = idx2numpy.convert_from_file(
+        'src/mnist_data/train_file_image').reshape(60000, 784)
+        y = idx2numpy.convert_from_file('src/mnist_data/train_file_label')
+        X_test = idx2numpy.convert_from_file(
+        'src/mnist_data/test_file_image').reshape(10000, 784)
+        y_test = idx2numpy.convert_from_file('src/mnist_data/test_file_label')
+    \end{minted}
+    \caption{}
+    \label{lst:}
+\end{listing}
+
+Each image is reshaped from a 28x28 matrix to a 784x1 vector, which is the input that \gls{sklearn} expects. If the pipeline was followed strictly, this reshaping should be done in the pre-processing segment, but it was done here for convenience.
+
+\subsection{Tuning loop}\label{subsec:tuning-loop}
+The last part of the pre-processing segment and the remaining segments of the pipeline are implemented together, where each dimensionality reduction method has its own function as per \autoref{sec:pipeline-overview}. There are five functions in total, one for each dimensionality reduction method and one for no dimensionality reduction. The baseline SVM function is shown in \autoref{lst:baseline-svm-results} with comments in the code highlighting the differences between the functions.
+
+
+\begin{listing}[htb!]
+    \centering
+    \begin{minted}{python}
+        def baseline_svm_results(X, y, X_test, y_test, hyperparameters, methodname="baseline_svm"):
+            baseline_model_pipeline = Pipeline(steps=[
+                ("scaler", StandardScaler()),
+                # ("dimensionality_reduction", PCA()/LDA()/ISOMAP()/KernelPCA),
+                ("classifier", SVC(kernel="linear", decision_function_shape="ovo", random_state=42))])
+            search = GridSearchCV(baseline_model_pipeline,
+                                hyperparameters,
+                                cv=5,
+                                scoring="f1_macro",
+                                verbose=10,
+                                n_jobs=-1) # -1 uses all available cores. The nonlinear methods are limited to 1 core
+            search.fit(X, y)
+            y_pred = search.best_estimator_.predict(X_test)
+            save_results(methodname, # Helper function for saving results
+                 search.cv_results_, # Save csv with gridsearch results
+                 ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred)), # Save confusion matrix
+                 classification_report(y_test, y_pred, output_dict=True)) # Save classification report
+    \end{minted}
+    \caption{The baseline implementation of the tuning loop. The hyperparameters are passed as a dictionary. The \texttt{methodname} parameter is used for naming the output files.}
+    \label{lst:baseline-svm-results}
+\end{listing}
+
+
+The functions use the \gls{sklearn} library's \texttt{Pipeline} class to create a pipeline of the pre-processing, dimensionality reduction, and classifier steps. As per \autoref{sec:pipeline-overview}, the pre-processing step is a standard scaler. The dimensionality step depends on the function and is either PCA, LDA, ISOMAP, or KernelPCA. The classifier step is a support vector machine with a linear kernel and one-versus-one decision function shape and a random state of 42. The random state is used to ensure that the results are reproducible.
+
+The classifier could be built using different \gls{sklearn} functions as well, which could have improved performance. Using the \texttt{LinearSVC()} and \texttt{OneVsOneClassifier()} functions might have been more correct that the current implementation, however the way it is implemented now would allow us to use a different kernel for the \gls{svm} defined through the hyperparameter dictionary.
+
+The \texttt{GridSearchCV} class is used to perform the hyperparameter tuning. The \texttt{GridSearchCV} class takes a pipeline as input and a dictionary of hyperparameters. Additionally the implementation sets the cross-validation number, a scoring function, a verbosity level, and the number of cores to use.
+
+cv is the cross-validation number, in which grid search performs non-shuffled stratified k-fold cross-validation with 5 folds. The scoring function is the f1 macro score, which is the harmonic mean of the precision and recall. The verbosity level is set to 10, which means that the progress of the grid search is printed to the console in high detail. The number of cores is set to -1, which means that all available cores are used. The nonlinear methods are limited to 1 core, because of computational limits - the nonlinear methods use a lot more memory than the linear methods, which causes the program to crash if too many cores are used.
+
+
+The functions are similar in structure, but they use a different number of cores and are called with a different set of hyperparameters.
+
+\subsubsection{The hyperparameters}\label{subsubsec:the-hyperparameters}
+The following hyperparameters are used for the tuning loop:
+
+
+\begin{listing}[htb!]
+    \centering
+    \begin{minted}{python}
+        c_logspace = np.logspace(-3, 0, 4)
+        gamma_logspace = np.logspace(-3, 0, 4)
+        svm_hyperparameters = {
+                "classifier__C": c_logspace, }
+        pca_hyperparameters = {"pca__n_components": [9, 16, 25, 36, 49],}
+        lda_hyperparameters = {"lda__n_components": [5, 6, 7, 8, 9],}
+        isomap_hyperparameters = {
+            "isomap__n_components": [4, 9, 36, 49],
+            "isomap__n_neighbors": [4, 5],}
+        kernel_pca_hyperparameters = {
+            "kernel_pca__n_components": [36, 49],
+            "kernel_pca__gamma": gamma_logspace,
+            "kernel_pca__kernel": ["rbf", "sigmoid"]}
+    \end{minted}
+    \caption{}
+    \label{lst:hyperparameters-dictionaries}
+\end{listing}
+
+
+The dictionaries are combined into single dictionaries for use in the results functions. For example, the svm hyperparameters are combined with pca hyperparameters to create a full hyperparameter dictionary for that method.
+
+% Listing template
+% \begin{listing}[htb!]
+%     \centering
+%     \begin{minted}{python}
+%         print("hello World")
+%     \end{minted}
+%     \caption{}
+%     \label{lst:}
+% \end{listing}

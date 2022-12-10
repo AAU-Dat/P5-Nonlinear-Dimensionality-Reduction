@@ -1,0 +1,33 @@
+\section{Pipeline overview}\label{sec:pipeline-overview}
+The development for this project is an extension of the general pipeline from \autoref{fig:basic-machine-learning-pipeline} extended with the considerations from \autoref{cha:theory}.
+
+\autoref{fig:pipeline-overview} shows an overview of the developed pipeline, which consists of five segments: The data sets, the pre-processing, the dimensionality reduction, the machine learning loop, and the output.
+
+
+\begin{figure}[b!]
+    \centering
+    \input{figures/pipeline-parts/implementation-pipeline.tex}
+    \caption{Overview of the pipeline used for the project.}
+    \label{fig:pipeline-overview}
+\end{figure}
+
+
+The first segment, the data sets, covers downloading the dataset, loading it into the program, and augmenting the original dataset to create a new one.
+
+The second segment, pre-processing, covers reshaping the data into a form usable with the \gls{sklearn} library and scaling the data in preparation for the next segment.
+
+The third segment, and the focus of this project, is dimensionality reduction. This segment consists of the four dimensionality reduction algorithms: \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}, as well as no dimensionality reduction.
+
+The fourth segment is the tuning loop, where grid search with cross-validation determines the best hyperparameters for the \gls{svm} based on the f1-score. Because the project focuses on dimensionality reduction, this loop includes the number of components for dimensionality as a hyperparameter as well.
+
+Finally, the fifth segment is the output. Once the best hyperparameters are determined, the \gls{svm} is trained on the whole dataset and tested on the test set. The results of the grid search - scores, parameters, and scoring time - and the results of the final \gls{svm} - confusion matrix and classification report - are saved.
+
+
+\todo[inline]{We should probably add a subsection on the data augmentation.}
+\subsection{Data augmentation}
+
+\begin{figure}[htb!]
+    \centering
+    \input{figures/pipeline-parts/data-augmentation-pipeline.tex}
+    \caption{Data augmentation pipeline segment.}
+\end{figure}

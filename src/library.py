@@ -116,7 +116,7 @@ def isomap_svm_results(X, y, X_test, y_test, hyperparameters, methodname="isomap
                           cv=5,
                           scoring="f1_macro",
                           verbose=10,
-                          n_jobs=1)
+                          n_jobs=3)
 
     search.fit(X, y)
     y_pred = search.best_estimator_.predict(X_test)

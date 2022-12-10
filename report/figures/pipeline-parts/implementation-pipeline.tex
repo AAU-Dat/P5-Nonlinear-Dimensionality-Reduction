@@ -1,0 +1,38 @@
+\begin{tikzpicture}[node distance=1.5cm, auto, every node/.style={scale=0.7}]
+    %MNIST Original logo
+    \node (db-slice1) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, aspect=1.1] {};
+    \node (db-slice2) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, text centered, above=0pt of db-slice1.before top, anchor=after bottom,aspect=0.1] {MNIST original};
+    \node (db-slice3) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.32cm, above=0pt of db-slice2.before top, anchor=after bottom, aspect=1.1] {};
+
+    %MNIST Argumented logo
+    \node (db-slice4) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, aspect=1.4, shift={($(db-slice1.south)+(0cm,-4.5cm)$)}] {};
+    \node (db-slice5) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, text centered, above=0pt of db-slice4.before top, anchor=after bottom,aspect=0.1] {MNIST augmented};
+    \node (db-slice6) [cylinder, shape border rotate=90, draw, minimum height=1cm,minimum width=3.7cm, above=0pt of db-slice5.before top, anchor=after bottom, aspect=1.4] {};
+
+    \node (a) [cluster, shift={($(db-slice2.east)+(2cm,-2.5cm)$)}] {pre-processing};
+    \node (b) [cluster, shift={($(a.east)+(4cm,0cm)$)}] {No dimensionality reduction};
+    \node (c) [cluster, below of=b] {Dimensionality reduction};
+    \node (d) [circle, shift={($(c.south west)+(0.5cm,-2.5cm)$)}] {Linear};
+    \node (e) [circle, shift={($(c.south east)+(-0.5cm,-2.5cm)$)}] {Non linear};
+    \node (f) [cluster, shift={($(b.east)+(3.5cm,0cm)$)}] {Machine learning model};
+    \node (g) [cluster, below of=f] {output};
+
+    \node (o) [shift={($(a.west)+(-2cm,0cm)$)}] {};
+    \node (p) [shift={($(a.east)+(0.5cm,0cm)$)}] {};
+    \node (q) [shift={($(b.east)+(0.5cm,0cm)$)}] {};
+
+    \draw [arrow, -] (db-slice1.south) -- ++(0,0) -| (o.west);
+    \draw [arrow, -] (db-slice6.north) -- ++(0,0) -| (o.west);
+    \draw [arrow, ->] (o.west) -- (a.west);
+
+    \draw [arrow, ->] (a.east) -- (b.west);
+    \draw [arrow, ->] (p.east) -- ++(0,-1) |- (c.west);
+
+    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (e.north);
+    \draw [arrow, -] (c.south) -- ++(0,-0.75) -| (d.north);
+
+    \draw [arrow, ->] (b.east) -- (f.west);
+    \draw[arrow, ->] (f) to[loop above,looseness=9] node[above,scale=0.8, xshift=-10,yshift=7] {We train the model with the training data} (f);
+    \draw [arrow, -] (c.east) -- ++(0,0) -| (q.east);
+    \draw [arrow, ->] (f.south) -- (g.north);
+\end{tikzpicture}
