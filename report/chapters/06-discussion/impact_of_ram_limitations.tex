@@ -1,0 +1,18 @@
+\section{Impact of memory limitations}\label{sec:impact_of_memory_limitations}
+This section will discuss the limitations of memory and the impact of the limitations on the models, with results and other factors in mind.
+
+
+\subsection{Impact on the results}\label{subsec:impact_on_results}
+As stated throughout the project, a limiting factor when running the non-linear models was the memory of available machines. This meant that it was impossible to properly run the model with the entire dataset when reducing the data with a non-linear method; instead, only a smaller section of the dataset was used. The linear methods were not affected by this limitation, as they could be run on the entire dataset.
+
+This could have an impact on the results of the final model when using non-linear methods, but through the experiments done, it was noticed that the general trend of the models did not change much at a certain number of samples. Experiment four covered the effect different sample sizes had on the model's accuracy. \autoref{fig:experiment_4_performance_size} shows how at low sample sizes, the accuracy of the models can vary, but as the sample size increases, they all fall into order. This indicates that the non-linear models are not significantly affected by the limited sample size and that the results should still be valid.
+
+
+\subsection{Impact on time to fit the models}\label{subsec:impact_on_time_to_fit_the_models}
+The time to fit the models was also affected by memory limitations. The models could use multiple CPU cores, but this increased memory usage. Since non-linear methods already used much memory, it was only sometimes possible to run the models on multiple cores. An example of how much faster it was with multiple cores was when running ISOMAP, which took about 3+ days to run on a machine with only eight GB of memory, meaning that there was not enough ram to run on multiple cores. Whereas for a machine with 32 GB of memory, it took about one day to run on three cores. This shows the impact of limited memory on time to fit the models. The CPU's power also had an effect, but the general still shows that using multiple cores significantly reduced the time to fit the models.
+
+
+
+% Do we want to talk about cores as it is related to time, and uses more memory?
+% Has is had an effect on our results that we ran on the non-linear models on a smaller dataset?
+% How large of a con for ISOMap is it that the method can not be run without larger amounts of ram?
