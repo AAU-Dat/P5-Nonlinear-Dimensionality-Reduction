@@ -10,9 +10,10 @@ The result from experiment~\ref{sec:experiment-2} shows that the number of compo
 
 The result from experiment~\ref{sec:experiment-3} shows that the accuracy score is the highest for \gls{pca}, then the sigmoid kernel, followed by the RBF kernel. The hypothesis says that \gls{pca} would outperform the other methods, as it is the linear method in the experiment. Therefore the result withholds the hypothesis as the nonlinear methods, the sigmoid and RBF kernels, did not outperform the linear methods in the experiment. 
 
-The result from experiment~\ref{sec:experiment-4} shows that the methods each grow linearly with the number of samples. This was expected, as \gls{pca} and \gls{lda} are linear and expected to grow linearly with the number of samples. \gls{isomap} and \gls{kpca} are the slowest methods, as they are nonlinear and expected to be slower than the linear methods. The result holds for the hypothesis, as the nonlinear methods did not outperform linear ones. This is not surprising, as the nonlinear methods are more computationally expensive, and the data could be more complex.
+The result from experiment~\ref{sec:experiment-4} shows that each method grows with the number of samples. This was expected, \gls{isomap} and \gls{kpca} are the slowest methods, as they are nonlinear and expected to be slower than the linear methods, because of the added complexity. \gls{lda} and \gls{pca} are the fastest methods, as they are linear and expected to be faster than the nonlinear methods. Adding more data increases the accuracy score, as the model has more data to learn from. \gls{pca} and \gls{kpca} are the most accurate methods. \gls{lda} is the least accurate method, as it is a linear method.
 
-In conclusion of the experiments, the hypothesis was not correct. The nonlinear methods did outperform the linear methods. This is not surprising, as the data sample is not very big. 
+In conclusion of the experiments, the hypothesis holds, as the nonlinear methods did not outperform linear ones. However, \gls{lda} and \gls{pca} are slower with data samples under 2000 than the nonlinear methods. This is surprising, as the nonlinear methods are more computationally expensive, and therefore should be slower. 
+
 
 
 
