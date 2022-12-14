@@ -1,8 +1,4 @@
 \section{Summary of the Theory of Choice}\label{sec:theory-choice-summary}
 %Explain in a summary the choices that were taken in the thoery section.
 
-In the theory section section the choices regarding dimensionality reduction methods have been presented. The methods chosen are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The chosen evaluation metrics chosen are accuracy, recall, precision, and f1 score. The chosen \gls{ml} model is \gls{svm}. The chosen data set is \gls{mnist}. In order to assure that the \gls{ml} model does not overfit cross-validation will be used.
-
-
-
-With respect to preprocessing, the group chose to work with the original data, with some minor tweaks. The data will be reshaped
+In this section the theory and theoretical choices have been presented. Summing up the choices made in the theory section, the following choices have been made: The chosen dimensionality reduction methods are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The chosen evaluation metrics chosen are accuracy, recall, precision, and f1 score. The chosen \gls{ml} model is \gls{svm}. The chosen data set is \gls{mnist}. In order to choose hyperparameters, and avoid overfitting on the \gls{ml} model,cross-validation with gridsearch will be used. With respect to preprocessing, the group chose to work with the original data, with some minor tweaks. The data will be reshaped and normalized. The implementation will be based on \gls{sklearn}~\cite{scikit-learn}.
