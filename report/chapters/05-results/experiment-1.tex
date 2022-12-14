@@ -1,70 +1,121 @@
 \section{Experiment 1}\label{sec:experiment-1}
-%Needs an intro
+%Needs an introduction to the experiment, and why it is relevant to the problem statement.
+% relevance to problem anal. and introduction (why is this relavant)
+The problem statement states to find the impact of dimensionality reduction, comparing linear and nonlinear methods. This experiment compares the chosen dimensionality reduction methods in each of their best configurations on the chosen MNIST dataset. This experiment is relevant to the problem statement, as it is the first step in finding the impact of dimensionality reduction. The experiment is also relevant to the problem analysis, as it explores the impact of dimensionality reduction in ML. The experiment also finds the best configuration for each method was essential to comparing the methods on the same number of samples.
+
 
 
 \subsection{Rules and overview of experiment}\label{subsec:experiment-1-rules}
-The first experiment was to find the best configuration for each method. The methods were \gls{svm}, \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The methods were tested with 15000 samples, and the best configuration was found. The best configuration was then tested with 60000 samples. The results are shown in the following sections. The group chose this experiment because finding the best configuration for each method on the same number of samples was essential. The group did this to make it possible to compare the methods on the same number of samples.
-
-Experiment 1 tested the best configuration for the methods. The pipeline found the best configuration by testing all the possible configurations on 15000 samples. The experiment also ran with 60000 samples, but only for \gls{svm} and the two linear methods \gls{pca} and \gls{lda}. The two nonlinear methods, \gls{kpca} and \gls{isomap}, were not tested with 60000 samples, as the computers used did not have enough power to do all 60000 samples. When used alone, \gls{svm} handled the raw data without any dimensionality reduction. The results shown are only for the best configurations for each method on the number of samples used in the experiment. Table \ref{tab:best-configuration} shows the best parameters for each method.
+% Rules and what have we done, how do we evaluate (write about specs here)
+The dimensionality reduction methods used in the experiment were \gls{svm}, \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The baseline SVM ML model was also used without any dimensionality reduction. Each method was first cross-validated, finding the best hyperparameters for 15000 samples. Every method was tested with the same number of components. Besides LDA, it can only use up to 9 components. Then some of the methods were cross-validated again with 60000 samples to find how the methods performed with more data; the same components were still used. The methods tested on 60000 samples were the baseline SVM, PCA, and LDA, as the computer used in the experiment could not handle kPCA and ISOMAP with 60000 samples of data. The configurations used for each are shown in Table \ref{tab:best-configuration}.
 
 \input{figures/1-experiment/best-configuration.tex}
 
-Every method was tested with the same number of samples, as this was the only way to compare the methods. Besides \gls{lda} and \gls{svm}, \gls{lda} can only use up to 9 components, and \gls{svm} does not need any hyperparameters.
+Every test in experiment 1 was made on the same computer with the specs \todo{refer to appendix} 
 
-The group chose this experiment because finding the best configuration for each method on the same number of samples was essential. The group did this to make it possible to compare the methods on the same number of samples. 
+The experiment results are shown in \autoref{subsec:experiment-1-results}. The results are in the form of classification reports and confusion matrixes, which show the precision, recall, f1-score, support for each class, and the total accuracy for each method. The methods will be compared in accuracy, f1-score, and time fitting the data.
+
 \subsection{Results}\label{subsec:experiment-1-results}
+% Show results (desribe the most relavant results)
 Below is shown the results for the methods. The results are in the form of classification reports, which show the precision, recall, f1-score, support for each class, and the total accuracy for each method. The methods will be compared in accuracy, f1-score, and time fitting the data. 
 
-\subsubsection{\gls{svm} with 15000 samples}\label{subsubsec:experiment-1-results-svm-15000}
 \input{figures/1-experiment/classification_report_baseline_svm_15000.tex} %37
-
-Table \ref{tab:classification-report-baseline_svm_15000} shows the accuracy for \gls{svm} without any dimensionality reduction with 15000 samples. The accuracy is 93.54\%, and it takes 37 seconds to train the model. The \gls{svm} is best at recognizing zeros and one's in pictures, as the model has the f1-score in these classes, with the scores 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.6\%, eight being 91.5\%, and three being 91.4\%. With an average f1-score of 93.43\%, the baseline \gls{svm} with 15000 samples is a good model. 
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_baseline_svm_15000.png}
+    \caption{Confusion matrix for baseline SVM with 15000 samples.}
+    \label{fig:confusion-matrix-baseline_svm_15000}
+\end{figure}
+\subsubsection{\gls{svm} with 15000 samples}\label{subsubsec:experiment-1-results-svm-15000}
+Table \ref{tab:classification-report-baseline_svm_15000} shows the accuracy for \gls{svm} without any dimensionality reduction with 15000 samples. The accuracy is 93.54\%, and it takes 37 seconds to train the model. \autoref{fig:confusion-matrix-baseline_svm_15000} shows \gls{svm} is best at recognizing zeros and one's in pictures, as the model has the f1-score in these classes, with the scores 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.6\%, eight being 91.5\%, and three being 91.4\%. With an average f1-score of 93.43\%, the baseline \gls{svm} with 15000 samples is a good model. 
 
 \subsubsection{\gls{svm} with 60000 samples}\label{subsubsec:experiment-1-results-svm-60000}
 \input{figures/1-experiment/classification_report_baseline_svm_60000.tex} %378
-
+% \begin{figure}[htb!]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_baseline_svm_60000.png}
+%     \caption{Confusion matrix for baseline SVM with 60000 samples.}
+%     \label{fig:confusion-matrix-baseline_svm_60000}
+% \end{figure}
 Table \ref{tab:classification-report-baseline_svm_60000} shows the accuracy for \gls{svm} without any dimensionality reduction with 60000 samples. The accuracy is 94.56\% for 60000 samples, and it takes 378 seconds to train the model, which is 6 minutes and 16 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 97.3\% and 98.1\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 91.2\%, eight being 92.3\%, and three being 93.1\%. With an average f1-score of 94.47\%, the baseline \gls{svm} with 15000 samples is a good model that uses a significant amount of time.
 
 \subsubsection{\gls{lda} with 15000 samples}\label{subsubsec:experiment-1-results-lda-15000}
 \input{figures/1-experiment/classification_report_lda_svm_15000.tex} %7
-
-Table \ref{tab:classification-report-lda_svm_15000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 15000 samples. The accuracy is 88.76\% for 15000 samples, and it takes 7 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.9\% and 95.3\%. The model has some trouble recognizing fives, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with five being 83.1\%, eight being 82.0\%, and three being 85.9\%. With an average f1-score of 88.59\%, the baseline \gls{svm}with 15000 samples is a worse model but is much faster than simply using \gls{svm}.
-
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_lda_svm_15000.png}
+    \caption{Confusion matrix for LDA with 15000 samples.}
+    \label{fig:confusion-matrix-lda-15000}
+\end{figure}
+Table \ref{tab:classification-report-lda_svm_15000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 15000 samples. The accuracy is 88.76\% for 15000 samples, and it takes 7 seconds to train the model. \autoref{fig:confusion-matrix-lda-15000} \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.9\% and 95.3\%. The model has some trouble recognizing fives, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with five being 83.1\%, eight being 82.0\%, and three being 85.9\%. With an average f1-score of 88.59\%, the baseline \gls{svm}with 15000 samples is a worse model but is much faster than simply using \gls{svm}.
 \subsubsection{\gls{lda} with 60000 samples}\label{subsubsec:experiment-1-results-lda-60000}
 \input{figures/1-experiment/classification_report_lda_svm_60000.tex} %58
-
+% \begin{figure}[htb!]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_lda_svm_60000.png}
+%     \caption{Confusion matrix for LDA with 60000 samples.}
+%     \label{fig:confusion-matrix-lda-60000}
+% \end{figure}
 Table \ref{tab:classification-report-lda_svm_60000} shows the accuracy for \gls{svm} with \gls{lda} as dimensionality reduction with 60000 samples. The accuracy is 89.33\% for 60000 samples, and it takes 58 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 94.8\% and 95.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 83.9\%, eight being 83.3\%, and three being 86.4\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 89.16\%.
 
 \subsubsection{\gls{pca} with 15000 samples}\label{subsubsec:experiment-1-results-pca-15000}
 \input{figures/1-experiment/classification_report_pca_svm_15000.tex} %10
-
-Table \ref{tab:classification-report-pca_svm_15000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 15000 samples. The accuracy is 92.37\% for 15000 samples, and it takes 10 seconds to train the model. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.1\% and 97.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 88.1\%, eight being 89.2\%, and three being 89.9\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 92.25\%.
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_pca_svm_15000.png}
+    \caption{Confusion matrix for PCA with 15000 samples.}
+    \label{fig:confusion-matrix-pca-15000}
+\end{figure}
+Table \ref{tab:classification-report-pca_svm_15000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 15000 samples. The accuracy is 92.37\% for 15000 samples, and it takes 10 seconds to train the model. \autoref{fig:confusion-matrix-pca-15000} \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.1\% and 97.6\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 88.1\%, eight being 89.2\%, and three being 89.9\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 92.25\%.
 
 \subsubsection{\gls{pca} with 60000 samples}\label{subsubsec:experiment-1-results-pca-60000}
 \input{figures/1-experiment/classification_report_pca_svm_60000.tex} %97
-
+% \begin{figure}[htb!]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_pca_svm_60000.png}
+%     \caption{Confusion matrix for PCA with 60000 samples.}
+%     \label{fig:confusion-matrix-pca-60000}
+% \end{figure}
 Table \ref{tab:classification-report-pca_svm_60000} shows the accuracy for \gls{svm} with \gls{pca} as dimensionality reduction with 60000 samples. The accuracy is 93.25\% for 60000 samples, and it takes 97 seconds to train the model, which is 1 minute and 37 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.5\% and 97.7\%. The model has some trouble recognizing fives, eights, and threes, as these are the lowest scoring in the f1-score for all the classes, with five being 89.1\%, eight being 90.6\%, and three being 90.5\%. \gls{svm} using \gls{pca} as the dimensionality reduction method has an average f1-score of 93.14\%.
 
 \subsubsection{\gls{kpca} with 15000 samples}\label{subsubsec:experiment-1-results-kernel_pca-15000}
 \input{figures/1-experiment/classification_report_kernel_pca_svm_15000.tex} %92
-
-Table \ref{tab:classification-report-kernel_pca_svm_15000} shows the accuracy for \gls{svm} with \gls{kpca} as dimensionality reduction with 15000 samples. The accuracy is 92.36\% for 15000 samples, and it takes 92 seconds to train the model, which is 1 minute and 32 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.2\% and 97.8\%. The model has trouble recognizing fives, nines, and threes, as these are the lowest scores in the f1-score for all the classes, with five being 87.1\%, nine being 90.0\%, and three being 89.4\%. \gls{svm} using \gls{kpca} as the dimensionality reduction method has an average f1-score of 92.22\%.
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_kernel_pca_svm_15000.png}
+    \caption{Confusion matrix for kernel PCA with 15000 samples.}
+    \label{fig:confusion-matrix-kpca-15000}
+\end{figure}
+Table \ref{tab:classification-report-kernel_pca_svm_15000} shows the accuracy for \gls{svm} with \gls{kpca} as dimensionality reduction with 15000 samples. The accuracy is 92.36\% for 15000 samples, and it takes 92 seconds to train the model, which is 1 minute and 32 seconds. \autoref{fig:confusion-matrix-kpca-15000} \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 96.2\% and 97.8\%. The model has trouble recognizing fives, nines, and threes, as these are the lowest scores in the f1-score for all the classes, with five being 87.1\%, nine being 90.0\%, and three being 89.4\%. \gls{svm} using \gls{kpca} as the dimensionality reduction method has an average f1-score of 92.22\%.
 
 \subsubsection{\gls{isomap} with 15000 samples}\label{subsubsec:experiment-1-results-isomap-15000}
 \input{figures/1-experiment/classification_report_isomap_svm_15000.tex} %165
-
-Table \ref{tab:classification-report-isomap_svm_15000} shows the accuracy for \gls{svm} with \gls{isomap} as dimensionality reduction with 15000 samples. The accuracy is 90.61\% for 15000 samples, and it takes 165 seconds to train the model, which is 2 minutes and 45 seconds. The \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 95.1\% and 96.6\%. The model has trouble recognizing sevens, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with seven being 87.8\%, eight being 87.4\%, and three being 85.1\%. \gls{svm} using \gls{isomap} as the dimensionality reduction method has an average f1-score of 90.50\%.
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/confusion_matrix_isomap_svm_15000.png}
+    \caption{Confusion matrix for ISOMAP with 15000 samples.}
+    \label{fig:confusion-matrix-isomap-15000}
+\end{figure}
+Table \ref{tab:classification-report-isomap_svm_15000} shows the accuracy for \gls{svm} with \gls{isomap} as dimensionality reduction with 15000 samples. The accuracy is 90.61\% for 15000 samples, and it takes 165 seconds to train the model, which is 2 minutes and 45 seconds. \autoref{fig:confusion-matrix-isomap-15000} \gls{svm} model is best at recognizing zeros and ones in pictures, as the model has the f1-score in these classes, with scores of 95.1\% and 96.6\%. The model has trouble recognizing sevens, eights, and nines, as these are the lowest scoring in the f1-score for all the classes, with seven being 87.8\%, eight being 87.4\%, and three being 85.1\%. \gls{svm} using \gls{isomap} as the dimensionality reduction method has an average f1-score of 90.50\%.
 
 \subsection{Discussion experiment 1}\label{sec:discussion-experiment-1}
+% discus the results to the problem statement
 Comparing the results from experiment 1 is done in two comparisons; the first comparison is between the accuracy and time for the different dimensionality reduction methods. The second comparison is between the f1-scores for the different dimensionality reduction methods and what numbers the models are worst at recognizing. 
 
 \subsubsection{Accuracy and time}\label{subsec:discussion-experiment-1-accuracy}
 All experiments done is displayed in Table \ref{tab:discussion-experiment-1-accuracy}, it shows the accuracy for all the different models and the time taken.
 
 \input{figures/1-experiment/accuracy.tex}
-The baseline \gls{svm}, on 15000 samples, has an accuracy of 93.54\%, and it takes 37 seconds to train the model. The baseline \gls{svm} can also be suitable to compare the other models, as it is an excellent model to hold as the baseline.
+In \autoref{fig:discussion-experiment-1-plot} show the comparison between the methods with 15000 samples. The baseline \gls{svm}, on 15000 samples, has an accuracy of 93.54\%, and it takes 37 seconds to train the model. The baseline \gls{svm} can also be suitable to compare the other models, as it is an excellent model to hold as the baseline.
 
 The accuracy increases by 1\% when using 45000 more samples, which is a slight difference. One thing to note is that it takes 37 seconds to train the model on 15000 samples and 378 seconds to train the model on 60000 samples. This means that the time it takes to train the model grows 921,62\% by using 45000 more examples of data. This is a big difference in time but a slight difference in accuracy.
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/1-experiment/experiment1_plot.png}
+    \caption{graph of time(in seconds) and accuracy(in percentage) for different dimensionality reduction methods}
+    \label{fig:discussion-experiment-1-plot}
+\end{figure}
 
 When using \gls{lda} on 15000 samples, the accuracy falls to 88.76\%, but it only takes 7 seconds to train the model. \gls{lda} has a swift training time but low accuracy, but one thing to note, is that the maximum number of dimensions \gls{lda} can reduce to is 9 in this context. Therefore, the scores for \gls{lda} are worse than any dimensionality reduction method used. As the other methods use 49 dimensions to reduce the data, which is much higher than 9, it makes sense that the accuracy is higher than \gls{lda}. \gls{lda} only takes 7 seconds to train the model, so it is an excellent method to use if one wants a fast model with lower accuracy by comparing the other methods with more dimensions. 
 
