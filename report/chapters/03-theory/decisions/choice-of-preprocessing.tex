@@ -1,7 +1,7 @@
 \subsection{Choice of Preprocessing}
 Following the theory of preprocessing from \ref{sec:preprocessing}, this section will cover the decisions made for preprocessing the data and how there were taken.
 
-As stated in section \ref{subsec:preprocessing-steps}, the amount of preprocessing needed varies depending on what is needed for the model. For this project, it was deemed sufficient to reshape the data, normalize it, and augment it. A detailed description of each decision can be found in the following sections.
+As stated in section \ref{subsec:preprocessing-steps}, the amount of preprocessing needed varies depending on what is needed for the model. For this project, it was deemed sufficient to reshape the data and normalize it. A detailed description of each decision can be found in the following sections.
 
 \subsubsection{Reshape}
 This subsection describes the decisions made regarding reshaping the data loaded from the \gls{mnist} dataset. This subsection only describes the decisions for the training data as an example, but similar decisions were also made for the test data.
@@ -13,5 +13,5 @@ Additionally, the function used from \gls{sklearn} did not accept the data in th
 \subsubsection{Normalization}
 In \autoref{sec:normalization}, two methods of normalizing data are described: min-max scaler and variance scaler. From these two methods, both are chosen. The combination of normalization is called StandardScaler, and is a commonly used method of normalizing data, it was deemed a good choice. Variance scaler also ensures that it is comparable to prevent bias in the model~\cite{StandardScaler-towardsAi}. Both methods would have been good choices for normalization, variance scaler was chosen, but either would be acceptable for this project.
 
-\subsubsection{Data augmentation}
-As mentioned in \autoref{subsec:data-augmentation}, data augmentation increases the amount of data and makes the model more general. Augmentation creates new data from the existing data by applying different augmentations to the original data and using the new data to train the model. For this project, rotation augmentations were chosen. They were also deemed to represent real-world errors in data. For example a number could become more or less rotated due to a writers writing style. These are some of the cases thought of when deciding on the augmentations.
+% \subsubsection{Data augmentation}
+% As mentioned in \autoref{subsec:data-augmentation}, data augmentation increases the amount of data and makes the model more general. Augmentation creates new data from the existing data by applying different augmentations to the original data and using the new data to train the model. For this project, rotation augmentations were chosen. They were also deemed to represent real-world errors in data. For example a number could become more or less rotated due to a writers writing style. These are some of the cases thought of when deciding on the augmentations.
