@@ -1,0 +1,5 @@
+\section{Summary of the Theory of Choice}\label{sec:theory-choice-summary}
+In this chapter the theory and theoretical choices have been presented with respect to the elements in the pipeline. This section will summarize these choices. 
+
+
+As data, \gls{mnist} will be used. The preprocessing on \gls{mnist} will consist of reshaping the data and normalizing it. The features that will be extracted from the data will be accomplished by the dimensionality methods \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. The reduced data will be used to train a \gls{svm} model. The \gls{svm} model will be evaluated with the metrics accuracy, recall, precision, f1 score, and time. The \gls{svm} model will be tuned with the cross-validation method gridsearch. The implementation will be based on \gls{sklearn}~\cite{scikit-learn}. 
