@@ -1,16 +1,18 @@
 \section{Experiment 2}\label{sec:experiment-2}
-This section will describe the second experiment of the project. The second experiment covers the necessary dimensions before reaching a threshold of 1\%, 5\%, and 10\% loss of accuracy. The experiment will only be done on 15.000 samples, instead of the entire data set of 60.000 samples, due to issues regarding memory usage. The experiment will focus on when different dimensionality reduction methods drop in accuracy due to too few dimensions and compare them to each other.
+This section will describe the second experiment of the project. The second experiment covers the necessary dimensions before reaching a threshold of 1\%, 5\%, and 10\% loss of accuracy. The experiment will only be done on 15.000 samples, instead of the entire dataset of 60.000 samples, due to issues regarding memory usage. The experiment will focus on when different dimensionality reduction methods drop in accuracy due to too few dimensions and compare them to each other to display the robustness of each of the methods.
 
 
 \subsection{Rules and evaluation of the experiment}\label{subsec:experiment_2_rules}
 This section will cover the rules of the second experiment and how the experiment results will be evaluated.
 
-The second experiment will be done on a subset of the entire data set. With 15.000 samples in the training set and the usual 10.000 samples in the test set. Instead of the standard 60.000 samples in the training set and 10.000 in the test set. The smaller sample size is used due to memory constraints regarding the non-linear methods, as they need more memory than was available.
+Every test in the second experiment is run on the same computer, pc-1. See \autoref{tab:pc1-specs} for the specific specs for the computer used in the experiment. It was first tried to run on another pc with less memory, but it was found that the nonlinear methods would take too long to run, and therefore it was run on pc-1.
+
+The second experiment will be done on a subset of the entire dataset. With 15.000 samples in the training set and the usual 10.000 samples in the test set. Instead of the standard 60.000 samples in the training set and 10.000 in the test set. The smaller sample size is used due to memory constraints regarding the nonlinear methods, as they need more memory than was available.
 
 The values from the mnist dataset will be normalized using standard scalar for each dimensionality reduction method. Ensuring the values are on the same scale so that different scales do not skew the results.
 
 Hyperparameter tuning will be done using grid-search on each dimensionality reduction method. This is to ensure good hyperparameters are found for each number of components so that the results do not become skewed by hyperparameters that are not optimal for some parts of the model. If it was chosen to use a fixed value for the hyperparameters, the results could get skewed for a certain number of components.
-The dimensionality reduction methods used are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The number of components will vary from around 2/5 to 50, and this range was chosen as it was believed to have a sufficient amount of components to show a general trend. For the non-linear methods, five components, instead of 2, were chosen as the lowest amount, as reducing the data to further takes much time, and the gain in insight was believed not to be worth the increased time cost. \gls{lda} is an exception, as the maximum number of components is the number of classes $-1$, which is 9 for the \gls{mnist} dataset, which means that the range of components for \gls{lda} will be from 2-9.
+The dimensionality reduction methods used are \gls{pca}, \gls{lda}, \gls{isomap}, and \gls{kpca}. The number of components will vary from around 2/5 to 50, and this range was chosen as it was believed to have a sufficient amount of components to show a general trend. For the nonlinear methods, five components, instead of 2, were chosen as the lowest amount, as reducing the data to further takes much time, and the gain in insight was believed not to be worth the increased time cost. \gls{lda} is an exception, as the maximum number of components is the number of classes $-1$, which is 9 for the \gls{mnist} dataset, which means that the range of components for \gls{lda} will be from 2-9.
 
 The values used to evaluate this experiment are \texttt{mean\_test\_score} based on \texttt{param\_pca\_\_n\_components} to evaluate the model's accuracy with the number of components used. Also, the \texttt{mean\_fit\_time} will be discussed as the time it takes to fit the model can determine how many components to use.
 
@@ -59,7 +61,7 @@ The final threshold of 78.1\% accuracy is found at 70.7\% with only three compon
 
 
 \subsubsection{\gls{kpca}}\label{subsubsec:experiment_2_kpca}
-\gls{kpca} is a non-linear dimensionality reduction method, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_kpca_svm}.
+\gls{kpca} is a nonlinear dimensionality reduction method, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_kpca_svm}.
 
 \begin{figure}[htb!]
     \centering
@@ -76,11 +78,11 @@ Similar to linear methods, the data is sorted by its accuracy score to find the 
 
 
 \subsubsection{\gls{isomap}}\label{subsubsec:experiment_2_isomap}
-\gls{isomap} is the final method of the second experiment, which is non-linear, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_isomap_svm}.
+\gls{isomap} is the final method of the second experiment, which is nonlinear, and the scatter plot representing this method can be seen in \autoref{fig:experiment_2_isomap_svm}.
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/experiment_two/isomap_svm_15000.png}
+    \includegraphics[width=0.8\textwidth]{figures/experiment_two/isomap_rerun_svm_15000.png}
     \caption{Accuracy of the SVM model with \gls{isomap} as dimensionality reduction method, with the number of components used.}
     \label{fig:experiment_2_isomap_svm}
 \end{figure}
@@ -93,7 +95,7 @@ The first threshold of 88.4\% accuracy is found at 88.3\% with 20 components, th
 
 
 \subsection{Discussion of experiment 2}\label{subsec:experiment_2_discussion}
-This section will discuss the results of the second experiment and compare the results of the different methods, first by discussing the results of the linear methods, then the non-linear methods, and finally, comparing the results of all methods.
+This section will discuss the results of the second experiment and compare the results of the different methods, first by discussing the results of the linear methods, then the nonlinear methods, and finally, comparing the results of all methods.
 
 For each section, a table will display the different percentages of components remaining before the accuracy drops below a threshold. The table will also show the number of remaining components to show the difference between the methods.
 
@@ -123,8 +125,8 @@ From \autoref{tab:experiment_2_linear_methods_comparison}, it can be seen that b
 By comparing the two linear methods, it can be concluded that \gls{lda} is more prone to losing accuracy when removing components than \gls{pca}. The accuracy loss is likely because \gls{lda} has so few components to work in the first place. It could be argued that the results are not entirely fair since \gls{pca} has so many more components, but scaling the values with percentage should show a general trend.
 
 
-\subsubsection{Non-linear methods}
-Unlike the linear methods, the non-linear methods have a similar number of components, which should give a more fair comparison. A table showing when the respective thresholds were reached for each of the non-linear methods can be seen in \autoref{tab:experiment_2_non_linear_methods_comparison}.
+\subsubsection{nonlinear methods}
+Unlike the linear methods, the nonlinear methods have a similar number of components, which should give a more fair comparison. A table showing when the respective thresholds were reached for each of the nonlinear methods can be seen in \autoref{tab:experiment_2_non_linear_methods_comparison}.
 
 \begin{table}[htb!]
     \centering
@@ -148,7 +150,7 @@ Generally, it can be concluded that both \gls{kpca} and \gls{isomap}  can afford
 \todo{Consider adding a table with the best and worst accuracy score for each method.}
 
 \subsubsection{Comparison of methods}
-Now that the linear and non-linear methods have been compared, it is time to compare the methods to each other. The results can be seen in \autoref{tab:experiment_2_methods_comparison}.
+Now that the linear and nonlinear methods have been compared, it is time to compare the methods to each other. The results can be seen in \autoref{tab:experiment_2_methods_comparison}.
 
 
 \begin{table}[htb!]
