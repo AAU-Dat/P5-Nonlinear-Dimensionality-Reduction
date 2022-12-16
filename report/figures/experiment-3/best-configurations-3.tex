@@ -1,0 +1,16 @@
+\begin{table}
+    \centering
+    \begin{tabular}{lrlll}
+        \toprule
+        method & components & C & parameter & parameter\\
+        \midrule
+        PCA-15 & 49 & C = 0.01 &  \\
+        KPCA-15 & 49 & C = 1.0 & Gamma = 0.01 & Sigmoid \\
+        KPCA-15 & 49 & C = 1.0 & Gamma = 0.001 & RBF \\
+        KPCA-15 & 49 & C = 1.0 & Gamma = 0.001 & Sigmoid \\
+        KPCA-15 & 49 & C = 1.0 & Gamma = 0.01 & RBF \\
+        \bottomrule
+    \end{tabular}
+    \caption{Best configuration for each method used for experiment-3, method-15 means the method with 15 thousand samples.}
+    \label{tab:best-configuration-expr-3}
+\end{table}
