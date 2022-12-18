@@ -1,5 +1,5 @@
 \section{Impact of memory limitations}\label{sec:impact_of_memory_limitations}
-This section will discuss the limitations of memory and the impact of the limitations on the models, with results and other factors in mind. It will be discussed whether or not the impact of limited memory was significant or if it was minor and could be ignored. If the impact was significant, what could be done to improve the situation. 
+During development and testing, it was noticed that the memory of the available machines was a limiting factor. This section will discuss the impact of the memory limitations on the project, and how it affected the results and time to fit the models. It will be discussed whether or not the impact of limited memory was significant or if it was minor and could be ignored. If the impact was significant, what could be done to improve the situation.
 
 
 \subsection{Impact on the results}\label{subsec:impact_on_results}
@@ -11,13 +11,10 @@ If however it was found that the results were significantly affected by the limi
 
 
 \subsection{Impact on time to fit the models}\label{subsec:impact_on_time_to_fit_the_models}
-The time to fit the models was also affected by memory limitations. The models could use multiple CPU cores, but this increased memory usage. Since nonlinear methods already used much memory, running the models on multiple cores with some of the available computers was possible. An example of how much faster it was with multiple cores was when running \gls{isomap} in the second experiment, which took about 3+ days to run on a machine with only eight GB of memory, meaning that there was not enough ram to run on multiple cores. Whereas for a machine with 32 GB of memory, it took about one day to run on three cores. Therefore the machine with 32 GB memory was used for the entire second experiment. This shows the impact of limited memory on time to fit the models. The CPU's power also had an effect but using multiple cores significantly reduced the time to fit the models.
+The time to fit the models was also affected by memory limitations. The models could use multiple CPU cores, but this also increased memory usage since each job required its own segment of memory to work with. Since nonlinear methods already used much memory, running the models on multiple cores was only possible on machines with enough memory.
 
-Had time been a significant factor for the project other than comparing the different methods, it would have been considered to run the models on a machine with more memory, as a powerful machine would have reduced the time to fit the models.
+An example of how much faster it was with multiple cores was when running \gls{isomap} in the second experiment. The model was attempted to be run on a machine with only 8 GB of memory, which was not enough to run on multiple cores. The model was then run on a machine with 32 GB of memory, which was enough to run the model on three cores. On the first attempt it took about 3+ days to run, whereas on the second attempt it took about one day to run. This shows the impact of using multiple cores, and how it can reduce the time to fit the models.
 
-The impact of limited memory was significant, but it was not a major factor in the project. As the results were not significantly affected by the limited sample size. Instead, it was generally the time it took to fit the model that could be reduced by having access to more memory.
+Had time been a significant factor for the project other than comparing the different methods, it would have been considered to run the models on a machine with more memory, as a powerful machine would have reduced the time to fit the models because it would allow the models to run with multiple cores. As it was, all models were run on a machine with 32 GB of memory, which was enough to run the models in acceptable time.
 
-
-% Do we want to talk about cores as it is related to time, and uses more memory?
-% Has is had an effect on our results that we ran on the nonlinear models on a smaller dataset?
-% How large of a con for ISOMap is it that the method can not be run without larger amounts of ram?
+The impact of limited memory was significant, but it was not a major factor in the project. As the results were not significantly affected by the limited sample size. Instead, it was generally the time it took to fit the model that could be reduced by having access to more memory. However while while the time to fit the models was not of importance for this particular project, it did showcase the importance of choosing the right model for the machine.

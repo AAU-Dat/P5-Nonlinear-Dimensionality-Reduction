@@ -11,7 +11,7 @@ Comparing \gls{kpca} at 15 thousand samples, and \gls{pca} at 60 thousand sample
 
 \gls{isomap} is by far the slowest method and has lower accuracy than both \gls{pca} and \gls{kpca}, being $\approx$3\% more accurate than \gls{lda} but taking $\approx$23 times longer to run. It is unlikely that \gls{isomap} would be a good choice for this dataset, as it is slower than all the other methods, and less accurate than all but \gls{lda}.
 
-From this experiment it seems that \gls{mnist} is not nonlinear enough to benefit from \gls{isomap} and \gls{kpca}, but \gls{kpca} still has potential. However, because the \gls{svm} model does so well even before dimensionality reduction it may be that the advantages of any nonlinear approach are lost in the \gls{mnist} dataset. This is further supported by the fact that no method is able to reach the accuracy of the \gls{svm} model, even with 60 thousand samples. This is likely because the \gls{svm} model is already able to find the nonlinear relationships in the data, and the methods are not able to improve on this.
+From this experiment it seems that \gls{mnist} is not nonlinear enough to benefit from \gls{isomap} and \gls{kpca}, but \gls{kpca} still has potential. However, because the \gls{svm} model does so well even before dimensionality reduction it may be that the advantages of any nonlinear approach are lost in the \gls{mnist} dataset. This is further supported by the fact that no method is able to reach the accuracy of the \gls{svm} model, even with 60 thousand samples. This is likely because the \gls{svm} model is already able to find the relationships in the data, and the methods are not able to improve on this. Because the \gls{svm} model is already able to find the relationships in the data, it is in fact likely that the data is linear enough that \gls{isomap} and \gls{kpca} are not able to find any nonlinear relationships.
 
 
 \subsubsection{Experiment 2}\label{subsec:experiment-2}
@@ -25,7 +25,7 @@ Lastly, \gls{lda} and \gls{isomap} are almost equal in terms of accuracy at 9 di
 
 
 \subsubsection{Experiment 3}\label{subsec:experiment-3}
-The results from experiment 3 suggest that generally a sigmoid kernel performs better than a \gls{rbf} kernel on \gls{mnist}. Both kernels give similar results at low dimensions as seen in experiment 2, but the sigmoid kernel performs better in general. Further testing would be needed to determine if this is a general trend for \gls{mnist}, or if the results are specific to this particular run, but it is expected to be a general trend.
+The results from experiment 3 suggest that generally a sigmoid kernel performs better than a \gls{rbf} kernel on \gls{mnist}. Both kernels give similar results at low dimensions as seen in experiment 2, but the sigmoid kernel performs better in general. Further testing would be needed to determine if this is a general trend for \gls{mnist}, or if the results are specific to this particular run, but it is expected to be a general trend because the sigmoid function intuitively can be closely similar to a linear function.
 
 Interestingly, the kernels performed their best at different gamma values. Where the sigmoid kernel did best at $\gamma = 0.01$, the \gls{rbf} kernel did best at $\gamma = 0.001$. The \gls{rbf} kernel performed abysmally at $\gamma = 0.01$, and the sigmoid kernel performed more or less as well at $\gamma = 0.001$. This result showcases the importance of performing hyperparameter tuning.
 
@@ -35,7 +35,7 @@ Because this experiment only compared two kernels, it is possible that there are
 
 
 \subsubsection{Experiment 4}\label{subsec:experiment-4}
-Experiment 4 shows that \gls{lda} and \gls{pca} scales the best with the number of samples for time, followed by \gls{kpca} and \gls{isomap}. This was expected as \gls{lda} and \gls{pca} are both linear methods, while \gls{kpca} and \gls{isomap} are nonlinear methods, making them more computationally complex and expensive. It was also expected and shown that \gls{kpca} is faster than \gls{isomap}.
+Experiment 4 shows that \gls{lda} and \gls{pca} scales the best with the number of samples for time, followed by \gls{kpca} and \gls{isomap}. This was expected as \gls{lda} and \gls{pca} are both linear methods, while \gls{kpca} and \gls{isomap} are nonlinear methods, making them more computationally complex and expensive. It was also expected and shown that \gls{kpca} is faster than \gls{isomap}. As a note to this, at low sample sizes it appears that the nonlinear methods are faster to train than the linear methods, indicating that the linear methods have a larger overhead than the nonlinear methods. This may be an implementation detail of the \gls{sklearn} library, and not a general truth.
 
 \gls{pca} and \gls{lda} seem to scale linearly with the number of samples for time, while \gls{kpca} and \gls{isomap} seem to scale exponentially\todo{Correct this to match Gustavs new results} with the number of samples. This is somewhat expected, as the kernel trick applied for \gls{kpca} scales quadratically with the number of samples, and \gls{isomap} is a nonlinear method that builds graphs of the data, which scales with both sample size and dimensionality.
 
@@ -45,4 +45,13 @@ When looking at accuracy of the models, each method scales with the number of sa
 
 
 \subsubsection{Summary of experiments}\label{subsec:summary-of-experiments}
-%summary of experiments (linear vs non-linear)
+\todo[inline]{After writing, this feels like conclusion or future works rather than summary.}
+This section summarizes our findings and what we have learned from the experiments.
+
+It makes sense that \gls{pca} is as popular as it is. It is fast and accurate, and it is a good default method for dimensionality reduction. Based on the examples in \autoref{sec:examples-methods} it is clear that it does not work well for all data, but for \gls{mnist} at least it seems to be a good default method. \gls{lda} also performed well for large levels of dimensionality reduction, and may be a good method for use on systems with limited resources, such as embedded systems.
+
+\gls{isomap} and \gls{kpca} are both nonlinear methods, and both performed worse than \gls{pca} and \gls{lda} in their respective niches of accuracy and maximized dimensionality reduction. However, \gls{isomap} was able to retain its accuracy at low dimensions, and \gls{kpca} was able to perform well generally. \gls{pca} and \gls{kpca} performed very similarly, and it is likely that if resources are not a problem \gls{kpca} is the better method in general. This is particularly true as shown in experiment 3, where the choice of hyperparameters had a large impact on the accuracy of the model.
+
+In the case that heavy hardware restrictions were imposed in a similar project in the future, we would choose \gls{pca} as a default method. It gives results fast and is indicated well on relatively little data. If \gls{pca} was not able to give good results, we would choose \gls{lda} as it has the lowest memory and cpu requirements of the tested methods, and generally performs decently. In particular because \gls{lda} removes a large amount of dimensions on data like \gls{mnist}, it is likely that it would be able to run well on restricted hardware, for example embedded systems.
+
+In general it seems that nonlinear dimensionality reduction does not perform better than linear dimensionality reduction on \gls{mnist} when used with a \gls{svm} classifier. This is likely because \gls{mnist} is a relatively simple dataset, and that the nonlinear methods are not able to find any relationships in the data that \gls{svm} can't find on its own. However, it is possible that nonlinear dimensionality reduction methods would perform better on more complex datasets or with other classification models, and further testing would be needed to determine if this is the case.
