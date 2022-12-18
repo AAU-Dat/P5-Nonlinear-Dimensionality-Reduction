@@ -1,3 +1,35 @@
-\section{Future works}
+\section{Future works}\label{sec:future-works}
+With the current insights gained from the project and the current hypothesis, it would be exciting to explore how the hypothesis would hold against other variable components from the pipeline, such as the data, dimensionality reduction methods, and \gls{ml} models. Future directions could be based either on the current settings or novel directions.
 
-There are several potential directions for interesting future work based on the results of this project. One possibility would be to explore the performance of other machine learning models, such as decision trees, random forests, or neural networks, in combination with different dimensionality reduction techniques. Another interesting direction would be to investigate the impact of different kernel functions on the performance of nonlinear dimensionality reduction methods, such as kernel principal component analysis (KPCA) or Isomap. Additionally, it would be interesting to explore the use of dimensionality reduction for other types of data, such as text or audio data, and compare the effectiveness of different techniques in these contexts. Finally, further research could be done to investigate the relationship between sample size, dimensionality, and the performance of dimensionality reduction methods, in order to better understand the factors that influence the effectiveness of these techniques.
+
+The \gls{mnist} dataset has proved the hypothesis with the current settings. It would be interesting to explore how the dimensionality reduction methods would perform on other datasets, such as \gls{cifar} or \gls{fashion-mnist}. The other datasets differ from \gls{mnist} by, for example, the number of samples and the complexity of the data, which could affect the performance of different methods. Nonlinear methods might be more effective on more complex datasets, and such possible findings could be interesting to explore. Alternatively, we could also explore other types of data, as there exists a wide variety of data types(text and audio).
+
+
+If the focus were centered more on working with \gls{mnist}, then it would be interesting to explore the impact of the different kernels that \gls{kpca} has because discrepancies in the results have shown that the performance of \gls{kpca} depends on the kernel. On the other hand, exploring the impact of the different hyperparameters of the dimensionality reduction methods would also be interesting because the hyperparameters' interactions still need to be fully understood. \gls{kpca} is an example of a nonlinear dimensionality reduction method that could deliver promising results. The project has limited the scope of the dimensionality reduction methods to \gls{pca}, \gls{lda}, \gls{kpca}, and \gls{isomap}. However, other dimensionality reduction methods exist, whose characteristics are yet to be discovered.
+
+
+The dimensionality reduction methods were evaluated based on the \gls{svm} model, which proved to be a solid model. The difference between the different dimensionality reduction methods' results was not that impressive, as the methods generally behaved similarly. The project's experiments also highlighted that other factors might influence the performance of the dimensionality reduction methods. Therefore, exploring the relationship between sample size, dimensionality, and the performance of dimensionality reduction methods would be interesting. By exploring such potential relationships, we could better understand the factors that influence the effectiveness of these techniques.
+
+
+It would be interesting to explore the performance of other machine learning models, such as decision trees, random forests, or \gls{nn}, in combination with different dimensionality reduction techniques. We note that the model was not the focus of the project. However, the group could look into training an optimized \gls{svm} model with reduced dimensions and compare the results with the state of the art results of more complex models.
+
+
+If we continued with the project, there would be a multitude of directions that we could take. We could change the dataset, dimensionality reduction methods, and \gls{ml} models as needed. Alternatively, we could dive deeper into the current settings and apply lesser changes to the pipeline to investigate the current hypothesis.
+
+%What was before
+
+%There are several potential directions for interesting future work based on the results of this project. One possibility would be to explore the performance of other machine learning models, such as decision trees, random forests, or neural networks, in combination with different dimensionality reduction techniques. 
+
+%Another interesting direction would be to investigate the impact of different kernel functions on the performance of nonlinear dimensionality reduction methods, such as kernel principal component analysis (KPCA) or Isomap. Additionally, it would be interesting to explore the use of dimensionality reduction for other types of data, such as text or audio data, and compare the effectiveness of different techniques in these contexts. Finally, further research could be done to investigate the relationship between sample size, dimensionality, and the performance of dimensionality reduction methods, in order to better understand the factors that influence the effectiveness of these techniques.
+
+
+%What is now
+
+%Thoughts:
+%   We could work with the current dimensionality reduction methods and other machine learning models, to see if we could improve other models.
+
+%   We could work with the current dimensionality reduction methods and other hyperparameters, for both the dimensionality reduction methods and the machine learning models. That is for the current model, but the same could be applied for other models.
+
+%   We could have worked with other dimensionality reduction methods. Thus we could create a run-down of the different dimensionality reduction methods and their pros and cons.
+
+%   We could have worked with different datasets, and based on the results, we could gain more insight into the diffrent dimensionality reduction methods.
