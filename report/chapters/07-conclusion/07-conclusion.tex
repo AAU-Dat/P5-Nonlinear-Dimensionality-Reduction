@@ -1,9 +1,12 @@
 \chapter{Conclusion}\label{cha:conclusion}
-Based on the discussion in chapter \ref{cha:discussion}, the results from chapter \ref{cha:results} and the problem statement in section \ref{sec:problem-statement}, we conclude:
+Based on the discussion in \autoref{cha:discussion}, the results from \autoref{cha:results} and the problem statement in \autoref{sec:problem-statement}, we conclude:
 
+The project provided valuable insights into data analysis and \gls{ml}. We learned how to construct and develop a comprehensive \gls{ml} pipeline and gained a deeper understanding of various dimensionality reduction techniques and their applications. We also gained experience with the \gls{svm} classification algorithm and learned how to use it to make predictions and evaluate performance.
 
-In this project, we aimed to explore the impact of dimensionality reduction on the performance of a \gls{ml} for image classification and recognition. We focused on comparing linear and nonlinear dimensionality reduction techniques on \gls{mnist}, using a \gls{svm} as our model of choice. Our results showed that, for sample sizes greater than 2000, linear dimensionality reduction techniques were generally faster than nonlinear methods, while achieving similar levels of accuracy. This supports our hypothesis "nonlinear dimensionality reduction methods work as well as linear methods on the \gls{mnist} dataset". However, our results also indicated that nonlinear methods were more robust, in that they could remove more components before a significant drop in accuracy occurred. Overall, our findings support our hypothesis and provide valuable insights into the relative effectiveness of different dimensionality reduction techniques for image classification tasks.
+We found that the linear methods, \gls{pca} and \gls{lda}, performed particularly well in terms of speed on the \gls{mnist} dataset when used with an \gls{svm} classifier, with an acceptable loss of accuracy for \gls{pca} in particular, while \gls{lda} has an advantage at low dimensions.
 
-In conclusion, our project has provided valuable insights into the use of dimensionality reduction techniques in image classification and recognition tasks. We have shown that, while nonlinear methods may be more computationally expensive, they can be equally as effective as linear methods in terms of performance. Our findings have important implications for the field of computer vision and can inform future research in this area.
+Nonlinear methods, such as \gls{isomap} and \gls{kpca}, did not outperform linear methods in this case but may have the potential to be useful in certain situations.
+
+Overall, this project has given us a strong foundation for further study and research in data analysis and provided a good introduction to working theoretically in a scientific setting with \gls{ml}.
 
 % This chapter contains the concluding remarks of the project. It is based on the discussion in chapter \ref{cha:discussion}, the results from chapter \ref{cha:results} and the problem statement in section \ref{sec:problem-statement}. The chapter concludes with a reflection and perspectives for future work.
