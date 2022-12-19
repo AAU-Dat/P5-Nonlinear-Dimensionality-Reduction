@@ -1,10 +1,13 @@
 \section{Experiment 3}\label{sec:experiment-3}
-This experiment explores the differences in the kernels implemented in cross-validation regarding \gls{kpca}. Experiment~\ref{sec:experiment-1} only used the sigmoid kernel, and this experiment's goal is to assess whether the choice of the kernel could significantly impact the model's performance. The configuration for the sigmoid kernel also used a different gamma value compared to the configuration for the \gls{rbf} kernel, which opens up researching the effect of the kernel and gamma for the model's accuracy. The experiment will focus on the confusion matrices and scores obtained from the different kernels.
+This experiment explores the differences in the kernels implemented in cross-validation regarding \gls{kpca}. Experiment 1, see \autoref{sec:experiment-1}, used the sigmoid kernel, and this experiment's goal is to assess whether the choice of the kernel could significantly impact the model's performance.
+
+The configuration for the sigmoid kernel also used a different gamma value compared to the configuration for the \gls{rbf} kernel, which opens up researching the effect of the kernel and gamma for the model's accuracy. The experiment will focus on the confusion matrices and scores obtained from the different kernels.
 
 
-\subsection{Rules}
+\subsection{Rules and overview of the experiment}
 The dimensionality reduction methods used in this experiment will be \gls{pca} and \gls{kpca}. The classification method will be \gls{svm}. The kernels used for \gls{kpca} will be \gls{rbf} and sigmoid.
-The best configurations for each method used in this experiment is shown in Table~\ref{tab:best-configuration-expr-3}. The input of the data samples will be 15000 for both of the methods. The number of components used for all methods will be 49 components. The evaluation will be based on the confusion matrices and the results from the CSV file for cross-validation for \gls{kpca}. The experiment will be run on the pc-2 see hardware specifications in Table~\ref{tab:pc2-specs}.
+
+The best configurations for each method used in this experiment is shown in \autoref{tab:best-configuration-expr-3}. The input of the data samples will be 15000 for both of the methods. The number of components used for all methods will be 49 components. The evaluation will be based on the confusion matrices and the results from the CSV file for cross-validation for \gls{kpca}. The experiment will be run on the pc-2 see hardware specifications in \autoref{tab:pc2-specs}.
 
 \input{figures/experiment-3/best-configurations-3.tex}
 
@@ -18,9 +21,12 @@ Below is shown the results for the methods. The results are in the form of confu
     \caption{Confusion matrix for PCA}
     \label{fig:confusion-matrix-pca-svm}
 \end{figure}
-Figure~\ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}. It has an accuracy of 92.37\%. It shows \gls{pca} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens, threes from fives, and fives from threes and eights.  
+
+
+Figure~\ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}. It has an accuracy of 92.37\%. It shows \gls{pca} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens, threes from fives, and fives from threes and eights.
 
 \subsubsection{KPCA}
+
 \begin{figure}
     \centering
     \subfloat[\centering Confusion matrix for \gls{kpca} Sigmoid]{\label{fig:confusion-matrix-kernel-pca-svm-sigmoid}{\includegraphics[width=0.45\textwidth]{figures/experiment-3/confusion_matrix_kernel_pca_svm_sigmoid.png} }}
@@ -30,9 +36,9 @@ Figure~\ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}. It ha
     \label{fig:kpca-kernels}
 \end{figure}
 
-Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with the sigmoid kernel. It has an accuracy of 91.5\%. It shows \gls{kpca-s} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells threes, fives, and eights from each other. 
+Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with the sigmoid kernel. It has an accuracy of 91.5\%. It shows \gls{kpca-s} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells threes, fives, and eights from each other.
 
-Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with the RBF kernel. It has an accuracy of 89.5\%. It shows \gls{kpca-r} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells fives, threes, and sevens from each other.  
+Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with the RBF kernel. It has an accuracy of 89.5\%. It shows \gls{kpca-r} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells fives, threes, and sevens from each other.
 
 \subsection{Discussion of experiment 3}\label{subsec:discussion-experiment-3}
 The results are compared two times, the best configurations on two kernels, where the main comparisons are in error percentage for each class, and last looking at the $\gamma$ hyperparameters influence on the results.
@@ -44,13 +50,13 @@ From the results presented in Subsection\ref{subsec:discussion-experiment-3}, al
 
 From the overview provided regarding the difference in numbers, a percentage would be preferable, more specifically, a percentage of the errors made in the numbers 0-9. The error percentage can be calculated as the number of correct predictions divided by the number of numbers from the given class. Table~\ref{tab:error-percentage-pca-kpca-s-kpca-r} shows the difference in percentages of errors made by the methods for each number.
 
-In Table ~\ref{tab:error-percentage-pca-kpca-s-kpca-r} it can be seen that PCA has the best performance for the numbers four and seven, while \gls{kpca-s} has the best performance for the numbers two and eight. PCA and \gls{kpca-s} have similar performance for most numbers, while \gls{kpca-r} has the worst performance for most numbers. In particular, \gls{kpca-r} has the worst performance for numbers four, five, and six. Regarding number six, \gls{kpca-r} has a twice as bad score as \gls{kpca-s}. 
+In Table ~\ref{tab:error-percentage-pca-kpca-s-kpca-r} it can be seen that PCA has the best performance for the numbers four and seven, while \gls{kpca-s} has the best performance for the numbers two and eight. PCA and \gls{kpca-s} have similar performance for most numbers, while \gls{kpca-r} has the worst performance for most numbers. In particular, \gls{kpca-r} has the worst performance for numbers four, five, and six. Regarding number six, \gls{kpca-r} has a twice as bad score as \gls{kpca-s}.
 
 However, the overall error percentage is one of many things that could be considered. Another exciting thing that can be considered is observing the difference in the error percentages between the two kernels of Kernel with PCA, as presented in Table~\ref{tab:error-percentage-difference-pca-kpca-s-kpca-r}.
 
 \input{figures/experiment-3/error-percentage-comparison.tex}
 
-Based on the Table~\ref{tab:error-percentage-difference-pca-kpca-s-kpca-r}, one can see that \gls{kpca-r} has a higher percentage of errors than \gls{kpca-s}. However, both methods have around the same error percentage with the number seven. 
+Based on the Table~\ref{tab:error-percentage-difference-pca-kpca-s-kpca-r}, one can see that \gls{kpca-r} has a higher percentage of errors than \gls{kpca-s}. However, both methods have around the same error percentage with the number seven.
 
 The worst performance of \gls{kpca-r} is more visible at number six, where the difference between \gls{kpca-r} and \gls{kpca-s} is around 6\%. The second most erroneous class for \gls{kpca-r} is five, at 4.7\%, and it is the same class that \gls{kpca-s} has a hard time with and manages to confuse more numbers than \gls{pca}. Still, the difference between methods at number five is about 3\%. Around the same percentage difference between methods is also visible for numbers two, eight, and nine.
 
@@ -63,6 +69,6 @@ This section presents the influence of the $\gamma$ hyperparameter on the result
 
 \input{figures/experiment-3/gamma-values-kpca.tex}
 
-Table~\ref{tab:gamma-values-kpca} shows that the accuracy of \gls{kpca-s} is not affected as much by the $\gamma$ value as \gls{kpca-r}. The finding shows, among others, that \gls{kpca-r} is more sensible to the changes in the $\gamma$ hyperparameter, as the accuracy can be reduced from 89.5\% to 56\%, around 33\% difference. This is a big difference compared to the 0.3\% difference for \gls{kpca-s}, as it only drops from 91.5\% to 91.2\%. Such a difference is an important finding, as it shows that the model is more sensitive to the changes in the $\gamma$ hyperparameter. 
+Table~\ref{tab:gamma-values-kpca} shows that the accuracy of \gls{kpca-s} is not affected as much by the $\gamma$ value as \gls{kpca-r}. The finding shows, among others, that \gls{kpca-r} is more sensible to the changes in the $\gamma$ hyperparameter, as the accuracy can be reduced from 89.5\% to 56\%, around 33\% difference. This is a big difference compared to the 0.3\% difference for \gls{kpca-s}, as it only drops from 91.5\% to 91.2\%. Such a difference is an important finding, as it shows that the model is more sensitive to the changes in the $\gamma$ hyperparameter.
 
-In this experiment, it is presented a comparison of the performance of \gls{pca} and \gls{kpca} with different kernels on the \gls{mnist} dataset. The results show that \gls{pca} performs better than both \gls{kpca} kernels used on the \gls{mnist} dataset. The results also show that \gls{kpca} depends on the $\gamma$ hyperparameter value, as the accuracy change can be remarkable if the optimal value for the specific kernel is changed.
+In this experiment, a comparison of the performance of \gls{pca} and \gls{kpca} with different kernels on the \gls{mnist} dataset is presented. The results show that \gls{pca} performs better than both \gls{kpca} kernels used on the \gls{mnist} dataset. The results also show that \gls{kpca} depends on the $\gamma$ hyperparameter value, as the accuracy change can be remarkable if the optimal value for the specific kernel is changed.
