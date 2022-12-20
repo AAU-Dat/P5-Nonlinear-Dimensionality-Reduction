@@ -38,7 +38,7 @@ Figure~\ref{fig:confusion-matrix-pca-svm} shows the results for \gls{pca}. It ha
     \label{fig:kpca-kernels}
 \end{figure}
 
-Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with the sigmoid kernel. It has an accuracy of 91.5\%. It shows \gls{kpca-s} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells threes, fives, and eights from each other.
+Figure~\ref{fig:confusion-matrix-kernel-pca-svm-sigmoid} shows the results for \gls{kpca} with the sigmoid kernel. It has an accuracy of 91.50\%. It shows \gls{kpca-s} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells threes, fives, and eights from each other.
 
 Figure~\ref{fig:confusion-matrix-kernel-pca-svm-rbf} shows the results for \gls{kpca} with the RBF kernel. It has an accuracy of 89.5\%. It shows \gls{kpca-r} is best at recognizing zeros and ones in pictures, as the model had guessed lees on the other numbers when the picture was zero or one. The model has trouble recognizing nines from fours and sevens and tells fives, threes, and sevens from each other.
 
@@ -60,7 +60,7 @@ However, the overall error percentage is one of many things that could be consid
 
 Based on the Table~\ref{tab:error-percentage-difference-pca-kpca-s-kpca-r}, one can see that \gls{kpca-r} has a higher percentage of errors than \gls{kpca-s}. However, both methods have around the same error percentage with the number seven.
 
-The worst performance of \gls{kpca-r} is more visible at number six, where the difference between \gls{kpca-r} and \gls{kpca-s} is around 6\%. The second most erroneous class for \gls{kpca-r} is five, at 4.7\%, and it is the same class that \gls{kpca-s} has a hard time with and manages to confuse more numbers than \gls{pca}. Still, the difference between methods at number five is about 3\%. Around the same percentage difference between methods is also visible for numbers two, eight, and nine.
+The worst performance of \gls{kpca-r} is more visible at number six, where the difference between \gls{kpca-r} and \gls{kpca-s} is around 6.57\%. The second most erroneous class for \gls{kpca-r} is five, at 4.70\%, and it is the same class that \gls{kpca-s} has a hard time with and manages to confuse more numbers than \gls{pca}. Still, the difference between methods at number five is about 3.25\%. Around the same percentage difference between methods is also visible for numbers two, eight, and nine.
 
 The slightest difference in both methods, where the \gls{kpca-r} and \gls{kpca-s} improve the model compared to \gls{pca}, is number one, and the difference, where they do not improve the model compared to \gls{pca}, is number seven.
 
@@ -71,6 +71,6 @@ This section presents the influence of the $\gamma$ hyperparameter on the result
 
 \input{figures/experiment-3/gamma-values-kpca.tex}
 
-Table~\ref{tab:gamma-values-kpca} shows that the accuracy of \gls{kpca-s} is not affected as much by the $\gamma$ value as \gls{kpca-r}. The finding shows, among others, that \gls{kpca-r} is more sensible to the changes in the $\gamma$ hyperparameter, as the accuracy can be reduced from 89.5\% to 56\%, around 33\% difference. This is a big difference compared to the 0.3\% difference for \gls{kpca-s}, as it only drops from 91.5\% to 91.2\%. Such a difference is an important finding, as it shows that the model is more sensitive to the changes in the $\gamma$ hyperparameter.
+Table~\ref{tab:gamma-values-kpca} shows that the accuracy of \gls{kpca-s} is not affected as much by the $\gamma$ value as \gls{kpca-r}. The finding shows, among others, that \gls{kpca-r} is more sensible to the changes in the $\gamma$ hyperparameter, as the accuracy can be reduced from 89.49\% to 55.97\%, around 33.50\% difference. This is a big difference compared to the 0.28\% difference for \gls{kpca-s}, as it only drops from 91.50\% to 91.22\%. Such a difference is an important finding, as it shows that the model is more sensitive to the changes in the $\gamma$ hyperparameter.
 
 In this experiment, a comparison of the performance of \gls{pca} and \gls{kpca} with different kernels on the \gls{mnist} dataset is presented. The results show that \gls{pca} performs better than both \gls{kpca} kernels used on the \gls{mnist} dataset. The results also show that \gls{kpca} depends on the $\gamma$ hyperparameter value, as the accuracy change can be remarkable if the optimal value for the specific kernel is changed.
