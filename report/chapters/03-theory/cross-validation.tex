@@ -5,7 +5,11 @@ A common problem in machine learning is that the test set is supposed to be used
 
 Overfitting can be described as when the model is very good at predicting the test data but will not do well with new data, not from the test set. This section will introduce one technique that will reduce the chances of overfitting the model: cross-validation.
 
-Cross-validation is a technique that splits the training data into two sets: new training data set and a validation data set(comprising of training data). By partitioning the training data into two sets, the model can learn from the training data and evaluate on the validation data. The model can be tuned with the validation data and evaluated on the test data after the model is optimized. Such an approach is practical because the model gets evaluated based on data it has never seen, which shows how good the model is at predicting data it has not yet seen~\cite{scikit-learn-ml}. Cross-validation is particularly useful with hyperparameter tuning because it allows picking the correct parameters without using the test set. Cross-validation, more practically can be described as
+Cross-validation is a technique that splits the training data into two sets: new training data set and a validation data set comprised of training data. By partitioning the training data into two sets, the model can learn from the training data and evaluate on the validation data~\cite{scikit-learn-ml}.
+
+The model can be tuned with the validation data and evaluated on the test data after the model is optimized. Such an approach is practical because the model gets evaluated based on data it has never seen, which shows how good the model is at predicting data it has not yet seen~\cite{scikit-learn-ml}.
+
+Cross-validation is particularly useful with hyperparameter tuning because it allows picking the correct parameters without using the test set. Cross-validation, more practically can be described as
 
 \blockcquote{Refaeilzadeh2009}{The basic form of cross-validation is the basic form of k-fold cross-validation. (. . .) In k-fold cross-validation, the data is first partitioned into $k$ equally (or nearly equally) sized segments or folds. Subsequently, $k$ iterations of training and validation are performed such that within each iteration a different fold of the data is held-out for validation while the remaining $k-1$ folds are used for learning.}
 

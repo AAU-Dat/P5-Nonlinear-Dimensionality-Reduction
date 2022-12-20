@@ -1,17 +1,17 @@
 \subsection{Choice of dimensionality reduction}\label{sec:choice-of-dimensionality-reduction}
-Some dimensionality reduction methods were presented in the Section \ref{sec:dimensionality-reduction}. Due to the project's limited scope, not all of the dimensionality reduction methods will be chosen in the implementation. The implementation of the methods will be based on scikit-learn's implementation of the methods. The hyperparameters of the respective methods will also be presented.
+Some dimensionality reduction methods were presented in the Section \ref{sec:dimensionality-reduction}. Due to the project's limited scope, not all of the dimensionality reduction methods will be chosen in the implementation. The implementation of the methods will be based on \gls{sklearn}'s implementation of the methods. The hyperparameters of the respective methods will also be presented.
 
 
 
 \subsubsection{Linear methods}
-The reason for choosing \gls{pca} is, among others, because it is a popular dimensionality reduction method~\cite{dimensionality-reduction-comparative-review} and because it tries to find a linear embedding that retains as much information as possible from the original data, which is done by choosing a $k$ components.
+The reason for choosing \gls{pca} is because it is a popular dimensionality reduction method~\cite{dimensionality-reduction-comparative-review} and because it tries to find a linear embedding that retains as much information as possible from the original data, which is done by choosing a $k$ components.
 
-A difference between \gls{pca} and \gls{fa} is that \gls{fa}, as described in \ref{subsubsec:factor-analysis}, further assumes that the linear combinations have some noise. The hyperparameters for the PCA method are the number of components and whether the components will be whitened or not. According scikit-learn, whitening \textcquote{sklearn-api}{can sometime improve the predictive accuracy of the downstream estimators}.
+A difference between \gls{pca} and \gls{fa} is that \gls{fa}, as described in \ref{subsubsec:factor-analysis}, further assumes that the linear combinations have some noise. The hyperparameters for the \gls{pca} method are the number of components and whether the components will be whitened or not. According scikit-learn, whitening \textcquote{sklearn-api}{can sometime improve the predictive accuracy of the downstream estimators}.
 
 
 \gls{lda} was also chosen because of its ability to project the data by maximizing the separation between classes. Furthermore, the number of dimensions that would be reduced on \gls{mnist} would correspond to the number of $dimensions-1$~\cite{scikit-learn, sklearn-api}. Such a property proves helpful because it simplifies the classification task and may also improve the performance of the machine learning model.
 
-The fact that the number of dimensions reduced for \gls{mnist} will be maximally about the same as the number of classes might provide a good starting point for \gls{pca} and \gls{lda} to be compared. The comparison can be based on how much information they can retain by reducing the data to nine dimensions. The number of components is the hyperparameters of the \gls{lda} method.
+The fact that the number of dimensions reduced for \gls{mnist} will be maximally about the same as the number of classes might provide a good starting point for \gls{pca} and \gls{lda} to be compared. The comparison can be based on how much information they can retain by reducing the data to nine dimensions.
 
 
 \subsubsection{Nonlinear methods}
@@ -22,5 +22,4 @@ The fact that the number of dimensions reduced for \gls{mnist} will be maximally
 The group has also worked with other nonlinear methods, such as T-SNE. However, it was ultimately not chosen because it is a method that is mostly used for data visualization~\cite{tsne-visualization}.
 
 
-This section has presented the dimensionality reduction methods that will be used in the implementation. The methods are the following: \gls{pca}, \gls{lda}, \gls{isomap}, \gls{kpca}, where the number of components is the hyperparameters for the methods. Additionally, \gls{pca} has the hyperparameter of whether the components will be whitened or not, \gls{isomap} has the number of neighbors, and \gls{kpca} has the kernel and the kernel coefficient.
-
+This section has presented the dimensionality reduction methods that will be used in the implementation. The methods are the following: \gls{pca}, \gls{lda}, \gls{isomap}, \gls{kpca}, where the number of components is the hyperparameters for the methods.
