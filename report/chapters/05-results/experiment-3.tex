@@ -7,11 +7,12 @@ The configuration for the sigmoid kernel also used a different gamma value compa
 \subsection{Rules and overview of the experiment}
 The dimensionality reduction methods used in this experiment will be \gls{pca} and \gls{kpca}. The classification method will be \gls{svm}. The kernels used for \gls{kpca} will be \gls{rbf} and sigmoid.
 
-The best configurations for each method used in this experiment is shown in \autoref{tab:best-configuration-expr-3}. The input of the data samples will be 15000 for both of the methods. The number of components used for all methods will be 49 components. The evaluation will be based on the confusion matrices and the results from the CSV file for cross-validation for \gls{kpca}. The experiment will be run on the pc-2 see hardware specifications in \autoref{tab:pc2-specs}.
+The best configurations for each method used in this experiment is shown in \autoref{tab:best-configuration-expr-3}. The input of the data samples will be 15000 for both of the methods. The number of components used for all methods will be 49 components. The evaluation will be based on the confusion matrices and the results from the CSV file for cross-validation for \gls{kpca}. 
 
-This experiment is run on pc-2. See \autoref{tab:pc2-specs} for the specific specs for the computer used in the experiment.
 
 \input{figures/experiment-3/best-configurations-3.tex}
+
+This experiment is run on pc-2. See \autoref{tab:pc-specs} for the specific specs for the computer used in the experiment.
 
 \subsection{Results}\label{subsec:experiment-3-results}
 Below is shown the results for the methods. The results are in the form of confusion matrices. Accuracy percentages from the confusion matrices will compare the methods. The results for the two tests run on different $\gamma$ values are not presented as a confusion matrix, as the accuracy will only be compared, therefore the results are only shown in the CSV file and the discussion, see \autoref{subsubsec:gamma-influence}.
