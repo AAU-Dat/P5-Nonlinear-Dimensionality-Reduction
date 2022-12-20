@@ -28,7 +28,8 @@
     Aalborg University\\
     \href{http://www.aau.dk}{http://www.aau.dk}
 }{% the abstract
-    In recent years, dimensionality reduction has become an increasingly important topic in the field of machine learning. In this paper, we compare two different types of dimensionality reduction techniques: linear and nonlinear. We apply these techniques to the \gls{mnist} dataset, and evaluate the performance of a \gls{svm} model on the reduced datasets. Our results show that for sample sizes greater than 2000, linear dimensionality reduction techniques are generally faster than nonlinear methods, while achieving similar levels of accuracy. However, nonlinear methods are more robust, in that they can remove more components before a significant drop in accuracy occurs.
+    In recent years, dimensionality reduction has become an increasingly important topic in \gls{ml}. Previous research has shown that nonlinear dimensionality reduction methods might not outperform linear methods. In this paper, we use \gls{mnist} to compare the dimensionality reduction methods and evaluate the results based on an \gls{svm} model. The evaluation is based on time, accuracy, f1 score, precision, and recall. The results show that linear methods are faster than nonlinear and achieve similar accuracy levels. In contrast, nonlinear methods are less sensitive to fluctuations in accuracy score when the number of dimensions reduced becomes smaller and smaller. With the current findings, nonlinear methods do not outperform linear methods, though the methods' peculiarities from this project serve as a foundation for future work.
+
 }
 
 % \cleardoublepage
