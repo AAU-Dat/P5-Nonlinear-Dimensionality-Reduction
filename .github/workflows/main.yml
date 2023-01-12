@@ -2,8 +2,8 @@ name: Determine responsibilities for the week
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 11 * * 5"
+#  schedule:
+ #   - cron: "0 11 * * 5"
 
 jobs:
   post-to-Discord:
